@@ -1,0 +1,330 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Source View: https://evernote.com/media/css/header-and-footer.css</title><meta name="robots" content="noindex,nofollow"><meta name="SortSite-IgnoreRule-Page" content="AccWcag1-13.1.3,AccWcag1-14.1.3,Section508-m-3,BugHtmlColgroup,BugIeCssMinMaxWidthHeight,ErrSpellingError,SeoBingTitleLength,SeoPage150k,UseGov5.1,UseGov9.2.3,UseGov10.11,UseGov11.7,UseGov14.3,UseGov17.4,UseGunningFog,W3cTitleTooLong"><style type="text/css"> 
+				body { font-size: smaller; color: black; background-color: white; font-family: Arial, Helvetica, sans-serif; }
+                
+				div.pre { color: #333; white-space: pre; font-family: monospace; clear: both; }
+				div.linespan { display: inline; }
+				span.ok { color: #000; } 
+				span.err { color: #f00; } 
+				span.line { } 
+				div.line { float: left; width: 40%; clear: both; }
+				div.col1 { float: left; width: 5%; padding: 2px; white-space: normal; }
+				div.col2 { float: left; width: 90%; padding-left: 6px; white-space: normal; }
+				div.hdr, div.err { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; position: relative; z-index: 1; top: 0px; left: 0px; width: 90%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; float: left; clear: both;  }
+				div.err-hilite { margin-bottom: 10px; position: relative; z-index: 1; top: 0px; left: 40px; width: 40%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; font-weight: bold; } 
+				div.desc { float: left; width: 40%; margin-bottom: 1em; }
+				div.help { float: right; width: 55%; margin-bottom: 1em; }
+				div.menu-title { float: right; width: 25%; min-width: 100px; text-align: right; padding: 1px; white-space: nowrap; }
+				code.dhtml { background-color: #eeeeff; font-weight: bold; }
+				a.accessible { display: none; } 
+				a.menu-title { text-decoration: none; color: black; background-color: white; border-left: 1px solid #bbb; border-top: 1px solid #bbb; border-right: 1px solid #222; border-bottom: 1px solid #222; text-align: right; display: block; padding: 2px; }
+				a.menu-title:hover { text-decoration: underline; } 
+				was-div.hdr { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; width: 90%; padding: 10px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; }
+				th { text-align: left; font-weight: normal; font-style: normal; }
+				tr { vertical-align: top; }
+				tr.middle { vertical-align: middle; }
+				img { border: none; vertical-align: middle; }
+				p { padding:0; margin:0; }
+				p code { display: block; float: left; width: 90%; font-size: 1em; }
+				p code:first-child { width: 4em; clear: both; }
+                
+				a.spell-bad
+				{
+					text-decoration: none;
+					color: black;
+					border-bottom: 1px dotted red;
+					line-height: 1.5em;
+				}
+				a.spell-good
+				{
+					text-decoration: line-through;
+					color: gray;
+					border-bottom: none;
+					line-height: 1.5em;
+				}
+
+					
+				</style><script type="text/javascript" src="../Report/jquery.min.js"></script><script type="text/javascript">
+				var g_errViewSource = "";
+				var g_viewSourceDir = "";
+				
+				
+				function pageLoad()
+				{
+					fixupOptions();
+					enableSpellings();
+					selectLine();
+				}
+				
+				function fixupOptions()
+				{
+					for ( var i = 0 ; i < document.links.length ; ++i )
+					{
+						var oLink = document.links[i];
+						
+						if ( oLink.onclick && oLink.onclick.toString().indexOf( "Options(" ) > 0 )
+						{
+							oLink.oncontextmenu = document.oncontextmenu = function() { this.click(); return false; }
+						}
+					}
+				}
+		
+				function toggleChevron( id )
+				{
+					var oElement = document.getElementById( "chev" + id );
+					//alert( id + " " + oElement.outerHTML );
+
+					if ( oElement.src.indexOf( "chevron-up.png" ) != -1 )
+					{
+						oElement.src = oElement.src.replace( "up", "down" );
+					}
+					else
+					{
+						oElement.src = oElement.src.replace( "down", "up" );
+					}
+
+					toggleVisibility( id );
+				}
+					
+				function toggleVisibility( id )
+				{					
+					var oElement = document.getElementById( id );					
+										
+					var strVisible = 'block';
+					
+					if ( oElement.style.display == 'none' )
+						oElement.style.display = strVisible;
+					else
+						oElement.style.display = 'none';
+				}
+				
+				
+				function viewSource( pageid, line, col )
+				{	
+					try
+					{
+						if ( g_viewSourceDir != '' )
+						{
+							window.location.href = g_viewSourceDir + pageid + ".view.htm#htm-l" + line;
+						}
+						else
+						{
+							window.external.ViewSource( pageid, line, col );
+						}
+					}
+					catch( err )
+					{
+						if ( g_errViewSource )
+							alert( g_errViewSource );
+					}
+				}
+
+				function enableSpellings()
+				{
+					var oRows = document.getElementsByTagName('a');
+					
+					for ( i = 0 ; i < oRows.length ; ++i )
+					{
+						var	oElement = oRows[i];
+											
+						if ( oElement.className == "spell-bad"  )
+						{
+						
+							try
+							{
+								var strWord = oElement.innerHTML;
+								
+								var bCorrect = window.external.GetSpellingCorrect( strWord );
+
+								if ( bCorrect )
+									oElement.className = 'spell-good';
+							}
+							catch(err)
+							{
+								//Do nothing
+							}
+						}
+					}
+				}
+				
+				function spellOptions( oLink, strWord, strAppEdition )
+				{
+					SpellAction = {
+						spellOther : 0,
+						spellAdded : 1,
+						spellRemoved : 2
+					};
+
+					try
+					{
+						var action = SpellAction.spellOther;
+
+						if ( strAppEdition.indexOf( "web" ) != -1 )
+						{
+							// add to custom dictionary
+							var urlAdd = '/Scans/AddCustomSpelling?word=' + strWord;
+							var urlRemove = '/Scans/RemoveCustomSpelling?word=' + strWord;
+
+							if ( $( '#iframeSpelling' ).attr('src') == urlAdd )
+							{
+								// clicking word again removes it from dictionary
+								action = SpellAction.spellRemoved;	
+								$( '#iframeSpelling' ).attr('src', urlRemove );
+							}
+							else
+							{
+								action = SpellAction.spellAdded;
+								$( '#iframeSpelling' ).attr('src', urlAdd );
+							}
+						}
+						else
+						{
+							// popup menu
+							action = window.external.SpellOptions( strWord );
+						}
+
+						if ( action == SpellAction.spellAdded )
+						{
+							// mark this one as good
+							oLink.className = 'spell-good';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-bad' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-good';
+								}
+							}
+						}
+						else if ( action == SpellAction.spellRemoved )
+						{
+							// mark this one as bad again
+							oLink.className = 'spell-bad';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-good' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-bad';
+								}
+							}
+						}
+					}
+					catch( err )
+					{
+						alert( "Spelling options are only available when the report is viewed in SortSite." );
+					}
+
+					// don't jump around or scroll after showing options menu
+					return false;
+				}
+				</script></head><body onload="pageLoad()"><a class="accessible" href="#mainContent">[Skip to Content]</a><div class="hdr"><h1>
+						CSS File
+					</h1><table><tr><th>
+						URL: 
+					</th><td><a rel="nofollow" target="_top" href="https://evernote.com/media/css/header-and-footer.css">https://evernote.com/media/css/header-and-footer.css</a></td></tr><tr><th title="The status code returned by the web server tells the browser if the request was successful.">
+						HTTP Status: 
+					</th><td title="The status code returned by the web server tells the browser if the request was successful.">200 OK</td></tr><tr><th title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">
+						MIME Type: 
+					</th><td title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">text/css</td></tr><tr><th title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">
+						Last Modified: 
+					</th><td title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">Wed, 29 Apr 2015 04:10:02 GMT</td></tr><tr><th>
+						Download Time: 
+					</th><td>
+								Less than a second
+							</td></tr><tr><th>
+						Cookies: 
+					</th><td>
+								None
+							</td></tr><tr><th>
+						Size: 
+					</th><td>36 KB 
+						</td></tr><tr><th>
+								Rules: 
+							</th><td>52
+								style rules
+							</td></tr><tr><th>
+								Imports: 
+							</th><td>0
+								stylesheets
+							</td></tr><tr><th>
+						HTTP Headers: 
+					</th><td><a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Headers" id="chevHttpHeaders" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();">7&nbsp;headers</a><div style="display: none; width: 100%;" id="HttpHeaders"><a rel="nofollow">Accept-Ranges:  bytes
+</a><br><a rel="nofollow">Cache-Control:  max-age=86400
+</a><br><a rel="nofollow">Date:  Thu, 16 Jul 2015 06:13:00 GMT
+</a><br><a rel="nofollow">Server:  Apache
+</a><br><a rel="nofollow">Strict-Transport-Security:  max-age=31536000
+</a><br><a rel="nofollow">Vary:  Accept-Encoding
+</a><br><a rel="nofollow">X-Frame-Options:  SAMEORIGIN
+</a><br></div></td></tr><tr><th>
+						Links In: 
+					</th><td><a href="#" onclick="toggleChevron('LinksIn'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Links" id="chevLinksIn" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('LinksIn'); return false;" onkeypress="this.click();">2&nbsp;pages</a><div style="display: none; width: 100%;" id="LinksIn"><a rel="nofollow" href="https://evernote.com/download/" onclick="viewSource( 7, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/download/</a><br><a rel="nofollow" href="https://evernote.com/download/?offer=www_menu" onclick="viewSource( 15, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/download/?offer=www_menu</a><br></div></td></tr><tr><th>
+							Links Out: 
+						</th><td><a><img width="20" height="20" alt="View Links" id="chevLinksOut" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;links</a><div style="display: none; width: 100%;" id="LinksOut"></div></td></tr><tr><th>
+							Images: 
+						</th><td><a href="#" onclick="toggleChevron('Images'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Images" id="chevImages" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('Images'); return false;" onkeypress="this.click();">4&nbsp;images</a><div style="display: none; width: 100%;" id="Images"><a rel="nofollow" href="https://evernote.com/media/img/header-icons.png">https://evernote.com/media/img/header-icons.png</a> NaN KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/img/logo-new.png">https://evernote.com/media/img/logo-new.png</a> NaN KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/img/logo_yx.png">https://evernote.com/media/img/logo_yx.png</a> NaN KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/img/drop-arrow.png">https://evernote.com/media/img/drop-arrow.png</a> NaN KB
+					
+					<br></div></td></tr><tr><th>
+							CSS: 
+						</th><td><a><img width="20" height="20" alt="View CSS Files" id="chevCSS" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;files</a><div style="display: none; width: 100%;" id="CSS"></div></td></tr><tr><th>
+							JavaScript: 
+						</th><td><a><img width="20" height="20" alt="View JavaScript Files" id="chevJavaScript" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;files</a><div style="display: none; width: 100%;" id="JavaScript"></div></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr><tr class="middle"><th><img alt="Issue" style="text-align:absmiddle" width="20" height="20" src="../Report/bench-worse.png">	
+								Issues: 
+							</th><td>6
+								issues found on
+								12
+								lines
+							</td></tr></table></div><div id="mainContent" class="pre"><script type='text/javascript'>function selectLine() {}</script><p><code>1</code><code>@-webkit-keyframes check{0%{height:0;width:0}25%{height:0;width:10px}50%{height:20px;width:10px}}@-moz-keyframes check{0%{height:0;width:0}25%{height:0;width:10px}50%{height:20px;width:10px}}@-ms-keyframes check{0%{height:0;width:0}25%{height:0;width:10px}50%{height:20px;width:10px}}@-o-keyframes check{0%{height:0;width:0}25%{height:0;width:10px}50%{height:20px;width:10px}}@keyframes check{0%{height:0;width:0}25%{height:0;width:10px}50%{height:20px;width:10px}}body{margin:0;padding:0;width:100%;</code></p><br style='clear: both'> <div id='err-l1c501-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>Use relative rather than absolute units in CSS property values. </div>   <div class='help'>
+			Absolute units are CM, MM, IN, PC and PT. When used with fonts PX is also considered an absolute unit,
+			because it isn't relative the user's preferred font size.
+			
+			Low-vision users often use the "large fonts" mode of Windows, which makes each pixel larger than usual.
+			This usually causes problems with pixel based layouts, which also perform badly on handheld 
+			and widescreen displays. Percentage values "stretch" according to screen size and work on a large
+			range of display sizes.
+		 </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.w3.org/TR/WCAG20/#visual-audio-contrast-scale' target='_top'>WCAG 2.0 AA 1.4.4</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-3.4.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>font-size:12px;font-size:0.75rem;font-family:Helvetica,Arial,sans-serif;line-height:1.3;text-rendering:optimizeLegibility}ul{list-style:none;margin:0;padding:0}ul li{margin:0;padding:0}ol{margin:0;padding:0}p{padding:0;margin:0px 0px 5px 0px;margin:0rem 0rem 0.3125rem 0rem}h1,h2,h3,h4,h5,h6{padding:0;margin:0px 0px 10px 0px;margin:0rem 0rem 0.625rem 0rem;font-weight:normal}fieldset{border:none;margin:0;padding:0}button{cursor:pointer}</code></p><br style='clear: both'> <div id='err-l1c939-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>The :before and :after CSS pseudo selectors are not supported by IE7 and earlier. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Internet Explorer &#8804; 7</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugIeCssBeforeAfter" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>.clearfix:after{clear:both;content:".";display:block;height:0;visibility:hidden}</code></p><br style='clear: both'> <div id='err-l1c1019-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>This CSS style makes it difficult or impossible to see the dotted link focus outline. </div>   <div class='help'>Change the style to avoid obscuring the focus outline around A elements, which is used when tabbing through links. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.w3.org/TR/WCAG20-TECHS/F78.html' target='_top'>WCAG 2.0 AA F78</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag2-F78-1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l1c1019-1' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>The :focus CSS pseudo selector is not supported by IE7 and earlier. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Internet Explorer &#8804; 7</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugIeCssFocus" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>:focus{outline:0}header{margin:0;padding:0;background:white;</code></p><br style='clear: both'> <div id='err-l1c1079-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>Use relative rather than absolute units in CSS property values. </div>   <div class='help'>
+			Absolute units are CM, MM, IN, PC and PT. When used with fonts PX is also considered an absolute unit,
+			because it isn't relative the user's preferred font size.
+			
+			Low-vision users often use the "large fonts" mode of Windows, which makes each pixel larger than usual.
+			This usually causes problems with pixel based layouts, which also perform badly on handheld 
+			and widescreen displays. Percentage values "stretch" according to screen size and work on a large
+			range of display sizes.
+		 </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.w3.org/TR/WCAG20/#visual-audio-contrast-scale' target='_top'>WCAG 2.0 AA 1.4.4</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-3.4.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>font-size:12px;font-size:0.75rem;padding:22px 0px;padding:1.375rem 0rem}@media only screen and (max-width: 1312px){header{padding:22px 16px;padding:1.375rem 1rem;}}header .icons{background:url(/media/img/header-icons.png) no-repeat;display:block}header .main-header{width:1248px;width:78rem;margin:0 auto}@media only screen and (max-width: 1279px){header .main-header{width:100%;}}@media only screen and (max-width: 944px){header .main-header{width:944px;width:59rem;}}header h1{margin:0;float:left;line-height:15px;line-height:0.9375rem}header h1 a{background:</code></p><br style='clear: both'> <div id='err-l1c1640-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>Use background images sparingly and make sure they are simple, especially behind text. </div>   <div class='help'>
+			Background images can make it difficult for users to read foreground text. A single, large, complex background image (including a picture) can substantially slow page download rates.
+		 </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://guidelines.usability.gov/guidelines/150' target='_top'>Usability.gov 14:1</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "UseGov14.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>url(/media/img/logo-new.png) no-repeat;width:200px;height:44px;position:relative;text-indent:-99999px;</code></p><br style='clear: both'> <div id='err-l1c1742-0' class='err' >  <div class='col1'><img src='../Report/p3.png' width='20' height='20' alt='Priority 3'> </div>  <div class='col2'>   <div class='desc'>The display:inline-block CSS property is not implemented in IE7 or Firefox 2. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Internet Explorer &#8804; 7</a> <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Firefox &#8804; 2</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugIeCssDisplayInlineBlock" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>display:inline-block;display:block}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){header h1 a{background-image:url("/media/img/logo-new@2x.png");background-size:200px 44px;}}header h1.yx{margin-top:-4px;margin-top:-0.25rem}header h1.yx a{background:</code></p><br style='clear: both'> <div id='err-l1c2115-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>Use background images sparingly and make sure they are simple, especially behind text. </div>   <div class='help'>
+			Background images can make it difficult for users to read foreground text. A single, large, complex background image (including a picture) can substantially slow page download rates.
+		 </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://guidelines.usability.gov/guidelines/150' target='_top'>Usability.gov 14:1</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "UseGov14.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>url(/media/img/logo_yx.png) no-repeat;width:144px;width:9rem;height:48px;height:3rem}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){header h1.yx a{background-image:url("/media/img/logo_yx@2x.png");background-size:144px 48px;}}header nav.main-nav{float:left;margin:12px 0px 0px 0px;margin:0.75rem 0rem 0rem 0rem;margin-left:3%}header nav.main-nav ul{text-transform:uppercase;list-style:none}header nav.main-nav ul li{display:inline;</code></p><br style='clear: both'> <div id='err-l1c2670-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>Use relative rather than absolute units in CSS property values. </div>   <div class='help'>
+			Absolute units are CM, MM, IN, PC and PT. When used with fonts PX is also considered an absolute unit,
+			because it isn't relative the user's preferred font size.
+			
+			Low-vision users often use the "large fonts" mode of Windows, which makes each pixel larger than usual.
+			This usually causes problems with pixel based layouts, which also perform badly on handheld 
+			and widescreen displays. Percentage values "stretch" according to screen size and work on a large
+			range of display sizes.
+		 </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.w3.org/TR/WCAG20/#visual-audio-contrast-scale' target='_top'>WCAG 2.0 AA 1.4.4</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-3.4.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>font-size:12px;font-size:0.75rem;margin:0px 25px 0px 0px;margin:0rem 1.5625rem 0rem 0rem;padding:0px 0px 20px 0px;padding:0rem 0rem 1.25rem 0rem}header nav.main-nav ul li a{color:#333333;text-decoration:none;font-family:'Gotham_SSm_4r',Helvetica,Arial,sans-serif}header nav.main-nav ul li a:hover,header nav.main-nav ul li a:focus{color:#5fb336}header nav.main-nav ul li span.dr</code></p><br style='clear: both'> <div id='err-l1c3048-0' class='err' >  <div class='col1'><img src='../Report/p3.png' width='20' height='20' alt='Priority 3'> </div>  <div class='col2'>   <div class='desc'>The display:inline-block CSS property is not implemented in IE7 or Firefox 2. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Internet Explorer &#8804; 7</a> <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Firefox &#8804; 2</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugIeCssDisplayInlineBlock" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>op{display:inline-block;backgrou</code></p><br style='clear: both'> <div id='err-l1c3080-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>Use background images sparingly and make sure they are simple, especially behind text. </div>   <div class='help'>
+			Background images can make it difficult for users to read foreground text. A single, large, complex background image (including a picture) can substantially slow page download rates.
+		 </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://guidelines.usability.gov/guidelines/150' target='_top'>Usability.gov 14:1</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "UseGov14.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>nd:url(/media/img/drop-arrow.png) no-repeat;width:8px;width:0.5rem;height:4px;height:0.25rem;margin:0px 0px 2px 5px;margin:0rem 0rem 0.125rem 0.3125rem}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){header nav.main-nav ul li span.drop{background-image:url("/media/img/drop-arrow@2x.png");background-size:8px 4px;}}header nav.main-nav .nav_sub_inner li{margin:0;padding:0}header nav.main-nav .nav_sub_inner li a{margin:0;padding:13px 0px 11px 14px;padding:0.8125rem 0rem 0.6875rem 0.875rem;font-size:1em;text-transform:none}header nav.main-nav .nav_sub_col1 li a,header nav.main-nav .nav_sub_col2 li a{padding-left:55px;padding-left:3.4375rem}header nav.main-nav .nav_sub_col1{border-right:1px solid #e9e9e9}header div.subnav{display:none;margin:0px auto 0px auto;margin:0rem auto 0rem auto;background:#757778;height:180px;height:11.25rem;clear:both}header div.subnav-list{float:left;width:45%}header div.subnav-list h2{color:#4dbdcb}header div.subnav-list nav.main-nav{margin:0}header div.subnav-list nav.main-nav ul{text-transform:normal}header div.subnav-list ul{margin:0;float:left}header div.subnav-list ul li{display:block}header div.subnav-list ul li a{color:white;text-decoration:no</code></p><br style='clear: both'> <div id='err-l1c4393-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>Use relative rather than absolute units in CSS property values. </div>   <div class='help'>
+			Absolute units are CM, MM, IN, PC and PT. When used with fonts PX is also considered an absolute unit,
+			because it isn't relative the user's preferred font size.
+			
+			Low-vision users often use the "large fonts" mode of Windows, which makes each pixel larger than usual.
+			This usually causes problems with pixel based layouts, which also perform badly on handheld 
+			and widescreen displays. Percentage values "stretch" according to screen size and work on a large
+			range of display sizes.
+		 </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.w3.org/TR/WCAG20/#visual-audio-contrast-scale' target='_top'>WCAG 2.0 AA 1.4.4</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-3.4.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>ne;font-size:12px;font-size:0.75rem}header div.subnav-bottom{clear:both;border-top:1px solid #cccccc}header nav.page-nav{background:#ebebeb;width:100%;padding-left:16px;padding-left:1rem;font-size:12px;font-size:0.75rem;letter-spacing:1px;letter-spacing:0.0625rem}header nav.page-nav .page-nav-container{width:1280px;width:80rem;margin:0 auto}@media only screen and (max-width: 1280px){header nav.page-nav .page-nav-container{width:100%;}}header nav.page-nav ul{padding:10px 0px 9px 0px;padding:0.625rem 0rem 0.5625rem 0rem;position:relative}header nav.page-nav ul li{display:inline}header nav.page-nav ul li a{margin-right:-5px;margin-right:-0.3125rem;text-decoration:none;font-family:'Gotham_SSm_4r',Helvetica,Arial,sans-serif;color:#333333;padding:10px 20px;padding:0.625rem 1.25rem}header nav.page-nav ul li a:hover,header nav.page-nav ul li a:focus{background:#dedede;border-top:2px solid #696969}header nav.page-nav ul li a.current{background:#dedede;border-top:2px solid #5fb336}header nav.page-nav ul li a.current:hover,header nav.page-nav ul li a.current:focus{background:#dedede}header .page-nav.mobile-nav{display:none !important}header nav.secondary{float:right;margin-top:12px;margin-top:0.75rem}header nav.secondary ul.ar li{float:right}header nav.secondary ul.ar li a.sign-in{padding:0px 10px;padding:0rem 0.625rem;border-right:1px solid #8f9499;color:#8f9499;border-left:0;margin-right:10px;margin-right:0.625rem}header nav.secondary ul{list-style:none}header nav.secondary ul li{display:inline;margin:0}header nav.secondary ul li a{text-decoration:none;font-family:'Gotham_SSm_4r',Helvetica,Arial,sans-serif;margin:0}header nav.secondary ul li a.sign-in{padding:0px 10px;padding:0rem 0.625rem;border-left:1px solid #8f9499;color:#8f9499}header nav.secondary ul li a.sign-in:hover,header nav.secondary ul li a.sign-in:focus{color:#333333}header nav.secondary ul li a.create-account{background:#5fb336;color:white;padding:7px 10px;padding:0.4375rem 0.625rem;margin-left:-2px;margin-left:-0.125rem;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px}header nav.secondary ul li a.create-account:hover,header nav.secondary ul li a.create-account:focus{background:#47a11b}header nav.secondary ul li a.create-account.link{background:none;padding:0px 10px;padding:0rem 0.625rem;border-left:1px solid #8f9499;color:#5fb336;-webkit-border-radius:0 0 0px 0px;-moz-border-radius:0 0 0px 0px;border-radius:0 0 0px 0px}header nav.secondary ul li a.create-account.link:hover,header nav.secondary ul li a.create-account.link:focus{color:#47a11b}header nav.secondary ul li a.premium{background:url(/media/img/premium-icon-header.png) no-repeat;padding-left:20px;padding-left:1.25rem;padding-right:10px;padding-right:0.625rem;color:#8f9499}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){header nav.secondary ul li a.premium{background-image:url("/media/img/premium-icon-header@2x.png");background-size:13px 14px;}}header nav.secondary ul li a.premium:hover,header nav.secondary ul li a.premium:focus{color:#333333}header nav.secondary ul .menu-icons{margin:0;display:none}header nav.secondary ul .menu-icons a{border-left:1px solid #cccccc;padding:28px 20px;padding:1.75rem 1.25rem}header nav.secondary ul .menu-icons a span.icons{position:relative;text-indent:-99999px;display:inline-block;width:23px;width:1.4375rem;height:23px;height:1.4375rem;margin-top:8px;margin-top:0.5rem}header nav.secondary ul #search-link a span.icons{background-position:0 -18px}header nav.secondary ul #menu-link a span.icons{background-position:0 4px}.rtl header nav.main-nav .nav_sub_col1 li a,.rtl header nav.main-nav .nav_sub_col2 li a{padding-right:35px;padding-right:2.1875rem}#silo_yx_promo{background:#ff9}#yx_promo{position:relative}#yx_promo #mega_drop{width:auto}#yx_promo #mega_drop a{display:block;margin:7px 7px 7px 7px;background:white;padding:10px}#yx_promo img{margin-top:7px;margin-bottom:7px}header.yx nav.main-nav ul li a{font-size:15px;font-size:0.9375rem}nav#re-open-close,nav#re-open-close-search{display:none}a.skip-link,a.skip-link:hover,a.skip-link a:visited{position:absolute;text-decoration:none;position:relative;text-indent:-99999px;display:inline-block;top:-5555px;top:-347.1875rem}a.skip-link:focus{top:0;text-decoration:none;text-indent:0;color:#333333;border:2px solid #333333;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;padding:5px;padding:0.3125rem}.show-dropdown{position:relative}.show-dropdown:hover .app-list,.show-dropdown:hover .app-list-blogs,.show-dropdown:focus .app-list,.show-dropdown:focus .app-list-blogs{display:inline}.app-list{width:320px;width:20rem}.app-list-blogs{width:180px;width:11.25rem}.app-list,.app-list-blogs{display:none;position:absolute;background:white;top:28px;top:1.75rem;left:-20px;left:-1.25rem;padding:10px 0px;padding:0.625rem 0rem;z-index:24;font-family:'Gotham_SSm_4r',Helvetica,Arial,sans-serif;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border:1px solid #eff0ef;-webkit-box-shadow:0px 3px 5px 0px rgba(0,0,0,0.2);-moz-box-shadow:0px 3px 5px 0px rgba(0,0,0,0.2);box-shadow:0px 3px 5px 0px rgba(0,0,0,0.2)}.app-list:after,.app-list-blogs:after{display:block;position:absolute;top:-9px;top:-0.5625rem;left:20px;left:1.25rem;content:"";background:url(/media/img/triangle-tip-top.png) no-repeat;width:15px;width:0.9375rem;height:12px;height:0.75rem}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.app-list:after,.app-list-blogs:after{background-image:url("/media/img/triangle-tip-top@2x.png");background-size:15px 12px;}}.app-list li,.app-list-blogs li{margin:0 !important;padding:0 !important;clear:both}.app-list li a,.app-list-blogs li a{display:block;color:#696969 !important;position:relative;text-transform:none;font-family:'Gotham_SSm_4r',Helvetica,Arial,sans-serif;font-size:13px;font-size:0.8125rem;padding:10px 20px;padding:0.625rem 1.25rem}.app-list li a,.app-list-blogs li a{*zoom:1}.app-list li a:before,.app-list li a:after,.app-list-blogs li a:before,.app-list-blogs li a:after{content:"";display:table}.app-list li a:after,.app-list-blogs li a:after{clear:both}.app-list li a:hover,.app-list li a:focus,.app-list-blogs li a:hover,.app-list-blogs li a:focus{background:#f9f9f9;color:black !important}.app-list li a:hover .text,.app-list li a:focus .text,.app-list-blogs li a:hover .text,.app-list-blogs li a:focus .text{color:black}.app-list li a .icon,.app-list-blogs li a .icon{display:block;float:left;background:url(/media/img/product_icons/product-icons35.png) no-repeat;/media/img/product_icons/product-icons35@2x.png:35px 234px;/media/img/product_icons/product-icons35@2x.png:2.1875rem 14.625rem;width:35px;height:35px}.app-list li a .text,.app-list-blogs li a .text{float:left;font-size:13px;font-size:0.8125rem;margin:3px 0px 0px 10px;margin:0.1875rem 0rem 0rem 0.625rem;color:#696969;width:80%}.app-list li a .text span,.app-list-blogs li a .text span{display:block;font-family:'Gotham_SSm_3r',Helvetica,Arial,sans-serif;font-size:11px;font-size:0.6875rem;margin-top:5px;margin-top:0.3125rem}.app-list li a .download,.app-list-blogs li a .download{font-family:'Gotham_SSm_4r',Helvetica,Arial,sans-serif;position:absolute;text-transform:uppercase;border:1px solid #939ca3;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;font-size:10px;font-size:0.625rem;padding:5px 10px;padding:0.3125rem 0.625rem;background:white;right:10px;right:0.625rem;top:15px;top:0.9375rem;z-index:25;color:#939ca3;cursor:pointer}.app-list li a .download:hover,.app-list li a .download:focus,.app-list-blogs li a .download:hover,.app-list-blogs li a .download:focus{border:1px solid #559f30;background:#5fb336;color:white}.app-list li a.evernote .icon,.app-list-blogs li a.evernote .icon{background-position:0 0}.app-list li a.skitch .icon,.app-list-blogs li a.skitch .icon{background-position:0 -40px}.app-list li a.penultimate .icon,.app-list-blogs li a.penultimate .icon{background-position:0 -80px}.app-list li a.webclipper .icon,.app-list-blogs li a.webclipper .icon{background-position:0 -120px}.app-list li a.food .icon,.app-list-blogs li a.food .icon{background-position:0 -160px}.app-list li a.clearly .icon,.app-list-blogs li a.clearly .icon{background-position:0 -200px}a.skip-link,a.skip-link:hover,a.skip-link a:visited{position:absolute;text-decoration:none;position:relative;text-indent:-99999px;display:inline-block;top:-5555px;top:-347.1875rem}a.skip-link:focus{top:0;text-decoration:none;text-indent:0;color:#333333;border:2px solid #333333;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;padding:5px;padding:0.3125rem}#footer{}body{margin:0}footer{width:100%;min-width:944px;margin:0 auto;font-family:Helvetica,Arial,sans-serif;padding:0px 16px 20px 16px;padding:0rem 1rem 1.25rem 1rem;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding-bottom:0}footer{*zoom:1}footer:before,footer:after{content:"";display:table}footer:after{clear:both}footer.legacy-footer-line,footer.legacy-footer{clear:both;max-width:944px;padding:40px 0px 0px 0px;padding:2.5rem 0rem 0rem 0rem}footer.legacy-footer-line{border-top:1px solid #c2c2c2}footer.extra-padding{padding-top:20px;clear:both}footer .top,footer .footer-bottom{max-width:1280px;min-width:944px;width:100%;margin:0 auto;float:none;clear:both}footer .top{margin-bottom:20px}footer .footer-bottom{*zoom:1}footer .footer-bottom:before,footer .footer-bottom:after{content:"";display:table}footer .footer-bottom:after{clear:both}footer h1,footer h3{font-family:'Gotham_SSm_7r',Helvetica,Arial,sans-serif;font-size:11px;font-size:0.6875rem;line-height:11px;line-height:0.6875rem;margin-top:0;color:#5fb336;text-transform:uppercase;margin-bottom:5px;margin-bottom:0.3125rem;font-weight:normal}footer ul{font-size:11px;font-size:0.6875rem;padding:0;list-style:none;margin:0}footer ul li{line-height:17px;line-height:1.0625rem}footer ul{*zoom:1}footer ul:before,footer ul:after{content:"";display:table}footer ul:after{clear:both}footer .top{*zoom:1}footer .top:before,footer .top:after{content:"";display:table}footer .top:after{clear:both}footer .top&gt;ul{width:66.1016949153%;width:83.0508474576%;float:left}footer .top&gt;ul{*zoom:1}footer .top&gt;ul:before,footer .top&gt;ul:after{content:"";display:table}footer .top&gt;ul:after{clear:both}footer a{color:#333333;text-decoration:none;margin-bottom:1px;margin-bottom:0.0625rem;border-bottom:1px solid transparent;-webkit-transition:border-bottom 0.1s ease-in-out 0;-moz-transition:border-bottom 0.1s ease-in-out 0;-o-transition:border-bottom 0.1s ease-in-out 0;transition:border-bottom 0.1s ease-in-out 0;color:#696969;font-family:'Gotham_SSm_4r',Helvetica,Arial,sans-serif}footer a:hover,footer a:focus{border-bottom:1px solid #5fb336;-webkit-transition:border-bottom 0.1s ease-in-out 0;-moz-transition:border-bottom 0.1s ease-in-out 0;-o-transition:border-bottom 0.1s ease-in-out 0;transition:border-bottom 0.1s ease-in-out 0}footer .top&gt;span{font-size:11px;font-size:0.6875rem;color:#333333;margin-top:15px;margin-top:0.9375rem;float:right;clear:right;text-align:right;float:right;margin-top:10px;margin-top:0.625rem}footer .top&gt;span span{display:block}footer .top&gt;span span{display:block;float:none}footer .top&gt;span span{display:inline}.list-container{width:74.5762711864%;-webkit-transition:width 0.25s ease-in-out 0;-moz-transition:width 0.25s ease-in-out 0;-o-transition:width 0.25s ease-in-out 0;transition:width 0.25s ease-in-out 0;float:left}.footer-links{width:74.5762711864%;float:left}.links{width:100%;width:23.7288135593%;margin-left:1.6949152542%;float:left;display:block;width:32.2033898305%;margin-left:1.6949152542%}.links ul{margin-bottom:15px;margin-bottom:0.9375rem}.links ul:last-child{margin-bottom:0}.links ul li a{text-decoration:none}.links:first-child{margin-left:0}.links .menu-state{display:none}.links&gt;ul{display:block !important}.links:first-child{margin-left:0}.social-links{float:left;margin-left:1.6949152542%;width:23.7288135593%}.social-links a:hover .link-text,.social-links a:focus .link-text{text-decoration:none}.social-links li{display:block;width:100%;margin-top:7px;margin-top:0.4375rem}.social-links li:first-child{margin-top:4px;margin-top:0.25rem}.social-links li a{text-decoration:none;border-bottom:0}.social-links li a .social-icon,.social-links li a .social-icon-yx{vertical-align:middle;margin-right:7px;margin-right:0.4375rem}.social-links li a .link-text{border-bottom:1px solid transparent;-webkit-transition:border-bottom 0.1s ease-in-out 0;-moz-transition:border-bottom 0.1s ease-in-out 0;-o-transition:border-bottom 0.1s ease-in-out 0;transition:border-bottom 0.1s ease-in-out 0;position:relative;top:1px;top:0.0625rem}.social-links li a:hover .link-text,.social-links li a:focus .link-text{border-bottom:1px solid #5fb336;-webkit-transition:border-bottom 0.1s ease-in-out 0;-moz-transition:border-bottom 0.1s ease-in-out 0;-o-transition:border-bottom 0.1s ease-in-out 0;transition:border-bottom 0.1s ease-in-out 0}.social-links .footer-menu{position:relative}.social-links li{float:left}.refer-a-friend{background:transparent;border:1px solid #566571;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;padding:7px 14px;font-size:11px;font-size:0.6875rem;text-transform:uppercase;margin-bottom:20px;margin-bottom:1.25rem;float:right;font-family:'Gotham_SSm_4r',Helvetica,Arial,sans-serif;text-decoration:none}.refer-a-friend:hover,.refer-a-friend:focus{text-decoration:none;color:#000;border:1px solid #000}.miscellaneous{float:right}.miscellaneous{*zoom:1}.miscellaneous:before,.miscellaneous:after{content:"";display:table}.miscellaneous:after{clear:both}.social-icon{width:45px;height:45px;position:relative;text-align:left;display:inline-block;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background:url(../img/footer_redesign/social_sprites_v2.png) no-repeat;margin-right:10px;margin-right:0.625rem;opacity:1;-webkit-transition:opacity 0.1s ease-in-out 0;-moz-transition:opacity 0.1s ease-in-out 0;-o-transition:opacity 0.1s ease-in-out 0;transition:opacity 0.1s ease-in-out 0;width:25px;height:25px;background-size:25px 183.3px;background-size:25px 142px;margin-top:20px;margin-top:1.25rem;width:25px;height:25px;margin-right:0;margin-top:0}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.social-icon{background-image:url("../img/footer_redesign/social_sprites_v2@2x.png");background-size:50px 350px;}}.social-icon:hover,.social-icon:focus{-webkit-transition:opacity 0.1s ease-in-out 0;-moz-transition:opacity 0.1s ease-in-out 0;-o-transition:opacity 0.1s ease-in-out 0;transition:opacity 0.1s ease-in-out 0;opacity:0.9}.social-icon:focus,.social-icon:hover{border-bottom:0}.twitter-icon{background-position:0 -200px;background-position:0 -78px}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.twitter-icon{background-size:cover;background-position:0 -150px;}}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.twitter-icon{background-position:0 -78px;}}.facebook-icon{background-position:0 0;background-position:0 0}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.facebook-icon{background-size:cover;background-position:0 0;}}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.facebook-icon{background-position:0 0;}}.youtube-icon{background-position:0 -300px;background-position:0 -117px}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.youtube-icon{background-size:cover;background-position:0 -225px;}}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.youtube-icon{background-position:0 -117px;}}.google-plus-icon{background-position:0 -100px;background-position:0 -39px}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.google-plus-icon{background-size:cover;background-position:0 -75px;}}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.google-plus-icon{background-position:0 -39px;}}.vkontakte-icon{background:url('/media/img/footer_redesign/vk-logo.png') no-repeat;background-size:cover}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.vkontakte-icon{background:url('/media/img/footer_redesign/vk-logo@2x.png') no-repeat;background-size:cover;}}.ok-icon{background:url('/media/img/footer_redesign/ok-logo.png') no-repeat;background-size:cover}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.ok-icon{background:url('/media/img/footer_redesign/ok-logo@2x.png') no-repeat;background-size:cover;}}.social-icon-yx{position:relative;text-align:left;text-indent:-9999px;display:inline-block;background:url(../img/footer_redesign/social-sprites-v2-yx.png) no-repeat;opacity:1;-webkit-transition:opacity 0.1s ease-in-out 0;-moz-transition:opacity 0.1s ease-in-out 0;-o-transition:opacity 0.1s ease-in-out 0;transition:opacity 0.1s ease-in-out 0;width:25px;height:25px;background-size:25px 183.3px;margin-top:20px;margin-top:1.25rem;margin-right:0;margin-top:0}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.social-icon-yx{background-image:url("../img/footer_redesign/social-sprites-v2-yx@2x.png");background-size:50px 350px;}}.social-icon-yx:hover,.social-icon-yx:focus{-webkit-transition:opacity 0.1s ease-in-out 0;-moz-transition:opacity 0.1s ease-in-out 0;-o-transition:opacity 0.1s ease-in-out 0;transition:opacity 0.1s ease-in-out 0;opacity:0.9}.social-icon-yx:focus,.social-icon-yx:hover{border-bottom:0}.weibo-icon{background-position:0 -200px;background-position:0 -106px}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.weibo-icon{background-size:cover;background-position:0 -150px;}}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.weibo-icon{background-position:0 -77px;}}.douban-icon{background-position:0 0;background-position:0 0}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.douban-icon{background-size:cover;background-position:0 0;}}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.douban-icon{background-position:0 0;}}.weixinFunctionality{cursor:pointer}.weixin-icon{background-position:0 -300px;background-position:0 -159px}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.weixin-icon{background-size:cover;background-position:0 -225px;}}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.weixin-icon{background-position:0 -116px;}}.renren-icon{background-position:0 -100px;background-position:0 -53px}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.renren-icon{background-size:cover;background-position:0 -75px;}}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.renren-icon{background-position:0 -38px;}}.youku-icon{background:url(../img/footer_redesign/youku.png) no-repeat;background-size:cover}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){.youku-icon{background:url(../img/footer_redesign/youku@2x.png) no-repeat;background-size:cover;}}.weixin{position:relative}.weixin .weixin-popup{width:160px;height:160px;position:absolute;bottom:35px;text-indent:-9999px;background:#fff url('/media/img/footer_redesign/yx-qr.jpg') no-repeat;background-size:150px 150px;background-position:center;margin-bottom:0;float:none;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;border:2px solid #e9e9e9;display:none;bottom:33px;left:-35px;opacity:0.9}.weixin .weixin-popup.hover-display{display:block}.weixin .weixin-popup .tick-mark{display:inline-block;width:15px;height:15px;background:white;content:"Arrow";text-indent:-9999px;position:absolute;margin-left:-7px;transform:rotate(-45deg);-ms-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);border-bottom:2px solid #e3e3e3;border-left:2px solid #e3e3e3;margin-top:4px;margin-top:0.25rem;bottom:-8px;right:67px}.miscellaneous{float:right;margin-top:7px;margin-top:0.4375rem;width:100%}.miscellaneous{*zoom:1}.miscellaneous:before,.miscellaneous:after{content:"";display:table}.miscellaneous:after{clear:both}@media only screen and (min-width: 600px){.miscellaneous{width:23.7288135593%;}}@media only screen and (min-width: 850px){.miscellaneous{margin-bottom:0;}}.refer-a-friend,.download-en{background:transparent;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;padding:9px 10px;padding:0.5625rem 0.625rem;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;text-align:center;text-transform:uppercase;font-family:'Gotham_SSm_4r',Helvetica,Arial,sans-serif;text-decoration:none;font-size:11px;font-size:0.6875rem;clear:both}@media only screen and (min-width: 850px){.refer-a-friend,.download-en{margin-bottom:20px;margin-bottom:1.25rem;width:150px;width:9.375rem;}}.refer-a-friend:hover,.refer-a-friend:focus,.download-en:hover,.download-en:focus{text-decoration:none;color:#000;border:1px solid #000;-webkit-transition:border 0.1s ease-in-out 0,color 0.1s ease-in-out 0;-moz-transition:border 0.1s ease-in-out 0,color 0.1s ease-in-out 0;-o-transition:border 0.1s ease-in-out 0,color 0.1s ease-in-out 0;transition:border 0.1s ease-in-out 0,color 0.1s ease-in-out 0}.refer-a-friend{border:1px solid #566571;color:#566571;-webkit-transition:border 0.1s ease-in-out 0,color 0.1s ease-in-out 0;-moz-transition:border 0.1s ease-in-out 0,color 0.1s ease-in-out 0;-o-transition:border 0.1s ease-in-out 0,color 0.1s ease-in-out 0;transition:border 0.1s ease-in-out 0,color 0.1s ease-in-out 0}@media only screen and (min-width: 600px){.refer-a-friend{font-size:11px;font-size:0.6875rem;float:right;margin-bottom:20px;margin-bottom:1.25rem;}}@media only screen and (max-width: 600px){.refer-a-friend{padding:10px 12px;padding:0.625rem 0.75rem;font-size:14px;font-size:0.875rem;display:table;margin:20px auto;}}.download-en{display:none}@media only screen and (min-width: 850px){.download-en{display:inline-block;border:1px solid #5fb336;color:#5fb336;margin-bottom:12px;margin-bottom:0.75rem;float:right;-webkit-transition:border 0.1s ease-in-out 0,color 0.1s ease-in-out 0;-moz-transition:border 0.1s ease-in-out 0,color 0.1s ease-in-out 0;-o-transition:border 0.1s ease-in-out 0,color 0.1s ease-in-out 0;transition:border 0.1s ease-in-out 0,color 0.1s ease-in-out 0;}}.facebook{text-decoration:none;display:none}.facebook:hover,.facebook:focus{text-decoration:none}@media only screen and (min-width: 850px){.facebook{font-size:12px;font-size:0.75rem;border-bottom:0;clear:both;float:left;margin-top:10px;margin-top:0.625rem;}.facebook:hover,.facebook:focus{border-bottom:0}@media only screen and (min-width: 850px){.facebook{display:inline-block;margin-bottom:25px;margin-bottom:1.5625rem;float:right;margin-top:0;}}.facebook .facebook-icon{background:url(../img/footer_redesign/facebook_small.png) no-repeat;width:10px;height:10px;display:inline-block;background-size:cover;margin-right:3px;margin-right:0.1875rem;margin-left:3px;margin-left:0.1875rem;border:0;vertical-align:baseline}.facebook&gt;span{-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;padding:1px;padding:0.0625rem;background:#eceef5;border:1.5px solid #bac1db}.facebook .numbers{margin-left:9px;margin-left:0.5625rem;padding:1 3 1 3px;padding:1 3 1 3/16rem;border:1.5px solid #b3b3b3;background:white}.facebook .numbers:before{display:inline-block;width:6px;height:6px;background:white;content:"Arrow";text-indent:-9999px;position:relative;margin-left:-7px;transform:rotate(45deg);-ms-transform:rotate(45deg);-webkit-transform:rotate(45deg);border-bottom:1.5px solid gray;border-left:1.5px solid gray;margin-top:4px;margin-top:0.25rem;top:5px;left:2px}}.facebook-like{float:right;clear:right;width:86px;height:50px}#language_picker2{position:relative}@media only screen and (min-width: 600px){#language_picker2{float:right;clear:right;font-size:12px;font-size:0.75rem;}}#language_picker2 a{text-decoration:none;padding-bottom:1px;font-size:11px;font-size:0.6875rem;display:inline-block;float:right;clear:right}#language_picker2 select{float:right;clear:right}footer .language-picker.mobile{display:none}footer #language_picker2&gt;a{float:right}footer #language_picker2&gt;p{font-family:'Gotham_SSm_4r',Helvetica,Arial,sans-serif;float:right;cursor:pointer}footer #language_picker2 .preferred-language{color:#696969}footer #language_picker2 .preferred-language .es-latam{display:block;text-align:right}footer #language_picker2 .language-arrow{display:inline-block;width:6px;height:3px;background:url('/media/img/footer_redesign/arrow.png') no-repeat;position:relative;bottom:2px;margin:0 5px 0 3px}@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx){footer #language_picker2 .language-arrow{background:url('/media/img/footer_redesign/arrow@2x.png') no-repeat;background-size:cover;}}footer #language_picker2 .preferred-language{margin-bottom:5px;margin-bottom:0.3125rem}footer #language_picker2 .language-dropdown{display:none;position:absolute;right:0;background:white;border:1px solid #696969;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;opacity:0.95;width:400px;bottom:60px;bottom:3.75rem}footer #language_picker2 .language-dropdown ul{width:199px;float:left}footer #language_picker2 .language-dropdown ul:first-child{border-right:1px solid #696969}footer #language_picker2 .language-dropdown ul li{-webkit-transition:background 0.1s ease-in-out 0;-moz-transition:background 0.1s ease-in-out 0;-o-transition:background 0.1s ease-in-out 0;transition:background 0.1s ease-in-out 0;padding:2.5px 10px;cursor:pointer}footer #language_picker2 .language-dropdown ul li{*zoom:1}footer #language_picker2 .language-dropdown ul li:before,footer #language_picker2 .language-dropdown ul li:after{content:"";display:table}footer #language_picker2 .language-dropdown ul li:after{clear:both}footer #language_picker2 .language-dropdown ul li.preferred-setting{background:#e1efd6}footer #language_picker2 .language-dropdown ul li:hover,footer #language_picker2 .language-dropdown ul li:focus{background:#5fb336;border-bottom:0;-webkit-transition:background 0.1s ease-in-out 0;-moz-transition:background 0.1s ease-in-out 0;-o-transition:background 0.1s ease-in-out 0;transition:background 0.1s ease-in-out 0}footer #language_picker2 .language-dropdown ul li:hover a,footer #language_picker2 .language-dropdown ul li:focus a{color:white;-webkit-transition:color 0.1s ease-in-out 0;-moz-transition:color 0.1s ease-in-out 0;-o-transition:color 0.1s ease-in-out 0;transition:color 0.1s ease-in-out 0}footer #language_picker2 .language-dropdown ul li a{width:100%;margin-bottom:0;border-bottom:0}footer #language_picker2 .language-dropdown .tick-mark{display:inline-block;width:15px;height:15px;background:white;content:"Arrow";text-indent:-9999px;position:absolute;margin-left:-7px;transform:rotate(-45deg);-ms-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);border-bottom:1.5px solid gray;border-left:1.5px solid gray;margin-top:4px;margin-top:0.25rem;bottom:-8px;right:30px}.english:after{content:"\0a0(En)"}body.rtl .english:after{content:"\0a0\0200f\0202a(En)\0202c"}body.local_zh-cn .english:after{content:"\0a0(英)"}footer .footer-bottom{border-top:1px solid #c2c2c2;padding-top:20px;padding-top:1.25rem;margin-top:20px;margin-top:1.25rem;width:100%}@media only screen and (min-width: 850px){footer .footer-bottom{padding-bottom:10px;padding-bottom:0.625rem;}}footer .footer-bottom&gt;p{float:left;margin-right:40px;margin-right:2.5rem}footer .footer-bottom&gt;ul{float:left}footer .footer-bottom&gt;ul li{display:inline;line-height:11px;line-height:0.6875rem}footer .footer-bottom&gt;ul li:after{content:"•";color:darkgray;margin:0 5px 0 7px;margin:0px 5px 0px 7px;margin:0rem 0.3125rem 0rem 0.4375rem}footer .footer-bottom&gt;ul li:last-child:after{content:""}footer .footer-bottom&gt;ul li a{text-decoration:none}footer .footer-bottom p,footer .footer-bottom a{font-family:'Gotham_SSm_4r',Helvetica,Arial,sans-serif;color:#696969;font-size:11px;font-size:0.6875rem}#content footer ul li,#content footer ol li ul li{margin-left:0;padding-left:0;list-style-type:none;background:none}#content footer ul li.links,#content footer ol li ul li.links{margin-left:1.6949152542%}#content footer ul li.links:first-child,#content footer ol li ul li.links:first-child{margin-left:0}#colwrap #content footer h1{font-family:'Gotham_SSm_7r',Helvetica,Arial,sans-serif;font-size:11px;font-size:0.6875rem;margin-top:0;color:#5fb336;text-transform:uppercase;margin-bottom:5px;margin-bottom:0.3125rem}body.sn_careers footer h1{font-family:'Gotham_SSm_7r',Helvetica,Arial,sans-serif}body.nav_download{font-size:100%}body.nav_download footer h1{font-size:11px;margin-bottom:5px}body.nav_download footer .links a{font-size:11px}body.nav_download footer .links ul{margin-bottom:15px;margin-bottom:0.9375rem}body.nav_download footer .links ul:last-child{margin-bottom:0}body.nav_download footer .links ul li a{text-decoration:none}body.nav_download footer ul{font-size:11px;padding:0;list-style:none;margin:0}body.nav_download footer ul li{line-height:16px}body.nav_download footer ul{*zoom:1}body.nav_download footer ul:before,body.nav_download footer ul:after{content:"";display:table}body.nav_download footer ul:after{clear:both}body.nav_download footer .footer-bottom{font-size:11px}body.nav_download footer .refer-a-friend{margin-bottom:20px;font-size:11px}body.nav_download footer #language_picker2 .preferred-language{font-size:12px}body.nav_download footer #language_picker2 a{font-size:11px}body.nav_download footer .facebook-like{display:block}body.nav_download footer .footer-bottom{font-size:11px}body.nav_download footer .footer-bottom p{font-size:11px}body.nav_download footer .footer-bottom ul li a{font-size:11px}footer h1{text-align:left}footer.rtl .footer-links{float:right;text-align:right}footer.rtl .links{float:right}footer.rtl h1,footer.rtl .social-links{text-align:right}</code></p>
+</div><iframe src="about:blank" style="width:0px;height:0px;border:0px solid white;" id="iframeSpelling" title="Ignore - used for spell checking">
+					Ignore - used for spell checking
+				</iframe></body></html>

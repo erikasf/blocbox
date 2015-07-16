@@ -1,0 +1,781 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Source View: https://evernote.com/download/?offer=www_menu</title><meta name="robots" content="noindex,nofollow"><meta name="SortSite-IgnoreRule-Page" content="AccWcag1-13.1.3,AccWcag1-14.1.3,Section508-m-3,BugHtmlColgroup,BugIeCssMinMaxWidthHeight,ErrSpellingError,SeoBingTitleLength,SeoPage150k,UseGov5.1,UseGov9.2.3,UseGov10.11,UseGov11.7,UseGov14.3,UseGov17.4,UseGunningFog,W3cTitleTooLong"><style type="text/css"> 
+				body { font-size: smaller; color: black; background-color: white; font-family: Arial, Helvetica, sans-serif; }
+                
+				div.pre { color: #333; white-space: pre; font-family: monospace; clear: both; }
+				div.linespan { display: inline; }
+				span.ok { color: #000; } 
+				span.err { color: #f00; } 
+				span.line { } 
+				div.line { float: left; width: 40%; clear: both; }
+				div.col1 { float: left; width: 5%; padding: 2px; white-space: normal; }
+				div.col2 { float: left; width: 90%; padding-left: 6px; white-space: normal; }
+				div.hdr, div.err { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; position: relative; z-index: 1; top: 0px; left: 0px; width: 90%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; float: left; clear: both;  }
+				div.err-hilite { margin-bottom: 10px; position: relative; z-index: 1; top: 0px; left: 40px; width: 40%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; font-weight: bold; } 
+				div.desc { float: left; width: 40%; margin-bottom: 1em; }
+				div.help { float: right; width: 55%; margin-bottom: 1em; }
+				div.menu-title { float: right; width: 25%; min-width: 100px; text-align: right; padding: 1px; white-space: nowrap; }
+				code.dhtml { background-color: #eeeeff; font-weight: bold; }
+				a.accessible { display: none; } 
+				a.menu-title { text-decoration: none; color: black; background-color: white; border-left: 1px solid #bbb; border-top: 1px solid #bbb; border-right: 1px solid #222; border-bottom: 1px solid #222; text-align: right; display: block; padding: 2px; }
+				a.menu-title:hover { text-decoration: underline; } 
+				was-div.hdr { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; width: 90%; padding: 10px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; }
+				th { text-align: left; font-weight: normal; font-style: normal; }
+				tr { vertical-align: top; }
+				tr.middle { vertical-align: middle; }
+				img { border: none; vertical-align: middle; }
+				p { padding:0; margin:0; }
+				p code { display: block; float: left; width: 90%; font-size: 1em; }
+				p code:first-child { width: 4em; clear: both; }
+                
+				a.spell-bad
+				{
+					text-decoration: none;
+					color: black;
+					border-bottom: 1px dotted red;
+					line-height: 1.5em;
+				}
+				a.spell-good
+				{
+					text-decoration: line-through;
+					color: gray;
+					border-bottom: none;
+					line-height: 1.5em;
+				}
+
+					
+				</style><script type="text/javascript" src="../Report/jquery.min.js"></script><script type="text/javascript">
+				var g_errViewSource = "";
+				var g_viewSourceDir = "";
+				
+				
+				function pageLoad()
+				{
+					fixupOptions();
+					enableSpellings();
+					selectLine();
+				}
+				
+				function fixupOptions()
+				{
+					for ( var i = 0 ; i < document.links.length ; ++i )
+					{
+						var oLink = document.links[i];
+						
+						if ( oLink.onclick && oLink.onclick.toString().indexOf( "Options(" ) > 0 )
+						{
+							oLink.oncontextmenu = document.oncontextmenu = function() { this.click(); return false; }
+						}
+					}
+				}
+		
+				function toggleChevron( id )
+				{
+					var oElement = document.getElementById( "chev" + id );
+					//alert( id + " " + oElement.outerHTML );
+
+					if ( oElement.src.indexOf( "chevron-up.png" ) != -1 )
+					{
+						oElement.src = oElement.src.replace( "up", "down" );
+					}
+					else
+					{
+						oElement.src = oElement.src.replace( "down", "up" );
+					}
+
+					toggleVisibility( id );
+				}
+					
+				function toggleVisibility( id )
+				{					
+					var oElement = document.getElementById( id );					
+										
+					var strVisible = 'block';
+					
+					if ( oElement.style.display == 'none' )
+						oElement.style.display = strVisible;
+					else
+						oElement.style.display = 'none';
+				}
+				
+				
+				function viewSource( pageid, line, col )
+				{	
+					try
+					{
+						if ( g_viewSourceDir != '' )
+						{
+							window.location.href = g_viewSourceDir + pageid + ".view.htm#htm-l" + line;
+						}
+						else
+						{
+							window.external.ViewSource( pageid, line, col );
+						}
+					}
+					catch( err )
+					{
+						if ( g_errViewSource )
+							alert( g_errViewSource );
+					}
+				}
+
+				function enableSpellings()
+				{
+					var oRows = document.getElementsByTagName('a');
+					
+					for ( i = 0 ; i < oRows.length ; ++i )
+					{
+						var	oElement = oRows[i];
+											
+						if ( oElement.className == "spell-bad"  )
+						{
+						
+							try
+							{
+								var strWord = oElement.innerHTML;
+								
+								var bCorrect = window.external.GetSpellingCorrect( strWord );
+
+								if ( bCorrect )
+									oElement.className = 'spell-good';
+							}
+							catch(err)
+							{
+								//Do nothing
+							}
+						}
+					}
+				}
+				
+				function spellOptions( oLink, strWord, strAppEdition )
+				{
+					SpellAction = {
+						spellOther : 0,
+						spellAdded : 1,
+						spellRemoved : 2
+					};
+
+					try
+					{
+						var action = SpellAction.spellOther;
+
+						if ( strAppEdition.indexOf( "web" ) != -1 )
+						{
+							// add to custom dictionary
+							var urlAdd = '/Scans/AddCustomSpelling?word=' + strWord;
+							var urlRemove = '/Scans/RemoveCustomSpelling?word=' + strWord;
+
+							if ( $( '#iframeSpelling' ).attr('src') == urlAdd )
+							{
+								// clicking word again removes it from dictionary
+								action = SpellAction.spellRemoved;	
+								$( '#iframeSpelling' ).attr('src', urlRemove );
+							}
+							else
+							{
+								action = SpellAction.spellAdded;
+								$( '#iframeSpelling' ).attr('src', urlAdd );
+							}
+						}
+						else
+						{
+							// popup menu
+							action = window.external.SpellOptions( strWord );
+						}
+
+						if ( action == SpellAction.spellAdded )
+						{
+							// mark this one as good
+							oLink.className = 'spell-good';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-bad' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-good';
+								}
+							}
+						}
+						else if ( action == SpellAction.spellRemoved )
+						{
+							// mark this one as bad again
+							oLink.className = 'spell-bad';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-good' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-bad';
+								}
+							}
+						}
+					}
+					catch( err )
+					{
+						alert( "Spelling options are only available when the report is viewed in SortSite." );
+					}
+
+					// don't jump around or scroll after showing options menu
+					return false;
+				}
+				</script></head><body onload="pageLoad()"><a class="accessible" href="#mainContent">[Skip to Content]</a><div class="hdr"><h1>
+						HTML Document
+					</h1><table><tr><th>
+						URL: 
+					</th><td><a rel="nofollow" target="_top" href="https://evernote.com/download/?offer=www_menu">https://evernote.com/download/?offer=www_menu</a></td></tr><tr><th title="The status code returned by the web server tells the browser if the request was successful.">
+						HTTP Status: 
+					</th><td title="The status code returned by the web server tells the browser if the request was successful.">200 OK</td></tr><tr><th title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">
+						MIME Type: 
+					</th><td title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">text/html</td></tr><tr><th title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">
+						Last Modified: 
+					</th><td title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">Mon, 01 Jan 1601 00:00:00 GMT</td></tr><tr><th>
+						Download Time: 
+					</th><td>
+								Less than a second
+							</td></tr><tr><th>
+						Cookies: 
+					</th><td>
+								None
+							</td></tr><tr><th>
+						Size: 
+					</th><td>32 KB 
+						</td></tr><tr><th>
+								Page Weight: 
+							</th><td>32 KB (total size of HTML, CSS, JavaScript and images)
+							</td></tr><tr><th>
+								Depth: 
+							</th><td>1 clicks from home page
+							</td></tr><tr><th>
+								Charset: 
+							</th><td>UTF-8</td></tr><tr><th>
+								Forms: 
+							</th><td>0 forms containing 0 controls
+							</td></tr><tr><th>
+						HTTP Headers: 
+					</th><td><a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Headers" id="chevHttpHeaders" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();">7&nbsp;headers</a><div style="display: none; width: 100%;" id="HttpHeaders"><a rel="nofollow">Cache-Control:  max-age=86400
+</a><br><a rel="nofollow">Date:  Thu, 16 Jul 2015 06:13:03 GMT
+</a><br><a rel="nofollow">Server:  Apache
+</a><br><a rel="nofollow">Strict-Transport-Security:  max-age=31536000
+</a><br><a rel="nofollow">Transfer-Encoding:  chunked
+</a><br><a rel="nofollow">Vary:  Accept-Encoding
+</a><br><a rel="nofollow">X-Frame-Options:  SAMEORIGIN
+</a><br></div></td></tr><tr><th>
+						Links In: 
+					</th><td><a href="#" onclick="toggleChevron('LinksIn'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Links" id="chevLinksIn" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('LinksIn'); return false;" onkeypress="this.click();">7&nbsp;pages</a><div style="display: none; width: 100%;" id="LinksIn"><a rel="nofollow" href="https://evernote.com/?var=1" onclick="viewSource( 2, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/?var=1</a><br><a rel="nofollow" href="https://evernote.com/" onclick="viewSource( 3, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/</a><br><a rel="nofollow" href="https://evernote.com/business" onclick="viewSource( 5, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/business</a><br><a rel="nofollow" href="https://evernote.com/pricing/" onclick="viewSource( 6, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/pricing/</a><br><a rel="nofollow" href="https://evernote.com/pricing/?offer=www_menu" onclick="viewSource( 10, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/pricing/?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=plus&amp;amp;offer=www_menu" onclick="viewSource( 11, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=plus&amp;amp;offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=premium&amp;amp;offer=www_menu" onclick="viewSource( 12, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=premium&amp;amp;offer=www_menu</a><br></div></td></tr><tr><th>
+							Links Out: 
+						</th><td><a href="#" onclick="toggleChevron('LinksOut'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Links" id="chevLinksOut" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('LinksOut'); return false;" onkeypress="this.click();">10&nbsp;links</a><div style="display: none; width: 100%;" id="LinksOut"><a rel="nofollow" href="https://evernote.com/" onclick="viewSource( 3, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/</a><br><a rel="nofollow" href="https://www.evernote.com/Home.action" onclick="viewSource( 17, 0, 0 ); return false;" onkeypress="this.click();">https://www.evernote.com/Home.action</a><br><a rel="nofollow" href="https://evernote.com/download/get.php?file=EvernoteMac" onclick="viewSource( 70, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/download/get.php?file=EvernoteMac</a><br><a rel="nofollow" href="https://evernote.com/download/get.php?file=Win" onclick="viewSource( 71, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/download/get.php?file=Win</a><br><a rel="nofollow" href="https://itunes.apple.com/us/app/evernote/id281796108?mt=8" onclick="viewSource( 72, 0, 0 ); return false;" onkeypress="this.click();">https://itunes.apple.com/us/app/evernote/id281796108?mt=8</a><br><a rel="nofollow" href="https://play.google.com/store/apps/details?id=com.evernote" onclick="viewSource( 73, 0, 0 ); return false;" onkeypress="this.click();">https://play.google.com/store/apps/details?id=com.evernote</a><br><a rel="nofollow" href="https://evernote.com/getting_started/" onclick="viewSource( 74, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/getting_started/</a><br><a rel="nofollow" href="https://blog.evernote.com/" onclick="viewSource( 14, 0, 0 ); return false;" onkeypress="this.click();">https://blog.evernote.com/</a><br><a rel="nofollow" href="https://evernote.com/legal/tos.php" onclick="viewSource( 31, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/legal/tos.php</a><br><a rel="nofollow" href="https://evernote.com/legal/privacy.php" onclick="viewSource( 32, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/legal/privacy.php</a><br></div></td></tr><tr><th>
+							Images: 
+						</th><td><a><img width="20" height="20" alt="View Images" id="chevImages" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;images</a><div style="display: none; width: 100%;" id="Images"></div></td></tr><tr><th>
+							CSS: 
+						</th><td><a><img width="20" height="20" alt="View CSS Files" id="chevCSS" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;files</a><div style="display: none; width: 100%;" id="CSS"></div></td></tr><tr><th>
+							JavaScript: 
+						</th><td><a><img width="20" height="20" alt="View JavaScript Files" id="chevJavaScript" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;files</a><div style="display: none; width: 100%;" id="JavaScript"></div></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr><tr class="middle"><th><img alt="Issue" style="text-align:absmiddle" width="20" height="20" src="../Report/bench-worse.png">	
+								Issues: 
+							</th><td>7
+								issues found on
+								9
+								lines
+							</td></tr></table></div><div id="mainContent" class="pre"><script type='text/javascript'>function selectLine() {}</script><br style='clear: both'> <div id='err-l1c1-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>Provide a search option on each page of content-rich web sites. </div>   <div class='help'>
+			A search option should be provided on all pages where it may be useful - users should not have to return to the homepage to conduct a search. Search engines can be helpful on content-rich web sites, but do not add value on other types of sites.
+		 </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://guidelines.usability.gov/guidelines/189' target='_top'>Usability.gov 17:4</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "UseGov17.4" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>1</code><code>          </code></p>
+<p><code>2</code><code>          </code></p>
+<p><code>3</code><code>&lt;!DOCTYPE html&gt;</code></p>
+<p><code>4</code><code>&lt;html lang="en"&gt;</code></p>
+<p><code>5</code><code>	&lt;head&gt;</code></p>
+<p><code>6</code><code>			&lt;meta charset="utf-8" /&gt;</code></p>
+<p><code>7</code><code>		&lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /&gt;</code></p>
+<p><code>8</code><code>		&lt;meta name="viewport" content="width=device-width" /&gt;</code></p>
+<p><code>9</code><code>		&lt;meta name="google-site-verification" content="MSC-0fjgRQ2llVKTjsvCi1BFmYbmBMYBrFEPJOs6XgM" /&gt;</code></p>
+<p><code>10</code><code>			&lt;title&gt;Downloading Evernote | Evernote&lt;/title&gt;</code></p>
+<p><code>11</code><code>	&lt;meta name="description" content="How to download and install Evernote. Get started with Evernote now." /&gt;</code></p>
+<p><code>12</code><code>	&lt;meta name="keywords" content="note taking, note taking software, notes, mobile phone snapshots, camera phone, image search, image recognition, handwriting recognition, digital ink, ink notes, memory, remember, life capture, memory capture, productivity software, getting things done, gtd, memory assistant, personal memory assistant" /&gt;</code></p>
+<p><code>13</code><code>	&lt;link href="https://cdn1.evernote.com/media/css/reset.css" rel="stylesheet" type="text/css" /&gt;</code></p>
+<p><code>14</code><code>	&lt;link href="https://cdn1.evernote.com/media/css/style.css" rel="stylesheet" type="text/css" /&gt;</code></p>
+<p><code>15</code><code>	&lt;link href="/media/css/header-and-footer.css" rel="stylesheet" type="text/css" /&gt;</code></p>
+<p><code>16</code><code>				&lt;link href="/media/css/fonts_english_only.css" rel="stylesheet" type="text/css" media="all" /&gt;</code></p>
+<p><code>17</code><code>				&lt;link href="/media/css/fonts_evernote_website.css" rel="stylesheet" type="text/css" media="all" /&gt;</code></p>
+<p><code>18</code><code>		</code></p>
+<p><code>19</code><code>		</code></p>
+<p><code>20</code><code>		&lt;link rel="stylesheet" href="/media/css/downloading.css" /&gt;</code></p>
+<p><code>21</code><code>		&lt;link rel="alternate" hreflang="pt-br" href="https://evernote.com/intl/pt-br/download/" /&gt;</code></p>
+<p><code>22</code><code>		&lt;link rel="alternate" hreflang="es" href="https://evernote.com/intl/es/download/" /&gt;</code></p>
+<p><code>23</code><code>		&lt;link rel="alternate" hreflang="fr" href="https://evernote.com/intl/fr/download/" /&gt;</code></p>
+<p><code>24</code><code>		&lt;link rel="alternate" hreflang="de" href="https://evernote.com/intl/de/download/" /&gt;</code></p>
+<p><code>25</code><code>		&lt;link rel="alternate" hreflang="it" href="https://evernote.com/intl/it/download/" /&gt;</code></p>
+<p><code>26</code><code>		&lt;link rel="alternate" hreflang="zh-tw" href="https://evernote.com/intl/zh-tw/download/" /&gt;</code></p>
+<p><code>27</code><code>		&lt;link rel="alternate" hreflang="ru" href="https://evernote.com/intl/ru/download/" /&gt;	&lt;!--[if IE 6]&gt;</code></p>
+<p><code>28</code><code>		&lt;link href="/media/css/ie6.css" rel="stylesheet" type="text/css" /&gt;</code></p>
+<p><code>29</code><code>				&lt;script type="text/javascript"&gt;</code></p>
+<p><code>30</code><code>			/* &lt;![CDATA[ */</code></p>
+<p><code>31</code><code>				$(document).ready(function() {</code></p>
+<p><code>32</code><code>					// Script for initializing the PNG fix solution</code></p>
+<p><code>33</code><code>					// DD_belatedPNG.fix('.accent, ');</code></p>
+<p><code>34</code><code>				});</code></p>
+<p><code>35</code><code>			/* ]]&gt; */</code></p>
+<p><code>36</code><code>		&lt;/script&gt;</code></p>
+<p><code>37</code><code>	&lt;![endif]--&gt;</code></p>
+<p><code>38</code><code>	&lt;!--[if IE 9]&gt;</code></p>
+<p><code>39</code><code>		&lt;link href="/media/css/ie9.css" rel="stylesheet" type="text/css" /&gt;</code></p>
+<p><code>40</code><code>	&lt;![endif]--&gt;</code></p>
+<p><code>41</code><code>	&lt;!--[if IE 8]&gt;</code></p>
+<p><code>42</code><code>		&lt;link href="/media/css/ie8.css" rel="stylesheet" type="text/css" /&gt;</code></p>
+<p><code>43</code><code>	&lt;![endif]--&gt;</code></p>
+<p><code>44</code><code>	&lt;!--[if IE 7]&gt;</code></p>
+<p><code>45</code><code>		&lt;link href="/media/css/ie7.css" rel="stylesheet" type="text/css" /&gt;</code></p>
+<p><code>46</code><code>	&lt;![endif]--&gt;</code></p>
+<p><code>47</code><code>	&lt;!--[if IE]&gt;</code></p>
+<p><code>48</code><code>		&lt;link href="/media/css/ie.css" rel="stylesheet" type="text/css" /&gt;</code></p>
+<p><code>49</code><code>	&lt;![endif]--&gt;</code></p>
+<p><code>50</code><code>	&lt;!--[if lt IE 9]&gt;</code></p>
+<p><code>51</code><code>		&lt;script src="/media/js/html5_shiv.js"&gt;&lt;/script&gt;</code></p>
+<p><code>52</code><code> 	&lt;![endif]--&gt;</code></p>
+<p><code>53</code><code>	&lt;link href="/media/img/favicon.ico" rel="Shortcut Icon" type="image/x-icon" /&gt;</code></p>
+<p><code>54</code><code>	&lt;!-- High-res favicon info for pinning sites on Windows 8 + IE 10 --&gt;</code></p>
+<p><code>55</code><code>	&lt;meta name="application-name" content="Evernote"/&gt;</code></p>
+<p><code>56</code><code>	&lt;meta name="msapplication-TileImage" content="/media/img/favicon_144.png"/&gt;</code></p>
+<p><code>57</code><code>	&lt;meta name="msapplication-TileColor" content="#ffffff"/&gt;</code></p>
+<p><code>58</code><code>	&lt;!-- App Bridge for Evernote app on Windows Store --&gt;</code></p>
+<p><code>59</code><code>	&lt;meta name="msApplication-ID" content="App" /&gt;</code></p>
+<p><code>60</code><code>	&lt;meta name="msApplication-PackageFamilyName" content="Evernote.Evernote_q4d96b2w5wcc2" /&gt;</code></p>
+<p><code>61</code><code>	&lt;script type="text/javascript"&gt;</code></p>
+<p><code>62</code><code>  /* &lt;![CDATA[ */</code></p>
+<p><code>63</code><code>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){</code></p>
+<p><code>64</code><code>  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),</code></p>
+<p><code>65</code><code>  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)</code></p>
+<p><code>66</code><code>  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');</code></p>
+<p><code>67</code><code>          </code></p>
+<p><code>68</code><code>    	ga('create', 'UA-285778-5', 'evernote.com');</code></p>
+<p><code>69</code><code>    ga('require', 'displayfeatures');</code></p>
+<p><code>70</code><code>  ga('send', 'pageview');</code></p>
+<p><code>71</code><code>  /* ]]&gt; */</code></p>
+<p><code>72</code><code>&lt;/script&gt;&lt;/head&gt;</code></p>
+<p><code>73</code><code>          </code></p>
+<p><code>74</code><code>&lt;body class="nav_download" data-lang="en" data-country="US"&gt;</code></p>
+<p><code>75</code><code>					&lt;header&gt;</code></p>
+<p><code>76</code><code>					&lt;h1 class="row"&gt;&lt;a href="/"&gt;Evernote&lt;/a&gt;&lt;/h1&gt;</code></p>
+<p><code>77</code><code>				&lt;/header&gt;</code></p>
+<p><code>78</code><code>				</code></p>
+<p><code>79</code><code>&lt;div class="row hero clearfix"&gt;</code></p>
+<p><code>80</code><code>	&lt;span class="evernote"&gt;&lt;/span&gt;</code></p>
+<p><code>81</code><code>	&lt;h1 class="download-element" lang="en"&gt;Downloading Evernote &lt;span class="for" lang="en"&gt;for &lt;span class="os" lang=""&gt;&lt;/span&gt;&lt;/span&gt;&lt;/h1&gt;</code></p>
+<p><code>82</code><code>	&lt;p class="download-element"&gt;If your download didn't start, </code></p><br style='clear: both'> <div id='err-l82c61-0' class='err' >  <div class='col1'><img src='../Report/p3.png' width='20' height='20' alt='Priority 3'> </div>  <div class='col2'>   <div class='desc'>Don&#39;t use generic text like &#34;Click Here&#34; or &#34;Read More&#34; in link text, because it says nothing about the link target when read out by a screen reader. Link text: "click here"</div>   <div class='help'>
+			Screen readers often tab from one link to the next. 
+			Tabbing between links labelled "click here" sounds like "Click here, tab, click here, tab, click here". 
+			Change the link text to make sense when read without the surrounding text.
+		 </div>   <div class='line'><span class='line'>Line 82</span>  <a href='http://www.w3.org/TR/WCAG20-TECHS/F84.html' target='_top'>WCAG 2.0 AAA F84</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-13.1.2" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l82c61-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Users should be able to quickly look at each link and tell where it goes. Link text: 
+		"click here"
+		</div>   <div class='help'>
+			Don't use generic link labels like "click here" or "read more" because they're hard to tell apart when users scan a page.
+		 </div>   <div class='line'><span class='line'>Line 82</span>  <a href='http://guidelines.usability.gov/guidelines/92' target='_top'>Usability.gov 10:1</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "UseGov10.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l82c61' title='Line 82 Column 61'>&lt;a title="Download Now" id="downloadLink" class="download_app_tracking" data-action="Get Evernote Download"&gt;</span>click here&lt;/a&gt;.&lt;/p&gt;</code></p>
+<p><code>83</code><code>	</code></p>
+<p><code>84</code><code>	&lt;h1 class="hide-element" lang="en"&gt;Evernote is currently not available &lt;span class="for" lang="en"&gt;for Linux&lt;/span&gt;&lt;/h1&gt;</code></p>
+<p><code>85</code><code>	&lt;p class="try-web hide-element"&gt;Try Evernote's &lt;a href="https://www.evernote.com/Home.action" class="exit_tracking" data-action="Try Web Client"&gt;Web Client&lt;/a&gt; or download the application anyways for &lt;a href="/./download/get.php?file=EvernoteMac" class="download_app_tracking"&gt;Mac&lt;/a&gt; or &lt;a href="/./download/get.php?file=Win" class="download_app_tracking"&gt;Windows.&lt;/a&gt;&lt;/p&gt;</code></p>
+<p><code>86</code><code>          </code></p>
+<p><code>87</code><code>	&lt;/div&gt;</code></p>
+<p><code>88</code><code>          </code></p>
+<p><code>89</code><code>&lt;div class="row"&gt;</code></p>
+<p><code>90</code><code>          </code></p>
+<p><code>91</code><code>	</code></p>
+<p><code>92</code><code>	&lt;ul class="steps clearfix"&gt;</code></p>
+<p><code>93</code><code>		&lt;li class="browser"&gt;</code></p>
+<p><code>94</code><code>			&lt;span class="image"&gt;&lt;/span&gt;</code></p>
+<p><code>95</code><code>			&lt;h2&gt;1. Download and Install&lt;/h2&gt;</code></p>
+<p><code>96</code><code>			&lt;p class="step_1_chrome display_none"&gt;Click the Evernote file in the lower left corner of your browser window.&lt;/p&gt;</code></p>
+<p><code>97</code><code>			&lt;p class="step_1_firefox display_none"&gt;Click on the Evernote file that just downloaded in your browser's window.&lt;/p&gt;</code></p>
+<p><code>98</code><code>			&lt;p class="step_1_safari display_none"&gt;Click the Evernote file in the downloads section.&lt;/p&gt;</code></p>
+<p><code>99</code><code>			&lt;p class="step_1_ie display_none"&gt;Click the Evernote file in the downloads window.&lt;/p&gt;</code></p>
+<p><code>100</code><code>		&lt;/li&gt;</code></p>
+<p><code>101</code><code>		&lt;li class="step2"&gt;</code></p>
+<p><code>102</code><code>			&lt;span class="image"&gt;&lt;/span&gt;</code></p>
+<p><code>103</code><code>			&lt;h2 class="mac display_none"&gt;2. Add Evernote to Applications&lt;/h2&gt;</code></p>
+<p><code>104</code><code>			&lt;p class="mac display_none"&gt;Drag Evernote to your Applications folder.&lt;/p&gt;</code></p>
+<p><code>105</code><code>			&lt;h2 class="windows display_none"&gt;2. Run the installer&lt;/h2&gt;</code></p>
+<p><code>106</code><code>			&lt;p class="windows display_none"&gt;Follow the steps in the installer. It only takes a minute.&lt;/p&gt;</code></p>
+<p><code>107</code><code>		&lt;/li&gt;</code></p>
+<p><code>108</code><code>		&lt;li class="step3"&gt;</code></p>
+<p><code>109</code><code>			&lt;span class="image"&gt;&lt;/span&gt;</code></p>
+<p><code>110</code><code>			&lt;h2&gt;3. Get Started&lt;/h2&gt;</code></p>
+<p><code>111</code><code>			&lt;p&gt;Launch Evernote and create your first note!&lt;/p&gt;</code></p>
+<p><code>112</code><code>		&lt;/li&gt;</code></p>
+<p><code>113</code><code>	&lt;/ul&gt;</code></p>
+<p><code>114</code><code>	 </code></p>
+<p><code>115</code><code>	&lt;div class="row app-store-badges"&gt;</code></p>
+<p><code>116</code><code>    </code></p><br style='clear: both'> <div id='err-l116c5-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Each A tag must contain text or an IMG with an ALT attribute. </div>   <div class='help'>Add text to the link, or ALT text if the link contains an image. If there is no link text or the ALT tag is blank, screen readers have nothing to read, so read out the URL instead. </div>   <div class='line'><span class='line'>Line 116</span>  <a href='http://www.w3.org/TR/WCAG-TECHS/F89.html' target='_top'>WCAG 2.0 A F89</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-13.1.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l116c5' title='Line 116 Column 5'>&lt;a href="https://itunes.apple.com/us/app/evernote/id281796108?mt=8" class="apple"&gt;</span></code></p>
+<p><code>117</code><code>      </code></p><br style='clear: both'> <div id='err-l117c7-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;xlink&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 117</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-xlink" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l117c7' title='Line 117 Column 7'>&lt;svg version="1.1" id="US_UK_Download_on_the" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"</span></code></p>
+<p><code>118</code><code>	 x="0px" y="0px" width="135px" height="40px" viewBox="0 0 135 40" enable-background="new 0 0 135 40" xml:space="preserve"&gt;</code></p>
+<p><code>119</code><code>&lt;g&gt;</code></p>
+<p><code>120</code><code>	&lt;path fill="#A6A6A6" d="M130.197,40H4.729C2.122,40,0,37.872,0,35.267V4.726C0,2.12,2.122,0,4.729,0h125.468</code></p>
+<p><code>121</code><code>		C132.803,0,135,2.12,135,4.726v30.541C135,37.872,132.803,40,130.197,40L130.197,40z"/&gt;</code></p>
+<p><code>122</code><code>	&lt;path d="M134.032,35.268c0,2.116-1.714,3.83-3.834,3.83H4.729c-2.119,0-3.839-1.714-3.839-3.83V4.725</code></p>
+<p><code>123</code><code>		c0-2.115,1.72-3.835,3.839-3.835h125.468c2.121,0,3.834,1.72,3.834,3.835L134.032,35.268L134.032,35.268z"/&gt;</code></p>
+<p><code>124</code><code>	&lt;g&gt;</code></p>
+<p><code>125</code><code>		&lt;g&gt;</code></p>
+<p><code>126</code><code>			&lt;path fill="#FFFFFF" d="M30.128,19.784c-0.029-3.223,2.639-4.791,2.761-4.864c-1.511-2.203-3.853-2.504-4.676-2.528</code></p>
+<p><code>127</code><code>				c-1.967-0.207-3.875,1.177-4.877,1.177c-1.022,0-2.565-1.157-4.228-1.123c-2.14,0.033-4.142,1.272-5.24,3.196</code></p>
+<p><code>128</code><code>				c-2.266,3.923-0.576,9.688,1.595,12.859c1.086,1.553,2.355,3.287,4.016,3.226c1.625-0.067,2.232-1.036,4.193-1.036</code></p>
+<p><code>129</code><code>				c1.943,0,2.513,1.036,4.207,0.997c1.744-0.028,2.842-1.56,3.89-3.127c1.255-1.78,1.759-3.533,1.779-3.623</code></p>
+<p><code>130</code><code>				C33.507,24.924,30.161,23.647,30.128,19.784z"/&gt;</code></p>
+<p><code>131</code><code>			&lt;path fill="#FFFFFF" d="M26.928,10.306c0.874-1.093,1.472-2.58,1.306-4.089c-1.265,0.056-2.847,0.875-3.758,1.944</code></p>
+<p><code>132</code><code>				c-0.806,0.942-1.526,2.486-1.34,3.938C24.557,12.205,26.016,11.382,26.928,10.306z"/&gt;</code></p>
+<p><code>133</code><code>		&lt;/g&gt;</code></p>
+<p><code>134</code><code>	&lt;/g&gt;</code></p>
+<p><code>135</code><code>	&lt;g&gt;</code></p>
+<p><code>136</code><code>		&lt;path fill="#FFFFFF" d="M53.645,31.504h-2.271l-1.244-3.909h-4.324l-1.185,3.909h-2.211l4.284-13.308h2.646L53.645,31.504z</code></p>
+<p><code>137</code><code>			 M49.755,25.955L48.63,22.48c-0.119-0.355-0.342-1.191-0.671-2.507h-0.04c-0.131,0.566-0.342,1.402-0.632,2.507l-1.105,3.475</code></p>
+<p><code>138</code><code>			H49.755z"/&gt;</code></p>
+<p><code>139</code><code>		&lt;path fill="#FFFFFF" d="M64.662,26.588c0,1.632-0.441,2.922-1.323,3.869c-0.79,0.843-1.771,1.264-2.942,1.264</code></p>
+<p><code>140</code><code>			c-1.264,0-2.172-0.454-2.725-1.362h-0.04v5.055h-2.132V25.067c0-1.026-0.027-2.079-0.079-3.159h1.875l0.119,1.521h0.04</code></p>
+<p><code>141</code><code>			c0.711-1.146,1.79-1.718,3.238-1.718c1.132,0,2.077,0.447,2.833,1.342C64.284,23.949,64.662,25.127,64.662,26.588z M62.49,26.666</code></p>
+<p><code>142</code><code>			c0-0.934-0.21-1.704-0.632-2.31c-0.461-0.632-1.08-0.948-1.856-0.948c-0.526,0-1.004,0.176-1.431,0.523</code></p>
+<p><code>143</code><code>			c-0.428,0.35-0.708,0.807-0.839,1.373c-0.066,0.264-0.099,0.48-0.099,0.65v1.6c0,0.698,0.214,1.287,0.642,1.768</code></p>
+<p><code>144</code><code>			s0.984,0.721,1.668,0.721c0.803,0,1.428-0.31,1.875-0.928C62.266,28.496,62.49,27.68,62.49,26.666z"/&gt;</code></p>
+<p><code>145</code><code>		&lt;path fill="#FFFFFF" d="M75.699,26.588c0,1.632-0.441,2.922-1.324,3.869c-0.789,0.843-1.77,1.264-2.941,1.264</code></p>
+<p><code>146</code><code>			c-1.264,0-2.172-0.454-2.724-1.362H68.67v5.055h-2.132V25.067c0-1.026-0.027-2.079-0.079-3.159h1.875l0.119,1.521h0.04</code></p>
+<p><code>147</code><code>			c0.71-1.146,1.789-1.718,3.238-1.718c1.131,0,2.076,0.447,2.834,1.342C75.32,23.949,75.699,25.127,75.699,26.588z M73.527,26.666</code></p>
+<p><code>148</code><code>			c0-0.934-0.211-1.704-0.633-2.31c-0.461-0.632-1.078-0.948-1.855-0.948c-0.527,0-1.004,0.176-1.432,0.523</code></p>
+<p><code>149</code><code>			c-0.428,0.35-0.707,0.807-0.838,1.373c-0.065,0.264-0.099,0.48-0.099,0.65v1.6c0,0.698,0.214,1.287,0.64,1.768</code></p>
+<p><code>150</code><code>			c0.428,0.48,0.984,0.721,1.67,0.721c0.803,0,1.428-0.31,1.875-0.928C73.303,28.496,73.527,27.68,73.527,26.666z"/&gt;</code></p>
+<p><code>151</code><code>		&lt;path fill="#FFFFFF" d="M88.039,27.772c0,1.132-0.393,2.053-1.182,2.764c-0.867,0.777-2.074,1.165-3.625,1.165</code></p>
+<p><code>152</code><code>			c-1.432,0-2.58-0.276-3.449-0.829l0.494-1.777c0.936,0.566,1.963,0.85,3.082,0.85c0.803,0,1.428-0.182,1.877-0.544</code></p>
+<p><code>153</code><code>			c0.447-0.362,0.67-0.848,0.67-1.454c0-0.54-0.184-0.995-0.553-1.364c-0.367-0.369-0.98-0.712-1.836-1.029</code></p>
+<p><code>154</code><code>			c-2.33-0.869-3.494-2.142-3.494-3.816c0-1.094,0.408-1.991,1.225-2.689c0.814-0.699,1.9-1.048,3.258-1.048</code></p>
+<p><code>155</code><code>			c1.211,0,2.217,0.211,3.02,0.632l-0.533,1.738c-0.75-0.408-1.598-0.612-2.547-0.612c-0.75,0-1.336,0.185-1.756,0.553</code></p>
+<p><code>156</code><code>			c-0.355,0.329-0.533,0.73-0.533,1.205c0,0.526,0.203,0.961,0.611,1.303c0.355,0.316,1,0.658,1.936,1.027</code></p>
+<p><code>157</code><code>			c1.145,0.461,1.986,1,2.527,1.618C87.77,26.081,88.039,26.852,88.039,27.772z"/&gt;</code></p>
+<p><code>158</code><code>		&lt;path fill="#FFFFFF" d="M95.088,23.508h-2.35v4.659c0,1.185,0.414,1.777,1.244,1.777c0.381,0,0.697-0.033,0.947-0.099l0.059,1.619</code></p>
+<p><code>159</code><code>			c-0.42,0.157-0.973,0.236-1.658,0.236c-0.842,0-1.5-0.257-1.975-0.77c-0.473-0.514-0.711-1.376-0.711-2.587v-4.837h-1.4v-1.6h1.4</code></p>
+<p><code>160</code><code>			v-1.757l2.094-0.632v2.389h2.35V23.508z"/&gt;</code></p>
+<p><code>161</code><code>		&lt;path fill="#FFFFFF" d="M105.691,26.627c0,1.475-0.422,2.686-1.264,3.633c-0.883,0.975-2.055,1.461-3.516,1.461</code></p>
+<p><code>162</code><code>			c-1.408,0-2.529-0.467-3.365-1.401s-1.254-2.113-1.254-3.534c0-1.487,0.43-2.705,1.293-3.652c0.861-0.948,2.023-1.422,3.484-1.422</code></p>
+<p><code>163</code><code>			c1.408,0,2.541,0.467,3.396,1.402C105.283,24.021,105.691,25.192,105.691,26.627z M103.479,26.696</code></p>
+<p><code>164</code><code>			c0-0.885-0.189-1.644-0.572-2.277c-0.447-0.766-1.086-1.148-1.914-1.148c-0.857,0-1.508,0.383-1.955,1.148</code></p>
+<p><code>165</code><code>			c-0.383,0.634-0.572,1.405-0.572,2.317c0,0.885,0.189,1.644,0.572,2.276c0.461,0.766,1.105,1.148,1.936,1.148</code></p>
+<p><code>166</code><code>			c0.814,0,1.453-0.39,1.914-1.168C103.281,28.347,103.479,27.58,103.479,26.696z"/&gt;</code></p>
+<p><code>167</code><code>		&lt;path fill="#FFFFFF" d="M112.621,23.783c-0.211-0.039-0.436-0.059-0.672-0.059c-0.75,0-1.33,0.283-1.738,0.85</code></p>
+<p><code>168</code><code>			c-0.355,0.5-0.533,1.132-0.533,1.895v5.035h-2.131l0.02-6.574c0-1.106-0.027-2.113-0.08-3.021h1.857l0.078,1.836h0.059</code></p>
+<p><code>169</code><code>			c0.225-0.631,0.58-1.139,1.066-1.52c0.475-0.343,0.988-0.514,1.541-0.514c0.197,0,0.375,0.014,0.533,0.039V23.783z"/&gt;</code></p>
+<p><code>170</code><code>		&lt;path fill="#FFFFFF" d="M122.156,26.252c0,0.382-0.025,0.704-0.078,0.967h-6.396c0.025,0.948,0.334,1.673,0.928,2.173</code></p>
+<p><code>171</code><code>			c0.539,0.447,1.236,0.671,2.092,0.671c0.947,0,1.811-0.151,2.588-0.454l0.334,1.48c-0.908,0.396-1.98,0.593-3.217,0.593</code></p>
+<p><code>172</code><code>			c-1.488,0-2.656-0.438-3.506-1.313c-0.848-0.875-1.273-2.05-1.273-3.524c0-1.447,0.395-2.652,1.186-3.613</code></p>
+<p><code>173</code><code>			c0.828-1.026,1.947-1.539,3.355-1.539c1.383,0,2.43,0.513,3.141,1.539C121.873,24.047,122.156,25.055,122.156,26.252z</code></p>
+<p><code>174</code><code>			 M120.123,25.699c0.014-0.632-0.125-1.178-0.414-1.639c-0.369-0.593-0.936-0.889-1.699-0.889c-0.697,0-1.264,0.289-1.697,0.869</code></p>
+<p><code>175</code><code>			c-0.355,0.461-0.566,1.014-0.631,1.658H120.123z"/&gt;</code></p>
+<p><code>176</code><code>	&lt;/g&gt;</code></p>
+<p><code>177</code><code>	&lt;g&gt;</code></p>
+<p><code>178</code><code>		&lt;g&gt;</code></p>
+<p><code>179</code><code>			&lt;path fill="#FFFFFF" d="M49.05,10.009c0,1.177-0.353,2.063-1.058,2.658c-0.653,0.549-1.581,0.824-2.783,0.824</code></p>
+<p><code>180</code><code>				c-0.596,0-1.106-0.026-1.533-0.078V6.982c0.557-0.09,1.157-0.136,1.805-0.136c1.145,0,2.008,0.249,2.59,0.747</code></p>
+<p><code>181</code><code>				C48.723,8.156,49.05,8.961,49.05,10.009z M47.945,10.038c0-0.763-0.202-1.348-0.606-1.756c-0.404-0.407-0.994-0.611-1.771-0.611</code></p>
+<p><code>182</code><code>				c-0.33,0-0.611,0.022-0.844,0.068v4.889c0.129,0.02,0.365,0.029,0.708,0.029c0.802,0,1.421-0.223,1.857-0.669</code></p>
+<p><code>183</code><code>				S47.945,10.892,47.945,10.038z"/&gt;</code></p>
+<p><code>184</code><code>			&lt;path fill="#FFFFFF" d="M54.909,11.037c0,0.725-0.207,1.319-0.621,1.785c-0.434,0.479-1.009,0.718-1.727,0.718</code></p>
+<p><code>185</code><code>				c-0.692,0-1.243-0.229-1.654-0.689c-0.41-0.459-0.615-1.038-0.615-1.736c0-0.73,0.211-1.329,0.635-1.794s0.994-0.698,1.712-0.698</code></p>
+<p><code>186</code><code>				c0.692,0,1.248,0.229,1.669,0.688C54.708,9.757,54.909,10.333,54.909,11.037z M53.822,11.071c0-0.435-0.094-0.808-0.281-1.119</code></p>
+<p><code>187</code><code>				c-0.22-0.376-0.533-0.564-0.94-0.564c-0.421,0-0.741,0.188-0.961,0.564c-0.188,0.311-0.281,0.69-0.281,1.138</code></p>
+<p><code>188</code><code>				c0,0.435,0.094,0.808,0.281,1.119c0.227,0.376,0.543,0.564,0.951,0.564c0.4,0,0.714-0.191,0.94-0.574</code></p>
+<p><code>189</code><code>				C53.725,11.882,53.822,11.506,53.822,11.071z"/&gt;</code></p>
+<p><code>190</code><code>			&lt;path fill="#FFFFFF" d="M62.765,8.719l-1.475,4.714h-0.96l-0.611-2.047c-0.155-0.511-0.281-1.019-0.379-1.523h-0.019</code></p>
+<p><code>191</code><code>				c-0.091,0.518-0.217,1.025-0.379,1.523l-0.649,2.047h-0.971l-1.387-4.714h1.077l0.533,2.241c0.129,0.53,0.235,1.035,0.32,1.513</code></p>
+<p><code>192</code><code>				h0.019c0.078-0.394,0.207-0.896,0.389-1.503l0.669-2.25h0.854l0.641,2.202c0.155,0.537,0.281,1.054,0.378,1.552h0.029</code></p>
+<p><code>193</code><code>				c0.071-0.485,0.178-1.002,0.32-1.552l0.572-2.202H62.765z"/&gt;</code></p>
+<p><code>194</code><code>			&lt;path fill="#FFFFFF" d="M68.198,13.433H67.15v-2.7c0-0.832-0.316-1.248-0.95-1.248c-0.311,0-0.562,0.114-0.757,0.343</code></p>
+<p><code>195</code><code>				c-0.193,0.229-0.291,0.499-0.291,0.808v2.796h-1.048v-3.366c0-0.414-0.013-0.863-0.038-1.349h0.921l0.049,0.737h0.029</code></p>
+<p><code>196</code><code>				c0.122-0.229,0.304-0.418,0.543-0.569c0.284-0.176,0.602-0.265,0.95-0.265c0.44,0,0.806,0.142,1.097,0.427</code></p>
+<p><code>197</code><code>				c0.362,0.349,0.543,0.87,0.543,1.562V13.433z"/&gt;</code></p>
+<p><code>198</code><code>			&lt;path fill="#FFFFFF" d="M71.088,13.433h-1.047V6.556h1.047V13.433z"/&gt;</code></p>
+<p><code>199</code><code>			&lt;path fill="#FFFFFF" d="M77.258,11.037c0,0.725-0.207,1.319-0.621,1.785c-0.434,0.479-1.01,0.718-1.727,0.718</code></p>
+<p><code>200</code><code>				c-0.693,0-1.244-0.229-1.654-0.689c-0.41-0.459-0.615-1.038-0.615-1.736c0-0.73,0.211-1.329,0.635-1.794s0.994-0.698,1.711-0.698</code></p>
+<p><code>201</code><code>				c0.693,0,1.248,0.229,1.67,0.688C77.057,9.757,77.258,10.333,77.258,11.037z M76.17,11.071c0-0.435-0.094-0.808-0.281-1.119</code></p>
+<p><code>202</code><code>				c-0.219-0.376-0.533-0.564-0.939-0.564c-0.422,0-0.742,0.188-0.961,0.564c-0.188,0.311-0.281,0.69-0.281,1.138</code></p>
+<p><code>203</code><code>				c0,0.435,0.094,0.808,0.281,1.119c0.227,0.376,0.543,0.564,0.951,0.564c0.4,0,0.713-0.191,0.939-0.574</code></p>
+<p><code>204</code><code>				C76.074,11.882,76.17,11.506,76.17,11.071z"/&gt;</code></p>
+<p><code>205</code><code>			&lt;path fill="#FFFFFF" d="M82.33,13.433h-0.941l-0.078-0.543h-0.029c-0.322,0.433-0.781,0.65-1.377,0.65</code></p>
+<p><code>206</code><code>				c-0.445,0-0.805-0.143-1.076-0.427c-0.246-0.258-0.369-0.579-0.369-0.96c0-0.576,0.24-1.015,0.723-1.319</code></p>
+<p><code>207</code><code>				c0.482-0.304,1.16-0.453,2.033-0.446V10.3c0-0.621-0.326-0.931-0.979-0.931c-0.465,0-0.875,0.117-1.229,0.349l-0.213-0.688</code></p>
+<p><code>208</code><code>				c0.438-0.271,0.979-0.407,1.617-0.407c1.232,0,1.85,0.65,1.85,1.95v1.736C82.262,12.78,82.285,13.155,82.33,13.433z</code></p>
+<p><code>209</code><code>				 M81.242,11.813v-0.727c-1.156-0.02-1.734,0.297-1.734,0.95c0,0.246,0.066,0.43,0.201,0.553c0.135,0.123,0.307,0.184,0.512,0.184</code></p>
+<p><code>210</code><code>				c0.23,0,0.445-0.073,0.641-0.218c0.197-0.146,0.318-0.331,0.363-0.558C81.236,11.946,81.242,11.884,81.242,11.813z"/&gt;</code></p>
+<p><code>211</code><code>			&lt;path fill="#FFFFFF" d="M88.285,13.433h-0.93l-0.049-0.757h-0.029c-0.297,0.576-0.803,0.864-1.514,0.864</code></p>
+<p><code>212</code><code>				c-0.568,0-1.041-0.223-1.416-0.669s-0.562-1.025-0.562-1.736c0-0.763,0.203-1.381,0.611-1.853c0.395-0.44,0.879-0.66,1.455-0.66</code></p>
+<p><code>213</code><code>				c0.633,0,1.076,0.213,1.328,0.64h0.02V6.556h1.049v5.607C88.248,12.622,88.26,13.045,88.285,13.433z M87.199,11.445v-0.786</code></p>
+<p><code>214</code><code>				c0-0.136-0.01-0.246-0.029-0.33c-0.059-0.252-0.186-0.464-0.379-0.635c-0.195-0.171-0.43-0.257-0.701-0.257</code></p>
+<p><code>215</code><code>				c-0.391,0-0.697,0.155-0.922,0.466c-0.223,0.311-0.336,0.708-0.336,1.193c0,0.466,0.107,0.844,0.322,1.135</code></p>
+<p><code>216</code><code>				c0.227,0.31,0.533,0.465,0.916,0.465c0.344,0,0.619-0.129,0.828-0.388C87.1,12.069,87.199,11.781,87.199,11.445z"/&gt;</code></p>
+<p><code>217</code><code>			&lt;path fill="#FFFFFF" d="M97.248,11.037c0,0.725-0.207,1.319-0.621,1.785c-0.434,0.479-1.008,0.718-1.727,0.718</code></p>
+<p><code>218</code><code>				c-0.691,0-1.242-0.229-1.654-0.689c-0.41-0.459-0.615-1.038-0.615-1.736c0-0.73,0.211-1.329,0.635-1.794s0.994-0.698,1.713-0.698</code></p>
+<p><code>219</code><code>				c0.691,0,1.248,0.229,1.668,0.688C97.047,9.757,97.248,10.333,97.248,11.037z M96.162,11.071c0-0.435-0.094-0.808-0.281-1.119</code></p>
+<p><code>220</code><code>				c-0.221-0.376-0.533-0.564-0.941-0.564c-0.42,0-0.74,0.188-0.961,0.564c-0.188,0.311-0.281,0.69-0.281,1.138</code></p>
+<p><code>221</code><code>				c0,0.435,0.094,0.808,0.281,1.119c0.227,0.376,0.543,0.564,0.951,0.564c0.4,0,0.715-0.191,0.941-0.574</code></p>
+<p><code>222</code><code>				C96.064,11.882,96.162,11.506,96.162,11.071z"/&gt;</code></p>
+<p><code>223</code><code>			&lt;path fill="#FFFFFF" d="M102.883,13.433h-1.047v-2.7c0-0.832-0.316-1.248-0.951-1.248c-0.311,0-0.562,0.114-0.756,0.343</code></p>
+<p><code>224</code><code>				s-0.291,0.499-0.291,0.808v2.796h-1.049v-3.366c0-0.414-0.012-0.863-0.037-1.349h0.92l0.049,0.737h0.029</code></p>
+<p><code>225</code><code>				c0.123-0.229,0.305-0.418,0.543-0.569c0.285-0.176,0.602-0.265,0.951-0.265c0.439,0,0.805,0.142,1.096,0.427</code></p>
+<p><code>226</code><code>				c0.363,0.349,0.543,0.87,0.543,1.562V13.433z"/&gt;</code></p>
+<p><code>227</code><code>			&lt;path fill="#FFFFFF" d="M109.936,9.504h-1.154v2.29c0,0.582,0.205,0.873,0.611,0.873c0.188,0,0.344-0.016,0.467-0.049</code></p>
+<p><code>228</code><code>				l0.027,0.795c-0.207,0.078-0.479,0.117-0.814,0.117c-0.414,0-0.736-0.126-0.969-0.378c-0.234-0.252-0.35-0.676-0.35-1.271V9.504</code></p>
+<p><code>229</code><code>				h-0.689V8.719h0.689V7.855l1.027-0.31v1.173h1.154V9.504z"/&gt;</code></p>
+<p><code>230</code><code>			&lt;path fill="#FFFFFF" d="M115.484,13.433h-1.049v-2.68c0-0.845-0.316-1.268-0.949-1.268c-0.486,0-0.818,0.245-1,0.735</code></p>
+<p><code>231</code><code>				c-0.031,0.103-0.049,0.229-0.049,0.377v2.835h-1.047V6.556h1.047v2.841h0.02c0.33-0.517,0.803-0.775,1.416-0.775</code></p>
+<p><code>232</code><code>				c0.434,0,0.793,0.142,1.078,0.427c0.355,0.355,0.533,0.883,0.533,1.581V13.433z"/&gt;</code></p>
+<p><code>233</code><code>			&lt;path fill="#FFFFFF" d="M121.207,10.853c0,0.188-0.014,0.346-0.039,0.475h-3.143c0.014,0.466,0.164,0.821,0.455,1.067</code></p>
+<p><code>234</code><code>				c0.266,0.22,0.609,0.33,1.029,0.33c0.465,0,0.889-0.074,1.271-0.223l0.164,0.728c-0.447,0.194-0.973,0.291-1.582,0.291</code></p>
+<p><code>235</code><code>				c-0.73,0-1.305-0.215-1.721-0.645c-0.418-0.43-0.625-1.007-0.625-1.731c0-0.711,0.193-1.303,0.582-1.775</code></p>
+<p><code>236</code><code>				c0.406-0.504,0.955-0.756,1.648-0.756c0.678,0,1.193,0.252,1.541,0.756C121.068,9.77,121.207,10.265,121.207,10.853z</code></p>
+<p><code>237</code><code>				 M120.207,10.582c0.008-0.311-0.061-0.579-0.203-0.805c-0.182-0.291-0.459-0.437-0.834-0.437c-0.342,0-0.621,0.142-0.834,0.427</code></p>
+<p><code>238</code><code>				c-0.174,0.227-0.277,0.498-0.311,0.815H120.207z"/&gt;</code></p>
+<p><code>239</code><code>		&lt;/g&gt;</code></p>
+<p><code>240</code><code>	&lt;/g&gt;</code></p>
+<p><code>241</code><code>&lt;/g&gt;</code></p>
+<p><code>242</code><code>&lt;/svg&gt;</code></p>
+<p><code>243</code><code>    &lt;/a&gt;</code></p>
+<p><code>244</code><code>    </code></p><br style='clear: both'> <div id='err-l244c5-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Each A tag must contain text or an IMG with an ALT attribute. </div>   <div class='help'>Add text to the link, or ALT text if the link contains an image. If there is no link text or the ALT tag is blank, screen readers have nothing to read, so read out the URL instead. </div>   <div class='line'><span class='line'>Line 244</span>  <a href='http://www.w3.org/TR/WCAG-TECHS/F89.html' target='_top'>WCAG 2.0 A F89</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-13.1.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l244c5' title='Line 244 Column 5'>&lt;a href="https://play.google.com/store/apps/details?id=com.evernote" class="google-play"&gt;</span></code></p>
+<p><code>245</code><code>      </code></p><br style='clear: both'> <div id='err-l245c7-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;xlink&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 245</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-xlink" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l245c7' title='Line 245 Column 7'>&lt;svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"</span></code></p>
+<p><code>246</code><code>	 width="134.926px" height="39.989px" viewBox="0 0 134.926 39.989" enable-background="new 0 0 134.926 39.989"</code></p>
+<p><code>247</code><code>	 xml:space="preserve"&gt;</code></p>
+<p><code>248</code><code>&lt;path fill="#FFFFFF" d="M134.032,35.268c0,2.116-1.714,3.83-3.834,3.83H4.729c-2.119,0-3.839-1.714-3.839-3.83V4.725</code></p>
+<p><code>249</code><code>	c0-2.115,1.72-3.835,3.839-3.835h125.468c2.121,0,3.834,1.72,3.834,3.835L134.032,35.268L134.032,35.268z"/&gt;</code></p>
+<p><code>250</code><code>&lt;path d="M130.198,39.989H4.729C2.122,39.989,0,37.872,0,35.268V4.726C0,2.12,2.122,0,4.729,0h125.468</code></p>
+<p><code>251</code><code>	c2.604,0,4.729,2.12,4.729,4.726v30.541C134.928,37.872,132.803,39.989,130.198,39.989L130.198,39.989z"/&gt;</code></p>
+<p><code>252</code><code>&lt;path d="M134.032,35.268c0,2.116-1.714,3.83-3.834,3.83H4.729c-2.119,0-3.839-1.714-3.839-3.83V4.725</code></p>
+<p><code>253</code><code>	c0-2.115,1.72-3.835,3.839-3.835h125.468c2.121,0,3.834,1.72,3.834,3.835L134.032,35.268L134.032,35.268z"/&gt;</code></p>
+<p><code>254</code><code>&lt;g&gt;</code></p>
+<p><code>255</code><code>	&lt;path fill="#FFFFFF" d="M46.852,6.736c0.91,0,1.539,0.41,1.949,0.83l-0.64,0.719c-0.33-0.32-0.69-0.54-1.299-0.54</code></p>
+<p><code>256</code><code>		c-1.16,0-1.939,0.899-1.939,2.369c0,1.489,0.7,2.389,2.009,2.389c0.36,0,0.72-0.1,0.93-0.29v-1.409h-1.229v-0.95h2.269v2.878</code></p>
+<p><code>257</code><code>		c-0.45,0.42-1.219,0.78-2.109,0.78c-1.739,0-3.058-1.2-3.058-3.368C43.734,8.005,45.094,6.736,46.852,6.736z"/&gt;</code></p>
+<p><code>258</code><code>	&lt;path fill="#FFFFFF" d="M52.173,8.365c1.329,0,2.029,0.959,2.029,2.329c0,0.22-0.02,0.42-0.05,0.54h-3.118</code></p>
+<p><code>259</code><code>		c0.1,0.889,0.66,1.389,1.449,1.389c0.419,0,0.779-0.13,1.139-0.36l0.39,0.72c-0.47,0.31-1.059,0.53-1.679,0.53</code></p>
+<p><code>260</code><code>		c-1.359,0-2.419-0.95-2.419-2.569C49.914,9.345,51.023,8.365,52.173,8.365z M53.202,10.504c0-0.78-0.329-1.249-0.999-1.249</code></p>
+<p><code>261</code><code>		c-0.58,0-1.08,0.43-1.18,1.249H53.202z"/&gt;</code></p>
+<p><code>262</code><code>	&lt;path fill="#FFFFFF" d="M55.324,9.395h-0.7V8.535l0.76-0.05l0.14-1.339h0.959v1.339h1.249v0.909h-1.249v2.339</code></p>
+<p><code>263</code><code>		c0,0.58,0.22,0.859,0.69,0.859c0.17,0,0.37-0.05,0.51-0.11l0.2,0.85c-0.27,0.09-0.609,0.18-1,0.18c-1.139,0-1.559-0.72-1.559-1.779</code></p>
+<p><code>264</code><code>		V9.395z"/&gt;</code></p>
+<p><code>265</code><code>	&lt;path fill="#FFFFFF" d="M60.684,6.976c0-0.39,0.3-0.66,0.709-0.66c0.41,0,0.71,0.27,0.71,0.66c0,0.38-0.3,0.65-0.71,0.65</code></p>
+<p><code>266</code><code>		C60.984,7.626,60.684,7.356,60.684,6.976z M60.814,8.485h1.149v4.907h-1.149V8.485z"/&gt;</code></p>
+<p><code>267</code><code>	&lt;path fill="#FFFFFF" d="M63.604,9.395h-0.7V8.535l0.76-0.05l0.14-1.339h0.96v1.339h1.249v0.909h-1.249v2.339</code></p>
+<p><code>268</code><code>		c0,0.58,0.22,0.859,0.689,0.859c0.17,0,0.37-0.05,0.51-0.11l0.2,0.85c-0.27,0.09-0.609,0.18-0.999,0.18</code></p>
+<p><code>269</code><code>		c-1.139,0-1.559-0.72-1.559-1.779V9.395z"/&gt;</code></p>
+<p><code>270</code><code>	&lt;path fill="#FFFFFF" d="M71.102,8.365c1.23,0,2.34,0.939,2.34,2.579c0,1.629-1.109,2.569-2.34,2.569</code></p>
+<p><code>271</code><code>		c-1.219,0-2.328-0.94-2.328-2.569C68.773,9.305,69.883,8.365,71.102,8.365z M71.102,12.573c0.721,0,1.16-0.65,1.16-1.629</code></p>
+<p><code>272</code><code>		c0-0.989-0.439-1.639-1.16-1.639c-0.719,0-1.148,0.65-1.148,1.639C69.953,11.923,70.383,12.573,71.102,12.573z"/&gt;</code></p>
+<p><code>273</code><code>	&lt;path fill="#FFFFFF" d="M74.584,8.485h0.949l0.08,0.66h0.039c0.439-0.43,0.939-0.78,1.609-0.78c1.051,0,1.51,0.71,1.51,1.949v3.078</code></p>
+<p><code>274</code><code>		h-1.15v-2.928c0-0.81-0.229-1.109-0.77-1.109c-0.43,0-0.709,0.21-1.119,0.609v3.428h-1.148V8.485z"/&gt;</code></p>
+<p><code>275</code><code>&lt;/g&gt;</code></p>
+<p><code>276</code><code>&lt;g&gt;</code></p>
+<p><code>277</code><code>	&lt;path fill="#FFFFFF" d="M101.248,30.64c-0.521,0-0.996-0.095-1.426-0.287c-0.431-0.191-0.792-0.487-1.083-0.886H98.65</code></p>
+<p><code>278</code><code>		c0.059,0.467,0.089,0.909,0.089,1.326v3.291h-1.211V22.499h0.985l0.167,1.094h0.059c0.312-0.438,0.673-0.752,1.088-0.948</code></p>
+<p><code>279</code><code>		c0.412-0.192,0.887-0.291,1.421-0.291c1.062,0,1.879,0.362,2.456,1.086c0.575,0.725,0.863,1.742,0.863,3.051</code></p>
+<p><code>280</code><code>		c0,1.312-0.293,2.332-0.877,3.061C103.102,30.276,102.289,30.64,101.248,30.64z M101.072,23.381c-0.815,0-1.407,0.226-1.771,0.68</code></p>
+<p><code>281</code><code>		c-0.364,0.452-0.552,1.172-0.562,2.159v0.271c0,1.123,0.187,1.926,0.562,2.411c0.374,0.483,0.975,0.726,1.802,0.726</code></p>
+<p><code>282</code><code>		c0.691,0,1.233-0.28,1.623-0.84c0.393-0.558,0.588-1.329,0.588-2.312c0-0.996-0.195-1.761-0.588-2.294</code></p>
+<p><code>283</code><code>		C102.335,23.647,101.783,23.381,101.072,23.381z"/&gt;</code></p>
+<p><code>284</code><code>	&lt;path fill="#FFFFFF" d="M107.371,30.494h-1.211V19.144h1.211V30.494z"/&gt;</code></p>
+<p><code>285</code><code>	&lt;path fill="#FFFFFF" d="M114.333,30.494l-0.24-1.138h-0.059c-0.398,0.503-0.797,0.841-1.193,1.018</code></p>
+<p><code>286</code><code>		c-0.396,0.177-0.891,0.266-1.484,0.266c-0.792,0-1.413-0.204-1.863-0.611c-0.449-0.409-0.676-0.989-0.676-1.744</code></p>
+<p><code>287</code><code>		c0-1.613,1.292-2.461,3.875-2.538l1.357-0.044v-0.497c0-0.627-0.136-1.091-0.406-1.389c-0.269-0.299-0.702-0.449-1.295-0.449</code></p>
+<p><code>288</code><code>		c-0.667,0-1.419,0.205-2.26,0.613l-0.373-0.928c0.394-0.212,0.825-0.38,1.294-0.503c0.47-0.122,0.94-0.182,1.413-0.182</code></p>
+<p><code>289</code><code>		c0.952,0,1.658,0.212,2.118,0.636c0.459,0.422,0.689,1.1,0.689,2.034v5.456H114.333z M111.599,29.641</code></p>
+<p><code>290</code><code>		c0.754,0,1.347-0.207,1.776-0.619c0.429-0.414,0.644-0.993,0.644-1.737v-0.721l-1.212,0.05c-0.963,0.035-1.657,0.184-2.08,0.449</code></p>
+<p><code>291</code><code>		c-0.427,0.266-0.639,0.679-0.639,1.236c0,0.438,0.131,0.772,0.396,0.999C110.751,29.527,111.121,29.641,111.599,29.641z"/&gt;</code></p>
+<p><code>292</code><code>	&lt;path fill="#FFFFFF" d="M115.934,22.499h1.298l1.752,4.561c0.382,1.04,0.623,1.791,0.714,2.254h0.059</code></p>
+<p><code>293</code><code>		c0.063-0.25,0.196-0.673,0.398-1.274c0.202-0.601,0.861-2.448,1.979-5.54h1.299l-3.435,9.104c-0.342,0.901-0.738,1.538-1.193,1.916</code></p>
+<p><code>294</code><code>		c-0.455,0.378-1.014,0.565-1.674,0.565c-0.37,0-0.735-0.043-1.096-0.125v-0.971c0.267,0.061,0.567,0.089,0.897,0.089</code></p>
+<p><code>295</code><code>		c0.832,0,1.425-0.468,1.78-1.4l0.445-1.138L115.934,22.499z"/&gt;</code></p>
+<p><code>296</code><code>&lt;/g&gt;</code></p>
+<p><code>297</code><code>&lt;g&gt;</code></p>
+<p><code>298</code><code>	&lt;path fill="#FFFFFF" d="M78.815,23.242c0.386,0.317,1.187,0.986,1.187,2.257c0,1.238-0.701,1.824-1.403,2.376</code></p>
+<p><code>299</code><code>		c-0.217,0.215-0.47,0.452-0.47,0.82c0,0.367,0.253,0.567,0.437,0.718l0.603,0.468c0.735,0.62,1.403,1.188,1.403,2.343</code></p>
+<p><code>300</code><code>		c0,1.571-1.522,3.16-4.397,3.16c-2.426,0-3.595-1.154-3.595-2.392c0-0.603,0.299-1.454,1.288-2.041</code></p>
+<p><code>301</code><code>		c1.035-0.636,2.441-0.718,3.193-0.77c-0.235-0.301-0.502-0.618-0.502-1.135c0-0.286,0.084-0.454,0.167-0.655</code></p>
+<p><code>302</code><code>		c-0.185,0.018-0.368,0.033-0.536,0.033c-1.771,0-2.775-1.321-2.775-2.624c0-0.77,0.352-1.623,1.07-2.241</code></p>
+<p><code>303</code><code>		c0.953-0.785,2.09-0.92,2.994-0.92h3.444l-1.07,0.603H78.815z M77.629,30.668c-0.134-0.018-0.218-0.018-0.384-0.018</code></p>
+<p><code>304</code><code>		c-0.15,0-1.056,0.033-1.757,0.27c-0.368,0.133-1.438,0.534-1.438,1.721c0,1.186,1.153,2.041,2.942,2.041</code></p>
+<p><code>305</code><code>		c1.605,0,2.458-0.77,2.458-1.807C79.451,32.022,78.9,31.57,77.629,30.668z M78.113,27.489c0.385-0.386,0.418-0.918,0.418-1.22</code></p>
+<p><code>306</code><code>		c0-1.205-0.719-3.078-2.107-3.078c-0.436,0-0.903,0.219-1.172,0.554c-0.283,0.351-0.366,0.801-0.366,1.237</code></p>
+<p><code>307</code><code>		c0,1.119,0.652,2.977,2.09,2.977C77.395,27.959,77.846,27.758,78.113,27.489z"/&gt;</code></p>
+<p><code>308</code><code>	&lt;path fill="#FFFFFF" d="M68.289,30.401c-2.655,0-4.074-2.072-4.074-3.942c0-2.186,1.785-4.057,4.324-4.057</code></p>
+<p><code>309</code><code>		c2.454,0,3.99,1.92,3.99,3.941C72.529,28.313,71.011,30.401,68.289,30.401z M70.375,29.048c0.401-0.534,0.501-1.203,0.501-1.854</code></p>
+<p><code>310</code><code>		c0-1.471-0.7-4.274-2.772-4.274c-0.551,0-1.102,0.218-1.501,0.568c-0.651,0.584-0.769,1.318-0.769,2.038</code></p>
+<p><code>311</code><code>		c0,1.651,0.819,4.372,2.839,4.372C69.324,29.898,69.993,29.581,70.375,29.048z"/&gt;</code></p>
+<p><code>312</code><code>	&lt;path fill="#FFFFFF" d="M59.239,30.401c-2.656,0-4.074-2.072-4.074-3.942c0-2.186,1.787-4.057,4.325-4.057</code></p>
+<p><code>313</code><code>		c2.454,0,3.99,1.92,3.99,3.941C63.479,28.313,61.96,30.401,59.239,30.401z M61.327,29.048c0.4-0.534,0.5-1.203,0.5-1.854</code></p>
+<p><code>314</code><code>		c0-1.471-0.701-4.274-2.771-4.274c-0.551,0-1.102,0.218-1.502,0.568c-0.653,0.584-0.769,1.318-0.769,2.038</code></p>
+<p><code>315</code><code>		c0,1.651,0.818,4.372,2.839,4.372C60.274,29.898,60.941,29.581,61.327,29.048z"/&gt;</code></p>
+<p><code>316</code><code>	&lt;path fill="#FFFFFF" d="M53.889,30.139l-2.399,0.554c-0.976,0.151-1.847,0.284-2.77,0.284c-4.633,0-6.396-3.406-6.396-6.076</code></p>
+<p><code>317</code><code>		c0-3.256,2.5-6.277,6.781-6.277c0.907,0,1.779,0.134,2.567,0.352c1.261,0.352,1.848,0.789,2.216,1.04l-1.393,1.326l-0.587,0.134</code></p>
+<p><code>318</code><code>		l0.42-0.672c-0.571-0.552-1.612-1.577-3.592-1.577c-2.652,0-4.649,2.015-4.649,4.953c0,3.155,2.282,6.127,5.941,6.127</code></p>
+<p><code>319</code><code>		c1.076,0,1.629-0.22,2.132-0.421v-2.701l-2.534,0.134l1.342-0.724h3.559l-0.437,0.421c-0.118,0.101-0.135,0.134-0.168,0.269</code></p>
+<p><code>320</code><code>		c-0.017,0.15-0.034,0.639-0.034,0.805V30.139z"/&gt;</code></p>
+<p><code>321</code><code>	&lt;path fill="#FFFFFF" d="M84.122,29.655c-0.555-0.051-0.67-0.15-0.67-0.807v-0.184v-9.316c0.003-0.037,0.006-0.073,0.008-0.108</code></p>
+<p><code>322</code><code>		c0.068-0.587,0.235-0.688,0.758-0.99h-2.401l-1.26,0.604h1.282v0.007v-0.006v9.809v0.555c0,0.335-0.066,0.386-0.453,0.889h2.971</code></p>
+<p><code>323</code><code>		l0.623-0.367C84.693,29.704,84.407,29.689,84.122,29.655z"/&gt;</code></p>
+<p><code>324</code><code>	&lt;path fill="#FFFFFF" d="M90.953,29.809c-0.184,0.101-0.367,0.218-0.549,0.3c-0.552,0.252-1.119,0.318-1.62,0.318</code></p>
+<p><code>325</code><code>		c-0.531,0-1.366-0.035-2.216-0.651c-1.185-0.833-1.701-2.267-1.701-3.518c0-2.584,2.102-3.851,3.818-3.851</code></p>
+<p><code>326</code><code>		c0.6,0,1.216,0.15,1.719,0.468c0.831,0.549,1.048,1.265,1.165,1.649l-3.917,1.584l-1.285,0.101c0.417,2.117,1.851,3.35,3.435,3.35</code></p>
+<p><code>327</code><code>		c0.851,0,1.467-0.301,2.034-0.583L90.953,29.809z M89.385,24.84c0.317-0.115,0.483-0.216,0.483-0.448</code></p>
+<p><code>328</code><code>		c0-0.666-0.749-1.434-1.65-1.434c-0.668,0-1.917,0.517-1.917,2.317c0,0.282,0.033,0.583,0.052,0.883L89.385,24.84z"/&gt;</code></p>
+<p><code>329</code><code>	&lt;g&gt;</code></p>
+<p><code>330</code><code>		&lt;path fill="#FFFFFF" d="M92.561,22.522v1.1h-0.134v-1.1h-0.364v-0.114h0.862v0.114H92.561z"/&gt;</code></p>
+<p><code>331</code><code>		&lt;path fill="#FFFFFF" d="M94.06,23.621v-1.109h-0.005l-0.34,1.109h-0.104l-0.342-1.109h-0.004v1.109h-0.122v-1.214h0.209</code></p>
+<p><code>332</code><code>			l0.31,0.982h0.003l0.306-0.982h0.21v1.214H94.06z"/&gt;</code></p>
+<p><code>333</code><code>	&lt;/g&gt;</code></p>
+<p><code>334</code><code>&lt;/g&gt;</code></p>
+<p><code>335</code><code>&lt;g id="PLAY"&gt;</code></p>
+<p><code>336</code><code>	&lt;defs&gt;</code></p>
+<p><code>337</code><code>		&lt;path id="SVGID_1_" d="M28.684,15.236l-5.616-3.11c0,0-10.233-5.668-10.834-6.001c-0.602-0.333-1.201-0.131-1.201,0.565</code></p>
+<p><code>338</code><code>			c0,1.16,0,12.1,0,12.1s0,11.824,0,12.346c0,0.521,0.429,0.747,0.952,0.458c0.522-0.289,11.083-6.14,11.083-6.14l5.616-3.109</code></p>
+<p><code>339</code><code>			c0,0,4.765-2.64,5.399-2.99c0.633-0.351,0.572-0.832,0.038-1.108C33.586,17.97,28.684,15.236,28.684,15.236z"/&gt;</code></p>
+<p><code>340</code><code>	&lt;/defs&gt;</code></p>
+<p><code>341</code><code>	</code></p><br style='clear: both'> <div id='err-l341c2-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;clippath&#39; not allowed as child element in this context. </div>   <div class='line'><span class='line'>Line 341</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErElem-clippath" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l341c2' title='Line 341 Column 2'>&lt;clipPath id="SVGID_2_"&gt;</span></code></p>
+<p><code>342</code><code>		&lt;use xlink:href="#SVGID_1_"  overflow="visible"/&gt;</code></p>
+<p><code>343</code><code>	&lt;/clipPath&gt;</code></p>
+<p><code>344</code><code>	&lt;linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="17.99" y1="5.5566" x2="17.99" y2="32.0244"&gt;</code></p>
+<p><code>345</code><code>		&lt;stop  offset="0" style="stop-color:#207CB0"/&gt;</code></p>
+<p><code>346</code><code>		&lt;stop  offset="0.3757" style="stop-color:#3CB2BF"/&gt;</code></p>
+<p><code>347</code><code>		&lt;stop  offset="0.7961" style="stop-color:#58E9CE"/&gt;</code></p>
+<p><code>348</code><code>		&lt;stop  offset="1" style="stop-color:#63FFD4"/&gt;</code></p>
+<p><code>349</code><code>	&lt;/linearGradient&gt;</code></p>
+<p><code>350</code><code>	&lt;polygon clip-path="url(#SVGID_2_)" fill="url(#SVGID_3_)" points="11.033,5.557 11.033,18.79 11.033,32.024 24.947,18.79 	"/&gt;</code></p>
+<p><code>351</code><code>	&lt;linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="11.0327" y1="12.125" x2="28.6841" y2="12.125"&gt;</code></p>
+<p><code>352</code><code>		&lt;stop  offset="0" style="stop-color:#4BC3AE"/&gt;</code></p>
+<p><code>353</code><code>		&lt;stop  offset="1" style="stop-color:#DEE999"/&gt;</code></p>
+<p><code>354</code><code>	&lt;/linearGradient&gt;</code></p>
+<p><code>355</code><code>	&lt;polygon clip-path="url(#SVGID_2_)" fill="url(#SVGID_4_)" points="28.684,15.236 23.068,12.126 11.033,5.46 11.033,5.557 </code></p>
+<p><code>356</code><code>		24.947,18.79 	"/&gt;</code></p>
+<p><code>357</code><code>	&lt;linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="19.8584" y1="18.79" x2="19.8584" y2="32.1191"&gt;</code></p>
+<p><code>358</code><code>		&lt;stop  offset="0" style="stop-color:#EC403D"/&gt;</code></p>
+<p><code>359</code><code>		&lt;stop  offset="0.384" style="stop-color:#C93B75"/&gt;</code></p>
+<p><code>360</code><code>		&lt;stop  offset="0.7988" style="stop-color:#A636AC"/&gt;</code></p>
+<p><code>361</code><code>		&lt;stop  offset="1" style="stop-color:#9934C2"/&gt;</code></p>
+<p><code>362</code><code>	&lt;/linearGradient&gt;</code></p>
+<p><code>363</code><code>	&lt;polygon clip-path="url(#SVGID_2_)" fill="url(#SVGID_5_)" points="11.033,32.024 11.033,32.119 23.068,25.454 28.684,22.345 </code></p>
+<p><code>364</code><code>		24.947,18.79 	"/&gt;</code></p>
+<p><code>365</code><code>	&lt;linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="30.0249" y1="15.2358" x2="30.0249" y2="22.3447"&gt;</code></p>
+<p><code>366</code><code>		&lt;stop  offset="0" style="stop-color:#FF8877"/&gt;</code></p>
+<p><code>367</code><code>		&lt;stop  offset="0.6121" style="stop-color:#FFB175"/&gt;</code></p>
+<p><code>368</code><code>		&lt;stop  offset="1" style="stop-color:#FFC774"/&gt;</code></p>
+<p><code>369</code><code>	&lt;/linearGradient&gt;</code></p>
+<p><code>370</code><code>	&lt;polygon clip-path="url(#SVGID_2_)" fill="url(#SVGID_6_)" points="28.684,15.236 24.947,18.79 28.684,22.345 35.102,18.79 	"/&gt;</code></p>
+<p><code>371</code><code>&lt;/g&gt;</code></p>
+<p><code>372</code><code>&lt;/svg&gt;</code></p>
+<p><code>373</code><code>    &lt;/a&gt;</code></p>
+<p><code>374</code><code>	&lt;/div&gt;</code></p>
+<p><code>375</code><code>	&lt;p class="download-element"&gt;&lt;strong&gt;Now that you have Evernote:&lt;/strong&gt; Check out our &lt;a href="/getting_started/"&gt;Getting Started Guide&lt;/a&gt; and &lt;a href="//blog.evernote.com/"&gt;Blog&lt;/a&gt;.&lt;/p&gt;</code></p>
+<p><code>376</code><code>          </code></p>
+<p><code>377</code><code>	&lt;div id="container"&gt;&lt;/div&gt;</code></p>
+<p><code>378</code><code>&lt;/div&gt;</code></p>
+<p><code>379</code><code>          </code></p>
+<p><code>380</code><code>&lt;footer role="contentinfo"&gt;</code></p>
+<p><code>381</code><code>	&lt;nav&gt;</code></p>
+<p><code>382</code><code>		&lt;ul&gt;</code></p>
+<p><code>383</code><code>			&lt;li&gt;&lt;a href="/legal/tos.php"&gt;Terms Of Service&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>384</code><code>			&lt;li&gt;&lt;a href="/legal/privacy.php"&gt;Privacy Policy&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>385</code><code>			&lt;li&gt;Copyright 2015 Evernote Corporation. All rights reserved.&lt;/li&gt;</code></p>
+<p><code>386</code><code>		&lt;/ul&gt;</code></p>
+<p><code>387</code><code>	&lt;/nav&gt;</code></p>
+<p><code>388</code><code>&lt;/footer&gt;</code></p>
+<p><code>389</code><code>          </code></p>
+<p><code>390</code><code>	&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;</code></p>
+<p><code>391</code><code>	</code></p>
+<p><code>392</code><code>          </code></p>
+<p><code>393</code><code>&lt;script src="/media/js/tracking-min.js" type="text/javascript"&gt;&lt;/script&gt;</code></p>
+<p><code>394</code><code>          </code></p>
+<p><code>395</code><code>&lt;script src="/media/js/build/downloading-min.js" type="text/javascript"&gt;&lt;/script&gt;&lt;script&gt;</code></p>
+<p><code>396</code><code>  var lang = 'en';</code></p>
+<p><code>397</code><code></code></p>
+<p><code>398</code><code>  function updatePricing(allSKUs, country) {</code></p>
+<p><code>399</code><code>    var locale = lang.split('-')[0] + '_' + country;</code></p>
+<p><code>400</code><code></code></p>
+<p><code>401</code><code>    $('.currency').each( function(index, el) {</code></p>
+<p><code>402</code><code>      var element = $(el);</code></p>
+<p><code>403</code><code>      sku = $.trim(element.attr('data-sku'));</code></p>
+<p><code>404</code><code>      if (data = allSKUs[sku]) {</code></p>
+<p><code>405</code><code>        var value = data[locale] || data[lang];</code></p>
+<p><code>406</code><code>        if (value) {</code></p>
+<p><code>407</code><code>          //Per Andrew Sinkov, we are replacing the .00 at the end of pricing. KWR 3/6/14</code></p>
+<p><code>408</code><code>          value = value.replace(/\.00$/,'');</code></p>
+<p><code>409</code><code>          element.html(value);</code></p>
+<p><code>410</code><code>          element.css('display', 'inline');</code></p>
+<p><code>411</code><code>        }</code></p>
+<p><code>412</code><code>      }</code></p>
+<p><code>413</code><code>    });</code></p>
+<p><code>414</code><code>  }</code></p>
+<p><code>415</code><code></code></p>
+<p><code>416</code><code>  $(function() {</code></p>
+<p><code>417</code><code>    var country = 'US';</code></p>
+<p><code>418</code><code>    $.ajax({</code></p>
+<p><code>419</code><code>      url: 'https://www.evernote.com/currency?sku=all&amp;callback=?',</code></p>
+<p><code>420</code><code>      dataType: 'json',</code></p>
+<p><code>421</code><code>      jsonp: true, </code></p>
+<p><code>422</code><code>      jsonpCallback: "callbackName",</code></p>
+<p><code>423</code><code>     </code></p>
+<p><code>424</code><code>      success: function(allSKUs) {</code></p>
+<p><code>425</code><code>          if (allSKUs['status'] === 'ok') {</code></p>
+<p><code>426</code><code>            updatePricing(allSKUs, country);</code></p>
+<p><code>427</code><code>          }</code></p>
+<p><code>428</code><code></code></p>
+<p><code>429</code><code>        if ($('.country_list').length == 1) {</code></p>
+<p><code>430</code><code>          $.getJSON('/inc/countries/'+lang+'.json', function(data) {</code></p>
+<p><code>431</code><code>            var html = '';</code></p>
+<p><code>432</code><code>            $.each(data, function(key, value) {</code></p>
+<p><code>433</code><code>              var sel = (value == country) ? ' selected="selected"' : '';</code></p>
+<p><code>434</code><code>              html += '&lt;option value="' + value + '"' + sel + '&gt;' + key + '&lt;/option&gt;';</code></p>
+<p><code>435</code><code>            });</code></p>
+<p><code>436</code><code>            $('.country_list').html(html);</code></p>
+<p><code>437</code><code></code></p>
+<p><code>438</code><code>            $('.country_list').change(function() {</code></p>
+<p><code>439</code><code>              updatePricing(allSKUs, $(this).val());</code></p>
+<p><code>440</code><code>            });</code></p>
+<p><code>441</code><code>          });</code></p>
+<p><code>442</code><code>        }</code></p>
+<p><code>443</code><code>      }</code></p>
+<p><code>444</code><code>   </code></p>
+<p><code>445</code><code>    });</code></p>
+<p><code>446</code><code>  });</code></p>
+<p><code>447</code><code>&lt;/script&gt;</code></p>
+<p><code>448</code><code>&lt;/body&gt;</code></p>
+<p><code>449</code><code>&lt;/html&gt;</code></p>
+<br style='clear: both'> <div id='err-l450c1-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Stray start tag &#39;script&#39;. </div>   <div class='line'><span class='line'>Line 450</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-errStrayStartTag-script" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>450</code><code><span class='err' id='htm-l450c1' title='Line 450 Column 1'>&lt;script type="application/ld+json"&gt;</span></code></p>
+<p><code>451</code><code>{</code></p>
+<p><code>452</code><code>    "@context": "http://schema.org",</code></p>
+<p><code>453</code><code>    "@type": "SoftwareApplication",</code></p>
+<p><code>454</code><code>    "name": "Evernote",</code></p>
+<p><code>455</code><code>    "description": "Evernote is a closed source freemium suite of software and services, designed for notetaking, archiving, and collaboration.",</code></p>
+<p><code>456</code><code>    "fileformat": "dmg",</code></p>
+<p><code>457</code><code>    "filesize": "64.6 mb",</code></p>
+<p><code>458</code><code>    "featurelist": [</code></p>
+<p><code>459</code><code>        "offline noteaking",</code></p>
+<p><code>460</code><code>        "checklists",</code></p>
+<p><code>461</code><code>        "instant messaging",</code></p>
+<p><code>462</code><code>        "third-party app integrations",</code></p>
+<p><code>463</code><code>        "pinlock",</code></p>
+<p><code>464</code><code>        "note sharing",</code></p>
+<p><code>465</code><code>        "presentation mode",</code></p>
+<p><code>466</code><code>        "tasks"</code></p>
+<p><code>467</code><code>    ],</code></p>
+<p><code>468</code><code>    "operatingSystem": ["Windows 7","Windows 8","iOS 8","iOS 7","iOS 6","Web OS","Android 5.0", "Android 4.4","Android 4.0"],</code></p>
+<p><code>469</code><code>    "screenshot": "https://evernote.com/media/video/business-v2/still_notebook.jpg",</code></p>
+<p><code>470</code><code>    "downloadUrl": "https://evernote.com/download/",</code></p>
+<p><code>471</code><code>    "applicationCategory": [</code></p>
+<p><code>472</code><code>        "Productivity",</code></p>
+<p><code>473</code><code>        "Notetaking",</code></p>
+<p><code>474</code><code>        "Collaboration",</code></p>
+<p><code>475</code><code>        "Organizaton"</code></p>
+<p><code>476</code><code>    ],</code></p>
+<p><code>477</code><code>    "offers": {</code></p>
+<p><code>478</code><code>        "@type": "Offer",</code></p>
+<p><code>479</code><code>        "category": "Productivity",</code></p>
+<p><code>480</code><code>        "price": "0",</code></p>
+<p><code>481</code><code>        "priceCurrency": "USD"</code></p>
+<p><code>482</code><code>    }</code></p>
+<p><code>483</code><code>}</code></p>
+<p><code>484</code><code>&lt;/script&gt;</code></p>
+<p><code>485</code><code>&lt;/script&gt;</code></p>
+</div><iframe src="about:blank" style="width:0px;height:0px;border:0px solid white;" id="iframeSpelling" title="Ignore - used for spell checking">
+					Ignore - used for spell checking
+				</iframe></body></html>
