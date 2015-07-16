@@ -1,0 +1,281 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Source View: https://evernote.com/media/js/build/global-min.js</title><meta name="robots" content="noindex,nofollow"><meta name="SortSite-IgnoreRule-Page" content="AccWcag1-13.1.3,AccWcag1-14.1.3,Section508-m-3,BugHtmlColgroup,BugIeCssMinMaxWidthHeight,ErrSpellingError,SeoBingTitleLength,SeoPage150k,UseGov5.1,UseGov9.2.3,UseGov10.11,UseGov11.7,UseGov14.3,UseGov17.4,UseGunningFog,W3cTitleTooLong"><style type="text/css"> 
+				body { font-size: smaller; color: black; background-color: white; font-family: Arial, Helvetica, sans-serif; }
+                
+				div.pre { color: #333; white-space: pre; font-family: monospace; clear: both; }
+				div.linespan { display: inline; }
+				span.ok { color: #000; } 
+				span.err { color: #f00; } 
+				span.line { } 
+				div.line { float: left; width: 40%; clear: both; }
+				div.col1 { float: left; width: 5%; padding: 2px; white-space: normal; }
+				div.col2 { float: left; width: 90%; padding-left: 6px; white-space: normal; }
+				div.hdr, div.err { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; position: relative; z-index: 1; top: 0px; left: 0px; width: 90%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; float: left; clear: both;  }
+				div.err-hilite { margin-bottom: 10px; position: relative; z-index: 1; top: 0px; left: 40px; width: 40%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; font-weight: bold; } 
+				div.desc { float: left; width: 40%; margin-bottom: 1em; }
+				div.help { float: right; width: 55%; margin-bottom: 1em; }
+				div.menu-title { float: right; width: 25%; min-width: 100px; text-align: right; padding: 1px; white-space: nowrap; }
+				code.dhtml { background-color: #eeeeff; font-weight: bold; }
+				a.accessible { display: none; } 
+				a.menu-title { text-decoration: none; color: black; background-color: white; border-left: 1px solid #bbb; border-top: 1px solid #bbb; border-right: 1px solid #222; border-bottom: 1px solid #222; text-align: right; display: block; padding: 2px; }
+				a.menu-title:hover { text-decoration: underline; } 
+				was-div.hdr { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; width: 90%; padding: 10px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; }
+				th { text-align: left; font-weight: normal; font-style: normal; }
+				tr { vertical-align: top; }
+				tr.middle { vertical-align: middle; }
+				img { border: none; vertical-align: middle; }
+				p { padding:0; margin:0; }
+				p code { display: block; float: left; width: 90%; font-size: 1em; }
+				p code:first-child { width: 4em; clear: both; }
+                
+				a.spell-bad
+				{
+					text-decoration: none;
+					color: black;
+					border-bottom: 1px dotted red;
+					line-height: 1.5em;
+				}
+				a.spell-good
+				{
+					text-decoration: line-through;
+					color: gray;
+					border-bottom: none;
+					line-height: 1.5em;
+				}
+
+					
+				</style><script type="text/javascript" src="../Report/jquery.min.js"></script><script type="text/javascript">
+				var g_errViewSource = "";
+				var g_viewSourceDir = "";
+				
+				
+				function pageLoad()
+				{
+					fixupOptions();
+					enableSpellings();
+					selectLine();
+				}
+				
+				function fixupOptions()
+				{
+					for ( var i = 0 ; i < document.links.length ; ++i )
+					{
+						var oLink = document.links[i];
+						
+						if ( oLink.onclick && oLink.onclick.toString().indexOf( "Options(" ) > 0 )
+						{
+							oLink.oncontextmenu = document.oncontextmenu = function() { this.click(); return false; }
+						}
+					}
+				}
+		
+				function toggleChevron( id )
+				{
+					var oElement = document.getElementById( "chev" + id );
+					//alert( id + " " + oElement.outerHTML );
+
+					if ( oElement.src.indexOf( "chevron-up.png" ) != -1 )
+					{
+						oElement.src = oElement.src.replace( "up", "down" );
+					}
+					else
+					{
+						oElement.src = oElement.src.replace( "down", "up" );
+					}
+
+					toggleVisibility( id );
+				}
+					
+				function toggleVisibility( id )
+				{					
+					var oElement = document.getElementById( id );					
+										
+					var strVisible = 'block';
+					
+					if ( oElement.style.display == 'none' )
+						oElement.style.display = strVisible;
+					else
+						oElement.style.display = 'none';
+				}
+				
+				
+				function viewSource( pageid, line, col )
+				{	
+					try
+					{
+						if ( g_viewSourceDir != '' )
+						{
+							window.location.href = g_viewSourceDir + pageid + ".view.htm#htm-l" + line;
+						}
+						else
+						{
+							window.external.ViewSource( pageid, line, col );
+						}
+					}
+					catch( err )
+					{
+						if ( g_errViewSource )
+							alert( g_errViewSource );
+					}
+				}
+
+				function enableSpellings()
+				{
+					var oRows = document.getElementsByTagName('a');
+					
+					for ( i = 0 ; i < oRows.length ; ++i )
+					{
+						var	oElement = oRows[i];
+											
+						if ( oElement.className == "spell-bad"  )
+						{
+						
+							try
+							{
+								var strWord = oElement.innerHTML;
+								
+								var bCorrect = window.external.GetSpellingCorrect( strWord );
+
+								if ( bCorrect )
+									oElement.className = 'spell-good';
+							}
+							catch(err)
+							{
+								//Do nothing
+							}
+						}
+					}
+				}
+				
+				function spellOptions( oLink, strWord, strAppEdition )
+				{
+					SpellAction = {
+						spellOther : 0,
+						spellAdded : 1,
+						spellRemoved : 2
+					};
+
+					try
+					{
+						var action = SpellAction.spellOther;
+
+						if ( strAppEdition.indexOf( "web" ) != -1 )
+						{
+							// add to custom dictionary
+							var urlAdd = '/Scans/AddCustomSpelling?word=' + strWord;
+							var urlRemove = '/Scans/RemoveCustomSpelling?word=' + strWord;
+
+							if ( $( '#iframeSpelling' ).attr('src') == urlAdd )
+							{
+								// clicking word again removes it from dictionary
+								action = SpellAction.spellRemoved;	
+								$( '#iframeSpelling' ).attr('src', urlRemove );
+							}
+							else
+							{
+								action = SpellAction.spellAdded;
+								$( '#iframeSpelling' ).attr('src', urlAdd );
+							}
+						}
+						else
+						{
+							// popup menu
+							action = window.external.SpellOptions( strWord );
+						}
+
+						if ( action == SpellAction.spellAdded )
+						{
+							// mark this one as good
+							oLink.className = 'spell-good';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-bad' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-good';
+								}
+							}
+						}
+						else if ( action == SpellAction.spellRemoved )
+						{
+							// mark this one as bad again
+							oLink.className = 'spell-bad';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-good' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-bad';
+								}
+							}
+						}
+					}
+					catch( err )
+					{
+						alert( "Spelling options are only available when the report is viewed in SortSite." );
+					}
+
+					// don't jump around or scroll after showing options menu
+					return false;
+				}
+				</script></head><body onload="pageLoad()"><a class="accessible" href="#mainContent">[Skip to Content]</a><div class="hdr"><h1>
+						JavaScript File
+					</h1><table><tr><th>
+						URL: 
+					</th><td><a rel="nofollow" target="_top" href="https://evernote.com/media/js/build/global-min.js">https://evernote.com/media/js/build/global-min.js</a></td></tr><tr><th title="The status code returned by the web server tells the browser if the request was successful.">
+						HTTP Status: 
+					</th><td title="The status code returned by the web server tells the browser if the request was successful.">200 OK</td></tr><tr><th title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">
+						MIME Type: 
+					</th><td title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">application/javascript</td></tr><tr><th title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">
+						Last Modified: 
+					</th><td title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">Thu, 21 May 2015 20:13:20 GMT</td></tr><tr><th>
+						Download Time: 
+					</th><td>
+								Less than a second
+							</td></tr><tr><th>
+						Cookies: 
+					</th><td>
+								None
+							</td></tr><tr><th>
+						Size: 
+					</th><td>12 KB 
+						</td></tr><tr><th>
+						HTTP Headers: 
+					</th><td><a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Headers" id="chevHttpHeaders" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();">7&nbsp;headers</a><div style="display: none; width: 100%;" id="HttpHeaders"><a rel="nofollow">Accept-Ranges:  bytes
+</a><br><a rel="nofollow">Cache-Control:  max-age=86400
+</a><br><a rel="nofollow">Date:  Thu, 16 Jul 2015 06:12:58 GMT
+</a><br><a rel="nofollow">Server:  Apache
+</a><br><a rel="nofollow">Strict-Transport-Security:  max-age=31536000
+</a><br><a rel="nofollow">Vary:  Accept-Encoding
+</a><br><a rel="nofollow">X-Frame-Options:  SAMEORIGIN
+</a><br></div></td></tr><tr><th>
+						Links In: 
+					</th><td><a href="#" onclick="toggleChevron('LinksIn'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Links" id="chevLinksIn" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('LinksIn'); return false;" onkeypress="this.click();">14&nbsp;pages</a><div style="display: none; width: 100%;" id="LinksIn"><a rel="nofollow" href="https://evernote.com/?var=1" onclick="viewSource( 2, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/?var=1</a><br><a rel="nofollow" href="https://evernote.com/" onclick="viewSource( 3, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/</a><br><a rel="nofollow" href="https://evernote.com/business" onclick="viewSource( 5, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/business</a><br><a rel="nofollow" href="https://evernote.com/pricing/" onclick="viewSource( 6, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/pricing/</a><br><a rel="nofollow" href="https://evernote.com/register/?offer=www_menu" onclick="viewSource( 9, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/register/?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/pricing/?offer=www_menu" onclick="viewSource( 10, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/pricing/?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=plus&amp;amp;offer=www_menu" onclick="viewSource( 11, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=plus&amp;amp;offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=premium&amp;amp;offer=www_menu" onclick="viewSource( 12, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=premium&amp;amp;offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/register/?upgrade=premium&amp;amp;itemCode=premium-1year&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" onclick="viewSource( 16, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/register/?upgrade=premium&amp;amp;itemCode=premium-1year&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=basic&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" onclick="viewSource( 18, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=basic&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/register/?offer=dropbox-3mon&amp;amp;origin=marketingsite" onclick="viewSource( 19, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/register/?offer=dropbox-3mon&amp;amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=plus&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" onclick="viewSource( 20, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=plus&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/register/?upgrade=plus&amp;amp;itemCode=plus-1year&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" onclick="viewSource( 21, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/register/?upgrade=plus&amp;amp;itemCode=plus-1year&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=premium&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" onclick="viewSource( 22, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=premium&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite</a><br></div></td></tr><tr><th>
+							Links Out: 
+						</th><td><a><img width="20" height="20" alt="View Links" id="chevLinksOut" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;links</a><div style="display: none; width: 100%;" id="LinksOut"></div></td></tr><tr><th>
+							Images: 
+						</th><td><a><img width="20" height="20" alt="View Images" id="chevImages" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;images</a><div style="display: none; width: 100%;" id="Images"></div></td></tr><tr><th>
+							CSS: 
+						</th><td><a><img width="20" height="20" alt="View CSS Files" id="chevCSS" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;files</a><div style="display: none; width: 100%;" id="CSS"></div></td></tr><tr><th>
+							JavaScript: 
+						</th><td><a><img width="20" height="20" alt="View JavaScript Files" id="chevJavaScript" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;files</a><div style="display: none; width: 100%;" id="JavaScript"></div></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr><tr class="middle"><th><img alt="Issue" style="text-align:absmiddle" width="20" height="20" src="../Report/bench-worse.png">	
+								Issues: 
+							</th><td>1
+								issues found on
+								1
+								lines
+							</td></tr></table></div><div id="mainContent" class="pre"><script type='text/javascript'>function selectLine() {}</script><br style='clear: both'> <div id='err-l1c1-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Internet Explorer 8 and earlier cannot download files over HTTPS if the HTTP headers disallow caching. 
+			HTTP caching headers:
+			 
+			Vary  Accept-Encoding&#13;&#10;
+			Cache-Control  max-age=86400&#13;&#10;
+		</div>   <div class='help'>This only affects files that display outside Internet Explorer: PDFs, Office documents, etc. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://blogs.msdn.com/b/ieinternals/archive/2009/10/02/internet-explorer-cannot-download-over-https-when-no-cache.aspx' target='_top'>Internet Explorer &#8804; 8.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugDownloadCacheDisabled" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>1</code><code>!function a(b,c,d){function e(g,h){if(!c[g]){if(!b[g]){var i="function"==typeof require&amp;&amp;require;if(!h&amp;&amp;i)return i(g,!0);if(f)return f(g,!0);throw new Error("Cannot find module '"+g+"'")}var j=c[g]={exports:{}};b[g][0].call(j.exports,function(a){var c=b[g][1][a];return e(c?c:a)},j,j.exports,a,b,c,d)}return c[g].exports}for(var f="function"==typeof require&amp;&amp;require,g=0;g&lt;d.length;g++)e(d[g]);return e}({1:[function(a,b,c){b.exports=function(){"use strict";var a,b,c=window.navigator.userAgent,d={};return c.match(/(iPhone)/)?a="iPhone":c.match(/(iPad)/)?a="iPad":c.match(/(iPod)/)?a="iPod":c.match(/(BlackBerry|BB10)/)?a="BlackBerry":c.match(/(IEMobile)/)?a="WindowsMobile":c.match(/(Android)/)?a="Android":c.match(/(Macintosh)/)?a="Macintosh":c.match(/(Windows)/)?a="Windows":c.match(/(Linux)/)&amp;&amp;(a="Linux"),c.indexOf("OPR")&gt;0||c.indexOf("Opera")&gt;0?b="Opera":c.indexOf("Chrome")&gt;0?b="Chrome":c.indexOf("Firefox")&gt;0?b="Firefox":c.indexOf("Safari")&gt;0?b="Safari":c.indexOf("MSIE")&gt;0&amp;&amp;(b="IE"),d={device:a,browser:b}}},{}],2:[function(a,b,c){$.easing.jswing=$.easing.swing,$.extend($.easing,{def:"easeOutQuad",swing:function(a,b,c,d,e){return $.easing[$.easing.def](a,b,c,d,e)},easeInQuad:function(a,b,c,d,e){return d*(b/=e)*b+c},easeOutQuad:function(a,b,c,d,e){return-d*(b/=e)*(b-2)+c},easeInOutQuad:function(a,b,c,d,e){return(b/=e/2)&lt;1?d/2*b*b+c:-d/2*(--b*(b-2)-1)+c},easeInCubic:function(a,b,c,d,e){return d*(b/=e)*b*b+c},easeOutCubic:function(a,b,c,d,e){return d*((b=b/e-1)*b*b+1)+c},easeInOutCubic:function(a,b,c,d,e){return(b/=e/2)&lt;1?d/2*b*b*b+c:d/2*((b-=2)*b*b+2)+c},easeInQuart:function(a,b,c,d,e){return d*(b/=e)*b*b*b+c},easeOutQuart:function(a,b,c,d,e){return-d*((b=b/e-1)*b*b*b-1)+c},easeInOutQuart:function(a,b,c,d,e){return(b/=e/2)&lt;1?d/2*b*b*b*b+c:-d/2*((b-=2)*b*b*b-2)+c},easeInQuint:function(a,b,c,d,e){return d*(b/=e)*b*b*b*b+c},easeOutQuint:function(a,b,c,d,e){return d*((b=b/e-1)*b*b*b*b+1)+c},easeInOutQuint:function(a,b,c,d,e){return(b/=e/2)&lt;1?d/2*b*b*b*b*b+c:d/2*((b-=2)*b*b*b*b+2)+c},easeInSine:function(a,b,c,d,e){return-d*Math.cos(b/e*(Math.PI/2))+d+c},easeOutSine:function(a,b,c,d,e){return d*Math.sin(b/e*(Math.PI/2))+c},easeInOutSine:function(a,b,c,d,e){return-d/2*(Math.cos(Math.PI*b/e)-1)+c},easeInExpo:function(a,b,c,d,e){return 0==b?c:d*Math.pow(2,10*(b/e-1))+c},easeOutExpo:function(a,b,c,d,e){return b==e?c+d:d*(-Math.pow(2,-10*b/e)+1)+c},easeInOutExpo:function(a,b,c,d,e){return 0==b?c:b==e?c+d:(b/=e/2)&lt;1?d/2*Math.pow(2,10*(b-1))+c:d/2*(-Math.pow(2,-10*--b)+2)+c},easeInCirc:function(a,b,c,d,e){return-d*(Math.sqrt(1-(b/=e)*b)-1)+c},easeOutCirc:function(a,b,c,d,e){return d*Math.sqrt(1-(b=b/e-1)*b)+c},easeInOutCirc:function(a,b,c,d,e){return(b/=e/2)&lt;1?-d/2*(Math.sqrt(1-b*b)-1)+c:d/2*(Math.sqrt(1-(b-=2)*b)+1)+c},easeInElastic:function(a,b,c,d,e){var f=1.70158,g=0,h=d;if(0==b)return c;if(1==(b/=e))return c+d;if(g||(g=.3*e),h&lt;Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);return-(h*Math.pow(2,10*(b-=1))*Math.sin(2*(b*e-f)*Math.PI/g))+c},easeOutElastic:function(a,b,c,d,e){var f=1.70158,g=0,h=d;if(0==b)return c;if(1==(b/=e))return c+d;if(g||(g=.3*e),h&lt;Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);return h*Math.pow(2,-10*b)*Math.sin(2*(b*e-f)*Math.PI/g)+d+c},easeInOutElastic:function(a,b,c,d,e){var f=1.70158,g=0,h=d;if(0==b)return c;if(2==(b/=e/2))return c+d;if(g||(g=.3*e*1.5),h&lt;Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);return 1&gt;b?-.5*h*Math.pow(2,10*(b-=1))*Math.sin(2*(b*e-f)*Math.PI/g)+c:h*Math.pow(2,-10*(b-=1))*Math.sin(2*(b*e-f)*Math.PI/g)*.5+d+c},easeInBack:function(a,b,c,d,e,f){return void 0==f&amp;&amp;(f=1.70158),d*(b/=e)*b*((f+1)*b-f)+c},easeOutBack:function(a,b,c,d,e,f){return void 0==f&amp;&amp;(f=1.70158),d*((b=b/e-1)*b*((f+1)*b+f)+1)+c},easeInOutBack:function(a,b,c,d,e,f){return void 0==f&amp;&amp;(f=1.70158),(b/=e/2)&lt;1?d/2*b*b*(((f*=1.525)+1)*b-f)+c:d/2*((b-=2)*b*(((f*=1.525)+1)*b+f)+2)+c},easeInBounce:function(a,b,c,d,e){return d-$.easing.easeOutBounce(a,e-b,0,d,e)+c},easeOutBounce:function(a,b,c,d,e){return(b/=e)&lt;1/2.75?7.5625*d*b*b+c:2/2.75&gt;b?d*(7.5625*(b-=1.5/2.75)*b+.75)+c:2.5/2.75&gt;b?d*(7.5625*(b-=2.25/2.75)*b+.9375)+c:d*(7.5625*(b-=2.625/2.75)*b+.984375)+c},easeInOutBounce:function(a,b,c,d,e){return e/2&gt;b?.5*$.easing.easeInBounce(a,2*b,0,d,e)+c:.5*$.easing.easeOutBounce(a,2*b-e,0,d,e)+.5*d+c}})},{}],3:[function(a,b,c){var c=b.exports=function(a){a||(a={}),"string"==typeof a&amp;&amp;(a={cookie:a}),void 0===a.cookie&amp;&amp;(a.cookie="");var b={};return b.get=function(b){for(var c=a.cookie.split(/;\s*/),d=0;d&lt;c.length;d++){var e=c[d].split("="),f=unescape(e[0]);if(f===b)return unescape(e[1])}return void 0},b.set=function(b,c,d){d||(d={});var e=escape(b)+"="+escape(c);return d.expires&amp;&amp;(e+="; expires="+d.expires),d.path&amp;&amp;(e+="; path="+escape(d.path)),a.cookie=e,e},b};if("undefined"!=typeof document){var d=c(document);c.get=d.get,c.set=d.set}},{}],4:[function(a,b,c){!function(b){"use strict";var c,d,e,f,g=b("body").attr("data-country"),h=b("body").attr("data-lang"),i=a("./is-eu"),j=a("./cookie"),k=j.get("cookiebanner");i(g)&amp;&amp;void 0===k&amp;&amp;("en"!==h&amp;&amp;"ja"!==h?(f="/intl/"+h+"/content/eu-cookie-banner.json",e="/intl/"+h):"ja"===h?(f="/intl/jp/content/eu-cookie-banner.json",e="/intl/jp"):(f="/content/eu-cookie-banner.json",e=""),b.ajax({type:"POST",url:f,dataType:"json",cache:!1,async:!1,success:function(a){c=a[0].banner_localizable,d=a[0].link,c=c.replace("{{link}}",'&lt;a href="'+e+d+'"&gt;').replace("{{/link}}","&lt;/a&gt;"),b("body").prepend('&lt;div class="eu-cookie-banner"&gt;&lt;div class="row"&gt;'+c+"&lt;/div&gt;&lt;/div&gt;").fadeIn(),j.set("cookiebanner",!0,365)}}))}(jQuery)},{"./cookie":3,"./is-eu":7}],5:[function(a,b,c){!function(a){"use strict";a(".exit_tracking").on("click",function(){var b=a(this).attr("data-action"),c=a(this).attr("data-label");void 0===b&amp;&amp;(b="Exit"),ga("send","event","Exit Links",b,c)}),a(".download_tracking").on("click",function(){var b=a(this).attr("data-action"),c=a(this).attr("data-label");void 0===b&amp;&amp;(b="Download"),ga("send","event","Exit Links",b,c)}),a(".promo_tracking").on("click",function(){var b=a(this).attr("data-action"),c=a(this).attr("data-label");void 0===b&amp;&amp;(b=c),ga("send","event","Promo Click",b,c)}),a(".click_tracking").on("click",function(){var b=a(this).attr("data-action"),c=a(this).attr("data-label");void 0===b&amp;&amp;(b="click"),ga("send","event","Click Event",b,c)}),a(".webinar_tracking").on("click",function(){var b=a(this).attr("data-action"),c=a(this).attr("data-label"),d=a(this).attr("href");d=d.replace("http://",""),d=d.replace("pages.evernote.com/",""),void 0===b&amp;&amp;(b="Webinar"),void 0===c&amp;&amp;(c=""),ga("send","event","Exit Links",b,c+" "+d)}),a(".download_app_tracking").on("click",function(){var b=a(this).attr("data-action"),c=a(this).attr("href");c=c.replace("/./download/get.php?file=",""),ga("send","event","Exit Links",b,c)}),a(".a-b-click-event").on("click",function(){var b=a(this).attr("data-category"),c=a(this).attr("data-action"),d=a(this).attr("data-label");ga("send","event",b,c,d)}),a(".continue-ab-click").on("click",function(){var b=a(this).attr("data-category"),c=a(this).attr("data-action"),d=a(this).attr("data-label");ga("set","dimension8","1"),ga("send","event",b,c,d)}),a("#premium-video").on("click",function(){ga("send","event","Click Event","Video Click","Premium Video")})}(jQuery)},{}],6:[function(a,b,c){!function(b){"use strict";function c(a){l=b(window).width()&lt;=768?!0:!1}function d(){if(m===!1?(b(".drawer-nav a").attr("tabindex",1).focus(),b("#header-menu").hide(),b(".cta").hide()):(b("#content h1").attr("tabindex",0).focus(),b("#header-menu").show(),b(".cta").show()),l===!1){var a=b(".hero-background").height();b(".drawer-nav").css({height:a}),m===!1?(b(".drawer-nav").show().animate({right:"-100px"},{duration:"500",easing:"easeOutSine"}),m=!0):(b(".drawer-nav").animate({right:k},{duration:"500",easing:"easeInSine"}).hide(),m=!1)}else{var c=b(window).width(),d=b(window).height();500&gt;=d&amp;&amp;(d=500),m===!1?(b(".container").css({overflow:"hidden",height:d+"px"}),b(".drawer-nav").css({width:c,height:d,right:"0"}).fadeIn(),b("footer").hide(),m=!0):(b(".drawer-nav").fadeOut().promise().done(function(){b(".drawer-nav").css({right:k})}),b(".container").css({overflow:"auto",height:"100%"}),b("footer").show(),m=!1)}}function e(a){b.ajax({type:"POST",url:"/products/download_info.php",dataType:"json",data:{deviceType:a,productType:"evernote",language:i},cache:!1,success:function(a){b(".download").attr("href",a.download_link)}})}var f,g,h,i=b("body").attr("data-lang"),j=!1,k="-50%",l=!1,m=!1,n=a("./cookie");if(window.svgCSS="global-svg.css",b("body").hasClass("china_site")&amp;&amp;(j=!0),("en"===i||j===!0)&amp;&amp;(i=""),void 0!==n.get("seen")&amp;&amp;"true"!==n.get("seen")&amp;&amp;"NaN"!==n.get("seen")){var o=parseInt(n.get("seen"));o++,n.set("seen",o)}else n.set("seen","1");j===!1&amp;&amp;window.location.href.indexOf("local")&lt;-1&amp;&amp;(f=window.location.href.indexOf("stage")&gt;-1?"https://stage.evernote.com/CorpSiteUserVerification.action":"https://www.evernote.com/CorpSiteUserVerification.action",b.ajax({type:"POST",url:f,dataType:"json",cache:!1,xhrFields:{withCredentials:!0},success:function(a){g=a.loggedIn,h=a.userType,g===!0&amp;&amp;n.set("type",h,"path=/")}}));var p=a("device-detect")();("Android"===p.device||"iPhone"===p.device||"iPod"===p.device)&amp;&amp;b(".js-sign-in-menu").remove(),c(),b(window).bind("resize",c);var q=navigator.userAgent,r={ios:q.match(/(iPhone|iPod|iPad)/),iphone:q.match(/(iPhone)/),ipad:q.match(/(iPad)/),ipod:q.match(/(iPod)/),blackberry:q.match(/(BlackBerry|BB10)/),android:q.match(/Android/),mac:q.match(/Macintosh/),windows:q.match(/Windows/)};r.android?e("android"):r.ipad?e("ipad"):r.ipod?e("ipod"):r.iphone?e("iphone"):r.blackberry&amp;&amp;e("blackberry"),b("#header-menu, .drawer-nav .close").on("click",function(){return d(),!1}),b("body").on("keydown",function(a){27===a.keyCode&amp;&amp;m===!0&amp;&amp;d()}),b("html").click(function(){m===!0&amp;&amp;d()}),b(".drawer-nav").click(function(a){a.stopPropagation()}),b(".js-download-cta").on("click",function(){n.set("download",!0)})}(jQuery)},{"./cookie":3,"device-detect":1}],7:[function(a,b,c){b.exports=function(a){var b=["TR","CH","BE","AT","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IS","IT","LV","LT","LU","MT","NL","NO","PL","PT","RO","SK","SI","ES","SE","UK"];return b.indexOf(a)&gt;-1?!0:!1}},{}],8:[function(a,b,c){!function(a){"use strict";function b(a){var b=window.location.pathname;b=b.replace(/^\/intl\/.*?\//,"/"),b=b.replace(/^\//,a),b+=window.location.search,b+=window.location.hash,-1!==b.indexOf("index2")&amp;&amp;(b=b.replace(new RegExp("index2","g"),"index")),-1!==b.indexOf("index3")&amp;&amp;(b=b.replace(new RegExp("index3","g"),"index")),"/"===a&amp;&amp;""===window.location.search&amp;&amp;(b+="?noredirect"),document.cookie="canredirect="+escape(b)+"; path=/",window.location.href=b}function c(){a("#language_picker2").appendTo(".miscellaneous"),a(".help-translate").insertAfter(".preferred-language")}c(),a(".preferred-language").on("click",function(){a(".language-dropdown").hasClass("expanded")?a(".language-dropdown").hide().removeClass("expanded"):a(".language-dropdown").show().addClass("expanded")}),a(".language-item").on("click",function(){var c=a(this).data("value");return c&amp;&amp;b(c),!0})}(jQuery)},{}],9:[function(a,b,c){document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||document.write('&lt;link rel="stylesheet" type="text/css" href="/media/css/'+svgCSS+'"&gt;')},{}]},{},[5,8,2,6,9,4]);</code></p>
+</div><iframe src="about:blank" style="width:0px;height:0px;border:0px solid white;" id="iframeSpelling" title="Ignore - used for spell checking">
+					Ignore - used for spell checking
+				</iframe></body></html>
