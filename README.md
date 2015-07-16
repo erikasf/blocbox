@@ -1,4 +1,17 @@
 # blocbox
+#This is my research and prework before designing a new website design for a startup called Bloc Box. It is a notetaking/task management/pin links site. My work flow is as follows:
+
+## Methodology:
+  1. Design a survey for potential users to describe what type of devices they use, own and browse with.  Also  
+     extract how often they use note taking apps, what devices do they do this with, what their pain points are, what     they like about their existing service, their occupation and other demographics.
+  2. Disseminate information obtained from survey takers who were all annonymous. I used social media with links to       google forms to find participants. I don't believe it skewed the pool of potential applicants because our target      market are people that are using social media and technology.
+    3. Research and design a matrix for competitive analysis. I used a spreadsheet to enter in results of my               research into directo competitors, up and coming potential competitors and indirect competitors. This matrix         included , revenue flow, funding, site visits per month, heuristics, UX, customer reviews, and personal               experience while trying out each site as a new member.
+    4. I summarized the findings in the analysis section.
+    5. User Personas are then designed.
+    6. My next step is to design the user flow and user story.
+  (updated July 16)
+
+
 #First Step:
 UX process for an existing SASS
 # Questions That Come To Mind That Need To Be Answered In The Planning Stage
