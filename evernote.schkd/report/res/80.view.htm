@@ -1,0 +1,307 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Source View: https://evernote.com/media/css/downloading.css</title><meta name="robots" content="noindex,nofollow"><meta name="SortSite-IgnoreRule-Page" content="AccWcag1-13.1.3,AccWcag1-14.1.3,Section508-m-3,BugHtmlColgroup,BugIeCssMinMaxWidthHeight,ErrSpellingError,SeoBingTitleLength,SeoPage150k,UseGov5.1,UseGov9.2.3,UseGov10.11,UseGov11.7,UseGov14.3,UseGov17.4,UseGunningFog,W3cTitleTooLong"><style type="text/css"> 
+				body { font-size: smaller; color: black; background-color: white; font-family: Arial, Helvetica, sans-serif; }
+                
+				div.pre { color: #333; white-space: pre; font-family: monospace; clear: both; }
+				div.linespan { display: inline; }
+				span.ok { color: #000; } 
+				span.err { color: #f00; } 
+				span.line { } 
+				div.line { float: left; width: 40%; clear: both; }
+				div.col1 { float: left; width: 5%; padding: 2px; white-space: normal; }
+				div.col2 { float: left; width: 90%; padding-left: 6px; white-space: normal; }
+				div.hdr, div.err { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; position: relative; z-index: 1; top: 0px; left: 0px; width: 90%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; float: left; clear: both;  }
+				div.err-hilite { margin-bottom: 10px; position: relative; z-index: 1; top: 0px; left: 40px; width: 40%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; font-weight: bold; } 
+				div.desc { float: left; width: 40%; margin-bottom: 1em; }
+				div.help { float: right; width: 55%; margin-bottom: 1em; }
+				div.menu-title { float: right; width: 25%; min-width: 100px; text-align: right; padding: 1px; white-space: nowrap; }
+				code.dhtml { background-color: #eeeeff; font-weight: bold; }
+				a.accessible { display: none; } 
+				a.menu-title { text-decoration: none; color: black; background-color: white; border-left: 1px solid #bbb; border-top: 1px solid #bbb; border-right: 1px solid #222; border-bottom: 1px solid #222; text-align: right; display: block; padding: 2px; }
+				a.menu-title:hover { text-decoration: underline; } 
+				was-div.hdr { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; width: 90%; padding: 10px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; }
+				th { text-align: left; font-weight: normal; font-style: normal; }
+				tr { vertical-align: top; }
+				tr.middle { vertical-align: middle; }
+				img { border: none; vertical-align: middle; }
+				p { padding:0; margin:0; }
+				p code { display: block; float: left; width: 90%; font-size: 1em; }
+				p code:first-child { width: 4em; clear: both; }
+                
+				a.spell-bad
+				{
+					text-decoration: none;
+					color: black;
+					border-bottom: 1px dotted red;
+					line-height: 1.5em;
+				}
+				a.spell-good
+				{
+					text-decoration: line-through;
+					color: gray;
+					border-bottom: none;
+					line-height: 1.5em;
+				}
+
+					
+				</style><script type="text/javascript" src="../Report/jquery.min.js"></script><script type="text/javascript">
+				var g_errViewSource = "";
+				var g_viewSourceDir = "";
+				
+				
+				function pageLoad()
+				{
+					fixupOptions();
+					enableSpellings();
+					selectLine();
+				}
+				
+				function fixupOptions()
+				{
+					for ( var i = 0 ; i < document.links.length ; ++i )
+					{
+						var oLink = document.links[i];
+						
+						if ( oLink.onclick && oLink.onclick.toString().indexOf( "Options(" ) > 0 )
+						{
+							oLink.oncontextmenu = document.oncontextmenu = function() { this.click(); return false; }
+						}
+					}
+				}
+		
+				function toggleChevron( id )
+				{
+					var oElement = document.getElementById( "chev" + id );
+					//alert( id + " " + oElement.outerHTML );
+
+					if ( oElement.src.indexOf( "chevron-up.png" ) != -1 )
+					{
+						oElement.src = oElement.src.replace( "up", "down" );
+					}
+					else
+					{
+						oElement.src = oElement.src.replace( "down", "up" );
+					}
+
+					toggleVisibility( id );
+				}
+					
+				function toggleVisibility( id )
+				{					
+					var oElement = document.getElementById( id );					
+										
+					var strVisible = 'block';
+					
+					if ( oElement.style.display == 'none' )
+						oElement.style.display = strVisible;
+					else
+						oElement.style.display = 'none';
+				}
+				
+				
+				function viewSource( pageid, line, col )
+				{	
+					try
+					{
+						if ( g_viewSourceDir != '' )
+						{
+							window.location.href = g_viewSourceDir + pageid + ".view.htm#htm-l" + line;
+						}
+						else
+						{
+							window.external.ViewSource( pageid, line, col );
+						}
+					}
+					catch( err )
+					{
+						if ( g_errViewSource )
+							alert( g_errViewSource );
+					}
+				}
+
+				function enableSpellings()
+				{
+					var oRows = document.getElementsByTagName('a');
+					
+					for ( i = 0 ; i < oRows.length ; ++i )
+					{
+						var	oElement = oRows[i];
+											
+						if ( oElement.className == "spell-bad"  )
+						{
+						
+							try
+							{
+								var strWord = oElement.innerHTML;
+								
+								var bCorrect = window.external.GetSpellingCorrect( strWord );
+
+								if ( bCorrect )
+									oElement.className = 'spell-good';
+							}
+							catch(err)
+							{
+								//Do nothing
+							}
+						}
+					}
+				}
+				
+				function spellOptions( oLink, strWord, strAppEdition )
+				{
+					SpellAction = {
+						spellOther : 0,
+						spellAdded : 1,
+						spellRemoved : 2
+					};
+
+					try
+					{
+						var action = SpellAction.spellOther;
+
+						if ( strAppEdition.indexOf( "web" ) != -1 )
+						{
+							// add to custom dictionary
+							var urlAdd = '/Scans/AddCustomSpelling?word=' + strWord;
+							var urlRemove = '/Scans/RemoveCustomSpelling?word=' + strWord;
+
+							if ( $( '#iframeSpelling' ).attr('src') == urlAdd )
+							{
+								// clicking word again removes it from dictionary
+								action = SpellAction.spellRemoved;	
+								$( '#iframeSpelling' ).attr('src', urlRemove );
+							}
+							else
+							{
+								action = SpellAction.spellAdded;
+								$( '#iframeSpelling' ).attr('src', urlAdd );
+							}
+						}
+						else
+						{
+							// popup menu
+							action = window.external.SpellOptions( strWord );
+						}
+
+						if ( action == SpellAction.spellAdded )
+						{
+							// mark this one as good
+							oLink.className = 'spell-good';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-bad' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-good';
+								}
+							}
+						}
+						else if ( action == SpellAction.spellRemoved )
+						{
+							// mark this one as bad again
+							oLink.className = 'spell-bad';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-good' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-bad';
+								}
+							}
+						}
+					}
+					catch( err )
+					{
+						alert( "Spelling options are only available when the report is viewed in SortSite." );
+					}
+
+					// don't jump around or scroll after showing options menu
+					return false;
+				}
+				</script></head><body onload="pageLoad()"><a class="accessible" href="#mainContent">[Skip to Content]</a><div class="hdr"><h1>
+						CSS File
+					</h1><table><tr><th>
+						URL: 
+					</th><td><a rel="nofollow" target="_top" href="https://evernote.com/media/css/downloading.css">https://evernote.com/media/css/downloading.css</a></td></tr><tr><th title="The status code returned by the web server tells the browser if the request was successful.">
+						HTTP Status: 
+					</th><td title="The status code returned by the web server tells the browser if the request was successful.">200 OK</td></tr><tr><th title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">
+						MIME Type: 
+					</th><td title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">text/css</td></tr><tr><th title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">
+						Last Modified: 
+					</th><td title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">Fri, 15 May 2015 21:42:54 GMT</td></tr><tr><th>
+						Download Time: 
+					</th><td>
+								Less than a second
+							</td></tr><tr><th>
+						Cookies: 
+					</th><td>
+								None
+							</td></tr><tr><th>
+						Size: 
+					</th><td>7 KB 
+						</td></tr><tr><th>
+								Rules: 
+							</th><td>77
+								style rules
+							</td></tr><tr><th>
+								Imports: 
+							</th><td>0
+								stylesheets
+							</td></tr><tr><th>
+						HTTP Headers: 
+					</th><td><a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Headers" id="chevHttpHeaders" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();">7&nbsp;headers</a><div style="display: none; width: 100%;" id="HttpHeaders"><a rel="nofollow">Accept-Ranges:  bytes
+</a><br><a rel="nofollow">Cache-Control:  max-age=86400
+</a><br><a rel="nofollow">Date:  Thu, 16 Jul 2015 06:12:59 GMT
+</a><br><a rel="nofollow">Server:  Apache
+</a><br><a rel="nofollow">Strict-Transport-Security:  max-age=31536000
+</a><br><a rel="nofollow">Vary:  Accept-Encoding
+</a><br><a rel="nofollow">X-Frame-Options:  SAMEORIGIN
+</a><br></div></td></tr><tr><th>
+						Links In: 
+					</th><td><a href="#" onclick="toggleChevron('LinksIn'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Links" id="chevLinksIn" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('LinksIn'); return false;" onkeypress="this.click();">2&nbsp;pages</a><div style="display: none; width: 100%;" id="LinksIn"><a rel="nofollow" href="https://evernote.com/download/" onclick="viewSource( 7, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/download/</a><br><a rel="nofollow" href="https://evernote.com/download/?offer=www_menu" onclick="viewSource( 15, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/download/?offer=www_menu</a><br></div></td></tr><tr><th>
+							Links Out: 
+						</th><td><a><img width="20" height="20" alt="View Links" id="chevLinksOut" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;links</a><div style="display: none; width: 100%;" id="LinksOut"></div></td></tr><tr><th>
+							Images: 
+						</th><td><a href="#" onclick="toggleChevron('Images'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Images" id="chevImages" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('Images'); return false;" onkeypress="this.click();">9&nbsp;images</a><div style="display: none; width: 100%;" id="Images"><a rel="nofollow" href="https://evernote.com/media/img/logo-new.png">https://evernote.com/media/img/logo-new.png</a> NaN KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/img/logo_yx.png">https://evernote.com/media/img/logo_yx.png</a> NaN KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/img/downloading/hero.png">https://evernote.com/media/img/downloading/hero.png</a> NaN KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/img/downloading/arrows.png">https://evernote.com/media/img/downloading/arrows.png</a> NaN KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/img/downloading/sprite_mac.png">https://evernote.com/media/img/downloading/sprite_mac.png</a> NaN KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/img/downloading/sprite_win.png">https://evernote.com/media/img/downloading/sprite_win.png</a> NaN KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/img/downloading/sprite_mac_yx.png">https://evernote.com/media/img/downloading/sprite_mac_yx.png</a> NaN KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/img/downloading/sprite_win_yx.png">https://evernote.com/media/img/downloading/sprite_win_yx.png</a> NaN KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/img/partners/post-it/vertical-divider.png">https://evernote.com/media/img/partners/post-it/vertical-divider.png</a> NaN KB
+					
+					<br></div></td></tr><tr><th>
+							CSS: 
+						</th><td><a><img width="20" height="20" alt="View CSS Files" id="chevCSS" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;files</a><div style="display: none; width: 100%;" id="CSS"></div></td></tr><tr><th>
+							JavaScript: 
+						</th><td><a><img width="20" height="20" alt="View JavaScript Files" id="chevJavaScript" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;files</a><div style="display: none; width: 100%;" id="JavaScript"></div></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr><tr class="middle"><th><img alt="Issue" style="text-align:absmiddle" width="20" height="20" src="../Report/bench-worse.png">	
+								Issues: 
+							</th><td>9
+								issues found on
+								17
+								lines
+							</td></tr></table></div><div id="mainContent" class="pre"><script type='text/javascript'>function selectLine() {}</script><p><code>1</code><code>@-webkit-keyframes check{0%{height:0;width:0}25%{height:0;width:10px}50%{height:20px;width:10px}}@-moz-keyframes check{0%{height:0;width:0}25%{height:0;width:10px}50%{height:20px;width:10px}}@-ms-keyframes check{0%{height:0;width:0}25%{height:0;width:10px}50%{height:20px;width:10px}}@-o-keyframes check{0%{height:0;width:0}25%{height:0;width:10px}50%{height:20px;width:10px}}@keyframes check{0%{height:0;width:0}25%{height:0;width:10px}50%{height:20px;width:10px}}body{margin:0;padding:0;width:100%;font-size:12px;font-size:0.75rem;font-family:Helvetica,Arial,sans-serif;line-height:1.3;text-rendering:optimizeLegibility}ul{list-style:none;margin:0;padding:0}ul li{margin:0;padding:0}ol{margin:0;padding:0}p{padding:0;margin:0px 0px 5px 0px;margin:0rem 0rem 0.3125rem 0rem}h1,h2,h3,h4,h5,h6{padding:0;margin:0px 0px 10px 0px;margin:0rem 0rem 0.625rem 0rem;font-weight:normal}fieldset{border:none;margin:0;padding:0}button{cursor:pointer}</code></p><br style='clear: both'> <div id='err-l1c939-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>The :before and :after CSS pseudo selectors are not supported by IE7 and earlier. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Internet Explorer &#8804; 7</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugIeCssBeforeAfter" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>.clearfix:after{clear:both;content:".";display:block;height:0;visibility:hidden}</code></p><br style='clear: both'> <div id='err-l1c1019-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>This CSS style makes it difficult or impossible to see the dotted link focus outline. </div>   <div class='help'>Change the style to avoid obscuring the focus outline around A elements, which is used when tabbing through links. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.w3.org/TR/WCAG20-TECHS/F78.html' target='_top'>WCAG 2.0 AA F78</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag2-F78-1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l1c1019-1' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>The :focus CSS pseudo selector is not supported by IE7 and earlier. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Internet Explorer &#8804; 7</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugIeCssFocus" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>:focus{outline:0}html{font-size:62.5%;background:white}strong{color:#556c7b}.iframe{border:none}</code></p><br style='clear: both'> <div id='err-l1c1115-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>If you set any of the colors on the BODY or A elements you must set all of them. </div>   <div class='help'>
+			In HTML the color attributes are TEXT, BGCOLOR, LINK, ALINK and VLINK. In CSS the attributes are COLOR and BACKGROUND-COLOR.
+			Some users have browser defaults set to white text on a black background, so setting one color without setting the others can result in black text on a black background.
+		 </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.w3.org/TR/WCAG20-TECHS/F24.html' target='_top'>WCAG 2.0 AA F24</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-2.2.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>body{margin:0;padding:0;background:#ffffff}header{padding:16px 0 66px 16px;padding:1.6rem 0 6.6rem 1.6rem;border-bottom:1px solid #cccccc}header h1 a{display:block;background:</code></p><br style='clear: both'> <div id='err-l1c1290-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>Use background images sparingly and make sure they are simple, especially behind text. </div>   <div class='help'>
+			Background images can make it difficult for users to read foreground text. A single, large, complex background image (including a picture) can substantially slow page download rates.
+		 </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://guidelines.usability.gov/guidelines/150' target='_top'>Usability.gov 14:1</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "UseGov14.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>url(/media/img/logo-new.png) no-repeat;width:200px;height:49px;height:4.9rem;text-indent:-99999px;position:relative;margin-top:6px}header.yx h1 a{background:url(/media/img/logo_yx.png) no-repeat}div#colwrap{width:100%;margin-top:40px}div.hero span.evernote{display:block;float:left;background:url(/media/img/downloading/hero.png) no-repeat;width:200px;width:20rem;height:138px;height:13.8rem}div.hero h1{float:left;font-family:'webfont',Verdana,arial,helvetica,sans-serif;font-size:36px;font-size:3.6rem;margin:0 0 0 30px;margin:0 0 0 3rem;color:#4dbdcb;line-height:4.5rem;font-weight:normal}div.hero.row&gt;p{float:left;margin:20px 0 0 30px;margin:2rem 0 0 3rem}div.hero h1 span.for{display:block;font-family:'webfont_italic',Verdana,arial,helvetica,sans-serif;color:#88cfd9}div.hero h1 span.os{font-family:'webfont',Verdana,arial,helvetica,sans-serif}div.hero.row{width:700px;margin-top:50px;margin-top:3.125rem}iframe{display:none}p{font-size:12px;font-size:1.2rem;color:#696969}div.row&gt;p{text-align:center;margin:35px 0 50px 0;margin:3.5rem 0 5rem 0;color:#696969}spa</code></p><br style='clear: both'> <div id='err-l1c2358-0' class='err' >  <div class='col1'><img src='../Report/p3.png' width='20' height='20' alt='Priority 3'> </div>  <div class='col2'>   <div class='desc'>CSS property border-radius is not supported by IE8 or earlier. </div>   <div class='help'>No rounded corners will be displayed on old versions of Internet Explorer. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius#Browser_compatibility' target='_top'>Internet Explorer &#8804; 8.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugCssBorderRadius" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>n.image{border-radius:4px;border:2px solid #eee}ul.steps{list-style:none;margin-top:70px;background:url(/media/img/downloading/arrows.png) no-repeat;background-position:-2px 53px;background-position:-0.02rem 5.3rem}ul.steps h2{font-size:14px;font-size:1.4rem;color:#556c7b;margin:15px 0 5px}ul.s</code></p><br style='clear: both'> <div id='err-l1c2653-0' class='err' >  <div class='col1'><img src='../Report/p3.png' width='20' height='20' alt='Priority 3'> </div>  <div class='col2'>   <div class='desc'>The display:inline-block CSS property is not implemented in IE7 or Firefox 2. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Internet Explorer &#8804; 7</a> <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Firefox &#8804; 2</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugIeCssDisplayInlineBlock" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>teps li{display:inline-block;width:33.3333333%;flo</code></p><br style='clear: both'> <div id='err-l1c2703-0' class='err' >  <div class='col1'><img src='../Report/p6.png' width='20' height='20' alt='Priority 6'> </div>  <div class='col2'>   <div class='desc'>Property -webkit-box-sizing is vendor specific. </div>   <div class='help'>Properties prefixed by a dash or underscore are vendor specific and only work on one browser engine. </div>   <div class='line'><span class='line'>Line 1</span>  CSS Validation </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cCssVendorPropertywebkitboxsizing" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>at:left;-webkit-box-sizing:bor</code></p><br style='clear: both'> <div id='err-l1c2733-0' class='err' >  <div class='col1'><img src='../Report/p6.png' width='20' height='20' alt='Priority 6'> </div>  <div class='col2'>   <div class='desc'>Property -moz-box-sizing is vendor specific. </div>   <div class='help'>Properties prefixed by a dash or underscore are vendor specific and only work on one browser engine. </div>   <div class='line'><span class='line'>Line 1</span>  CSS Validation </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cCssVendorPropertymozboxsizing" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>der-box;-moz-box-sizing:bor</code></p><br style='clear: both'> <div id='err-l1c2760-0' class='err' >  <div class='col1'><img src='../Report/p6.png' width='20' height='20' alt='Priority 6'> </div>  <div class='col2'>   <div class='desc'>Property -ms-box-sizing is vendor specific. </div>   <div class='help'>Properties prefixed by a dash or underscore are vendor specific and only work on one browser engine. </div>   <div class='line'><span class='line'>Line 1</span>  CSS Validation </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cCssVendorPropertymsboxsizing" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>der-box;-ms-box-sizing:border-box;box-sizing:border-box}ul.steps li:first-child{margin-left:0;padding-right:56.4px;padding-right:5.6rem}ul.steps li.step2{padding:0 28.1px;padding:0 2.81rem}ul.steps li.step3{padding-left:56.4px;padding-left:5.6rem}ul.steps.mac li span.image{background:url(/media/img/downloading/sprite_mac.png) no-repeat}ul.steps.windows li span.image{background:url(/media/img/downloading/sprite_win.png) no-repeat}ul.steps.mac li span.image-yx{background:url(/media/img/downloading/sprite_mac_yx.png) no-repeat}ul.steps.windows li span.image-yx{background:url(/media/img/downloading/sprite_win_yx.png) no-repeat}ul.steps li span.image,ul.steps li span.image-yx{display:block;width:250px;width:25rem;height:155px;height:15.5rem}#footer{background:#f4f4f4;font-size:12px}#footer .row{border-t</code></p><br style='clear: both'> <div id='err-l1c3569-0' class='err' >  <div class='col1'><img src='../Report/p6.png' width='20' height='20' alt='Priority 6'> </div>  <div class='col2'>   <div class='desc'>Property -webkit-box-shadow is vendor specific. </div>   <div class='help'>Properties prefixed by a dash or underscore are vendor specific and only work on one browser engine. </div>   <div class='line'><span class='line'>Line 1</span>  CSS Validation </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cCssVendorPropertywebkitboxshadow" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>op:none;-webkit-box-shadow:none;box-shad</code></p><br style='clear: both'> <div id='err-l1c3609-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>The :before and :after CSS pseudo selectors are not supported by IE7 and earlier. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Internet Explorer &#8804; 7</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugIeCssBeforeAfter" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>ow:none}.clearfix:after{clear:both;content:".";display:block;height:0;visibility:hidden}ul.steps.windows li span.chrome{background-position:0 0;width:250px;height:155px}ul.steps.windows li span.firefox{background-position:0 -205px;width:250px;height:155px}ul.steps.windows li span.ie{background-position:0 -410px;width:250px;height:155px}ul.steps.windows .step2 .image,ul.steps.windows .step2 .image-yx{background-position:0 -615px;width:250px;height:155px}ul.steps.windows .step3 .image,ul.steps.windows .step3 .image-yx{background-position:0 -820px;width:250px;height:155px}ul.steps.mac li span.chrome{background-position:0 0;width:250px;height:155px}ul.steps.mac li span.firefox{background-position:0 -205px;width:250px;height:155px}ul.steps.mac li span.safari{background-position:0 -410px;width:250px;height:155px}ul.steps.mac .step2 .image,ul.steps.mac .step2 .image-yx{background-position:0 -615px;width:250px;height:155px}ul.steps.mac .step3 .image,ul.steps.mac .step3 .image-yx{background-position:0 -820px;width:250px;height:155px}.display_none{display:none}.display_block{display:block}.display_inline{display:inline}@media (min--moz-device-pixel-ratio: 1.5),(-o-min-device-pixel-ratio: 3/2),(-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5),(min-resolution: 144dpi),(min-resolution: 1.5dppx){}.hide-element{display:none}h1.hide-element{width:62%}#prod_use_cases h3{font-size:16px !important}footer{clear:both;background:white;width:100%;padding:40px 0px;padding:2.5rem 0rem;border-top:1px solid #cccccc;font-family:Helvetica,Arial,sans-serif}footer nav{max-width:1280px;max-width:80rem;text-align:center;margin-left:auto;margin-right:auto}footer nav ul{width:100%;margin:0 auto}footer nav ul li{display:inline;border-left:1px solid #cccccc;padding:0px 20px;padding:0rem 1.25rem;color:#696969}@media only screen and (max-width: 750px){footer nav ul li{display:block;padding:0;margin-bottom:10px;margin-bottom:0.625rem;border:none;}}footer nav ul li a{color:#696969;text-decoration:none}footer nav ul li a:hover,footer nav ul li a:focus{text-decoration:underline}footer nav ul li:first-child{border:no</code></p><br style='clear: both'> <div id='err-l1c5737-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>CSS Validation Error. </div>   <div class='line'><span class='line'>Line 1</span>  CSS Validation </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cCssError" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>ne;padding-left:0}.app-store-badges{text-align:center;</code></p><br style='clear: both'> <div id='err-l1c5791-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>CSS Validation Error. </div>   <div class='line'><span class='line'>Line 1</span>  CSS Validation </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cCssError" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>padding-top:25px;padding-top:1.5625rem}.ap</code></p><br style='clear: both'> <div id='err-l1c5833-0' class='err' >  <div class='col1'><img src='../Report/p3.png' width='20' height='20' alt='Priority 3'> </div>  <div class='col2'>   <div class='desc'>Property fill doesn&#39;t exist in the CSS 2.1 or CSS 3 recommendations. </div>   <div class='help'>The property name may be mis-spelled, vendor specific, or a CSS 3 property which has not yet reached recommendation status. </div>   <div class='line'><span class='line'>Line 1</span>  CSS Validation </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cCssUnknownPropertyfill" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>p-store-badges a{fill:black;text-decoration:none}.app-store-badges .apple{width:1</code></p><br style='clear: both'> <div id='err-l1c5914-0' class='err' >  <div class='col1'><img src='../Report/p3.png' width='20' height='20' alt='Priority 3'> </div>  <div class='col2'>   <div class='desc'>The display:inline-block CSS property is not implemented in IE7 or Firefox 2. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Internet Explorer &#8804; 7</a> <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Firefox &#8804; 2</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugIeCssDisplayInlineBlock" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>35px;height:47px;display:inline-block}.app-store-bad</code></p><br style='clear: both'> <div id='err-l1c5966-0' class='err' >  <div class='col1'><img src='../Report/p3.png' width='20' height='20' alt='Priority 3'> </div>  <div class='col2'>   <div class='desc'>The display:inline-block CSS property is not implemented in IE7 or Firefox 2. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Internet Explorer &#8804; 7</a> <a href='http://www.quirksmode.org/css/contents.html' target='_top'>Firefox &#8804; 2</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugIeCssDisplayInlineBlock" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>ges .google-play{display:inline-block;width:135px;height:47px}.post-it.hero.row{width:940px;position:relative;margin-top:62px;background:url("/media/img/partners/post-it/vertical-divider.png") no-repeat;background-position:596px}.post-it.hero span.evernote{width:130px;height:89.7px;position:relative;left:-20px;background-size:130px 89.7px}.post-it.hero h1{margin-left:-14px}.post-it.hero.row&gt;p{margin:0;clear:left;left:116px;position:relative;margin-top:17px}.post-it-assets img{width:111px;height:125.5px;float:left}.post-it-assets{position:absolute;left:628px;top:-6px}.post-it-assets&gt;div{width:111px;height:126px;float:left}.post-it-assets p{float:left;width:160px;margin-left:32px;margin-top:8px}</code></p>
+</div><iframe src="about:blank" style="width:0px;height:0px;border:0px solid white;" id="iframeSpelling" title="Ignore - used for spell checking">
+					Ignore - used for spell checking
+				</iframe></body></html>

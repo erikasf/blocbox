@@ -1,0 +1,942 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Source View: https://evernote.com/legal/privacy.php</title><meta name="robots" content="noindex,nofollow"><meta name="SortSite-IgnoreRule-Page" content="AccWcag1-13.1.3,AccWcag1-14.1.3,Section508-m-3,BugHtmlColgroup,BugIeCssMinMaxWidthHeight,ErrSpellingError,SeoBingTitleLength,SeoPage150k,UseGov5.1,UseGov9.2.3,UseGov10.11,UseGov11.7,UseGov14.3,UseGov17.4,UseGunningFog,W3cTitleTooLong"><style type="text/css"> 
+				body { font-size: smaller; color: black; background-color: white; font-family: Arial, Helvetica, sans-serif; }
+                
+				div.pre { color: #333; white-space: pre; font-family: monospace; clear: both; }
+				div.linespan { display: inline; }
+				span.ok { color: #000; } 
+				span.err { color: #f00; } 
+				span.line { } 
+				div.line { float: left; width: 40%; clear: both; }
+				div.col1 { float: left; width: 5%; padding: 2px; white-space: normal; }
+				div.col2 { float: left; width: 90%; padding-left: 6px; white-space: normal; }
+				div.hdr, div.err { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; position: relative; z-index: 1; top: 0px; left: 0px; width: 90%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; float: left; clear: both;  }
+				div.err-hilite { margin-bottom: 10px; position: relative; z-index: 1; top: 0px; left: 40px; width: 40%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; font-weight: bold; } 
+				div.desc { float: left; width: 40%; margin-bottom: 1em; }
+				div.help { float: right; width: 55%; margin-bottom: 1em; }
+				div.menu-title { float: right; width: 25%; min-width: 100px; text-align: right; padding: 1px; white-space: nowrap; }
+				code.dhtml { background-color: #eeeeff; font-weight: bold; }
+				a.accessible { display: none; } 
+				a.menu-title { text-decoration: none; color: black; background-color: white; border-left: 1px solid #bbb; border-top: 1px solid #bbb; border-right: 1px solid #222; border-bottom: 1px solid #222; text-align: right; display: block; padding: 2px; }
+				a.menu-title:hover { text-decoration: underline; } 
+				was-div.hdr { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; width: 90%; padding: 10px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; }
+				th { text-align: left; font-weight: normal; font-style: normal; }
+				tr { vertical-align: top; }
+				tr.middle { vertical-align: middle; }
+				img { border: none; vertical-align: middle; }
+				p { padding:0; margin:0; }
+				p code { display: block; float: left; width: 90%; font-size: 1em; }
+				p code:first-child { width: 4em; clear: both; }
+                
+				a.spell-bad
+				{
+					text-decoration: none;
+					color: black;
+					border-bottom: 1px dotted red;
+					line-height: 1.5em;
+				}
+				a.spell-good
+				{
+					text-decoration: line-through;
+					color: gray;
+					border-bottom: none;
+					line-height: 1.5em;
+				}
+
+					
+				</style><script type="text/javascript" src="../Report/jquery.min.js"></script><script type="text/javascript">
+				var g_errViewSource = "";
+				var g_viewSourceDir = "";
+				
+				
+				function pageLoad()
+				{
+					fixupOptions();
+					enableSpellings();
+					selectLine();
+				}
+				
+				function fixupOptions()
+				{
+					for ( var i = 0 ; i < document.links.length ; ++i )
+					{
+						var oLink = document.links[i];
+						
+						if ( oLink.onclick && oLink.onclick.toString().indexOf( "Options(" ) > 0 )
+						{
+							oLink.oncontextmenu = document.oncontextmenu = function() { this.click(); return false; }
+						}
+					}
+				}
+		
+				function toggleChevron( id )
+				{
+					var oElement = document.getElementById( "chev" + id );
+					//alert( id + " " + oElement.outerHTML );
+
+					if ( oElement.src.indexOf( "chevron-up.png" ) != -1 )
+					{
+						oElement.src = oElement.src.replace( "up", "down" );
+					}
+					else
+					{
+						oElement.src = oElement.src.replace( "down", "up" );
+					}
+
+					toggleVisibility( id );
+				}
+					
+				function toggleVisibility( id )
+				{					
+					var oElement = document.getElementById( id );					
+										
+					var strVisible = 'block';
+					
+					if ( oElement.style.display == 'none' )
+						oElement.style.display = strVisible;
+					else
+						oElement.style.display = 'none';
+				}
+				
+				
+				function viewSource( pageid, line, col )
+				{	
+					try
+					{
+						if ( g_viewSourceDir != '' )
+						{
+							window.location.href = g_viewSourceDir + pageid + ".view.htm#htm-l" + line;
+						}
+						else
+						{
+							window.external.ViewSource( pageid, line, col );
+						}
+					}
+					catch( err )
+					{
+						if ( g_errViewSource )
+							alert( g_errViewSource );
+					}
+				}
+
+				function enableSpellings()
+				{
+					var oRows = document.getElementsByTagName('a');
+					
+					for ( i = 0 ; i < oRows.length ; ++i )
+					{
+						var	oElement = oRows[i];
+											
+						if ( oElement.className == "spell-bad"  )
+						{
+						
+							try
+							{
+								var strWord = oElement.innerHTML;
+								
+								var bCorrect = window.external.GetSpellingCorrect( strWord );
+
+								if ( bCorrect )
+									oElement.className = 'spell-good';
+							}
+							catch(err)
+							{
+								//Do nothing
+							}
+						}
+					}
+				}
+				
+				function spellOptions( oLink, strWord, strAppEdition )
+				{
+					SpellAction = {
+						spellOther : 0,
+						spellAdded : 1,
+						spellRemoved : 2
+					};
+
+					try
+					{
+						var action = SpellAction.spellOther;
+
+						if ( strAppEdition.indexOf( "web" ) != -1 )
+						{
+							// add to custom dictionary
+							var urlAdd = '/Scans/AddCustomSpelling?word=' + strWord;
+							var urlRemove = '/Scans/RemoveCustomSpelling?word=' + strWord;
+
+							if ( $( '#iframeSpelling' ).attr('src') == urlAdd )
+							{
+								// clicking word again removes it from dictionary
+								action = SpellAction.spellRemoved;	
+								$( '#iframeSpelling' ).attr('src', urlRemove );
+							}
+							else
+							{
+								action = SpellAction.spellAdded;
+								$( '#iframeSpelling' ).attr('src', urlAdd );
+							}
+						}
+						else
+						{
+							// popup menu
+							action = window.external.SpellOptions( strWord );
+						}
+
+						if ( action == SpellAction.spellAdded )
+						{
+							// mark this one as good
+							oLink.className = 'spell-good';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-bad' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-good';
+								}
+							}
+						}
+						else if ( action == SpellAction.spellRemoved )
+						{
+							// mark this one as bad again
+							oLink.className = 'spell-bad';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-good' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-bad';
+								}
+							}
+						}
+					}
+					catch( err )
+					{
+						alert( "Spelling options are only available when the report is viewed in SortSite." );
+					}
+
+					// don't jump around or scroll after showing options menu
+					return false;
+				}
+				</script></head><body onload="pageLoad()"><a class="accessible" href="#mainContent">[Skip to Content]</a><div class="hdr"><h1>
+						HTML Document
+					</h1><table><tr><th>
+						URL: 
+					</th><td><a rel="nofollow" target="_top" href="https://evernote.com/legal/privacy.php">https://evernote.com/legal/privacy.php</a></td></tr><tr><th title="The status code returned by the web server tells the browser if the request was successful.">
+						HTTP Status: 
+					</th><td title="The status code returned by the web server tells the browser if the request was successful.">200 OK</td></tr><tr><th title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">
+						MIME Type: 
+					</th><td title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">text/html</td></tr><tr><th title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">
+						Last Modified: 
+					</th><td title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">Mon, 01 Jan 1601 00:00:00 GMT</td></tr><tr><th>
+						Download Time: 
+					</th><td>
+								Less than a second
+							</td></tr><tr><th>
+						Cookies: 
+					</th><td>
+								None
+							</td></tr><tr><th>
+						Size: 
+					</th><td>47 KB 
+						</td></tr><tr><th>
+								Page Weight: 
+							</th><td>49 KB (total size of HTML, CSS, JavaScript and images)
+							</td></tr><tr><th>
+								Depth: 
+							</th><td>1 clicks from home page
+							</td></tr><tr><th>
+								Charset: 
+							</th><td>UTF-8</td></tr><tr><th>
+								Forms: 
+							</th><td>0 forms containing 1 controls
+							</td></tr><tr><th>
+						HTTP Headers: 
+					</th><td><a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Headers" id="chevHttpHeaders" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();">7&nbsp;headers</a><div style="display: none; width: 100%;" id="HttpHeaders"><a rel="nofollow">Cache-Control:  max-age=86400
+</a><br><a rel="nofollow">Date:  Thu, 16 Jul 2015 06:13:02 GMT
+</a><br><a rel="nofollow">Server:  Apache
+</a><br><a rel="nofollow">Strict-Transport-Security:  max-age=31536000
+</a><br><a rel="nofollow">Transfer-Encoding:  chunked
+</a><br><a rel="nofollow">Vary:  Accept-Encoding
+</a><br><a rel="nofollow">X-Frame-Options:  SAMEORIGIN
+</a><br></div></td></tr><tr><th>
+						Links In: 
+					</th><td><a href="#" onclick="toggleChevron('LinksIn'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Links" id="chevLinksIn" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('LinksIn'); return false;" onkeypress="this.click();">16&nbsp;pages</a><div style="display: none; width: 100%;" id="LinksIn"><a rel="nofollow" href="https://evernote.com/?var=1" onclick="viewSource( 2, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/?var=1</a><br><a rel="nofollow" href="https://evernote.com/" onclick="viewSource( 3, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/</a><br><a rel="nofollow" href="https://evernote.com/business" onclick="viewSource( 5, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/business</a><br><a rel="nofollow" href="https://evernote.com/pricing/" onclick="viewSource( 6, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/pricing/</a><br><a rel="nofollow" href="https://evernote.com/download/" onclick="viewSource( 7, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/download/</a><br><a rel="nofollow" href="https://evernote.com/register/?offer=www_menu" onclick="viewSource( 9, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/register/?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/pricing/?offer=www_menu" onclick="viewSource( 10, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/pricing/?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=plus&amp;amp;offer=www_menu" onclick="viewSource( 11, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=plus&amp;amp;offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=premium&amp;amp;offer=www_menu" onclick="viewSource( 12, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=premium&amp;amp;offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/download/?offer=www_menu" onclick="viewSource( 15, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/download/?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/register/?upgrade=premium&amp;amp;itemCode=premium-1year&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" onclick="viewSource( 16, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/register/?upgrade=premium&amp;amp;itemCode=premium-1year&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=basic&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" onclick="viewSource( 18, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=basic&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/register/?offer=dropbox-3mon&amp;amp;origin=marketingsite" onclick="viewSource( 19, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/register/?offer=dropbox-3mon&amp;amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=plus&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" onclick="viewSource( 20, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=plus&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/register/?upgrade=plus&amp;amp;itemCode=plus-1year&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" onclick="viewSource( 21, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/register/?upgrade=plus&amp;amp;itemCode=plus-1year&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=premium&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" onclick="viewSource( 22, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=premium&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite</a><br></div></td></tr><tr><th>
+							Links Out: 
+						</th><td><a href="#" onclick="toggleChevron('LinksOut'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Links" id="chevLinksOut" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('LinksOut'); return false;" onkeypress="this.click();">47&nbsp;links</a><div style="display: none; width: 100%;" id="LinksOut"><a rel="nofollow" href="https://evernote.com/" onclick="viewSource( 3, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/</a><br><a rel="nofollow" href="https://evernote.com/legal/privacy.php" onclick="viewSource( 32, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/legal/privacy.php</a><br><a rel="nofollow" href="https://evernote.com/pricing/" onclick="viewSource( 6, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/pricing/</a><br><a rel="nofollow" href="https://evernote.com/register/">https://evernote.com/register/</a><br><a rel="nofollow" href="https://www.evernote.com/Home.action?offer=www_menu" onclick="viewSource( 8, 0, 0 ); return false;" onkeypress="this.click();">https://www.evernote.com/Home.action?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/register?offer=www_menu" onclick="viewSource( 9, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/register?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/pricing?offer=www_menu" onclick="viewSource( 10, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/pricing?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=plus&amp;offer=www_menu" onclick="viewSource( 11, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=plus&amp;offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=premium&amp;offer=www_menu" onclick="viewSource( 12, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=premium&amp;offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/business" onclick="viewSource( 5, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/business</a><br><a rel="nofollow" href="https://www.evernote.com/market?offer=www_menu" onclick="viewSource( 13, 0, 0 ); return false;" onkeypress="this.click();">https://www.evernote.com/market?offer=www_menu</a><br><a rel="nofollow" href="https://blog.evernote.com/" onclick="viewSource( 14, 0, 0 ); return false;" onkeypress="this.click();">https://blog.evernote.com/</a><br><a rel="nofollow" href="https://evernote.com/download/?offer=www_menu" onclick="viewSource( 15, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/download/?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/legal/changes.php">https://evernote.com/legal/changes.php</a><br><a rel="nofollow" href="https://evernote.com/legal/cookies.php">https://evernote.com/legal/cookies.php</a><br><a rel="nofollow" href="https://evernote.com/privacy/data_usage.php">https://evernote.com/privacy/data_usage.php</a><br><a rel="nofollow" href="https://evernote.com/legal/tos.php" onclick="viewSource( 31, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/legal/tos.php</a><br><a rel="nofollow" href="https://support.twitter.com/articles/20170405">https://support.twitter.com/articles/20170405</a><br><a rel="nofollow" href="https://www.facebook.com/help/341425252616329">https://www.facebook.com/help/341425252616329</a><br><a rel="nofollow" href="https://www.facebook.com/help/1415256572060999">https://www.facebook.com/help/1415256572060999</a><br><a rel="nofollow" href="http://www.aboutads.info/">http://www.aboutads.info/</a><br><a rel="nofollow" href="http://www.networkadvertising.org/choices/">http://www.networkadvertising.org/choices/</a><br><a rel="nofollow" href="https://evernote.com/contact/support/kb/">https://evernote.com/contact/support/kb/</a><br><a rel="nofollow" href="https://evernote.com/privacy/3rd_party_app_permissions.php">https://evernote.com/privacy/3rd_party_app_permissions.php</a><br><a rel="nofollow" href="https://evernote.com/legal/law_enforcement.php">https://evernote.com/legal/law_enforcement.php</a><br><a rel="nofollow" href="http://www.export.gov/safeharbor/">http://www.export.gov/safeharbor/</a><br><a rel="nofollow" href="https://evernote.com/legal/commercial_terms.php">https://evernote.com/legal/commercial_terms.php</a><br><a rel="nofollow" href="https://evernote.com/market/faq/">https://evernote.com/market/faq/</a><br><a rel="nofollow" href="http://evernote.com/contact/support/kb/#/article/28451608">http://evernote.com/contact/support/kb/#/article/28451608</a><br><a rel="nofollow" href="https://evernote.com/privacy/delete_data.php">https://evernote.com/privacy/delete_data.php</a><br><a rel="nofollow" href="https://evernote.com/legal/" onclick="viewSource( 30, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/legal/</a><br><a rel="nofollow" href="https://evernote.com/legal/user_guidelines.php">https://evernote.com/legal/user_guidelines.php</a><br><a rel="nofollow" href="https://evernote.com/tos/business.php">https://evernote.com/tos/business.php</a><br><a rel="nofollow" href="https://evernote.com/legal/ip_compliance.php">https://evernote.com/legal/ip_compliance.php</a><br><a rel="nofollow" href="https://evernote.com/trademark">https://evernote.com/trademark</a><br><a rel="nofollow" href="https://evernote.com/opensource">https://evernote.com/opensource</a><br><a rel="nofollow" href="https://evernote.com/legal/transparency">https://evernote.com/legal/transparency</a><br><a rel="nofollow" href="https://evernote.com/legal/data-protection.php">https://evernote.com/legal/data-protection.php</a><br><a rel="nofollow" href="https://evernote.com/products/" onclick="viewSource( 24, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/products/</a><br><a rel="nofollow" href="https://www.evernote.com/market/" onclick="viewSource( 25, 0, 0 ); return false;" onkeypress="this.click();">https://www.evernote.com/market/</a><br><a rel="nofollow" href="https://appcenter.evernote.com/" onclick="viewSource( 26, 0, 0 ); return false;" onkeypress="this.click();">https://appcenter.evernote.com/</a><br><a rel="nofollow" href="https://evernote.com/contact/support/" onclick="viewSource( 27, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/contact/support/</a><br><a rel="nofollow" href="https://evernote.com/corp/" onclick="viewSource( 28, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/corp/</a><br><a rel="nofollow" href="https://evernote.com/careers/" onclick="viewSource( 29, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/careers/</a><br><a rel="nofollow" href="https://evernote.com/security/" onclick="viewSource( 33, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/security/</a><br><a rel="nofollow" href="https://dev.evernote.com/" onclick="viewSource( 34, 0, 0 ); return false;" onkeypress="this.click();">https://dev.evernote.com/</a><br><a rel="nofollow" href="https://evernote.com/contact/" onclick="viewSource( 35, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/contact/</a><br></div></td></tr><tr><th>
+							Images: 
+						</th><td><a href="#" onclick="toggleChevron('Images'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Images" id="chevImages" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('Images'); return false;" onkeypress="this.click();">1&nbsp;images</a><div style="display: none; width: 100%;" id="Images"><a rel="nofollow" href="https://cdn1.evernote.com/media/img/en-logo.min.svg" onclick="viewSource( 4, 0, 0 ); return false;" onkeypress="this.click();">https://cdn1.evernote.com/media/img/en-logo.min.svg</a> 3 KB
+					
+					<br></div></td></tr><tr><th>
+							CSS: 
+						</th><td><a><img width="20" height="20" alt="View CSS Files" id="chevCSS" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;files</a><div style="display: none; width: 100%;" id="CSS"></div></td></tr><tr><th>
+							JavaScript: 
+						</th><td><a><img width="20" height="20" alt="View JavaScript Files" id="chevJavaScript" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;files</a><div style="display: none; width: 100%;" id="JavaScript"></div></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr><tr class="middle"><th><img alt="Issue" style="text-align:absmiddle" width="20" height="20" src="../Report/bench-worse.png">	
+								Issues: 
+							</th><td>3
+								issues found on
+								6
+								lines
+							</td></tr></table></div><div id="mainContent" class="pre"><script type='text/javascript'>function selectLine() {}</script><p><code>1</code><code>          </code></p>
+<p><code>2</code><code>&lt;!DOCTYPE html&gt;</code></p>
+<p><code>3</code><code>&lt;html lang="en"&gt;</code></p>
+<p><code>4</code><code>&lt;head&gt;</code></p>
+<p><code>5</code><code>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;</code></p>
+<p><code>6</code><code>&lt;meta name="google-site-verification" content="tg21dbR30PdxWoD2SwuTquPtNhTzUPfBOo8yvgbIwDE" /&gt;</code></p>
+<p><code>7</code><code>&lt;title&gt;</code></p>
+<p><code>8</code><code>	Privacy Policy | Evernote&lt;/title&gt;</code></p>
+<p><code>9</code><code>&lt;meta name="description" content="" /&gt;</code></p>
+<p><code>10</code><code>&lt;meta name="keywords" content="note taking, note taking software, notes, mobile phone snapshots, camera phone, image search, image recognition, handwriting recognition, digital ink, ink notes, memory, remember, life capture, memory capture, productivity software, getting things done, gtd, memory assistant, personal memory assistant" /&gt;</code></p>
+<p><code>11</code><code>          </code></p>
+<p><code>12</code><code>          </code></p>
+<p><code>13</code><code>          </code></p>
+<p><code>14</code><code>&lt;script type="text/javascript"&gt;</code></p>
+<p><code>15</code><code>  /* &lt;![CDATA[ */</code></p>
+<p><code>16</code><code>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){</code></p>
+<p><code>17</code><code>  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),</code></p>
+<p><code>18</code><code>  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)</code></p>
+<p><code>19</code><code>  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');</code></p>
+<p><code>20</code><code>          </code></p>
+<p><code>21</code><code>    	ga('create', 'UA-285778-5', 'evernote.com');</code></p>
+<p><code>22</code><code>    ga('require', 'displayfeatures');</code></p>
+<p><code>23</code><code>  ga('send', 'pageview');</code></p>
+<p><code>24</code><code>  /* ]]&gt; */</code></p>
+<p><code>25</code><code>&lt;/script&gt;</code></p>
+<p><code>26</code><code>          </code></p>
+<p><code>27</code><code>        &lt;link href="/media/css/content.css?v1.7.0" rel="stylesheet" type="text/css" media="all" /&gt;</code></p>
+<p><code>28</code><code>        &lt;meta name="viewport" content="width=device-width"&gt;</code></p>
+<p><code>29</code><code>        </code></p>
+<p><code>30</code><code>&lt;style&gt;</code></p>
+<p><code>31</code><code>strong { color: black }</code></p>
+<p><code>32</code><code>.iphone, .no-iphone { padding: 0 !important; margin: 0 !important; border: none !important; background: none !important; }</code></p>
+<p><code>33</code><code>span.en-only { display: inline !important; }</code></p>
+<p><code>34</code><code>.iphone, span.en-only.iphone { display: none !important; }</code></p>
+<p><code>35</code><code>&lt;/style&gt;</code></p>
+<p><code>36</code><code>          </code></p>
+<p><code>37</code><code>      &lt;meta property="og:image" content="http://evernote.com/media/img/evernote_icon.png" /&gt;</code></p>
+<p><code>38</code><code>      &lt;meta property="og:site_name" content="Evernote" /&gt;</code></p>
+<p><code>39</code><code>      &lt;meta name="p:domain_verify" content="99a154baeb151607b7414a49e57ac327"/&gt;</code></p>
+<p><code>40</code><code>      	&lt;link href="/media/css/fonts-english.css" rel="stylesheet" type="text/css" media="all" /&gt;</code></p>
+<p><code>41</code><code>&lt;!--[if lt IE 9]&gt;</code></p>
+<p><code>42</code><code>	&lt;script src="/media/js/html5_shiv.js"&gt;&lt;/script&gt;</code></p>
+<p><code>43</code><code>&lt;![endif]--&gt;</code></p>
+<p><code>44</code><code>&lt;link href="/media/img/favicon.ico" rel="Shortcut Icon" type="image/x-icon" /&gt;</code></p>
+<p><code>45</code><code>          </code></p>
+<p><code>46</code><code>	 </code></p>
+<p><code>47</code><code> </code></p>
+<p><code>48</code><code> </code></p>
+<p><code>49</code><code> 	</code></p>
+<p><code>50</code><code> </code></p>
+<p><code>51</code><code>          </code></p>
+<p><code>52</code><code>&lt;/head&gt;</code></p>
+<p><code>53</code><code>          </code></p>
+<p><code>54</code><code>          </code></p>
+<p><code>55</code><code>&lt;body class="nav_legal sn_3" data-lang="en" data-country="US"&gt;</code></p>
+<p><code>56</code><code>          </code></p>
+<p><code>57</code><code>          </code></p>
+<p><code>58</code><code>		</code></p>
+<p><code>59</code><code>&lt;header class=""&gt;</code></p>
+<p><code>60</code><code>	&lt;div class="row"&gt;</code></p>
+<p><code>61</code><code>		            &lt;h1&gt;&lt;a href="/" class="header-sprite"&gt;&lt;span&gt;Evernote&lt;/span&gt;</code></p>
+<p><code>62</code><code>                                    &lt;img src="https://cdn1.evernote.com/media/img/en-logo.min.svg" class="svg" alt="Evernote Logo"&gt;</code></p>
+<p><code>63</code><code>                                </code></p>
+<p><code>64</code><code>             &lt;/a&gt;&lt;/h1&gt;</code></p>
+<p><code>65</code><code>		</code></p>
+<p><code>66</code><code>                </code></p>
+<p><code>67</code><code>          </code></p>
+<p><code>68</code><code>        </code></p>
+<p><code>69</code><code>                    &lt;a href="#content" class="skip-link"&gt;Skip to main content&lt;/a&gt;</code></p>
+<p><code>70</code><code>        </code></p>
+<p><code>71</code><code>		&lt;div class="right-panel"&gt;</code></p>
+<p><code>72</code><code>                            &lt;a href="/pricing/" class="cta view-pricing click_tracking" data-label="header" data-action="expanded_pricing"&gt;Pricing&lt;/a&gt;</code></p>
+<p><code>73</code><code>            </code></p>
+<p><code>74</code><code>                			    				&lt;a href="/register/" class="cta sign-up-cta click_tracking" data-label="header" data-action="sign-up"&gt;Sign Up&lt;/a&gt;</code></p>
+<p><code>75</code><code>    			                        </code></p>
+<p><code>76</code><code>            			 &lt;a href="#" id="header-menu" class="menu click_tracking" data-label="menu" data-action="open_menu"&gt;&lt;span class="text"&gt;Menu&lt;/span&gt;&lt;span class="header-sprite"&gt;&lt;/span&gt;&lt;/a&gt;</code></p>
+<p><code>77</code><code>            		&lt;/div&gt;</code></p>
+<p><code>78</code><code>        	&lt;/div&gt;</code></p>
+<p><code>79</code><code>&lt;/header&gt;</code></p>
+<p><code>80</code><code> </code></p>
+<p><code>81</code><code>&lt;nav class="drawer-nav"&gt;</code></p>
+<p><code>82</code><code>    &lt;div class="container"&gt;</code></p>
+<p><code>83</code><code>        &lt;ul&gt;</code></p>
+<p><code>84</code><code>            &lt;li&gt;&lt;a href="https://www.evernote.com/Home.action?offer=www_menu" class="js-sign-in-menu click_tracking" data-label="menu" data-action="sign-in"&gt;Sign In&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>85</code><code>            &lt;li&gt;&lt;a href="/register?offer=www_menu" class="js-sign-up-menu click_tracking" data-label="menu" data-action="sign-up"&gt;Create Account&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>86</code><code>        &lt;/ul&gt;</code></p>
+<p><code>87</code><code>        &lt;ul&gt;</code></p>
+<p><code>88</code><code>            &lt;li&gt;&lt;a href="/pricing?offer=www_menu" class="click_tracking" data-label="menu" data-action="pricing"&gt;Pricing&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>89</code><code>        &lt;/ul&gt;</code></p>
+<p><code>90</code><code>        &lt;ul&gt;</code></p>
+<p><code>91</code><code>            &lt;li&gt;&lt;a href="/upgrade/?tier=plus&amp;amp;offer=www_menu" class="click_tracking" data-label="menu" data-action="expanded_plus"&gt;Plus&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>92</code><code>            &lt;li&gt;&lt;a href="/upgrade/?tier=premium&amp;amp;offer=www_menu" class="click_tracking" data-label="menu" data-action="expanded_premium"&gt;Premium&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>93</code><code>            &lt;li&gt;&lt;a href="/business/" class="click_tracking" data-label="menu" data-action="expanded_business"&gt;Evernote Business&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>94</code><code>        &lt;/ul&gt;</code></p>
+<p><code>95</code><code>        &lt;ul&gt;</code></p>
+<p><code>96</code><code>                        &lt;li&gt;&lt;a href="https://www.evernote.com/market?offer=www_menu" class="click_tracking" data-label="menu" data-action="expanded_market"&gt;Market&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>97</code><code>                        </code></p>
+<p><code>98</code><code>            &lt;li&gt;&lt;a href="//blog.evernote.com/" class="click_tracking" data-label="menu" data-action="expanded_blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>99</code><code>        &lt;/ul&gt;</code></p>
+<p><code>100</code><code>        &lt;ul class="download-item"&gt;</code></p>
+<p><code>101</code><code>            &lt;li&gt;&lt;a href="/download/?offer=www_menu" class="download click_tracking" data-label="menu" data-action="download"&gt;Download Evernote&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>102</code><code>                    &lt;/ul&gt;</code></p>
+<p><code>103</code><code>        &lt;a href="#" class="close click_tracking" data-label="Close header menu"&gt;Close&lt;span class="header-sprite"&gt;&lt;/span&gt;&lt;/a&gt;</code></p>
+<p><code>104</code><code>    &lt;/div&gt;</code></p>
+<p><code>105</code><code>&lt;/nav&gt;</code></p>
+<p><code>106</code><code>          </code></p>
+<p><code>107</code><code>&lt;!-- Visitors redirected from Evernote to Yinxiang will see this --&gt;</code></p>
+<p><code>108</code><code>          </code></p>
+<p><code>109</code><code>          </code></p>
+<p><code>110</code><code>&lt;!-- section content --&gt;</code></p>
+<p><code>111</code><code>&lt;section id="content"&gt;</code></p>
+<p><code>112</code><code>    &lt;!-- main-content --&gt;</code></p>
+<p><code>113</code><code>    &lt;div class="main-content row"&gt;</code></p>
+<p><code>114</code><code>          </code></p>
+<p><code>115</code><code>          </code></p>
+<p><code>116</code><code>            &lt;!-- content --&gt;</code></p>
+<p><code>117</code><code>            &lt;div class="content"&gt;</code></p>
+<p><code>118</code><code>                &lt;h1&gt;Privacy Policy&lt;/h1&gt;</code></p>
+<p><code>119</code><code>                </code></p>
+<p><code>120</code><code>&lt;p&gt;&lt;strong lang="en"&gt;Effective Date: April 29, 2015&lt;/strong&gt;&lt;span class="no-iphone"&gt; - &lt;a href="/legal/changes.php#privacy"&gt;&lt;span lang="en"&gt;What&amp;rsquo;s new&lt;/span&gt; &amp;raquo;&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;</code></p>
+<p><code>121</code><code>          </code></p>
+<p><code>122</code><code>&lt;p&gt;Evernote values your privacy in your personal information and Content that you store in our Service. This Privacy Policy explains what information Evernote Corporation and its affiliated companies (together, “Evernote” or “we” and sometimes “us”) collect about you and why, what we may do with that information and how we handle your Content.&lt;/p&gt;</code></p>
+<p><code>123</code><code>          </code></p>
+<p><code>124</code><code>&lt;h2&gt;What Is The Scope Of This Privacy Policy?&lt;/h2&gt;</code></p>
+<p><code>125</code><code>&lt;p&gt;This Privacy Policy is incorporated into the Evernote Terms of Service and applies to the information obtained by us through your use of this website, the Service and other Evernote products and services, including the Evernote Market. Capitalized terms used in this Privacy Policy and not otherwise defined shall have the meanings provided for those terms in the Terms of Service.&lt;/p&gt;</code></p>
+<p><code>126</code><code>          </code></p>
+<p><code>127</code><code>&lt;h2&gt;Will This Privacy Policy Ever Change?&lt;/h2&gt;</code></p>
+<p><code>128</code><code>&lt;p&gt;As Evernote evolves, we may need to update this Policy to keep pace with changes in the Service, our business and laws applicable to us and you; we will, however, always maintain our commitment to respect your privacy. We will post any revisions to this Policy, along with their effective date, in an easy to find area of our web site, so we recommend that you periodically check back here to stay informed of any changes. We will ask for your consent to such changes if required by applicable law; in other cases, please note that your continuation of your Evernote Service account after any change means that you agree with, and consent to be bound by, the new Privacy Policy. If you disagree with any changes in this Policy and do not wish your information to be subject to the revised Policy, you will need to close your account.&lt;/p&gt;</code></p>
+<p><code>129</code><code>          </code></p>
+<p><code>130</code><code>&lt;h2&gt;I. Information Collection and Use&lt;/h2&gt;</code></p>
+<p><code>131</code><code>          </code></p>
+<p><code>132</code><code>&lt;h3&gt;What Information Does Evernote Collect About Me and Why?&lt;/h3&gt;</code></p>
+<p><code>133</code><code>&lt;p&gt;If you register for or maintain an Evernote Service Account:&lt;/p&gt;</code></p>
+<br style='clear: both'> <div id='err-l134c1-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Identify row and column headers in data tables using TH elements, and mark layout tables with role=&#39;presentation&#39;. </div>   <div class='help'>
+			Data tables allow screen reader users to understand column and row relationships. 
+			Layout tables read cells as a series of unrelated paragraphs with no tabular structure.
+			
+			Without TH or ROLE, screen readers apply heuristics to decide whether a table is a layout table or data table.
+			These heuristics vary greatly between screen readers, and are affected by browser being used, window size,
+			and font size (so the outcome is very unpredictable without TH or ROLE).
+			
+			If a data table has headers marked up using TD, then change these to TH. 
+			If a data table has no headers, add TH elements describing each row and/or column.
+			If the table is only used for layout add role='presentation' to the TABLE element.
+		 </div>   <div class='line'><span class='line'>Line 134</span>  <a href='http://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/guide-to-the-section-508-standards/web-based-intranet-and-internet-information-and-applications-1194-22' target='_top'>Section 508 1194.22 (g)</a> <a href='http://www.w3.org/TR/WCAG20-TECHS/F91.html' target='_top'>WCAG 2.0 A F91</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-5.1.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>134</code><code><span class='err' id='htm-l134c1' title='Line 134 Column 1'>&lt;table&gt;</span></code></p>
+<p><code>135</code><code>    &lt;tr class="title-row"&gt;</code></p>
+<p><code>136</code><code>        &lt;td class="bold" lang="en"&gt;We collect&lt;/td&gt;</code></p>
+<p><code>137</code><code>        &lt;td class="bold" lang="en"&gt;Why we collect it&lt;/td&gt;</code></p>
+<p><code>138</code><code>    &lt;/tr&gt;</code></p>
+<p><code>139</code><code>    </code></p>
+<p><code>140</code><code>    &lt;tr&gt;</code></p>
+<p><code>141</code><code>        &lt;td lang="en" class="v-top"&gt;Your username, email address and contact preferences&lt;/td&gt;</code></p>
+<p><code>142</code><code>        &lt;td lang="en"&gt;</code></p>
+<p><code>143</code><code>            &lt;ul&gt;</code></p>
+<p><code>144</code><code>                &lt;li&gt;To create and support your Evernote Service account.&lt;/li&gt;</code></p>
+<p><code>145</code><code>                &lt;li&gt;To communicate with you.&lt;/li&gt;</code></p>
+<p><code>146</code><code>                &lt;li&gt;To enable other users to collaborate with you through Work Chat or shared Notes and Notebooks.&lt;/li&gt;</code></p>
+<p><code>147</code><code>                &lt;li&gt;To send you marketing emails and special offers, unless you opt-out as explained in the “Will Evernote Send Me Emails?” section below.&lt;/li&gt;</code></p>
+<p><code>148</code><code>            &lt;/ul&gt;</code></p>
+<p><code>149</code><code>        &lt;/td&gt;</code></p>
+<p><code>150</code><code>    &lt;/tr&gt;</code></p>
+<p><code>151</code><code>          </code></p>
+<p><code>152</code><code>    &lt;tr&gt;</code></p>
+<p><code>153</code><code>        &lt;td lang="en" class="v-top"&gt;Your name, image and other personal information, if you elect to share it&lt;/td&gt;</code></p>
+<p><code>154</code><code>        &lt;td lang="en"&gt;To show in your user profile.&lt;/td&gt;</code></p>
+<p><code>155</code><code>    &lt;/tr&gt;</code></p>
+<p><code>156</code><code>    </code></p>
+<p><code>157</code><code>    &lt;tr&gt;</code></p>
+<p><code>158</code><code>        &lt;td lang="en" class="v-top"&gt;The geographic area where you use your computing devices when you interact with the Service and the language you select &lt;/td&gt;</code></p>
+<p><code>159</code><code>        &lt;td lang="en"&gt;</code></p>
+<p><code>160</code><code>            &lt;ul&gt;</code></p>
+<p><code>161</code><code>                &lt;li&gt;To localize your interaction with the Service and improve our understanding of how users interact with the Service and the Market.&lt;/li&gt;</code></p>
+<p><code>162</code><code>                &lt;li&gt;To help you verify use of your account:  We make recent IP address history available to you through your account settings.&lt;/li&gt;</code></p>
+<p><code>163</code><code>                &lt;li&gt;To assist us in complying with legal restrictions that may limit the permissible use of our Service and products.&lt;/li&gt;</code></p>
+<p><code>164</code><code>            &lt;/ul&gt;</code></p>
+<p><code>165</code><code>        &lt;/td&gt;</code></p>
+<p><code>166</code><code>    &lt;/tr&gt;</code></p>
+<p><code>167</code><code>    &lt;tr&gt;</code></p>
+<p><code>168</code><code>        &lt;td lang="en" class="v-top"&gt;Your device identifier&lt;/td&gt;</code></p>
+<p><code>169</code><code>        &lt;td lang="en"&gt;</code></p>
+<p><code>170</code><code>            &lt;ul&gt;</code></p>
+<p><code>171</code><code>                &lt;li class="v-top"&gt;To show you (on your account’s Access History page) which applications are authorized to access your Evernote Service account and date of last access.  (We do this by combining your device identifier with a human-readable description of the device (e.g., “My iPad”) when you use your device to access our Service.)&lt;/li&gt;</code></p>
+<p><code>172</code><code>                &lt;li&gt;To allow you to redeem a promotional code (which may be included in a coupon, gift card or Evernote Points).&lt;/li&gt;</code></p>
+<p><code>173</code><code>                &lt;li&gt;To provide account support.&lt;/li&gt;</code></p>
+<p><code>174</code><code>                &lt;li&gt;To calculate anonymous, aggregate statistics on the number of unique devices using the Evernote Service.&lt;/li&gt;</code></p>
+<p><code>175</code><code>                &lt;li&gt;Together with purchase information, to assist us in evaluating our compliance with export laws.&lt;/li&gt;</code></p>
+<p><code>176</code><code>            &lt;/ul&gt;</code></p>
+<p><code>177</code><code>        &lt;/td&gt;</code></p>
+<p><code>178</code><code>    &lt;/tr&gt;</code></p>
+<p><code>179</code><code>          </code></p>
+<p><code>180</code><code>    &lt;tr&gt;</code></p>
+<p><code>181</code><code>        &lt;td lang="en" class="v-top"&gt;Your telephone number – but only if you elect to share it or link it to your account&lt;/td&gt;</code></p>
+<p><code>182</code><code>        &lt;td lang="en"&gt;</code></p>
+<p><code>183</code><code>            &lt;ul&gt;</code></p>
+<p><code>184</code><code>                &lt;li&gt;To enable two-step verification on your account.&lt;/li&gt;</code></p>
+<p><code>185</code><code>                &lt;li&gt;To enable other users to communicate with you through Work Chat.&lt;/li&gt;</code></p>
+<p><code>186</code><code>                &lt;li&gt;To show in your user profile.&lt;/li&gt;</code></p>
+<p><code>187</code><code>            &lt;/ul&gt;</code></p>
+<p><code>188</code><code>        &lt;/td&gt;</code></p>
+<p><code>189</code><code>    &lt;/tr&gt;    </code></p>
+<p><code>190</code><code>          </code></p>
+<p><code>191</code><code>    &lt;tr&gt;</code></p>
+<p><code>192</code><code>        &lt;td lang="en" class="v-top"&gt;Your location and calendar information – if you elect to share it&lt;/td&gt;</code></p>
+<p><code>193</code><code>        &lt;td lang="en"&gt;</code></p>
+<p><code>194</code><code>            &lt;ul&gt;</code></p>
+<p><code>195</code><code>                &lt;li&gt;To enhance your Notes with location and calendar information.&lt;/li&gt;</code></p>
+<p><code>196</code><code>                &lt;li&gt;To show you relevant content to which you have access.&lt;/li&gt;</code></p>
+<p><code>197</code><code>            &lt;/ul&gt;</code></p>
+<p><code>198</code><code>        &lt;/td&gt;</code></p>
+<p><code>199</code><code>    &lt;/tr&gt;</code></p>
+<p><code>200</code><code>          </code></p>
+<p><code>201</code><code>    &lt;tr&gt;</code></p>
+<p><code>202</code><code>        &lt;td lang="en" class="v-top"&gt;Actions you perform in your account, including your use of certain product features and your storage of particular forms of Content (e.g., PDFs or JPGs), as well as the type of device and software you are using&lt;/td&gt;</code></p>
+<p><code>203</code><code>        &lt;td lang="en"&gt;</code></p>
+<p><code>204</code><code>            &lt;ul&gt;</code></p>
+<p><code>205</code><code>                &lt;li&gt;To administer the Service and improve the features and usability of the Service.&lt;/li&gt;</code></p>
+<p><code>206</code><code>                &lt;li&gt;To suggest to you Evernote features, products and services that can enhance your use of the Service.&lt;/li&gt;</code></p>
+<p><code>207</code><code>            &lt;/ul&gt;</code></p>
+<p><code>208</code><code>        &lt;/td&gt;</code></p>
+<p><code>209</code><code>    &lt;/tr&gt;</code></p>
+<p><code>210</code><code>    &lt;tr&gt;</code></p>
+<p><code>211</code><code>        &lt;td lang="en" class="v-top"&gt;Non-personally identifiable information indicating your association with one of our business partners or promotions (if applicable)&lt;/td&gt;</code></p>
+<p><code>212</code><code>        &lt;td lang="en"&gt;To determine the amount of revenue share payments to make to partners with whom we might have such arrangements and to provide anonymized aggregate reports.&lt;/td&gt;</code></p>
+<p><code>213</code><code>    &lt;/tr&gt;</code></p>
+<p><code>214</code><code>    &lt;tr&gt;</code></p>
+<p><code>215</code><code>        &lt;td lang="en" class="v-top"&gt;Payment information (if you purchase a Paid Service or an item from the Market)&lt;/td&gt;</code></p>
+<p><code>216</code><code>        &lt;td lang="en"&gt;To process your payment. (In most cases, Evernote uses third-party payment processors and therefore has only limited information about your payment transactions)&lt;/td&gt;</code></p>
+<p><code>217</code><code>    &lt;/tr&gt;</code></p>
+<p><code>218</code><code>&lt;/table&gt;</code></p>
+<p><code>219</code><code>          </code></p>
+<p><code>220</code><code>&lt;p&gt;Additional information we collect in connection with Evernote Business accounts:&lt;/p&gt;</code></p>
+<br style='clear: both'> <div id='err-l221c1-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Identify row and column headers in data tables using TH elements, and mark layout tables with role=&#39;presentation&#39;. </div>   <div class='help'>
+			Data tables allow screen reader users to understand column and row relationships. 
+			Layout tables read cells as a series of unrelated paragraphs with no tabular structure.
+			
+			Without TH or ROLE, screen readers apply heuristics to decide whether a table is a layout table or data table.
+			These heuristics vary greatly between screen readers, and are affected by browser being used, window size,
+			and font size (so the outcome is very unpredictable without TH or ROLE).
+			
+			If a data table has headers marked up using TD, then change these to TH. 
+			If a data table has no headers, add TH elements describing each row and/or column.
+			If the table is only used for layout add role='presentation' to the TABLE element.
+		 </div>   <div class='line'><span class='line'>Line 221</span>  <a href='http://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/guide-to-the-section-508-standards/web-based-intranet-and-internet-information-and-applications-1194-22' target='_top'>Section 508 1194.22 (g)</a> <a href='http://www.w3.org/TR/WCAG20-TECHS/F91.html' target='_top'>WCAG 2.0 A F91</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-5.1.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>221</code><code><span class='err' id='htm-l221c1' title='Line 221 Column 1'>&lt;table&gt;</span></code></p>
+<p><code>222</code><code>    &lt;tr class="title-row"&gt;</code></p>
+<p><code>223</code><code>        &lt;td lang="en" class="v-top"&gt;Business name and name and email address of account creator&lt;/td&gt;</code></p>
+<p><code>224</code><code>        &lt;td lang="en"&gt;To create and support your Evernote Business account.&lt;/td&gt;</code></p>
+<p><code>225</code><code>    &lt;/tr&gt;</code></p>
+<p><code>226</code><code>    </code></p>
+<p><code>227</code><code>    &lt;tr&gt;</code></p>
+<p><code>228</code><code>        &lt;td lang="en" class="v-top"&gt;Billing information (i.e., address, email address and telephone number)&lt;/td&gt;</code></p>
+<p><code>229</code><code>        &lt;td lang="en"&gt;To communicate with the Billing Contact on the account and provide account support.&lt;/td&gt;</code></p>
+<p><code>230</code><code>    &lt;/tr&gt;</code></p>
+<p><code>231</code><code>    &lt;tr&gt;</code></p>
+<p><code>232</code><code>        &lt;td lang="en" class="v-top"&gt;Email addresses of Business account Administrators and end users&lt;/td&gt;</code></p>
+<p><code>233</code><code>        &lt;td lang="en"&gt;To support the Evernote Business account and communicate with account Administrators and end users.&lt;/td&gt;</code></p>
+<p><code>234</code><code>    &lt;/tr&gt;</code></p>
+<p><code>235</code><code>    &lt;tr&gt;</code></p>
+<p><code>236</code><code>        &lt;td lang="en" class="v-top"&gt;Employment-related personal information – if you elect to share it&lt;/td&gt;</code></p>
+<p><code>237</code><code>        &lt;td lang="en"&gt;To show in your Evernote Business account user profile&lt;/td&gt;</code></p>
+<p><code>238</code><code>    &lt;/tr&gt;</code></p>
+<p><code>239</code><code>&lt;/table&gt;</code></p>
+<p><code>240</code><code>          </code></p>
+<p><code>241</code><code>&lt;p&gt;If you use our Web Clipper or Clearly browser extensions or "Save to Evernote" button:&lt;/p&gt;</code></p>
+<br style='clear: both'> <div id='err-l242c1-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Identify row and column headers in data tables using TH elements, and mark layout tables with role=&#39;presentation&#39;. </div>   <div class='help'>
+			Data tables allow screen reader users to understand column and row relationships. 
+			Layout tables read cells as a series of unrelated paragraphs with no tabular structure.
+			
+			Without TH or ROLE, screen readers apply heuristics to decide whether a table is a layout table or data table.
+			These heuristics vary greatly between screen readers, and are affected by browser being used, window size,
+			and font size (so the outcome is very unpredictable without TH or ROLE).
+			
+			If a data table has headers marked up using TD, then change these to TH. 
+			If a data table has no headers, add TH elements describing each row and/or column.
+			If the table is only used for layout add role='presentation' to the TABLE element.
+		 </div>   <div class='line'><span class='line'>Line 242</span>  <a href='http://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/guide-to-the-section-508-standards/web-based-intranet-and-internet-information-and-applications-1194-22' target='_top'>Section 508 1194.22 (g)</a> <a href='http://www.w3.org/TR/WCAG20-TECHS/F91.html' target='_top'>WCAG 2.0 A F91</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-5.1.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>242</code><code><span class='err' id='htm-l242c1' title='Line 242 Column 1'>&lt;table&gt;</span></code></p>
+<p><code>243</code><code>    &lt;tr class="title-row"&gt;</code></p>
+<p><code>244</code><code>        &lt;td class="bold" lang="en"&gt;We collect&lt;/td&gt;</code></p>
+<p><code>245</code><code>        &lt;td class="bold" lang="en"&gt;Why we collect it&lt;/td&gt;</code></p>
+<p><code>246</code><code>    &lt;/tr&gt;</code></p>
+<p><code>247</code><code>    &lt;tr&gt;</code></p>
+<p><code>248</code><code>        &lt;td lang="en" class="v-top"&gt;A record of the source website from which you save content&lt;/td&gt;</code></p>
+<p><code>249</code><code>        &lt;td lang="en"&gt;To record the source of your saved content (e.g., URL). This source-recording functionality will not be affected by your browser’s do-not-track settings.&lt;/td&gt;</code></p>
+<p><code>250</code><code>    &lt;/tr&gt;</code></p>
+<p><code>251</code><code>&lt;/table&gt;</code></p>
+<p><code>252</code><code>          </code></p>
+<p><code>253</code><code>&lt;p&gt;Please Note: If you have installed the Web Clipper, then when you visit certain websites it may notify you of available integrations with the Evernote Service or about products, services or features that we think will help you get more out of the Evernote service. The Web Clipper does not create a record of your browsing activity.&lt;/p&gt;</code></p>
+<p><code>254</code><code>          </code></p>
+<p><code>255</code><code>&lt;p&gt;If you visit Evernote.com:&lt;/p&gt;</code></p>
+<br style='clear: both'> <div id='err-l256c1-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Identify row and column headers in data tables using TH elements, and mark layout tables with role=&#39;presentation&#39;. </div>   <div class='help'>
+			Data tables allow screen reader users to understand column and row relationships. 
+			Layout tables read cells as a series of unrelated paragraphs with no tabular structure.
+			
+			Without TH or ROLE, screen readers apply heuristics to decide whether a table is a layout table or data table.
+			These heuristics vary greatly between screen readers, and are affected by browser being used, window size,
+			and font size (so the outcome is very unpredictable without TH or ROLE).
+			
+			If a data table has headers marked up using TD, then change these to TH. 
+			If a data table has no headers, add TH elements describing each row and/or column.
+			If the table is only used for layout add role='presentation' to the TABLE element.
+		 </div>   <div class='line'><span class='line'>Line 256</span>  <a href='http://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/guide-to-the-section-508-standards/web-based-intranet-and-internet-information-and-applications-1194-22' target='_top'>Section 508 1194.22 (g)</a> <a href='http://www.w3.org/TR/WCAG20-TECHS/F91.html' target='_top'>WCAG 2.0 A F91</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-5.1.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>256</code><code><span class='err' id='htm-l256c1' title='Line 256 Column 1'>&lt;table&gt;</span></code></p>
+<p><code>257</code><code>    &lt;tr class="title-row"&gt;</code></p>
+<p><code>258</code><code>        &lt;td class="bold" lang="en"&gt;We collect&lt;/td&gt;</code></p>
+<p><code>259</code><code>        &lt;td class="bold" lang="en"&gt;Why we collect it&lt;/td&gt;</code></p>
+<p><code>260</code><code>    &lt;/tr&gt;</code></p>
+<p><code>261</code><code>    &lt;tr&gt;</code></p>
+<p><code>262</code><code>        &lt;td lang="en" class="v-top"&gt;Your email address (if you provide it)&lt;/td&gt;</code></p>
+<p><code>263</code><code>        &lt;td lang="en"&gt;</code></p>
+<p><code>264</code><code>            &lt;ul&gt;</code></p>
+<p><code>265</code><code>                &lt;li&gt;To help you create an Evernote Service account.&lt;/li&gt;</code></p>
+<p><code>266</code><code>                &lt;li&gt;To communicate with you.&lt;/li&gt;</code></p>
+<p><code>267</code><code>            &lt;/ul&gt;</code></p>
+<p><code>268</code><code>        &lt;/td&gt;</code></p>
+<p><code>269</code><code>    &lt;/tr&gt;</code></p>
+<p><code>270</code><code>          </code></p>
+<p><code>271</code><code>    &lt;tr&gt;</code></p>
+<p><code>272</code><code>        &lt;td lang="en"&gt;Tracking information&lt;/td&gt;</code></p>
+<p><code>273</code><code>        &lt;td lang="en"&gt;Please see the section below and our &lt;a href="/legal/cookies.php"&gt;Cookie Information page&lt;/a&gt;&lt;/td&gt;</code></p>
+<p><code>274</code><code>    &lt;/tr&gt;</code></p>
+<p><code>275</code><code>&lt;/table&gt;</code></p>
+<p><code>276</code><code>          </code></p>
+<p><code>277</code><code>&lt;p&gt;Finally, when you access the Evernote Service or Evernote Market via an Evernote Software application, that application will request access to certain information on your computing device. For more information on these application permissions, please visit our &lt;a href="/privacy/data_usage.php"&gt;Data Usage page&lt;/a&gt;.&lt;/p&gt;</code></p>
+<p><code>278</code><code>          </code></p>
+<p><code>279</code><code>&lt;h3&gt;What Tracking Information Does Evernote Collect About Me Or My Devices?&lt;/h3&gt;</code></p>
+<p><code>280</code><code>&lt;p&gt;Evernote uses cookies, tracking pixels and similar technologies on our Service to collect information that helps us provide our Service to you. We also use these technologies to help deliver ads for relevant Evernote products and services. For more information about these uses and your options, please visit our &lt;a href="/legal/cookies.php"&gt;Cookie Information page&lt;/a&gt;.&lt;/p&gt;</code></p>
+<p><code>281</code><code>          </code></p>
+<p><code>282</code><code>&lt;h3&gt;What Is Evernote’s Approach to Information Collected From Children?&lt;/h3&gt;</code></p>
+<p><code>283</code><code>&lt;p&gt;Evernote does not knowingly collect personal information from children without parental consent. If we learn that we have inadvertently obtained information in violation of applicable laws prohibiting collection of information from children without such consent, we will promptly delete it. For more information on Evernote’s approach to use of the Service by children, and our compliance with the US Children’s Online Privacy Protection Act (“COPPA”), please see the section of our &lt;a href="/legal/tos.php"&gt;Terms of Service&lt;/a&gt; entitled, &amp;ldquo;Can Kids Use Evernote?&amp;rdquo;&lt;/p&gt;</code></p>
+<p><code>284</code><code>          </code></p>
+<p><code>285</code><code>&lt;h3&gt;Will Evernote Contact Me?&lt;/h3&gt;</code></p>
+<p><code>286</code><code>&lt;p&gt;From time to time, we may contact you via email with information about product announcements, software updates and special offers. We also may contact you with information about products and services from our business partners. We consider your acceptance of this Privacy Policy as your acceptance of our offer to send you these emails. You may opt out of such communications at any time by clicking the &amp;ldquo;unsubscribe&amp;rdquo; link found within Evernote email updates or by logging into your Evernote Service account via our web site at www.evernote.com and going to Settings &amp;gt; Personal Settings &amp;gt; Contact Preferences and changing your contact preferences.&lt;/p&gt; </code></p>
+<p><code>287</code><code>          </code></p>
+<p><code>288</code><code>&lt;p&gt;You will continue to receive essential Service-related and account-related information, even if you unsubscribe from promotional emails.&lt;/p&gt;</code></p>
+<p><code>289</code><code>          </code></p>
+<p><code>290</code><code>&lt;p&gt;In addition, if someone uses Work Chat to contact you at an email address or telephone number not associated with your Evernote account or through a social media site (e.g., Facebook or LinkedIn) that you have not linked to your Evernote account, then Evernote will contact you on the sender’s behalf using that contact method.&lt;/p&gt;</code></p>
+<p><code>291</code><code>          </code></p>
+<p><code>292</code><code>&lt;h2&gt;II. Information Access and Disclosure&lt;/h2&gt;</code></p>
+<p><code>293</code><code>          </code></p>
+<p><code>294</code><code>&lt;h3&gt;Does Evernote Share My Personal Information or Content?&lt;/h3&gt;</code></p>
+<p><code>295</code><code>&lt;p&gt;Evernote is not in the business of selling or renting your information. Outside of actions you take within the Service to communicate via Work Chat, to share notes or notebooks, or to authorize third-party applications, we only disclose your information - and then only the minimum information necessary - when:&lt;/p&gt;</code></p>
+<p><code>296</code><code>&lt;ul class="spacious"&gt;</code></p>
+<p><code>297</code><code>    &lt;li&gt;We have your explicit consent to share the information.&lt;/li&gt;</code></p>
+<p><code>298</code><code>    &lt;li&gt;We need to share your information with service providers who process data on our behalf in order to operate the Service and/or complete your payment transactions; and these providers are subject to strict data protection requirements in keeping with our commitments under our US-EU and US-Switzerland Safe Harbor certifications as &lt;a href="#safe-harbor"&gt;discussed below&lt;/a&gt;.&lt;/li&gt;</code></p>
+<p><code>299</code><code>    &lt;li&gt;We need to share your information with service providers to fulfill your product or service requests, including sales, delivery and support for certain products from the Evernote Market.&lt;/li&gt;</code></p>
+<p><code>300</code><code>    &lt;li&gt;We need to share your information with resellers of a Paid Service or product in order to ensure accuracy in the payment for such Paid Service or product, the management of your account and the delivery of your purchase and related support services.&lt;/li&gt;</code></p>
+<p><code>301</code><code>    &lt;li&gt;We believe it is necessary to investigate potential violations of our Terms of Service, to enforce those Terms of Service, or where we believe it is necessary to investigate, prevent or take action regarding illegal activities, suspected fraud or potential threats against persons, property or the systems on which we operate the Service.&lt;/li&gt;</code></p>
+<p><code>302</code><code>    &lt;li&gt;We determine that the access, preservation or disclosure of information is required or permitted by law to protect the rights, property or personal safety of Evernote and users of the Service, or is required to comply with applicable laws, including compliance with warrants, court orders or other legal process.&lt;/li&gt;</code></p>
+<p><code>303</code><code>    &lt;li&gt;We do so in connection with the sale or reorganization of all or part of our business, as permitted by applicable law.&lt;/li&gt;</code></p>
+<p><code>304</code><code>&lt;/ul&gt;</code></p>
+<p><code>305</code><code>          </code></p>
+<p><code>306</code><code>&lt;p&gt;Some third parties’ embedded content or plugins on the Service, such as Facebook “Like” buttons on Evernote.com, may allow their operators to learn that you have visited our website, and they may combine this information with other, identifiable information they have collected about your visits to other websites or online services. For more information with additional examples, see the “Social Media Features” section of our &lt;a href="/legal/cookies.php"&gt;Cookie Information page&lt;/a&gt;.&lt;/p&gt;</code></p>
+<p><code>307</code><code>          </code></p>
+<p><code>308</code><code>&lt;p&gt;We do not share your account information or user activity history with third parties for the purpose of enabling them to deliver their advertisements to you. As described on our Cookie Information page, we contract with third-party advertising networks in order to deliver relevant Evernote advertisements to you across the Internet and to manage our communications with you.&lt;/p&gt;</code></p>
+<p><code>309</code><code>          </code></p>
+<p><code>310</code><code>&lt;p&gt;In addition, we may share with partners or service providers a hashed identifier derived from the personal information you have submitted to us (such as your email address) to serve you ads when you visit partners’ and providers’ websites, applications or platforms.  We may, for instance, participate in the &lt;a href="https://support.twitter.com/articles/20170405#"&gt;Twitter Tailored Audience&lt;/a&gt; and &lt;a href="https://www.facebook.com/help/341425252616329"&gt;Facebook Custom Audience&lt;/a&gt; services.  To learn more about the privacy controls that Twitter and Facebook offer and honor for those respective services, please visit &lt;a href="https://support.twitter.com/articles/20170405#"&gt;here&lt;/a&gt; for Twitter and &lt;a href="https://www.facebook.com/help/1415256572060999"&gt;here&lt;/a&gt; for Facebook.   You may opt out of certain ad targeting and retargeting services by visiting the Digital Advertising Alliance’s &lt;a href="http://www.aboutads.info/"&gt;opt-out page&lt;/a&gt;, or the Network Advertising Initiative’s &lt;a href="http://www.networkadvertising.org/choices/"&gt;opt-out page&lt;/a&gt;. We also may share a hashed identifier derived from the personal information you have submitted to us (such as your email address) with service providers who help us manage and track the effectiveness of our marketing efforts.&lt;/p&gt;</code></p>
+<p><code>311</code><code>&lt;h3&gt;If I’m a Member of an Evernote Business Account, Can My Account Administrator See Any of My Data?&lt;/h3&gt;</code></p>
+<p><code>312</code><code>&lt;p&gt;An Administrator (“Admin”) of an Evernote Business account has access to all Notes you create in any Business Notebook. The Admin also can see all Business Notes or Business Notebooks you’ve shared and with whom you have shared this content. (The Admin will see the profile name for other members of the Business account or the contact information for people who are not in the Business account). An Admin cannot access any of the Notes in your personal account or any of your Work Chat contents, however.  If domain auto-approval is turned off for your Business account and your Evernote account is associated with your Business account’s email domain (e.g., [username]@widgets.com), then when you send a Work Chat to someone else with an email address on the same email domain as you, then the Admin will know that you sent the Work Chat message but will not be able to view the contents of that message. We do this so Business account Admins know who else in your organization may need to be invited to join the Evernote Business account.&lt;/p&gt;</code></p>
+<p><code>313</code><code>&lt;p&gt;For more information on how your personal Evernote account works with your Evernote Business account, please review our Knowledge Base article on this subject entitled </code></p><br style='clear: both'> <div id='err-l313c172-0' class='err' >  <div class='col1'><img src='../Report/p3.png' width='20' height='20' alt='Priority 3'> </div>  <div class='col2'>   <div class='desc'>Use link text between 3 and 80 characters so it&#39;s long enough to be understood, but avoids line wrapping. </div>   <div class='help'>
+			A single word text link may not give enough information about the link's destination. A link that is a full sentence is difficult to read quickly, particularly if it wraps to another line.
+		 </div>   <div class='line'><span class='line'>Line 313</span>  <a href='http://guidelines.usability.gov/guidelines/102' target='_top'>Usability.gov 10:11</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "UseGov10.11" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l313c172' title='Line 313 Column 172'>&lt;a href="https://evernote.com/contact/support/kb/#!/article/23322812"&gt;</span>“Are a user's personal notebooks or personal information accessible by other Evernote Business users or Admins?”&lt;/a&gt;.&lt;/p&gt;</code></p>
+<p><code>314</code><code>&lt;h3&gt;What Information Does Evernote Share When I Share Notes or Use Work Chat?&lt;/h3&gt;</code></p>
+<p><code>315</code><code>&lt;p&gt;Evernote has a number of collaboration features, and when you use these features to collaborate with other Evernote users, some of the personal information you provide to Evernote, including your status as an Evernote user, may be visible to these other Evernote users:&lt;/p&gt;</code></p>
+<p><code>316</code><code>&lt;ul&gt;</code></p>
+<p><code>317</code><code>    &lt;li&gt;If you share a Note or Notebook, or if you join a shared Note or Notebook, then anyone who has access to that Note or Notebook may see your user profile.  (If you have not added any profile information, then you will be identified solely by the email address associated with your Evernote Account.)&lt;/li&gt;</code></p>
+<p><code>318</code><code>    &lt;li&gt;If you initiate or respond to a Work Chat message, then the person with whom you are chatting will be able to view your profile.&lt;/li&gt;</code></p>
+<p><code>319</code><code>    &lt;li&gt;In a group Work Chat where you are a recipient of a message but you have not responded, only other Evernote users you are connected to will see your user profile.  Other people in the group chat will only see the information the sender used when sending you the Work Chat message (e.g., email address or telephone number).&lt;/li&gt;</code></p>
+<p><code>320</code><code>    &lt;li&gt;If you are an Evernote Business user, other members of your Business account will see your full Business account profile.  But Evernote users who are not in your Business account will only see your profile name and image.&lt;/li&gt;</code></p>
+<p><code>321</code><code>&lt;/ul&gt;</code></p>
+<p><code>322</code><code>&lt;p&gt;In addition, anyone who has access to a shared Notebook will be able to see – for each Note in that Notebook – the Note contents, information about where and when the Note was created, as well as the Note history, tags and reminders associated with a particular Note. But when Notes are shared via Work Chat, people with access to the Note will only see the Note contents, plus information about where and when the Note was created.&lt;/p&gt;</code></p>
+<p><code>323</code><code>          </code></p>
+<p><code>324</code><code>&lt;h3&gt;What Gets Shared When I Use Third Party Apps With My Evernote Account?&lt;/h3&gt;</code></p>
+<p><code>325</code><code>&lt;p&gt;Some third-party applications and services that work with our Service may ask for permission to access your Content or other information about your account. Those applications will provide you with notice and request your consent in order to obtain such access or information. Please consider your selection of such applications and services, and your permissions, carefully. We encourage you to review each party’s contract terms and privacy policy. To learn more about some of these applications and what data they may access, visit our &lt;a href="/privacy/3rd_party_app_permissions.php"&gt;Third Party Application Permissions page&lt;/a&gt;.&lt;/p&gt;</code></p>
+<p><code>326</code><code>          </code></p>
+<p><code>327</code><code>&lt;h3&gt;Does Evernote Access or Review My Notes?&lt;/h3&gt;</code></p>
+<p><code>328</code><code>&lt;p&gt;As a rule, Evernote employees do not monitor or view your personal information or Content stored in the Service, but it may be viewed if we believe our Terms of Service have been violated and confirmation is required, if we need to do so in order to respond to your requests for support, or we otherwise determine that we have an obligation to review it as described in our &lt;a href="/legal/tos.php"&gt;Terms of Service&lt;/a&gt;. Your Notes also may be viewed where necessary to protect the rights, property or personal safety of Evernote and its users, or in order to comply with our legal obligations, such as responding to warrants, court orders or other legal process. We vigilantly protect the privacy of your account contents and, whenever we determine it possible, we provide you with notice if we believe we are compelled to comply with a third party’s request for information about your account. Please visit our &lt;a href="/legal/law_enforcement.php"&gt;Information for Authorities page&lt;/a&gt; for more information.&lt;/p&gt;</code></p>
+<p><code>329</code><code>          </code></p>
+<p><code>330</code><code>&lt;p&gt;With our Context feature, the Evernote Service uses a number of technologies to show you content that may be relevant to the content in a note you are creating or reviewing. The content we show you may include Notes from your own account, Notes from accounts you are connected to through Evernote Business or Work Chat, and third party content that you have elected to receive. These are not advertisements. We believe features like these, which work automatically without any person at Evernote reviewing your Content, will enhance your experience using the Service. Context is turned on by default in applications where the feature is offered, but you can choose to turn it off. Context appears as "related results" in our Web Clipper, a feature which is turned on by default for our Business users.&lt;/p&gt;</code></p>
+<p><code>331</code><code>          </code></p>
+<p><code>332</code><code>&lt;p&gt;In addition, by detecting certain actions you take in your account (such as emailing Content into your account) or specific attributes associated with your Notes (such as whether your Notes contain PDFs or image files, or which application you use to create Notes), we may suggest Evernote Products or Service features to you that we think will help you get the most out of our Service. We do not read or share the Contents of your Notes with anyone for any advertising purposes.&lt;/p&gt;</code></p>
+<p><code>333</code><code>          </code></p>
+<p><code>334</code><code>&lt;h3&gt;Does Evernote Ever Make Any of My Personal Information or Content Public?&lt;/h3&gt;</code></p>
+<p><code>335</code><code>&lt;p&gt;No. Please note, however, that certain portions of the Evernote web sites and Service, such as user notebooks designated as “public” and our user forum, are open to any online viewer. Any information that you post in these locations can be read, collected and used by anyone and could enable others to send you unsolicited messages. Evernote enables you to determine whether or not to post personal or otherwise sensitive information to publicly accessible areas of our site, so you should carefully consider how you use the Service. Evernote is not responsible for any publication or use of any Personal Information you choose to post in these locations.&lt;/p&gt;</code></p>
+<p><code>336</code><code>          </code></p>
+<p><code>337</code><code>&lt;h2&gt;III. Data Storage and Transfer&lt;/h2&gt;</code></p>
+<p><code>338</code><code>&lt;h3&gt;Where Is My Data Stored?&lt;/h3&gt;</code></p>
+<p><code>339</code><code>&lt;p&gt;When you use Evernote Software on your computing device, such as by using one of our downloadable clients, Content you save will be stored locally on that device. When you sync your computing device with the Service, that Content will be replicated on our servers, which are located in the United States.&lt;/p&gt;</code></p>
+<p><code>340</code><code>          </code></p>
+<p><code>341</code><code>&lt;p&gt;Please be aware that Personal Information and Content submitted to Evernote will be transferred to a data center in the United States. If you post information to the Evernote sites you are confirming your consent to such information, including Personal Information and Content, being transmitted to, hosted and accessed in the United States.&lt;/p&gt;</code></p>
+<p><code>342</code><code>          </code></p>
+<p><code>343</code><code>&lt;p id="safe-harbor"&gt;Data privacy laws or regulations in your home country may differ from those in the United States, but Evernote complies with the US-EU Safe Harbor Framework and US-Swiss Safe Harbor Framework as set forth by the US Department of Commerce regarding the collection, use and retention of personal information collected not only from those users residing in the European Union and Switzerland, but from all our users. We have certified that we adhere to the Safe Harbor Privacy Principles of notice, choice, onward transfer, security, data integrity, access and enforcement. To learn more about the Safe Harbor programs, and to view our certification page, please visit </code></p><br style='clear: both'> <div id='err-l343c687-0' class='err' >  <div class='col1'><img src='../Report/p3.png' width='20' height='20' alt='Priority 3'> </div>  <div class='col2'>   <div class='desc'>Avoid specifying a new window as the target of a link with target=&#34;_blank&#34;. </div>   <div class='help'>
+			Displaying new windows without warning can be very confusing to non-sighted and mobile users.
+			Some screen readers and mobile devices give very little indication a new tab or window has opened.
+			If you cannot avoid displaying a new window, insert a warning into the link text like the following: "opens in a new window".
+		 </div>   <div class='line'><span class='line'>Line 343</span>  <a href='http://www.w3.org/TR/WCAG20-TECHS/F22.html' target='_top'>WCAG 2.0 AAA F22</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-10.1.2" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l343c687' title='Line 343 Column 687'>&lt;a href="http://www.export.gov/safeharbor/" target="_blank"&gt;</span>http://www.export.gov/safeharbor/&lt;/a&gt;.&lt;/p&gt;</code></p>
+<p><code>344</code><code>          </code></p>
+<p><code>345</code><code>&lt;h3&gt;A Special Note to Users in the European Union and Switzerland&lt;/h3&gt;</code></p>
+<p><code>346</code><code>&lt;p&gt;If you live in Switzerland or the European Union, please note that not only is Switzerland-based Evernote GmbH the data controller for all information associated with your Evernote Service account, but Evernote GmbH is also the data controller for any payment, order, shipping and other information you provide when you purchase an item from the Evernote Market, even though such orders will be placed with and fulfilled by U.S.-based Evernote Corporation, as described in our &lt;a href="/legal/commercial_terms.php"&gt;Commercial Terms&lt;/a&gt;.&lt;/p&gt;</code></p>
+<p><code>347</code><code>          </code></p>
+<p><code>348</code><code>&lt;h3&gt;A Special Note to Customers in Japan&lt;/h3&gt;</code></p>
+<p><code>349</code><code>&lt;p&gt;If you live in Japan, please note that Evernote GmbH is the data controller for all information associated with your Evernote Service account, but Evernote GmbH also has contractual relationships with third party resellers for the Japan market permitting joint use of your personal information with such third parties (including addresses, names, telephone numbers, email addresses, credit card information, as well as the details of shopping transactions in Evernote Market, subscriptions for a Paid Service and related customer support inquiries). Information about our Japan reseller for the Evernote Market may be found at our &lt;a href="/market/faq/"&gt;Evernote Market FAQ&lt;/a&gt;. Information about our Japan reseller for a Paid Service will be provided to you as part of a contract such reseller will provide to you.&lt;/p&gt;</code></p>
+<p><code>350</code><code>          </code></p>
+<p><code>351</code><code>&lt;h3&gt;How Can I Access or Correct Information Evernote Holds About Me?&lt;/h3&gt;</code></p>
+<p><code>352</code><code>&lt;p&gt;If you wish to (i) access any Personal Information that we hold about you; (ii) request that we correct or delete the Personal Information that we hold about you; or (iii) request that we not use or stop using your Personal Information for marketing purposes, you may contact us at compliance AT evernote DOT com. We will comply with such requests to the extent required by law or our policies, and subject to any limitations in our systems.&lt;/p&gt;</code></p>
+<p><code>353</code><code>          </code></p>
+<p><code>354</code><code>&lt;h3&gt;How Secure Is My Data?&lt;/h3&gt;</code></p>
+<p><code>355</code><code>&lt;p&gt;Evernote is committed to protecting the security of your information and  takes reasonable precautions to protect it. We use industry standard encryption to protect your data in transit. This is commonly referred to as transport layer security (“TLS”) or secure socket layer (“SSL”) technology. However, Internet data transmissions, cannot be guaranteed to be 100% secure, and as a result, we cannot ensure the security of information during its transmission between you and us; accordingly, you acknowledge that you do so at your own risk.&lt;/p&gt;</code></p>
+<p><code>356</code><code>          </code></p>
+<p><code>357</code><code>&lt;p&gt;Once we receive your data, we protect it on our servers using a combination of administrative, physical and logical security safeguards. The security of the information stored locally in the Evernote Software installed on your computing device is dependent upon you making use of the security features on your device. We recommend that you take the appropriate steps to secure all computing devices that you use with our applications and Service.&lt;/p&gt;</code></p>
+<p><code>358</code><code>          </code></p>
+<p><code>359</code><code>&lt;p&gt;Evernote also provides you with the ability to encrypt segments of text within any given note. You can learn how to encrypt text by reviewing this &lt;a href="http://evernote.com/contact/support/kb/#/article/28451608"&gt;Knowledge Base article&lt;/a&gt;. Please note, however, that Evernote does not have the ability to decrypt encrypted contents, so we won’t be able to help you recover encrypted contents if you forget the passphrase you used for encryption.&lt;/p&gt;</code></p>
+<p><code>360</code><code>          </code></p>
+<p><code>361</code><code>&lt;p&gt;If Evernote learns of a security system breach, we may attempt to notify you and provide information on protective steps, if available, through the email address that you have provided to us or by posting a notice on our web site and/or via other communication platforms. Depending on where you live, you may have a legal right to receive such notices in writing.&lt;/p&gt;</code></p>
+<p><code>362</code><code>          </code></p>
+<p><code>363</code><code>&lt;h2&gt;IV. Information Deletion&lt;/h2&gt;</code></p>
+<p><code>364</code><code>&lt;h3&gt;What Happens If I Want to Stop Using Evernote?&lt;/h3&gt;</code></p>
+<p><code>365</code><code>          </code></p>
+<p><code>366</code><code>&lt;p&gt;You can delete Note Content at any time, and you can stop using the Evernote Service at any time. If you &lt;a href="https://evernote.com/contact/support/kb/#!/article/23403793"&gt;deactivate your account&lt;/a&gt;, the Content in your account will not be deleted unless you purposely delete that information, and sync your account before you deactivate your account. Learn how to delete your Content &lt;a class="no-iphone" href="/privacy/delete_data.php"&gt;here.&lt;/a&gt; Learn how to remove your account and account credentials &lt;a class="no-iphone" href="https://evernote.com/contact/support/kb/#!/article/23403793"&gt;here&lt;/a&gt;. If you delete information and material from a notebook and then sync your account, it will no longer be accessible to you or others who may access the Service, but residual copies of your deleted Content may continue to exist on the Evernote Service’s back-up and archiving systems for up to one year due to the nature of those systems’ operations.&lt;/p&gt;</code></p>
+<p><code>367</code><code>          </code></p>
+<p><code>368</code><code>&lt;p&gt;If you delete your copy of a Work Chat message, this action can't be undone.  Please note that deleting your copy of a Work Chat message from your own Evernote account won’t delete those messages from the accounts of the people with whom you were chatting.&lt;/p&gt;</code></p>
+<p><code>369</code><code>          </code></p>
+<p><code>370</code><code>&lt;h3&gt;What Happens If Evernote Closes My Account?&lt;/h3&gt;</code></p>
+<p><code>371</code><code>&lt;p&gt;If Evernote deactivates your Service account due to a Terms of Service violation, then you may contact Evernote to request deletion of your data, and Evernote will evaluate such requests on a case by case basis, pursuant to our legal obligations.&lt;/p&gt;</code></p>
+<p><code>372</code><code>          </code></p>
+<p><code>373</code><code>&lt;h2&gt;V. Contact Us&lt;/h2&gt;</code></p>
+<p><code>374</code><code>&lt;h3&gt;How Can I Contact Evernote?&lt;/h3&gt;</code></p>
+<p><code>375</code><code>&lt;p&gt;Evernote welcomes your feedback regarding this Privacy Policy. If you have questions, comments or concerns about this Policy, please contact us by email at compliance AT evernote DOT com or postal mail at:&lt;/p&gt;</code></p>
+<p><code>376</code><code>          </code></p>
+<p><code>377</code><code>&lt;ul class="contact-info"&gt;</code></p>
+<p><code>378</code><code>    &lt;li lang=""&gt;</code></p>
+<p><code>379</code><code>        &lt;h4&gt;Evernote Corporation&lt;/h4&gt;</code></p>
+<p><code>380</code><code>        &lt;span&gt;305 Walnut Street&lt;/span&gt;</code></p>
+<p><code>381</code><code>        &lt;span&gt;Redwood City, California 94063 USA&lt;/span&gt;</code></p>
+<p><code>382</code><code>        &lt;span&gt;Attention: Legal Department&lt;/span&gt;</code></p>
+<p><code>383</code><code>    &lt;/li&gt;</code></p>
+<p><code>384</code><code>    &lt;li lang=""&gt;</code></p>
+<p><code>385</code><code>        &lt;h4&gt;Evernote GmbH&lt;/h4&gt;</code></p>
+<p><code>386</code><code>        &lt;span&gt;Walchestrasse 9&lt;/span&gt;</code></p>
+<p><code>387</code><code>        &lt;span&gt;8006 Zurich, Switzerland&lt;/span&gt;</code></p>
+<p><code>388</code><code>        &lt;span&gt;Attention: Legal Department&lt;/span&gt;</code></p>
+<p><code>389</code><code>    &lt;/li&gt;</code></p>
+<p><code>390</code><code>    &lt;li lang=""&gt;</code></p>
+<p><code>391</code><code>        &lt;h4&gt;Evernote Do Brasil Servicos De Aplicacoes Ltda&lt;/h4&gt;</code></p>
+<p><code>392</code><code>        &lt;span&gt;Avenida Paulista, no 2.300&lt;/span&gt;</code></p>
+<p><code>393</code><code>        &lt;span&gt;Andar Pilotis&lt;/span&gt;</code></p>
+<p><code>394</code><code>        &lt;span&gt;Edif&amp;iacute;cio S&amp;atilde;o Luiz Gonzaga&lt;/span&gt;</code></p>
+<p><code>395</code><code>        &lt;span&gt;CEP: 01310-300, S&amp;atilde;o Paulo/SP&lt;/span&gt;</code></p>
+<p><code>396</code><code>        &lt;span&gt;Attention: Legal Department&lt;/span&gt;</code></p>
+<p><code>397</code><code>    &lt;/li&gt;</code></p>
+<p><code>398</code><code>&lt;/ul&gt;</code></p>
+<p><code>399</code><code>          </code></p>
+<p><code>400</code><code>                </code></p>
+<p><code>401</code><code>            &lt;/div&gt;&lt;!-- /content --&gt;</code></p>
+<p><code>402</code><code>          </code></p>
+<p><code>403</code><code>          </code></p>
+<p><code>404</code><code>            &lt;div class="right-column"&gt;</code></p>
+<p><code>405</code><code>		&lt;h3&gt;Legal Information&lt;/h3&gt;</code></p>
+<p><code>406</code><code>		&lt;ul&gt;</code></p>
+<p><code>407</code><code>							&lt;li id="sn_1"&gt;&lt;a lang="en" href="/legal/"&gt;Overview&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>408</code><code>						&lt;li id="sn_2"&gt;&lt;a lang="en" href="/legal/tos.php"&gt;Terms of Service&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>409</code><code>			&lt;li id="sn_3"&gt;&lt;a lang="en" href="/legal/privacy.php"&gt;Privacy Policy&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>410</code><code>							&lt;li id="sn_4"&gt;&lt;a lang="en" href="/legal/user_guidelines.php"&gt;User Guidelines&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>411</code><code>						&lt;li id="sn_8"&gt;&lt;a lang="en" href="/legal/commercial_terms.php"&gt;Commercial Terms&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>412</code><code>			&lt;li id="sn_11"&gt;&lt;a lang="en" href="/tos/business.php"&gt;Evernote Business Agreement&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>413</code><code>							&lt;li id="sn_5"&gt;&lt;a lang="en" href="/legal/cookies.php"&gt;Cookie Information&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>414</code><code>				&lt;li id="sn_9"&gt;&lt;a lang="en" href="/privacy/data_usage.php"&gt;Data Usage&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>415</code><code>				&lt;li id="sn_7"&gt;&lt;a lang="en" href="/legal/ip_compliance.php"&gt;IP Compliance Program&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>416</code><code>						&lt;li id="sn_6"&gt;&lt;a lang="en" href="/trademark/"&gt;Trademark Use&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>417</code><code>			&lt;li id="sn_10"&gt;&lt;a lang="en" href="/opensource/"&gt;Open Source Licenses&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>418</code><code>							&lt;li id="sn_12"&gt;&lt;a lang="en" href="/legal/law_enforcement.php"&gt;Information for Authorities&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>419</code><code>				&lt;li id="sn_13"&gt;&lt;a lang="en" href="/legal/transparency/"&gt;Transparency Report&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>420</code><code>				&lt;li id="sn_14"&gt;&lt;a lang="en" href="/legal/data-protection.php"&gt;Evernote's 3 Laws of Data Protection&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>421</code><code>					&lt;/ul&gt;</code></p>
+<p><code>422</code><code>		</code></p>
+<p><code>423</code><code>	&lt;/div&gt;</code></p>
+<p><code>424</code><code>          </code></p>
+<p><code>425</code><code>        </code></p>
+<p><code>426</code><code>    &lt;/div&gt;</code></p>
+<p><code>427</code><code>    &lt;!-- end main-content --&gt;</code></p>
+<p><code>428</code><code>&lt;/section&gt;</code></p>
+<p><code>429</code><code>&lt;!-- end section content --&gt;</code></p>
+<p><code>430</code><code>          </code></p>
+<p><code>431</code><code>          </code></p>
+<p><code>432</code><code> </code></p>
+<p><code>433</code><code>&lt;footer&gt;</code></p>
+<p><code>434</code><code>	&lt;nav class="footer-nav"&gt;</code></p>
+<p><code>435</code><code>		&lt;ul class="row top-nav"&gt;</code></p>
+<p><code>436</code><code>			&lt;li&gt;&lt;a href="/products/" class="click_tracking" data-label="footer" data-action="expanded_products"&gt;Products&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>437</code><code>			&lt;li&gt;&lt;a href="/pricing/" class="click_tracking" data-label="footer" data-action="expanded_pricing"&gt;Pricing&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>438</code><code>						&lt;li&gt;&lt;a href="https://www.evernote.com/market/" class="click_tracking" data-label="footer" data-action="expanded_market" lang=""&gt;Market&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>439</code><code>						&lt;li&gt;&lt;a href="https://appcenter.evernote.com" class="click_tracking" data-label="footer" data-action="expanded_appcenter"&gt;App Center&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>440</code><code>			&lt;li&gt;&lt;a href="/contact/support/" class="click_tracking" data-label="footer" data-action="expanded_support"&gt;Support&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>441</code><code>			&lt;li&gt;&lt;a href="//blog.evernote.com/" class="click_tracking" data-label="footer" data-action="expanded_blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>442</code><code>		&lt;/ul&gt;</code></p>
+<p><code>443</code><code>		&lt;div class="row"&gt;</code></p>
+<p><code>444</code><code>			&lt;ul class="second-nav"&gt;</code></p>
+<p><code>445</code><code>				&lt;li&gt;&lt;a href="/corp/"&gt;About&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>446</code><code>				&lt;li&gt;&lt;a href="/careers/"&gt;Careers&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>447</code><code>				&lt;li&gt;&lt;a href="/legal/"&gt;Legal&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>448</code><code>				&lt;li&gt;&lt;a href="/legal/tos.php"&gt;Terms&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>449</code><code>				&lt;li&gt;&lt;a href="/legal/privacy.php"&gt;Privacy&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>450</code><code>				&lt;li&gt;&lt;a href="/security/"&gt;Security&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>451</code><code>				&lt;li&gt;&lt;a href="https://dev.evernote.com/" class="exit_tracking" data-label="API Footer"&gt;API&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>452</code><code>				&lt;li&gt;&lt;a href="/contact/"&gt;Contact&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>453</code><code>			&lt;/ul&gt;</code></p>
+<p><code>454</code><code>			</code></p>
+<p><code>455</code><code>			</code></p>
+<p><code>456</code><code>		&lt;/div&gt;</code></p>
+<p><code>457</code><code>		&lt;div class="row bottom-section"&gt;</code></p>
+<p><code>458</code><code>			&lt;div class="copyright"&gt;</code></p>
+<p><code>459</code><code>				Copyright 2015 Evernote Corporation. &lt;span class="all-rights"&gt;All rights reserved.&lt;/span&gt;</code></p>
+<p><code>460</code><code>			&lt;/div&gt;</code></p>
+<p><code>461</code><code>						&lt;div class="languages"&gt;</code></p>
+<p><code>462</code><code>				&lt;!--&lt;a href="prefered-language"&gt;English (US) &lt;span class="arrow"&gt;&lt;/span&gt;&lt;/a&gt;--&gt;</code></p>
+<p><code>463</code><code>				&lt;div id="language_picker2" class="language-picker desktop"&gt;</code></p>
+<p><code>464</code><code>          </code></p>
+<p><code>465</code><code>    </code></p>
+<p><code>466</code><code>    &lt;a class="preferred-language"&gt;</code></p>
+<p><code>467</code><code>        English (US)&amp;#8206;        &lt;span class="language-arrow"&gt;&lt;/span&gt;</code></p>
+<p><code>468</code><code>    &lt;/a&gt;</code></p>
+<p><code>469</code><code>    &lt;div class="language-dropdown"&gt;</code></p>
+<p><code>470</code><code>                    &lt;ul&gt;                &lt;li class="left-list"&gt;</code></p>
+<p><code>471</code><code>                    &lt;a data-value="/intl/id/" class="language-item"&gt;Bahasa Indonesia&lt;/a&gt;</code></p>
+<p><code>472</code><code>                &lt;/li&gt;</code></p>
+<p><code>473</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>474</code><code>                    &lt;a data-value="/intl/ms/" class="language-item"&gt;Bahasa Melayu&lt;/a&gt;</code></p>
+<p><code>475</code><code>                &lt;/li&gt;</code></p>
+<p><code>476</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>477</code><code>                    &lt;a data-value="/intl/da/" class="language-item"&gt;Dansk&lt;/a&gt;</code></p>
+<p><code>478</code><code>                &lt;/li&gt;</code></p>
+<p><code>479</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>480</code><code>                    &lt;a data-value="/intl/de/" class="language-item"&gt;Deutsch&lt;/a&gt;</code></p>
+<p><code>481</code><code>                &lt;/li&gt;</code></p>
+<p><code>482</code><code>                                                &lt;li class="preferred-setting left-list"&gt;</code></p>
+<p><code>483</code><code>                    &lt;a data-value="/" class="language-item"&gt;English (US)&amp;#8206;&lt;/a&gt;</code></p>
+<p><code>484</code><code>                &lt;/li&gt;</code></p>
+<p><code>485</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>486</code><code>                    &lt;a data-value="/intl/es/" class="language-item"&gt;Español&lt;/a&gt;</code></p>
+<p><code>487</code><code>                &lt;/li&gt;</code></p>
+<p><code>488</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>489</code><code>                    &lt;a data-value="/intl/es-latam/" class="language-item"&gt;Español (América Latina)&lt;/a&gt;</code></p>
+<p><code>490</code><code>                &lt;/li&gt;</code></p>
+<p><code>491</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>492</code><code>                    &lt;a data-value="/intl/fr/" class="language-item"&gt;Français&lt;/a&gt;</code></p>
+<p><code>493</code><code>                &lt;/li&gt;</code></p>
+<p><code>494</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>495</code><code>                    &lt;a data-value="/intl/it/" class="language-item"&gt;Italiano&lt;/a&gt;</code></p>
+<p><code>496</code><code>                &lt;/li&gt;</code></p>
+<p><code>497</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>498</code><code>                    &lt;a data-value="/intl/nl/" class="language-item"&gt;Nederlands&lt;/a&gt;</code></p>
+<p><code>499</code><code>                &lt;/li&gt;</code></p>
+<p><code>500</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>501</code><code>                    &lt;a data-value="/intl/pl/" class="language-item"&gt;Polski&lt;/a&gt;</code></p>
+<p><code>502</code><code>                &lt;/li&gt;</code></p>
+<p><code>503</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>504</code><code>                    &lt;a data-value="/intl/pt-br/" class="language-item"&gt;Português (Brasil)&amp;#8206;&lt;/a&gt;</code></p>
+<p><code>505</code><code>                &lt;/li&gt;</code></p>
+<p><code>506</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>507</code><code>                    &lt;a data-value="/intl/pt/" class="language-item"&gt;Português (Portugal)&lt;/a&gt;</code></p>
+<p><code>508</code><code>                &lt;/li&gt;</code></p>
+<p><code>509</code><code>            &lt;/ul&gt;                    &lt;ul&gt;                &lt;li class=""&gt;</code></p>
+<p><code>510</code><code>                    &lt;a data-value="/intl/fi/" class="language-item"&gt;Suomi&lt;/a&gt;</code></p>
+<p><code>511</code><code>                &lt;/li&gt;</code></p>
+<p><code>512</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>513</code><code>                    &lt;a data-value="/intl/sv/" class="language-item"&gt;Svenska&lt;/a&gt;</code></p>
+<p><code>514</code><code>                &lt;/li&gt;</code></p>
+<p><code>515</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>516</code><code>                    &lt;a data-value="/intl/vi/" class="language-item"&gt;Tiếng Việt&lt;/a&gt;</code></p>
+<p><code>517</code><code>                &lt;/li&gt;</code></p>
+<p><code>518</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>519</code><code>                    &lt;a data-value="/intl/tr/" class="language-item"&gt;Türkçe&lt;/a&gt;</code></p>
+<p><code>520</code><code>                &lt;/li&gt;</code></p>
+<p><code>521</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>522</code><code>                    &lt;a data-value="/intl/ru/" class="language-item"&gt;Русский&lt;/a&gt;</code></p>
+<p><code>523</code><code>                &lt;/li&gt;</code></p>
+<p><code>524</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>525</code><code>                    &lt;a data-value="/intl/ar/" class="language-item"&gt;العربية&lt;/a&gt;</code></p>
+<p><code>526</code><code>                &lt;/li&gt;</code></p>
+<p><code>527</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>528</code><code>                    &lt;a data-value="/intl/th/" class="language-item"&gt;ภาษาไทย&lt;/a&gt;</code></p>
+<p><code>529</code><code>                &lt;/li&gt;</code></p>
+<p><code>530</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>531</code><code>                    &lt;a data-value="/intl/ko/" class="language-item"&gt;한국어&lt;/a&gt;</code></p>
+<p><code>532</code><code>                &lt;/li&gt;</code></p>
+<p><code>533</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>534</code><code>                    &lt;a data-value="/intl/zh-cn/" class="language-item"&gt;中文（简体）&amp;#8206;&lt;/a&gt;</code></p>
+<p><code>535</code><code>                &lt;/li&gt;</code></p>
+<p><code>536</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>537</code><code>                    &lt;a data-value="/intl/zh-tw/" class="language-item"&gt;中文 (繁體)&lt;/a&gt;</code></p>
+<p><code>538</code><code>                &lt;/li&gt;</code></p>
+<p><code>539</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>540</code><code>                    &lt;a data-value="/intl/jp/" class="language-item"&gt;日本語&lt;/a&gt;</code></p>
+<p><code>541</code><code>                &lt;/li&gt;</code></p>
+<p><code>542</code><code>                            &lt;/ul&gt;</code></p>
+<p><code>543</code><code>        &lt;span class="tick-mark"&gt;&lt;/span&gt;</code></p>
+<p><code>544</code><code>    &lt;/div&gt;</code></p>
+<p><code>545</code><code>          </code></p>
+<p><code>546</code><code>&lt;/div&gt;</code></p>
+<p><code>547</code><code>          </code></p>
+<p><code>548</code><code>&lt;div class="language-picker mobile"&gt;</code></p>
+<p><code>549</code><code>    &lt;label for="language-choice-mobile"&gt;Choose language&lt;/label&gt;</code></p>
+<p><code>550</code><code>    &lt;select onchange="if (this.value) { switchLanguage(this.value); } return true;" id="language-choice-mobile"&gt;</code></p>
+<p><code>551</code><code>        &lt;option value="" style="color:#999"&gt;Language&lt;/option&gt;</code></p>
+<p><code>552</code><code>        &lt;option value="" style="color:#999" disabled&gt;------------&lt;/option&gt;</code></p>
+<p><code>553</code><code>                    &lt;option value="/intl/id/"&gt;Bahasa Indonesia&lt;/option&gt;</code></p>
+<p><code>554</code><code>                    &lt;option value="/intl/ms/"&gt;Bahasa Melayu&lt;/option&gt;</code></p>
+<p><code>555</code><code>                    &lt;option value="/intl/da/"&gt;Dansk&lt;/option&gt;</code></p>
+<p><code>556</code><code>                    &lt;option value="/intl/de/"&gt;Deutsch&lt;/option&gt;</code></p>
+<p><code>557</code><code>                    &lt;option value="/" style="background-color:#e1efd6"&gt;English (US)&amp;#8206;&lt;/option&gt;</code></p>
+<p><code>558</code><code>                    &lt;option value="/intl/es/"&gt;Español&lt;/option&gt;</code></p>
+<p><code>559</code><code>                    &lt;option value="/intl/es-latam/"&gt;Español (América Latina)&lt;/option&gt;</code></p>
+<p><code>560</code><code>                    &lt;option value="/intl/fr/"&gt;Français&lt;/option&gt;</code></p>
+<p><code>561</code><code>                    &lt;option value="/intl/it/"&gt;Italiano&lt;/option&gt;</code></p>
+<p><code>562</code><code>                    &lt;option value="/intl/nl/"&gt;Nederlands&lt;/option&gt;</code></p>
+<p><code>563</code><code>                    &lt;option value="/intl/pl/"&gt;Polski&lt;/option&gt;</code></p>
+<p><code>564</code><code>                    &lt;option value="/intl/pt-br/"&gt;Português (Brasil)&amp;#8206;&lt;/option&gt;</code></p>
+<p><code>565</code><code>                    &lt;option value="/intl/pt/"&gt;Português (Portugal)&lt;/option&gt;</code></p>
+<p><code>566</code><code>                    &lt;option value="/intl/fi/"&gt;Suomi&lt;/option&gt;</code></p>
+<p><code>567</code><code>                    &lt;option value="/intl/sv/"&gt;Svenska&lt;/option&gt;</code></p>
+<p><code>568</code><code>                    &lt;option value="/intl/vi/"&gt;Tiếng Việt&lt;/option&gt;</code></p>
+<p><code>569</code><code>                    &lt;option value="/intl/tr/"&gt;Türkçe&lt;/option&gt;</code></p>
+<p><code>570</code><code>                    &lt;option value="/intl/ru/"&gt;Русский&lt;/option&gt;</code></p>
+<p><code>571</code><code>                    &lt;option value="/intl/ar/"&gt;العربية&lt;/option&gt;</code></p>
+<p><code>572</code><code>                    &lt;option value="/intl/th/"&gt;ภาษาไทย&lt;/option&gt;</code></p>
+<p><code>573</code><code>                    &lt;option value="/intl/ko/"&gt;한국어&lt;/option&gt;</code></p>
+<p><code>574</code><code>                    &lt;option value="/intl/zh-cn/"&gt;中文（简体）&amp;#8206;&lt;/option&gt;</code></p>
+<p><code>575</code><code>                    &lt;option value="/intl/zh-tw/"&gt;中文 (繁體)&lt;/option&gt;</code></p>
+<p><code>576</code><code>                    &lt;option value="/intl/jp/"&gt;日本語&lt;/option&gt;</code></p>
+<p><code>577</code><code>            &lt;/select&gt;</code></p>
+<p><code>578</code><code>&lt;/div&gt;			&lt;/div&gt;</code></p>
+<p><code>579</code><code>		&lt;/div&gt;</code></p>
+<p><code>580</code><code>	&lt;/nav&gt;</code></p>
+<p><code>581</code><code>&lt;/footer&gt;</code></p>
+<p><code>582</code><code>          </code></p>
+<p><code>583</code><code>          </code></p>
+<p><code>584</code><code>          </code></p>
+<p><code>585</code><code>          </code></p>
+<p><code>586</code><code>&lt;script src="https://cdn1.evernote.com/media/js/lib/jquery-1.9.1.min.js" type="text/javascript"&gt;&lt;/script&gt;</code></p>
+<p><code>587</code><code>          </code></p>
+<p><code>588</code><code>		&lt;script src="/media/js/header-responsive-min.js" type="text/javascript"&gt;&lt;/script&gt;</code></p>
+<p><code>589</code><code>		&lt;!--[if lt IE 9]&gt;</code></p>
+<p><code>590</code><code>			&lt;script src="/media/js/respond.min.js"&gt;&lt;/script&gt;</code></p>
+<p><code>591</code><code>		&lt;![endif]--&gt;</code></p>
+<p><code>592</code><code>          </code></p>
+<p><code>593</code><code>          </code></p>
+<p><code>594</code><code>          </code></p>
+<p><code>595</code><code>&lt;script src="/media/js/build/global-min.js" type="text/javascript"&gt;&lt;/script&gt;</code></p>
+<p><code>596</code><code>    &lt;noscript&gt;&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-WZJ64J"</code></p>
+<p><code>597</code><code>    height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;</code></p>
+<p><code>598</code><code>    &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':</code></p>
+<p><code>599</code><code>    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],</code></p>
+<p><code>600</code><code>    j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=</code></p>
+<p><code>601</code><code>    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);</code></p>
+<p><code>602</code><code>    })(window,document,'script','dataLayer','GTM-WZJ64J');&lt;/script&gt;</code></p>
+<p><code>603</code><code>&lt;/body&gt;</code></p>
+<p><code>604</code><code>&lt;/html&gt;</code></p>
+</div><iframe src="about:blank" style="width:0px;height:0px;border:0px solid white;" id="iframeSpelling" title="Ignore - used for spell checking">
+					Ignore - used for spell checking
+				</iframe></body></html>

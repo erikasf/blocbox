@@ -1,0 +1,443 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Source View: https://dragdis.com/#/</title><meta name="robots" content="noindex,nofollow"><meta name="SortSite-IgnoreRule-Page" content="AccWcag1-13.1.3,AccWcag1-14.1.3,Section508-m-3,BugHtmlColgroup,BugIeCssMinMaxWidthHeight,ErrSpellingError,SeoBingTitleLength,SeoPage150k,UseGov5.1,UseGov9.2.3,UseGov10.11,UseGov11.7,UseGov14.3,UseGov17.4,UseGunningFog,W3cTitleTooLong"><style type="text/css"> 
+				body { font-size: smaller; color: black; background-color: white; font-family: Arial, Helvetica, sans-serif; }
+                
+				div.pre { color: #333; white-space: pre; font-family: monospace; clear: both; }
+				div.linespan { display: inline; }
+				span.ok { color: #000; } 
+				span.err { color: #f00; } 
+				span.line { } 
+				div.line { float: left; width: 40%; clear: both; }
+				div.col1 { float: left; width: 5%; padding: 2px; white-space: normal; }
+				div.col2 { float: left; width: 90%; padding-left: 6px; white-space: normal; }
+				div.hdr, div.err { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; position: relative; z-index: 1; top: 0px; left: 0px; width: 90%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; float: left; clear: both;  }
+				div.err-hilite { margin-bottom: 10px; position: relative; z-index: 1; top: 0px; left: 40px; width: 40%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; font-weight: bold; } 
+				div.desc { float: left; width: 40%; margin-bottom: 1em; }
+				div.help { float: right; width: 55%; margin-bottom: 1em; }
+				div.menu-title { float: right; width: 25%; min-width: 100px; text-align: right; padding: 1px; white-space: nowrap; }
+				code.dhtml { background-color: #eeeeff; font-weight: bold; }
+				a.accessible { display: none; } 
+				a.menu-title { text-decoration: none; color: black; background-color: white; border-left: 1px solid #bbb; border-top: 1px solid #bbb; border-right: 1px solid #222; border-bottom: 1px solid #222; text-align: right; display: block; padding: 2px; }
+				a.menu-title:hover { text-decoration: underline; } 
+				was-div.hdr { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; width: 90%; padding: 10px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; }
+				th { text-align: left; font-weight: normal; font-style: normal; }
+				tr { vertical-align: top; }
+				tr.middle { vertical-align: middle; }
+				img { border: none; vertical-align: middle; }
+				p { padding:0; margin:0; }
+				p code { display: block; float: left; width: 90%; font-size: 1em; }
+				p code:first-child { width: 4em; clear: both; }
+                
+				a.spell-bad
+				{
+					text-decoration: none;
+					color: black;
+					border-bottom: 1px dotted red;
+					line-height: 1.5em;
+				}
+				a.spell-good
+				{
+					text-decoration: line-through;
+					color: gray;
+					border-bottom: none;
+					line-height: 1.5em;
+				}
+
+					
+				</style><script type="text/javascript" src="../Report/jquery.min.js"></script><script type="text/javascript">
+				var g_errViewSource = "";
+				var g_viewSourceDir = "";
+				
+				
+				function pageLoad()
+				{
+					fixupOptions();
+					enableSpellings();
+					selectLine();
+				}
+				
+				function fixupOptions()
+				{
+					for ( var i = 0 ; i < document.links.length ; ++i )
+					{
+						var oLink = document.links[i];
+						
+						if ( oLink.onclick && oLink.onclick.toString().indexOf( "Options(" ) > 0 )
+						{
+							oLink.oncontextmenu = document.oncontextmenu = function() { this.click(); return false; }
+						}
+					}
+				}
+		
+				function toggleChevron( id )
+				{
+					var oElement = document.getElementById( "chev" + id );
+					//alert( id + " " + oElement.outerHTML );
+
+					if ( oElement.src.indexOf( "chevron-up.png" ) != -1 )
+					{
+						oElement.src = oElement.src.replace( "up", "down" );
+					}
+					else
+					{
+						oElement.src = oElement.src.replace( "down", "up" );
+					}
+
+					toggleVisibility( id );
+				}
+					
+				function toggleVisibility( id )
+				{					
+					var oElement = document.getElementById( id );					
+										
+					var strVisible = 'block';
+					
+					if ( oElement.style.display == 'none' )
+						oElement.style.display = strVisible;
+					else
+						oElement.style.display = 'none';
+				}
+				
+				
+				function viewSource( pageid, line, col )
+				{	
+					try
+					{
+						if ( g_viewSourceDir != '' )
+						{
+							window.location.href = g_viewSourceDir + pageid + ".view.htm#htm-l" + line;
+						}
+						else
+						{
+							window.external.ViewSource( pageid, line, col );
+						}
+					}
+					catch( err )
+					{
+						if ( g_errViewSource )
+							alert( g_errViewSource );
+					}
+				}
+
+				function enableSpellings()
+				{
+					var oRows = document.getElementsByTagName('a');
+					
+					for ( i = 0 ; i < oRows.length ; ++i )
+					{
+						var	oElement = oRows[i];
+											
+						if ( oElement.className == "spell-bad"  )
+						{
+						
+							try
+							{
+								var strWord = oElement.innerHTML;
+								
+								var bCorrect = window.external.GetSpellingCorrect( strWord );
+
+								if ( bCorrect )
+									oElement.className = 'spell-good';
+							}
+							catch(err)
+							{
+								//Do nothing
+							}
+						}
+					}
+				}
+				
+				function spellOptions( oLink, strWord, strAppEdition )
+				{
+					SpellAction = {
+						spellOther : 0,
+						spellAdded : 1,
+						spellRemoved : 2
+					};
+
+					try
+					{
+						var action = SpellAction.spellOther;
+
+						if ( strAppEdition.indexOf( "web" ) != -1 )
+						{
+							// add to custom dictionary
+							var urlAdd = '/Scans/AddCustomSpelling?word=' + strWord;
+							var urlRemove = '/Scans/RemoveCustomSpelling?word=' + strWord;
+
+							if ( $( '#iframeSpelling' ).attr('src') == urlAdd )
+							{
+								// clicking word again removes it from dictionary
+								action = SpellAction.spellRemoved;	
+								$( '#iframeSpelling' ).attr('src', urlRemove );
+							}
+							else
+							{
+								action = SpellAction.spellAdded;
+								$( '#iframeSpelling' ).attr('src', urlAdd );
+							}
+						}
+						else
+						{
+							// popup menu
+							action = window.external.SpellOptions( strWord );
+						}
+
+						if ( action == SpellAction.spellAdded )
+						{
+							// mark this one as good
+							oLink.className = 'spell-good';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-bad' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-good';
+								}
+							}
+						}
+						else if ( action == SpellAction.spellRemoved )
+						{
+							// mark this one as bad again
+							oLink.className = 'spell-bad';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-good' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-bad';
+								}
+							}
+						}
+					}
+					catch( err )
+					{
+						alert( "Spelling options are only available when the report is viewed in SortSite." );
+					}
+
+					// don't jump around or scroll after showing options menu
+					return false;
+				}
+				</script></head><body onload="pageLoad()"><a class="accessible" href="#mainContent">[Skip to Content]</a><div class="hdr"><h1>
+						HTML Document
+					</h1><table><tr><th>
+						URL: 
+					</th><td><a rel="nofollow" target="_top" href="https://dragdis.com/#/">https://dragdis.com/#/</a></td></tr><tr><th title="The status code returned by the web server tells the browser if the request was successful.">
+						HTTP Status: 
+					</th><td title="The status code returned by the web server tells the browser if the request was successful.">200 OK</td></tr><tr><th title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">
+						MIME Type: 
+					</th><td title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">text/html</td></tr><tr><th title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">
+						Last Modified: 
+					</th><td title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">Mon, 01 Jan 1601 00:00:00 GMT</td></tr><tr><th>
+						Download Time: 
+					</th><td>
+								Less than a second
+							</td></tr><tr><th>
+						Cookies: 
+					</th><td>
+								None
+							</td></tr><tr><th>
+						Size: 
+					</th><td>21 KB 
+						</td></tr><tr><th>
+								Page Weight: 
+							</th><td>21 KB (total size of HTML, CSS, JavaScript and images)
+							</td></tr><tr><th>
+								Depth: 
+							</th><td>0 clicks from home page
+							</td></tr><tr><th>
+								Charset: 
+							</th><td>UTF-8</td></tr><tr><th>
+								Forms: 
+							</th><td>1 forms containing 1 controls
+							</td></tr><tr><th>
+						HTTP Headers: 
+					</th><td><a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Headers" id="chevHttpHeaders" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();">4&nbsp;headers</a><div style="display: none; width: 100%;" id="HttpHeaders"><a rel="nofollow">Cache-Control:  private
+</a><br><a rel="nofollow">Date:  Thu, 16 Jul 2015 06:26:07 GMT
+</a><br><a rel="nofollow">Server:  PasteWSGIServer/0.5 Python/2.7.2
+</a><br><a rel="nofollow">X-Frame-Options:  SAMEORIGIN
+</a><br></div></td></tr><tr><th>
+						Links In: 
+					</th><td><a><img width="20" height="20" alt="View Links" id="chevLinksIn" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;pages</a><div style="display: none; width: 100%;" id="LinksIn"></div></td></tr><tr><th>
+							Links Out: 
+						</th><td><a><img width="20" height="20" alt="View Links" id="chevLinksOut" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;links</a><div style="display: none; width: 100%;" id="LinksOut"></div></td></tr><tr><th>
+							Images: 
+						</th><td><a><img width="20" height="20" alt="View Images" id="chevImages" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;images</a><div style="display: none; width: 100%;" id="Images"></div></td></tr><tr><th>
+							CSS: 
+						</th><td><a><img width="20" height="20" alt="View CSS Files" id="chevCSS" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;files</a><div style="display: none; width: 100%;" id="CSS"></div></td></tr><tr><th>
+							JavaScript: 
+						</th><td><a><img width="20" height="20" alt="View JavaScript Files" id="chevJavaScript" src="../Report/chevron-disabled.png"></a>&nbsp;<a>0&nbsp;files</a><div style="display: none; width: 100%;" id="JavaScript"></div></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr><tr class="middle"><th><img alt="Issue" style="text-align:absmiddle" width="20" height="20" src="../Report/bench-worse.png">	
+								Issues: 
+							</th><td>10
+								issues found on
+								17
+								lines
+							</td></tr></table></div><div id="mainContent" class="pre"><script type='text/javascript'>function selectLine() {}</script><br style='clear: both'> <div id='err-l1c1-0' class='err' >  <div class='col1'><img src='../Report/p3.png' width='20' height='20' alt='Priority 3'> </div>  <div class='col2'>   <div class='desc'>Each section of content should begin with a heading tag (H1, H2, H3), but this page has no heading tags. </div>   <div class='help'>In HTML place headings before each section of content, making sure the main heading is H1, sub-headings are H2 and so on. For PDFs produced from Word, use the Heading 1, Heading 2 and Heading 3 styles. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://www.w3.org/TR/WCAG20/#navigation-mechanisms-headings' target='_top'>WCAG 2.0 AAA 2.4.10</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-12.3.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l1c1-1' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>This page has no privacy policy. If your web server logs visits, then every page reachable by a search engine should have a privacy policy explaining what is logged and how the logs are used. </div>   <div class='line'><span class='line'>Line 1</span>  <a href='https://ico.org.uk/for-organisations/guide-to-pecr/' target='_top'>EU Privacy Regulations</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "LegNoPrivacy" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l1c1-2' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>Provide a search option on each page of content-rich web sites. </div>   <div class='help'>
+			A search option should be provided on all pages where it may be useful - users should not have to return to the homepage to conduct a search. Search engines can be helpful on content-rich web sites, but do not add value on other types of sites.
+		 </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://guidelines.usability.gov/guidelines/189' target='_top'>Usability.gov 17:4</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "UseGov17.4" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>1</code><code></code></p>
+<p><code>2</code><code>&lt;!DOCTYPE html&gt;</code></p>
+<br style='clear: both'> <div id='err-l3c1-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;ng-app&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 3</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-ng-app" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>3</code><code><span class='err' id='htm-l3c1' title='Line 3 Column 1'>&lt;html lang="en" ng-app="dragdisApp"&gt;</span></code></p>
+<p><code>4</code><code>&lt;head&gt;</code></p>
+<p><code>5</code><code>    &lt;meta charset="utf-8" /&gt;</code></p>
+<p><code>6</code><code>    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;&lt;script type="text/javascript"&gt;window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"5a19bbc599","applicationID":"5708208","transactionName":"YFZWYURQVkNWBkxdWVkccFpCf11EdApWQERYX1hQRB5wX1oAF31YU1ZM","queueTime":0,"applicationTime":116,"ttGuid":"F53EB6409EE54ED1","agent":"js-agent.newrelic.com/nr-632.min.js"}&lt;/script&gt;&lt;script type="text/javascript"&gt;(window.NREUM||(NREUM={})).loader_config={xpid:"XAYBUVFUGwYHVFlQBwk="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o&lt;n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&amp;&amp;t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f&gt;d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t){try{i.console&amp;&amp;console.log(t)}catch(e){}}var n,r=t("ee"),o=t(1),i={};try{n=localStorage.getItem("__nr_flags").split(","),console&amp;&amp;"function"==typeof console.log&amp;&amp;(i.console=!0,-1!==n.indexOf("dev")&amp;&amp;(i.dev=!0),-1!==n.indexOf("nr_dev")&amp;&amp;(i.nrDev=!0))}catch(a){}i.nrDev&amp;&amp;r.on("internal-error",function(t){e(t.stack)}),i.dev&amp;&amp;r.on("fn-err",function(t,n,r){e(r.stack)}),i.dev&amp;&amp;(e("NR AGENT IN DEVELOPMENT MODE"),e("flags: "+o(i,function(t){return t}).join(", ")))},{1:23,ee:"QJf3ax"}],4:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,t(5),window.onerror=e;try{throw new Error}catch(f){"stack"in f&amp;&amp;(t(1),t(2),"addEventListener"in window&amp;&amp;t(3),window.XMLHttpRequest&amp;&amp;XMLHttpRequest.prototype&amp;&amp;XMLHttpRequest.prototype.addEventListener&amp;&amp;window.XMLHttpRequest&amp;&amp;XMLHttpRequest.prototype&amp;&amp;XMLHttpRequest.prototype.addEventListener&amp;&amp;!/CriOS/.test(navigator.userAgent)&amp;&amp;t(4),s=!0)}i.on("fn-start",function(){s&amp;&amp;(c+=1)}),i.on("fn-err",function(t,e,r){s&amp;&amp;(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&amp;&amp;!this.thrown&amp;&amp;c&gt;0&amp;&amp;(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:10,2:9,3:7,4:11,5:3,6:24,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t){t("loader").features.ins=!0},{loader:"G9z0Bl"}],6:[function(t){function e(){}if(window.performance&amp;&amp;window.performance.timing&amp;&amp;window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1),i=t(2);t("loader").features.stn=!0,t(3),n.on("fn-start",function(t){var e=t[0];e instanceof Event&amp;&amp;(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&amp;&amp;r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),i.on("fn-start",function(){this.bstStart=Date.now()}),i.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&amp;&amp;(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:10,2:9,3:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],7:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&amp;&amp;!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&amp;&amp;n(s);for(var c=XMLHttpRequest.prototype;c&amp;&amp;!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&amp;&amp;n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&amp;&amp;n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&amp;&amp;i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&amp;&amp;(t[1]=e)})},{1:24,2:25,ee:"QJf3ax",gos:"7eSDFh"}],8:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:25,2:24,ee:"QJf3ax"}],9:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:25,2:24,ee:"QJf3ax"}],10:[function(t,e){function n(t,e,n){t[0]=o(t[0],"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:25,2:24,ee:"QJf3ax"}],11:[function(t,e){function n(){f.inPlace(this,p,"fn-")}function r(t,e){f.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}function i(t,e){for(var n in t)e[n]=t[n];return e}var a=t("ee").create(),s=t(1),c=t(2),f=c(a),u=c(s),d=window.XMLHttpRequest,p=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=a,window.XMLHttpRequest=function(t){var e=new d(t);try{a.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",o),e.addEventListener("readystatechange",n,!1)}catch(r){try{a.emit("internal-error",[r])}catch(i){}}return e},i(d,XMLHttpRequest),XMLHttpRequest.prototype=d.prototype,f.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),a.on("send-xhr-start",r),a.on("open-xhr-start",r)},{1:7,2:25,ee:"QJf3ax"}],12:[function(t){function e(t){var e=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c&gt;i;i++)t.removeEventListener(s[i],this.listener,!1);if(!e.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=n(f);if(u&amp;&amp;(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&amp;&amp;(e.cat=d.split(", ").pop())}}else e.status=0;r.cbTime=this.cbTime,o("xhr",[e,r,this.startTime])}}}function n(t){if("string"==typeof t&amp;&amp;t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&amp;&amp;t instanceof ArrayBuffer&amp;&amp;t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&amp;&amp;t instanceof Blob&amp;&amp;t.size)return t.size;if("undefined"!=typeof FormData&amp;&amp;t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&amp;&amp;XMLHttpRequest.prototype&amp;&amp;XMLHttpRequest.prototype.addEventListener&amp;&amp;!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=e,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&amp;&amp;"xpid"in NREUM.loader_config&amp;&amp;this.sameOrigin&amp;&amp;e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,e){var r=this.metrics,o=t[0],i=this;if(r&amp;&amp;o){var f=n(o);f&amp;&amp;(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&amp;&amp;(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&amp;&amp;(i.onloadCalled||"function"!=typeof e.onload))&amp;&amp;i.end(e)}catch(n){try{a.emit("internal-error",[n])}catch(r){}}};for(var u=0;c&gt;u;u++)e.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&amp;&amp;"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&amp;&amp;!this.xhrGuids[n]&amp;&amp;(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&amp;&amp;this.xhrGuids[n]&amp;&amp;(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&amp;&amp;"load"===t[0]&amp;&amp;a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&amp;&amp;"load"===t[0]&amp;&amp;a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&amp;&amp;("onload"===n&amp;&amp;(this.onload=!0),("load"===(t[0]&amp;&amp;t[0].type)||this.onload)&amp;&amp;(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&amp;&amp;a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:13,3:11,4:7,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],13:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&amp;&amp;o[1]&amp;&amp;(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&amp;&amp;"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&amp;&amp;(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&amp;&amp;e.port===n.port&amp;&amp;e.protocol===n.protocol,r}},{}],14:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&amp;&amp;(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:23,2:24,handle:"D5DuLP"}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&amp;&amp;Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&amp;&amp;"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info,e=f.getElementsByTagName("script")[0];if(t&amp;&amp;t.licenseKey&amp;&amp;t.applicationID&amp;&amp;e){s(d,function(e,n){e in t||(t[e]=n)});var n="https"===u.split(":")[0]||t.sslForHttp;p.proto=n?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=p.proto+t.agent,e.parentNode.insertBefore(r,e)}}function r(){"complete"===f.readyState&amp;&amp;o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=(t(2),window),f=c.document,u=(""+location).split("?")[0],d={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-632.min.js"},p=e.exports={offset:i(),origin:u,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),c.addEventListener("load",n,!1)):(f.attachEvent("onreadystatechange",r),c.attachEvent("onload",n)),a("mark",["firstbyte",i()])},{1:23,2:14,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],23:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&amp;&amp;(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],24:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&amp;&amp;(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0&gt;o?0:o);++r&lt;o;)i[r]=t[e+r];return i}e.exports=n},{}],25:[function(t,e){function n(t){return!(t&amp;&amp;"function"==typeof t&amp;&amp;t.apply&amp;&amp;!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&amp;&amp;r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c&lt;r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&amp;&amp;Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&amp;&amp;(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:24,ee:"QJf3ax"}]},{},["G9z0Bl",4,12,6,5]);&lt;/script&gt;</code></p>
+<p><code>7</code><code>    &lt;meta name="viewport" content="width=device-width" /&gt;</code></p>
+<p><code>8</code><code>    &lt;meta name="description" content=""&gt;</code></p>
+<p><code>9</code><code></code></p>
+<p><code>10</code><code>    </code></p><br style='clear: both'> <div id='err-l10c5-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Bad value for attribute &#39;http-equiv&#39;. Bad value &#39;cache-control&#39;. </div>   <div class='line'><span class='line'>Line 10</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAval-http-equiv" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l10c5' title='Line 10 Column 5'>&lt;meta http-equiv="cache-control" content="max-age=0" /&gt;</span></code></p>
+<p><code>11</code><code>    </code></p><br style='clear: both'> <div id='err-l11c5-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Bad value for attribute &#39;http-equiv&#39;. Bad value &#39;cache-control&#39;. </div>   <div class='line'><span class='line'>Line 11</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAval-http-equiv" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l11c5' title='Line 11 Column 5'>&lt;meta http-equiv="cache-control" content="no-cache" /&gt;</span></code></p>
+<p><code>12</code><code>    </code></p><br style='clear: both'> <div id='err-l12c5-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Bad value for attribute &#39;http-equiv&#39;. Bad value &#39;cache-control&#39;. </div>   <div class='line'><span class='line'>Line 12</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAval-http-equiv" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l12c5' title='Line 12 Column 5'>&lt;meta http-equiv="expires" content="0" /&gt;</span></code></p>
+<p><code>13</code><code>    </code></p><br style='clear: both'> <div id='err-l13c5-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Bad value for attribute &#39;http-equiv&#39;. Bad value &#39;cache-control&#39;. </div>   <div class='line'><span class='line'>Line 13</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAval-http-equiv" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l13c5' title='Line 13 Column 5'>&lt;meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" /&gt;</span></code></p>
+<p><code>14</code><code>    </code></p><br style='clear: both'> <div id='err-l14c5-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Bad value for attribute &#39;http-equiv&#39;. Bad value &#39;cache-control&#39;. </div>   <div class='line'><span class='line'>Line 14</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAval-http-equiv" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l14c5' title='Line 14 Column 5'>&lt;meta http-equiv="pragma" content="no-cache" /&gt;</span></code></p>
+<p><code>15</code><code></code></p>
+<p><code>16</code><code>    </code></p><br style='clear: both'> <div id='err-l16c5-0' class='err' >  <div class='col1'><img src='../Report/p6.png' width='20' height='20' alt='Priority 6'> </div>  <div class='col2'>   <div class='desc'>Search engines will not follow links from this page because it has a NOFOLLOW meta tag. </div>   <div class='line'><span class='line'>Line 16</span>  <a href='http://www.robotstxt.org/meta.html' target='_top'>Robots.txt</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMetaNoFollow" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l16c5-1' class='err' >  <div class='col1'><img src='../Report/p6.png' width='20' height='20' alt='Priority 6'> </div>  <div class='col2'>   <div class='desc'>Search engines will not index this page because it has a NOINDEX meta tag. </div>   <div class='line'><span class='line'>Line 16</span>  <a href='http://www.robotstxt.org/meta.html' target='_top'>Robots.txt</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMetaNoIndex" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l16c5' title='Line 16 Column 5'>&lt;meta name="ROBOTS" content="NOINDEX, NOFOLLOW"&gt;</span></code></p>
+<p><code>17</code><code>    &lt;meta name="GOOGLEBOT" content="NOINDEX, NOFOLLOW"&gt;</code></p>
+<p><code>18</code><code></code></p>
+<p><code>19</code><code>    &lt;title&gt;Dragdis&lt;/title&gt;</code></p>
+<p><code>20</code><code></code></p>
+<p><code>21</code><code>    &lt;link href="/Public/images/favicon.ico" rel="shortcut icon" type="image/x-icon" /&gt;</code></p>
+<p><code>22</code><code>    &lt;link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/fiekimdgbphfmnlbiahcfdgcipcopmep"&gt;</code></p>
+<p><code>23</code><code></code></p>
+<p><code>24</code><code>    &lt;link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;s</code></p><br style='clear: both'> <div id='err-l24c84-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>&#39;&#38;&#39; did not start a character reference. (&#38; probably should have been escaped as &#38;amp;.) </div>   <div class='line'><span class='line'>Line 24</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-errNoNamedCharacterMatch" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l24c84' title='Line 24 Column 84'>ubset=latin,latin-ext' rel='stylesheet' type='text/css'&gt;</span></code></p>
+<p><code>25</code><code></code></p>
+<p><code>26</code><code>    &lt;link href="/bundles/userpanelcss?v=0dWF3uvWR9SSEsaSVvJ3oJBzOaQat8W0MIboOsw5eDg1" rel="stylesheet"/&gt;</code></p>
+<p><code>27</code><code></code></p>
+<p><code>28</code><code></code></p>
+<p><code>29</code><code>        &lt;script type="text/javascript"&gt;</code></p>
+<p><code>30</code><code>            var DragdisUsername = "Gabi Mauersberger";</code></p>
+<p><code>31</code><code>            var DragdisAvatar = "";</code></p>
+<p><code>32</code><code>            var DragdisTotalItems = 5;</code></p>
+<p><code>33</code><code>            var DragdisTrashedItems = 0;</code></p>
+<p><code>34</code><code>            var DragdisFacebook = 0;</code></p>
+<p><code>35</code><code>            var DragdisTwitter = 0;</code></p>
+<p><code>36</code><code>            var DragdisConfig = {"Version":"1.0.5610.2052","ShortUrlBase":"https://dragdis.com/s","BaseDomain":"https://dragdis.com","BlobsBaseUrl":"https://dragdis.blob.core.windows.net","CdnBaseUrl":"https://az681465.vo.msecnd.net","BlobsContainer":"assets","IsDebug":false,"IsProduction":true,"TimeStampUtc":"\/Date(1436974195771)\/","TimeStampLocal":"\/Date(1436974195771+0000)\/"};</code></p>
+<p><code>37</code><code>        &lt;/script&gt;</code></p>
+<p><code>38</code><code>    &lt;script src="/bundles/plugins?v=NnbuWzP_CAKGN7BjgsLgyVdzYrMYChTZg9eJcTnG7cI1"&gt;&lt;/script&gt;</code></p>
+<p><code>39</code><code></code></p>
+<p><code>40</code><code></code></p>
+<p><code>41</code><code>    &lt;script src="/Public/js/config/config.js"&gt;&lt;/script&gt;</code></p>
+<p><code>42</code><code></code></p>
+<p><code>43</code><code></code></p>
+<p><code>44</code><code>    &lt;script src="/bundles/modules?v=RKcfgbhiAkGUIBPmzXuE1GAsXknB8Lp1N4Vv_7MT2KE1"&gt;&lt;/script&gt;</code></p>
+<p><code>45</code><code></code></p>
+<p><code>46</code><code>    &lt;script src="/bundles/userpanel?v=myXCOiqVd1H4GEiKmj0kda1VDf1D6-p45eRhPrTyV7I1"&gt;&lt;/script&gt;</code></p>
+<p><code>47</code><code></code></p>
+<p><code>48</code><code></code></p>
+<p><code>49</code><code>    </code></p>
+<p><code>50</code><code>&lt;link href="/bundles/sidebarCSS?v=-DrNhsU2vzp0d8AKqER671PZpcPnSPX9-m70Mr2I-aY1" rel="stylesheet"/&gt;</code></p>
+<p><code>51</code><code>    &lt;script src="/bundles/sidebarJS?v=bCVI7EAdHjUAzVDFCK1Mk44g0gCQN7LQzh7COEfFIMs1"&gt;&lt;/script&gt;</code></p>
+<p><code>52</code><code></code></p>
+<p><code>53</code><code></code></p>
+<p><code>54</code><code>&lt;/head&gt;</code></p>
+<p><code>55</code><code></code></p>
+<p><code>56</code><code></code></p>
+<br style='clear: both'> <div id='err-l57c1-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has no H1 tag, which violates Bing webmaster guidelines. </div>   <div class='help'>Add an H1 tag just before the main content describing the page. </div>   <div class='line'><span class='line'>Line 57</span>  <a href='http://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a' target='_top'>Bing</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoNoH1Tag" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l57c1-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;browser-init&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 57</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-browser-init" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>57</code><code><span class='err' id='htm-l57c1' title='Line 57 Column 1'>&lt;body class="no-overflow  " browser-init&gt;</span></code></p>
+<p><code>58</code><code>        &lt;div id="dragdis-root"&gt;</code></p>
+<p><code>59</code><code>            </code></p><br style='clear: both'> <div id='err-l59c13-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;ng-controller&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 59</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-ng-controller" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l59c13' title='Line 59 Column 13'>&lt;aside id="dragdis-sidebar" ng-controller="Ctrl_Sidebar" ng-class="{expanded: expandedView}</span>" ng-include="sidebarTemplate()"&gt;&lt;/aside&gt;</code></p>
+<p><code>60</code><code>        &lt;/div&gt;</code></p>
+<p><code>61</code><code>    </code></p><br style='clear: both'> <div id='err-l61c5-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;ng-controller&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 61</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-ng-controller" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l61c5' title='Line 61 Column 5'>&lt;header ng-controller="Ctrl_Top" ng-include="'/public/views/header.html'"&gt;</span>&lt;/header&gt;</code></p>
+<p><code>62</code><code></code></p>
+<p><code>63</code><code>    </code></p><br style='clear: both'> <div id='err-l63c5-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;ui-view&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 63</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-ui-view" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l63c5' title='Line 63 Column 5'>&lt;main ui-view&gt;</span>&lt;/main&gt;</code></p>
+<p><code>64</code><code></code></p>
+<p><code>65</code><code>        &lt;div class="drag-helper"&gt;&lt;/div&gt;</code></p>
+<p><code>66</code><code>        &lt;div style="display: none"&gt;</code></p>
+<p><code>67</code><code>&lt;form action="/Account/LogOff" id="logoutForm" method="post"&gt;&lt;input name="__RequestVerificationToken" type="hidden" value="13zRL9E_NS9hLZTMOUF0KT5UhYv7RPJF1ePtxpXhvAQQgeGXbqKmTz-cA7Oks2pDSeKGVBjBsnpH3GzyPuH9zftiiJYNZn1s8WjKfnDWquyqef440" /&gt;&lt;/form&gt;        &lt;/div&gt;</code></p>
+<p><code>68</code><code>        &lt;script id="IntercomSettingsScriptTag"&gt;</code></p>
+<p><code>69</code><code>            window.intercomSettings = {</code></p>
+<p><code>70</code><code>                app_id: "c9c1eb97757f8921f561cb5373957a00dc71baee",</code></p>
+<p><code>71</code><code>                email: "gabimauers@gmail.com",</code></p>
+<p><code>72</code><code>                user_id: "98978",</code></p>
+<p><code>73</code><code>                user_hash: "1b583392b290a7c94f845c0ce3a7bb81fc9e8b550e5138ed59c3d095f9e96504",</code></p>
+<p><code>74</code><code>                created_at: 1436998946,</code></p>
+<p><code>75</code><code>                total_Drags: 5,</code></p>
+<p><code>76</code><code>                total_TrashedDrags: 0,</code></p>
+<p><code>77</code><code>                total_Folders: 1,</code></p>
+<p><code>78</code><code>                total_Groups: 1,</code></p>
+<p><code>79</code><code>                total_TrashedFolders: 0,</code></p>
+<p><code>80</code><code></code></p>
+<p><code>81</code><code>                Subscription: false,</code></p>
+<p><code>82</code><code>                SubscriptionUntil_at: -62135596800,</code></p>
+<p><code>83</code><code>                ViaReferral:false,</code></p>
+<p><code>84</code><code>                RefUrl: "",</code></p>
+<p><code>85</code><code>                RefIp: "",</code></p>
+<p><code>86</code><code>                EarnedFolders: 0,</code></p>
+<p><code>87</code><code>                CollabFolders: 0,</code></p>
+<p><code>88</code><code>                CollabPeople: 0,</code></p>
+<p><code>89</code><code>                TagCount: 0,</code></p>
+<p><code>90</code><code>                SeachesCount: 2,</code></p>
+<p><code>91</code><code>                widget: {</code></p>
+<p><code>92</code><code>                    activator: '#Intercom',</code></p>
+<p><code>93</code><code>                    use_counter: true</code></p>
+<p><code>94</code><code>                }</code></p>
+<p><code>95</code><code></code></p>
+<p><code>96</code><code>            };</code></p>
+<p><code>97</code><code>        &lt;/script&gt;</code></p>
+<p><code>98</code><code>        &lt;script&gt;</code></p>
+<p><code>99</code><code>            (function() {</code></p>
+<p><code>100</code><code>                var w = window;</code></p>
+<p><code>101</code><code>                var ic = w.Intercom;</code></p>
+<p><code>102</code><code>                if (typeof ic === "function") {</code></p>
+<p><code>103</code><code>                    ic('reattach_activator');</code></p>
+<p><code>104</code><code>                    ic('update', intercomSettings);</code></p>
+<p><code>105</code><code>                } else {</code></p>
+<p><code>106</code><code>                    var d = document;</code></p>
+<p><code>107</code><code>                    var i = function() { i.c(arguments) };</code></p>
+<p><code>108</code><code>                    i.q = [];</code></p>
+<p><code>109</code><code>                    i.c = function(args) { i.q.push(args) };</code></p>
+<p><code>110</code><code>                    w.Intercom = i;</code></p>
+<p><code>111</code><code></code></p>
+<p><code>112</code><code>                    function l() {</code></p>
+<p><code>113</code><code>                        var s = d.createElement('script');</code></p>
+<p><code>114</code><code>                        s.type = 'text/javascript';</code></p>
+<p><code>115</code><code>                        s.async = true;</code></p>
+<p><code>116</code><code>                        s.src = 'https://static.intercomcdn.com/intercom.v1.js';</code></p>
+<p><code>117</code><code>                        var x = d.getElementsByTagName('script')[0];</code></p>
+<p><code>118</code><code>                        x.parentNode.insertBefore(s, x);</code></p>
+<p><code>119</code><code>                    }</code></p>
+<p><code>120</code><code></code></p>
+<p><code>121</code><code>                    if (w.attachEvent) {</code></p>
+<p><code>122</code><code>                        w.attachEvent('onload', l);</code></p>
+<p><code>123</code><code>                    } else {</code></p>
+<p><code>124</code><code>                        w.addEventListener('load', l, false);</code></p>
+<p><code>125</code><code>                    }</code></p>
+<p><code>126</code><code>                }</code></p>
+<p><code>127</code><code>            })()</code></p>
+<p><code>128</code><code>        &lt;/script&gt;</code></p>
+<p><code>129</code><code>        &lt;script type="text/javascript"&gt;</code></p>
+<p><code>130</code><code>            window.postMessage(JSON.stringify({ type: 'DRAGDIS_ExtensionIframeSync', action: "FORCE_REFRESH" }), '*');</code></p>
+<p><code>131</code><code>        &lt;/script&gt;</code></p>
+<p><code>132</code><code>    &lt;script&gt;</code></p>
+<p><code>133</code><code>        (function (i, s, o, g, r, a, m) {</code></p>
+<p><code>134</code><code>            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {</code></p>
+<p><code>135</code><code>                (i[r].q = i[r].q || []).push(arguments)</code></p>
+<p><code>136</code><code>            }, i[r].l = 1 * new Date(); a = s.createElement(o),</code></p>
+<p><code>137</code><code>            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)</code></p>
+<p><code>138</code><code>        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');</code></p>
+<p><code>139</code><code></code></p>
+<p><code>140</code><code>        ga('create', 'UA-33988171-1', 'dragdis.com');</code></p>
+<p><code>141</code><code>        ga('require', 'displayfeatures');</code></p>
+<p><code>142</code><code>        ga('set', 'dimension1', 'gabimauers@gmail.com');</code></p>
+<p><code>143</code><code></code></p>
+<p><code>144</code><code>        //Reset refferer if user came back from Registration via social networks</code></p>
+<p><code>145</code><code>        if (localStorage.getItem("resetAnalyticsRefferer")) {</code></p>
+<p><code>146</code><code>            localStorage.setItem("resetAnalyticsRefferer", false);</code></p>
+<p><code>147</code><code>            ga('set', 'referrer', 'https://dragdis.com');</code></p>
+<p><code>148</code><code>        }</code></p>
+<p><code>149</code><code></code></p>
+<p><code>150</code><code>    &lt;/script&gt;</code></p>
+<p><code>151</code><code>    &lt;script src="/Public/js/analytics/trackLib.js"&gt;&lt;/script&gt;</code></p>
+<p><code>152</code><code></code></p>
+<p><code>153</code><code>    &lt;script src="/Public/js/analytics/userPanelPage.js"&gt;&lt;/script&gt;</code></p>
+<p><code>154</code><code></code></p>
+<p><code>155</code><code></code></p>
+<p><code>156</code><code>    </code></p>
+<p><code>157</code><code>&lt;/body&gt;</code></p>
+<p><code>158</code><code>&lt;/html&gt;</code></p>
+</div><iframe src="about:blank" style="width:0px;height:0px;border:0px solid white;" id="iframeSpelling" title="Ignore - used for spell checking">
+					Ignore - used for spell checking
+				</iframe></body></html>

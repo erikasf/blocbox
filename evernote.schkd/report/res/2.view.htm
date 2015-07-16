@@ -1,0 +1,1052 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Source View: https://evernote.com/?var=1</title><meta name="robots" content="noindex,nofollow"><meta name="SortSite-IgnoreRule-Page" content="AccWcag1-13.1.3,AccWcag1-14.1.3,Section508-m-3,BugHtmlColgroup,BugIeCssMinMaxWidthHeight,ErrSpellingError,SeoBingTitleLength,SeoPage150k,UseGov5.1,UseGov9.2.3,UseGov10.11,UseGov11.7,UseGov14.3,UseGov17.4,UseGunningFog,W3cTitleTooLong"><style type="text/css"> 
+				body { font-size: smaller; color: black; background-color: white; font-family: Arial, Helvetica, sans-serif; }
+                
+				div.pre { color: #333; white-space: pre; font-family: monospace; clear: both; }
+				div.linespan { display: inline; }
+				span.ok { color: #000; } 
+				span.err { color: #f00; } 
+				span.line { } 
+				div.line { float: left; width: 40%; clear: both; }
+				div.col1 { float: left; width: 5%; padding: 2px; white-space: normal; }
+				div.col2 { float: left; width: 90%; padding-left: 6px; white-space: normal; }
+				div.hdr, div.err { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; position: relative; z-index: 1; top: 0px; left: 0px; width: 90%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; float: left; clear: both;  }
+				div.err-hilite { margin-bottom: 10px; position: relative; z-index: 1; top: 0px; left: 40px; width: 40%; padding: 6px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; font-weight: bold; } 
+				div.desc { float: left; width: 40%; margin-bottom: 1em; }
+				div.help { float: right; width: 55%; margin-bottom: 1em; }
+				div.menu-title { float: right; width: 25%; min-width: 100px; text-align: right; padding: 1px; white-space: nowrap; }
+				code.dhtml { background-color: #eeeeff; font-weight: bold; }
+				a.accessible { display: none; } 
+				a.menu-title { text-decoration: none; color: black; background-color: white; border-left: 1px solid #bbb; border-top: 1px solid #bbb; border-right: 1px solid #222; border-bottom: 1px solid #222; text-align: right; display: block; padding: 2px; }
+				a.menu-title:hover { text-decoration: underline; } 
+				was-div.hdr { border-radius: 10px; margin-bottom: 10px; margin-top: 10px; width: 90%; padding: 10px; color: black; background-color: #f7f7f7; border: 1px solid #e0e0e0; font-family: Arial, Helvetica, sans-serif; }
+				th { text-align: left; font-weight: normal; font-style: normal; }
+				tr { vertical-align: top; }
+				tr.middle { vertical-align: middle; }
+				img { border: none; vertical-align: middle; }
+				p { padding:0; margin:0; }
+				p code { display: block; float: left; width: 90%; font-size: 1em; }
+				p code:first-child { width: 4em; clear: both; }
+                
+				a.spell-bad
+				{
+					text-decoration: none;
+					color: black;
+					border-bottom: 1px dotted red;
+					line-height: 1.5em;
+				}
+				a.spell-good
+				{
+					text-decoration: line-through;
+					color: gray;
+					border-bottom: none;
+					line-height: 1.5em;
+				}
+
+					
+				</style><script type="text/javascript" src="../Report/jquery.min.js"></script><script type="text/javascript">
+				var g_errViewSource = "";
+				var g_viewSourceDir = "";
+				
+				
+				function pageLoad()
+				{
+					fixupOptions();
+					enableSpellings();
+					selectLine();
+				}
+				
+				function fixupOptions()
+				{
+					for ( var i = 0 ; i < document.links.length ; ++i )
+					{
+						var oLink = document.links[i];
+						
+						if ( oLink.onclick && oLink.onclick.toString().indexOf( "Options(" ) > 0 )
+						{
+							oLink.oncontextmenu = document.oncontextmenu = function() { this.click(); return false; }
+						}
+					}
+				}
+		
+				function toggleChevron( id )
+				{
+					var oElement = document.getElementById( "chev" + id );
+					//alert( id + " " + oElement.outerHTML );
+
+					if ( oElement.src.indexOf( "chevron-up.png" ) != -1 )
+					{
+						oElement.src = oElement.src.replace( "up", "down" );
+					}
+					else
+					{
+						oElement.src = oElement.src.replace( "down", "up" );
+					}
+
+					toggleVisibility( id );
+				}
+					
+				function toggleVisibility( id )
+				{					
+					var oElement = document.getElementById( id );					
+										
+					var strVisible = 'block';
+					
+					if ( oElement.style.display == 'none' )
+						oElement.style.display = strVisible;
+					else
+						oElement.style.display = 'none';
+				}
+				
+				
+				function viewSource( pageid, line, col )
+				{	
+					try
+					{
+						if ( g_viewSourceDir != '' )
+						{
+							window.location.href = g_viewSourceDir + pageid + ".view.htm#htm-l" + line;
+						}
+						else
+						{
+							window.external.ViewSource( pageid, line, col );
+						}
+					}
+					catch( err )
+					{
+						if ( g_errViewSource )
+							alert( g_errViewSource );
+					}
+				}
+
+				function enableSpellings()
+				{
+					var oRows = document.getElementsByTagName('a');
+					
+					for ( i = 0 ; i < oRows.length ; ++i )
+					{
+						var	oElement = oRows[i];
+											
+						if ( oElement.className == "spell-bad"  )
+						{
+						
+							try
+							{
+								var strWord = oElement.innerHTML;
+								
+								var bCorrect = window.external.GetSpellingCorrect( strWord );
+
+								if ( bCorrect )
+									oElement.className = 'spell-good';
+							}
+							catch(err)
+							{
+								//Do nothing
+							}
+						}
+					}
+				}
+				
+				function spellOptions( oLink, strWord, strAppEdition )
+				{
+					SpellAction = {
+						spellOther : 0,
+						spellAdded : 1,
+						spellRemoved : 2
+					};
+
+					try
+					{
+						var action = SpellAction.spellOther;
+
+						if ( strAppEdition.indexOf( "web" ) != -1 )
+						{
+							// add to custom dictionary
+							var urlAdd = '/Scans/AddCustomSpelling?word=' + strWord;
+							var urlRemove = '/Scans/RemoveCustomSpelling?word=' + strWord;
+
+							if ( $( '#iframeSpelling' ).attr('src') == urlAdd )
+							{
+								// clicking word again removes it from dictionary
+								action = SpellAction.spellRemoved;	
+								$( '#iframeSpelling' ).attr('src', urlRemove );
+							}
+							else
+							{
+								action = SpellAction.spellAdded;
+								$( '#iframeSpelling' ).attr('src', urlAdd );
+							}
+						}
+						else
+						{
+							// popup menu
+							action = window.external.SpellOptions( strWord );
+						}
+
+						if ( action == SpellAction.spellAdded )
+						{
+							// mark this one as good
+							oLink.className = 'spell-good';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-bad' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-good';
+								}
+							}
+						}
+						else if ( action == SpellAction.spellRemoved )
+						{
+							// mark this one as bad again
+							oLink.className = 'spell-bad';
+
+							// mark all instances of this word as good
+							for (var i = 0; i < document.links.length; i++)
+							{
+								var	oAnchor = document.links[i];
+
+								if ( oAnchor.className == 'spell-good' && oAnchor.innerHTML == strWord )
+								{
+									oAnchor.className = 'spell-bad';
+								}
+							}
+						}
+					}
+					catch( err )
+					{
+						alert( "Spelling options are only available when the report is viewed in SortSite." );
+					}
+
+					// don't jump around or scroll after showing options menu
+					return false;
+				}
+				</script></head><body onload="pageLoad()"><a class="accessible" href="#mainContent">[Skip to Content]</a><div class="hdr"><h1>
+						HTML Document
+					</h1><table><tr><th>
+						URL: 
+					</th><td><a rel="nofollow" target="_top" href="https://evernote.com/?var=1">https://evernote.com/?var=1</a></td></tr><tr><th title="The status code returned by the web server tells the browser if the request was successful.">
+						HTTP Status: 
+					</th><td title="The status code returned by the web server tells the browser if the request was successful.">200 OK</td></tr><tr><th title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">
+						MIME Type: 
+					</th><td title="The MIME type returned by the web server tells the browser how to display the returned content. For example text/html tells the browser to display the content as HTML.">text/html</td></tr><tr><th title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">
+						Last Modified: 
+					</th><td title="The last modification date says when the content was last modified. It is often wrong for dynamic pages.">Mon, 01 Jan 1601 00:00:00 GMT</td></tr><tr><th>
+						Download Time: 
+					</th><td>
+								Less than a second
+							</td></tr><tr><th>
+						Cookies: 
+					</th><td>
+								None
+							</td></tr><tr><th>
+						Size: 
+					</th><td>43 KB 
+						</td></tr><tr><th>
+								Page Weight: 
+							</th><td>480 KB (total size of HTML, CSS, JavaScript and images)
+							</td></tr><tr><th>
+								Depth: 
+							</th><td>0 clicks from home page
+							</td></tr><tr><th>
+								Charset: 
+							</th><td>UTF-8</td></tr><tr><th>
+								Forms: 
+							</th><td>1 forms containing 6 controls
+							</td></tr><tr><th>
+						HTTP Headers: 
+					</th><td><a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Headers" id="chevHttpHeaders" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('HttpHeaders'); return false;" onkeypress="this.click();">8&nbsp;headers</a><div style="display: none; width: 100%;" id="HttpHeaders"><a rel="nofollow">Cache-Control:  no-cache, no-store, must-revalidate
+</a><br><a rel="nofollow">Date:  Thu, 16 Jul 2015 06:12:53 GMT
+</a><br><a rel="nofollow">Pragma:  no-cache
+</a><br><a rel="nofollow">Server:  Apache
+</a><br><a rel="nofollow">Strict-Transport-Security:  max-age=31536000
+</a><br><a rel="nofollow">Transfer-Encoding:  chunked
+</a><br><a rel="nofollow">Vary:  Accept-Encoding
+</a><br><a rel="nofollow">X-Frame-Options:  SAMEORIGIN
+</a><br></div></td></tr><tr><th>
+						Links In: 
+					</th><td><a href="#" onclick="toggleChevron('LinksIn'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Links" id="chevLinksIn" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('LinksIn'); return false;" onkeypress="this.click();">1&nbsp;pages</a><div style="display: none; width: 100%;" id="LinksIn"><a rel="nofollow" href="https://evernote.com/?var=1" onclick="viewSource( 2, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/?var=1</a><br></div></td></tr><tr><th>
+							Links Out: 
+						</th><td><a href="#" onclick="toggleChevron('LinksOut'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Links" id="chevLinksOut" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('LinksOut'); return false;" onkeypress="this.click();">33&nbsp;links</a><div style="display: none; width: 100%;" id="LinksOut"><a rel="nofollow" href="https://evernote.com/?var=1" onclick="viewSource( 2, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/?var=1</a><br><a rel="nofollow" href="https://evernote.com/" onclick="viewSource( 3, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/</a><br><a rel="nofollow" href="https://evernote.com/business" onclick="viewSource( 5, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/business</a><br><a rel="nofollow" href="https://evernote.com/pricing/" onclick="viewSource( 6, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/pricing/</a><br><a rel="nofollow" href="https://evernote.com/download/" onclick="viewSource( 7, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/download/</a><br><a rel="nofollow" href="https://www.evernote.com/Home.action?offer=www_menu" onclick="viewSource( 8, 0, 0 ); return false;" onkeypress="this.click();">https://www.evernote.com/Home.action?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/register?offer=www_menu" onclick="viewSource( 9, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/register?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/pricing?offer=www_menu" onclick="viewSource( 10, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/pricing?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=plus&amp;offer=www_menu" onclick="viewSource( 11, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=plus&amp;offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=premium&amp;offer=www_menu" onclick="viewSource( 12, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=premium&amp;offer=www_menu</a><br><a rel="nofollow" href="https://www.evernote.com/market?offer=www_menu" onclick="viewSource( 13, 0, 0 ); return false;" onkeypress="this.click();">https://www.evernote.com/market?offer=www_menu</a><br><a rel="nofollow" href="https://blog.evernote.com/" onclick="viewSource( 14, 0, 0 ); return false;" onkeypress="this.click();">https://blog.evernote.com/</a><br><a rel="nofollow" href="https://evernote.com/download/?offer=www_menu" onclick="viewSource( 15, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/download/?offer=www_menu</a><br><a rel="nofollow" href="https://evernote.com/register/?upgrade=premium&amp;itemCode=premium-1year&amp;offer=dropbox-3mon&amp;origin=marketingsite" onclick="viewSource( 16, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/register/?upgrade=premium&amp;itemCode=premium-1year&amp;offer=dropbox-3mon&amp;origin=marketingsite</a><br><a rel="nofollow" href="https://www.evernote.com/Home.action" onclick="viewSource( 17, 0, 0 ); return false;" onkeypress="this.click();">https://www.evernote.com/Home.action</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=basic&amp;offer=dropbox-3mon&amp;origin=marketingsite" onclick="viewSource( 18, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=basic&amp;offer=dropbox-3mon&amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/register?offer=dropbox-3mon&amp;origin=marketingsite" onclick="viewSource( 19, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/register?offer=dropbox-3mon&amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=plus&amp;offer=dropbox-3mon&amp;origin=marketingsite" onclick="viewSource( 20, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=plus&amp;offer=dropbox-3mon&amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/register/?upgrade=plus&amp;itemCode=plus-1year&amp;offer=dropbox-3mon&amp;origin=marketingsite" onclick="viewSource( 21, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/register/?upgrade=plus&amp;itemCode=plus-1year&amp;offer=dropbox-3mon&amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/upgrade/?tier=premium&amp;offer=dropbox-3mon&amp;origin=marketingsite" onclick="viewSource( 22, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/upgrade/?tier=premium&amp;offer=dropbox-3mon&amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/business?offer=dropbox-3mon&amp;origin=marketingsite" onclick="viewSource( 23, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/business?offer=dropbox-3mon&amp;origin=marketingsite</a><br><a rel="nofollow" href="https://evernote.com/products/" onclick="viewSource( 24, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/products/</a><br><a rel="nofollow" href="https://www.evernote.com/market/" onclick="viewSource( 25, 0, 0 ); return false;" onkeypress="this.click();">https://www.evernote.com/market/</a><br><a rel="nofollow" href="https://appcenter.evernote.com/" onclick="viewSource( 26, 0, 0 ); return false;" onkeypress="this.click();">https://appcenter.evernote.com/</a><br><a rel="nofollow" href="https://evernote.com/contact/support/" onclick="viewSource( 27, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/contact/support/</a><br><a rel="nofollow" href="https://evernote.com/corp/" onclick="viewSource( 28, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/corp/</a><br><a rel="nofollow" href="https://evernote.com/careers/" onclick="viewSource( 29, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/careers/</a><br><a rel="nofollow" href="https://evernote.com/legal/" onclick="viewSource( 30, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/legal/</a><br><a rel="nofollow" href="https://evernote.com/legal/tos.php" onclick="viewSource( 31, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/legal/tos.php</a><br><a rel="nofollow" href="https://evernote.com/legal/privacy.php" onclick="viewSource( 32, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/legal/privacy.php</a><br><a rel="nofollow" href="https://evernote.com/security/" onclick="viewSource( 33, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/security/</a><br><a rel="nofollow" href="https://dev.evernote.com/" onclick="viewSource( 34, 0, 0 ); return false;" onkeypress="this.click();">https://dev.evernote.com/</a><br><a rel="nofollow" href="https://evernote.com/contact/" onclick="viewSource( 35, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/contact/</a><br></div></td></tr><tr><th>
+							Images: 
+						</th><td><a href="#" onclick="toggleChevron('Images'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View Images" id="chevImages" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('Images'); return false;" onkeypress="this.click();">1&nbsp;images</a><div style="display: none; width: 100%;" id="Images"><a rel="nofollow" href="https://cdn1.evernote.com/media/img/en-logo.min.svg" onclick="viewSource( 4, 0, 0 ); return false;" onkeypress="this.click();">https://cdn1.evernote.com/media/img/en-logo.min.svg</a> 3 KB
+					
+					<br></div></td></tr><tr><th>
+							CSS: 
+						</th><td><a href="#" onclick="toggleChevron('CSS'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View CSS Files" id="chevCSS" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('CSS'); return false;" onkeypress="this.click();">2&nbsp;files</a><div style="display: none; width: 100%;" id="CSS"><a rel="nofollow" href="https://evernote.com/media/css/homepage-promos.css?v1.7.0" onclick="viewSource( 36, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/media/css/homepage-promos.css?v1.7.0</a> 82 KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/css/fonts-english.css" onclick="viewSource( 37, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/media/css/fonts-english.css</a> 203 KB
+					
+					<br></div></td></tr><tr><th>
+							JavaScript: 
+						</th><td><a href="#" onclick="toggleChevron('JavaScript'); return false;" onkeypress="this.click();"><img width="20" height="20" alt="View JavaScript Files" id="chevJavaScript" src="../Report/chevron-down.png"></a>&nbsp;<a href="#" onclick="toggleChevron('JavaScript'); return false;" onkeypress="this.click();">5&nbsp;files</a><div style="display: none; width: 100%;" id="JavaScript"><a rel="nofollow" href="https://www.google-analytics.com/cx/api.js?experiment=1M__whqrRqyxk-5dUa3yqQ" onclick="viewSource( 38, 0, 0 ); return false;" onkeypress="this.click();">https://www.google-analytics.com/cx/api.js?experiment=1M__whqrRqyxk-5dUa3yqQ</a> 0 KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/js/dropbox-experiment.js" onclick="viewSource( 39, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/media/js/dropbox-experiment.js</a> 2 KB
+					
+					<br><a rel="nofollow" href="https://cdn1.evernote.com/media/js/lib/jquery-1.9.1.min.js" onclick="viewSource( 40, 0, 0 ); return false;" onkeypress="this.click();">https://cdn1.evernote.com/media/js/lib/jquery-1.9.1.min.js</a> 130 KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/js/build/homepage-promos-min.js" onclick="viewSource( 41, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/media/js/build/homepage-promos-min.js</a> 9 KB
+					
+					<br><a rel="nofollow" href="https://evernote.com/media/js/build/global-min.js" onclick="viewSource( 42, 0, 0 ); return false;" onkeypress="this.click();">https://evernote.com/media/js/build/global-min.js</a> 12 KB
+					
+					<br></div></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr><tr class="middle"><th><img alt="Issue" style="text-align:absmiddle" width="20" height="20" src="../Report/bench-worse.png">	
+								Issues: 
+							</th><td>16
+								issues found on
+								80
+								lines
+							</td></tr></table></div><div id="mainContent" class="pre"><script type='text/javascript'>function selectLine() {}</script><br style='clear: both'> <div id='err-l1c1-0' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>Limit the amount of prose text on the home page - try to use less than 30 sentences. </div>   <div class='help'>
+			The first action of most users is to scan the homepage for link titles and major headings. 
+			Requiring users to read large amounts of prose text can slow them considerably, or they may avoid reading it altogether.
+		 </div>   <div class='line'><span class='line'>Line 1</span>  <a href='http://guidelines.usability.gov/guidelines/50' target='_top'>Usability.gov 5:5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "UseGov5.5" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l1c1-1' class='err' >  <div class='col1'><img src='../Report/p6.png' width='20' height='20' alt='Priority 6'> </div>  <div class='col2'>   <div class='desc'>No search keywords are set in SortSite, so no keyword optimization rules have been run. </div>   <div class='help'>If you want to check keyword optimization, use the Choose Rules command in the Desktop edition or the Edit Scan command in the OnDemand edition. </div>   <div class='line'><span class='line'>Line 1</span>  Best Practice </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoNoKeywordsSet" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>1</code><code>          </code></p>
+<p><code>2</code><code>&lt;!DOCTYPE html&gt;</code></p>
+<p><code>3</code><code>&lt;html lang="en"&gt;</code></p>
+<p><code>4</code><code>&lt;head&gt;</code></p>
+<p><code>5</code><code>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;</code></p>
+<p><code>6</code><code>&lt;meta name="google-site-verification" content="tg21dbR30PdxWoD2SwuTquPtNhTzUPfBOo8yvgbIwDE" /&gt;</code></p>
+<br style='clear: both'> <div id='err-l7c1-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one title tag, which can result in a search ranking penalty. </div>   <div class='line'><span class='line'>Line 7</span>  Best Practice </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleTitleTags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>7</code><code><span class='err' id='htm-l7c1' title='Line 7 Column 1'>&lt;title&gt;</span></code></p>
+<p><code>8</code><code>	The workspace for your life’s work | Evernote&lt;/title&gt;</code></p>
+<br style='clear: both'> <div id='err-l9c1-0' class='err' >  <div class='col1'><img src='../Report/p3.png' width='20' height='20' alt='Priority 3'> </div>  <div class='col2'>   <div class='desc'>Meta description tag is too long for Bing. Bing recommends keeping the description text under 160 characters in length. The description is 
+			177 
+			characters long.
+		</div>   <div class='help'>
+			The major search engines all have different limits for meta description length, and these limits have
+			changed over time. Avoid descriptions close to the limits to avoid problems when the limits change again.
+		 </div>   <div class='line'><span class='line'>Line 9</span>  <a href='http://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a' target='_top'>Bing</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoBingMetaDescriptionLength" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>9</code><code><span class='err' id='htm-l9c1' title='Line 9 Column 1'>&lt;meta name="description" content="Bring your life's work together in one digital workspace. Evernote is the place to collect inspirational ideas, write meaningful words, and move your important projects forward." /&gt;</span></code></p>
+<p><code>10</code><code>&lt;meta name="keywords" content="note taking, note taking software, notes, mobile phone snapshots, camera phone, image search, image recognition, handwriting recognition, digital ink, ink notes, memory, remember, life capture, memory capture, productivity software, getting things done, gtd, memory assistant, personal memory assistant" /&gt;</code></p>
+<p><code>11</code><code>          </code></p>
+<p><code>12</code><code>          </code></p>
+<p><code>13</code><code>          </code></p>
+<p><code>14</code><code>&lt;script src="//www.google-analytics.com/cx/api.js?experiment=1M__whqrRqyxk-5dUa3yqQ"&gt;&lt;/script&gt;</code></p>
+<p><code>15</code><code>&lt;script src="/media/js/dropbox-experiment.js"&gt;&lt;/script&gt;&lt;script type="text/javascript"&gt;</code></p>
+<p><code>16</code><code>  /* &lt;![CDATA[ */</code></p>
+<p><code>17</code><code>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){</code></p>
+<p><code>18</code><code>  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),</code></p>
+<p><code>19</code><code>  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)</code></p>
+<p><code>20</code><code>  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');</code></p>
+<p><code>21</code><code>          </code></p>
+<p><code>22</code><code>    	ga('create', 'UA-285778-5', 'evernote.com');</code></p>
+<p><code>23</code><code>    ga('require', 'displayfeatures');</code></p>
+<p><code>24</code><code>  ga('send', 'pageview');</code></p>
+<p><code>25</code><code>  /* ]]&gt; */</code></p>
+<p><code>26</code><code>&lt;/script&gt;</code></p>
+<p><code>27</code><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"&gt;&lt;link href="/media/css/homepage-promos.css?v1.7.0" rel="stylesheet" type="text/css" media="all" /&gt;&lt;link rel="alternate" hreflang="pt-br" href="https://evernote.com/intl/pt-br/" /&gt;</code></p>
+<p><code>28</code><code>        &lt;link rel="alternate" hreflang="es" href="https://evernote.com/intl/es/" /&gt;</code></p>
+<p><code>29</code><code>        &lt;link rel="alternate" hreflang="fr" href="https://evernote.com/intl/fr/" /&gt;</code></p>
+<p><code>30</code><code>        &lt;link rel="alternate" hreflang="de" href="https://evernote.com/intl/de/" /&gt;</code></p>
+<p><code>31</code><code>        &lt;link rel="alternate" hreflang="it" href="https://evernote.com/intl/it/" /&gt;</code></p>
+<p><code>32</code><code>        &lt;link rel="alternate" hreflang="zh-tw" href="https://evernote.com/intl/zh-tw/" /&gt;</code></p>
+<p><code>33</code><code>        &lt;link rel="alternate" hreflang="ru" href="https://evernote.com/intl/ru/" /&gt;</code></p>
+<p><code>34</code><code>        &lt;meta name="msvalidate.01" content="8E70B36646B2AE5C6C6214CE57834578" /&gt;</code></p>
+<p><code>35</code><code>  &lt;meta property="og:type" content="website" /&gt;</code></p>
+<p><code>36</code><code>  &lt;meta property="og:url" content="https://evernote.com/" /&gt;</code></p>
+<p><code>37</code><code>  &lt;meta property="og:image" content="https://cdn1.evernote.com/evernote.com/img/social-meta/Homepage.jpg" /&gt;</code></p>
+<p><code>38</code><code>  &lt;meta property="og:site_name" content="" /&gt;</code></p>
+<p><code>39</code><code>  &lt;meta property="og:title" content="The workspace for your life’s work" /&gt;</code></p>
+<p><code>40</code><code>  &lt;meta property="og:description" content="Bring your life's work together in one digital workspace. Evernote is the place to collect inspirational ideas, write meaningful words, and move your important projects forward." /&gt;</code></p>
+<p><code>41</code><code>  &lt;meta name="twitter:card" content="summary_large_image"&gt;</code></p>
+<p><code>42</code><code>  &lt;meta name="twitter:site" content="@evernote"&gt;</code></p>
+<p><code>43</code><code>  &lt;meta name="twitter:title" content="The workspace for your life’s work"&gt;</code></p>
+<p><code>44</code><code>  &lt;meta name="twitter:description" content="Bring your life's work together in one digital workspace. Evernote is the place to collect inspirational ideas, write meaningful words, and move your important projects forward."&gt;</code></p>
+<p><code>45</code><code>  &lt;meta name="twitter:image:src" content="https://cdn1.evernote.com/evernote.com/img/social-meta/Homepage.jpg"&gt;</code></p>
+<p><code>46</code><code>  &lt;meta name="twitter:url" content="https://evernote.com/" /&gt;</code></p>
+<p><code>47</code><code>          </code></p>
+<p><code>48</code><code>			&lt;meta name="p:domain_verify" content="99a154baeb151607b7414a49e57ac327"/&gt;</code></p>
+<p><code>49</code><code>				&lt;link href="/media/css/fonts-english.css" rel="stylesheet" type="text/css" media="all" /&gt;</code></p>
+<p><code>50</code><code>&lt;!--[if lt IE 9]&gt;</code></p>
+<p><code>51</code><code>	&lt;script src="/media/js/html5_shiv.js"&gt;&lt;/script&gt;</code></p>
+<p><code>52</code><code>&lt;![endif]--&gt;</code></p>
+<p><code>53</code><code>&lt;link href="/media/img/favicon.ico" rel="Shortcut Icon" type="image/x-icon" /&gt;</code></p>
+<p><code>54</code><code>          </code></p>
+<p><code>55</code><code>	 </code></p>
+<p><code>56</code><code> </code></p>
+<p><code>57</code><code> </code></p>
+<p><code>58</code><code> 	</code></p>
+<p><code>59</code><code> </code></p>
+<p><code>60</code><code>          </code></p>
+<p><code>61</code><code>&lt;/head&gt;</code></p>
+<p><code>62</code><code>          </code></p>
+<p><code>63</code><code>          </code></p>
+<p><code>64</code><code>&lt;body class="nav_home-new" data-lang="en" data-country="US"&gt;</code></p>
+<p><code>65</code><code>          </code></p>
+<p><code>66</code><code>          </code></p>
+<p><code>67</code><code>		</code></p>
+<p><code>68</code><code>          </code></p>
+<p><code>69</code><code>          </code></p>
+<p><code>70</code><code>          </code></p>
+<p><code>71</code><code>&lt;div class=""&gt;</code></p>
+<p><code>72</code><code>    &lt;!--[if (gt IE 8)|!(IE)]&gt;&lt;!--&gt;</code></p><br style='clear: both'> <div id='err-l72c35-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 72</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l72c35' title='Line 72 Column 35'>&lt;svg style="display: none;</span>"&gt;</code></p><br style='clear: both'> <div id='err-l72c63-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;viewbox&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 72</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-viewbox" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l72c63' title='Line 72 Column 63'>&lt;symbol viewBox="0 0 24 24" id="svg-note"&gt;</span></code></p><br style='clear: both'> <div id='err-l72c105-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one title tag, which can result in a search ranking penalty. </div>   <div class='line'><span class='line'>Line 72</span>  Best Practice </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleTitleTags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l72c105' title='Line 72 Column 105'>&lt;title&gt;</span>note&lt;/title&gt; &lt;path d="M2,24c-1.105,0-2-0.895-2-2V2c0-1.105,0.895-2,2-2h20c1.105,0,2,0.895,2,2v15v1.5L18.5,24 M22,2H2v20h15v-3</code></p>
+<p><code>73</code><code>    c0-1.105,0.895-2,2-2h3V2z M21.5,18.5h-3v3L21.5,18.5z M4,13h16v1.5H4V13z M13,9h7v1.5h-7V9z M13,5h7v1.5h-7V5z M8.733,9.878H6.232</code></p>
+<p><code>74</code><code>    l-0.48,1.121h-1.76l2.702-5.997h1.612l2.702,5.997H9.213L8.733,9.878z M7.487,6.879L6.746,8.618h1.473L7.487,6.879z M12,18.5H4V17</code></p>
+<p><code>75</code><code>    h8V18.5z"/&gt; &lt;/symbol&gt;</code></p><br style='clear: both'> <div id='err-l75c26-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;viewbox&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 75</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-viewbox" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l75c26' title='Line 75 Column 26'>&lt;symbol viewBox="0 0 22 27" id="svg-workchat"&gt;</span></code></p><br style='clear: both'> <div id='err-l75c72-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page contains some spelling errors. </div>   <div class='help'>Click the word to add it to the dictionary. Click it again if you want to remove it. </div>   <div class='line'><span class='line'>Line 75</span>    <a href='#' class='spell-bad' onclick='return spellOptions( this, &quot;workchat&quot;, &quot;mac.eval.desktop.val&quot; )'>workchat</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "ErrSpellingError" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l75c72-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one title tag, which can result in a search ranking penalty. </div>   <div class='line'><span class='line'>Line 75</span>  Best Practice </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleTitleTags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l75c72' title='Line 75 Column 72'>&lt;title&gt;</span>workchat&lt;/title&gt; &lt;path d="M0,4c0-2.209,1.791-4,4-4h14c2.209,0,4,1.791,4,4v14c0,2.209-1.791,4-4,4h-3.665l-4.662,4.707</code></p>
+<p><code>76</code><code>    C9.484,26.898,9.231,27,8.974,27c-0.127,0-0.256-0.025-0.378-0.076c-0.369-0.155-0.61-0.519-0.61-0.924l0.008-4H4</code></p>
+<p><code>77</code><code>    c-2.209,0-4-1.791-4-4v-3c0-2.761,2.239-5,5-5h6.626L9.372,7.746c-0.391-0.391-0.391-1.024,0-1.414c0.39-0.391,1.023-0.391,1.414,0</code></p>
+<p><code>78</code><code>    l3.949,3.949c0.199,0.199,0.294,0.459,0.291,0.719c0.003,0.26-0.092,0.521-0.291,0.719l-3.949,3.95c-0.391,0.39-1.024,0.39-1.414,0</code></p>
+<p><code>79</code><code>    c-0.391-0.391-0.391-1.024,0-1.415L11.626,12H5c-1.657,0-3,1.343-3,3v3c0,1.103,0.897,2,2,2h3.994c0.531,0,1.041,0.211,1.416,0.587</code></p>
+<p><code>80</code><code>    c0.375,0.376,0.585,0.886,0.584,1.417l-0.003,1.54l2.922-2.951C13.289,20.213,13.801,20,14.335,20H18c1.103,0,2-0.897,2-2V4</code></p>
+<p><code>81</code><code>    c0-1.103-0.897-2-2-2H4C2.897,2,2,2.897,2,4v3.587C1.274,7.881,0.602,8.278,0,8.76V4z"/&gt; &lt;/symbol&gt;</code></p><br style='clear: both'> <div id='err-l81c100-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;viewbox&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 81</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-viewbox" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l81c100' title='Line 81 Column 100'>&lt;symbol viewBox="0 0 24 24" id="svg-presentation"&gt;</span></code></p><br style='clear: both'> <div id='err-l81c150-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one title tag, which can result in a search ranking penalty. </div>   <div class='line'><span class='line'>Line 81</span>  Best Practice </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleTitleTags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l81c150' title='Line 81 Column 150'>&lt;title&gt;</span>presentation&lt;/title&gt; &lt;path d="M22,19h-7.596l5,5h-2.808L13,20.405V24h-2v-3.595L7.404,24H4.596l5-5H2c-1.105,0-2-0.895-2-2v-1.5V14V0h24v14v1.5V17</code></p>
+<p><code>82</code><code>    C24,18.105,23.105,19,22,19z M22,2H2v12h20V2z M22,15.5H2V17h20V15.5z M9.507,4.13C9.66,4.043,9.83,4,10,4</code></p>
+<p><code>83</code><code>    c0.178,0,0.356,0.048,0.515,0.143l5,3C15.815,7.324,16,7.649,16,8c0,0.352-0.185,0.677-0.485,0.858l-5,3</code></p>
+<p><code>84</code><code>    C10.356,11.952,10.178,12,10,12c-0.17,0-0.34-0.042-0.493-0.129C9.194,11.693,9,11.361,9,11V5C9,4.64,9.194,4.308,9.507,4.13z</code></p>
+<p><code>85</code><code>     M10.5,10.117L14.028,8L10.5,5.884V10.117z"/&gt; &lt;/symbol&gt;</code></p><br style='clear: both'> <div id='err-l85c59-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;viewbox&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 85</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-viewbox" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l85c59' title='Line 85 Column 59'>&lt;symbol viewBox="0 0 127.8 139.3" id="svg-notebooks"&gt;</span></code></p><br style='clear: both'> <div id='err-l85c112-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one title tag, which can result in a search ranking penalty. </div>   <div class='line'><span class='line'>Line 85</span>  Best Practice </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleTitleTags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l85c112' title='Line 85 Column 112'>&lt;title&gt;</span>notebooks&lt;/title&gt; &lt;path d="M116.1,139.3H58l0,0h-8.7l0,0H23.2v-23.2H0V0h26.2h8.7h58c6.4,0,11.7,5.3,11.7,11.7v46.6v46.6</code></p>
+<p><code>86</code><code>  c0,6.4-5.3,11.7-11.7,11.7H58v11.7h58V35.4h-11.7V23.7h11.7c6.4,0,11.7,5.3,11.7,11.7V82v46.6C127.5,134.2,122.5,139.3,116.1,139.3z</code></p>
+<p><code>87</code><code>   M26,11.7H11.4v92.9H26V11.7z M34.6,116.1v11.7h14.5v-11.7H34.6L34.6,116.1L34.6,116.1z M92.7,104.7V11.7h-58v92.9H92.7z M87.1,29</code></p>
+<p><code>88</code><code>  v23.2H40.5V29H87.1z M49.1,43.5h29v-5.9h-29V43.5z"/&gt; &lt;/symbol&gt;</code></p><br style='clear: both'> <div id='err-l88c64-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;viewbox&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 88</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-viewbox" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l88c64' title='Line 88 Column 64'>&lt;symbol viewBox="0 0 25.179 22.772" id="svg-offline_mode"&gt;</span></code></p><br style='clear: both'> <div id='err-l88c122-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one title tag, which can result in a search ranking penalty. </div>   <div class='line'><span class='line'>Line 88</span>  Best Practice </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleTitleTags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l88c122' title='Line 88 Column 122'>&lt;title&gt;</span>offline_mode&lt;/title&gt; &lt;g&gt; &lt;ellipse cx="12.589" cy="21.075" rx="2" ry="1.698"/&gt; &lt;path d="M24.289,0.293c-0.391-0.391-1.025-0.391-1.416,0l-3.111,3.111c-2.242-0.905-4.726-1.431-7.173-1.431</code></p>
+<p><code>89</code><code>      c-4.468,0-8.813,1.588-12.234,4.472c-0.422,0.356-0.476,0.987-0.12,1.409C0.433,8.089,0.715,8.21,1,8.21</code></p>
+<p><code>90</code><code>      c0.228,0,0.457-0.077,0.644-0.235c3.061-2.581,6.948-4.002,10.945-4.002c1.899,0,3.852,0.362,5.627,0.977l-3.26,3.26</code></p>
+<p><code>91</code><code>      c-0.751-0.135-1.602-0.237-2.367-0.237c-3.057,0-6.029,1.087-8.371,3.06c-0.423,0.357-0.476,0.988-0.12,1.409</code></p>
+<p><code>92</code><code>      c0.355,0.422,0.986,0.476,1.409,0.121c1.981-1.67,4.497-2.59,7.082-2.59c0.156,0,0.383,0.034,0.556,0.048L2.139,21.028</code></p>
+<p><code>93</code><code>      c-0.391,0.391-0.391,1.025,0,1.416c0.391,0.391,1.025,0.391,1.416,0L24.289,1.709C24.68,1.318,24.68,0.684,24.289,0.293z"/&gt; &lt;path d="M14.494,14.268l-1.74,1.74c1.082,0.036,2.155,0.416,3.038,1.161c0.187,0.158,0.416,0.235,0.644,0.235</code></p>
+<p><code>94</code><code>      c0.285,0,0.567-0.121,0.765-0.355c0.356-0.422,0.303-1.053-0.12-1.409C16.304,14.983,15.424,14.538,14.494,14.268z"/&gt; &lt;path d="M24.823,6.445C24.365,6.06,23.889,5.701,23.4,5.362l-1.447,1.447c0.545,0.361,1.078,0.741,1.581,1.166</code></p>
+<p><code>95</code><code>      c0.422,0.355,1.053,0.3,1.409-0.121C25.299,7.432,25.245,6.801,24.823,6.445z"/&gt; &lt;path d="M19.059,9.704l-1.481,1.481c0.742,0.378,1.448,0.834,2.093,1.378c0.187,0.158,0.416,0.235,0.643,0.235</code></p>
+<p><code>96</code><code>      c0.286,0,0.568-0.121,0.766-0.356c0.356-0.421,0.302-1.052-0.12-1.409C20.364,10.531,19.727,10.088,19.059,9.704z"/&gt; &lt;/g&gt; &lt;/symbol&gt;&lt;/svg&gt;&lt;div class="mask"&gt;</code></p>
+<p><code>97</code><code>  &lt;div class="dropbox-terms modal"&gt;</code></p>
+<p><code>98</code><code>    &lt;a href="#" class="close-modal" lang="en"&gt;Close &lt;span class="close-x"&gt;X&lt;/span&gt;&lt;/a&gt;</code></p>
+<p><code>99</code><code>    </code></p><br style='clear: both'> <div id='err-l99c5-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one H1 tag, which violates Bing webmaster guidelines. </div>   <div class='help'>Leave the title of the main content as H1 and change other H1 tags to a lower heading level. </div>   <div class='line'><span class='line'>Line 99</span>  <a href='http://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a' target='_top'>Bing</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleH1Tags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l99c5' title='Line 99 Column 5'>&lt;h1&gt;</span>Terms and Conditions&lt;/h1&gt;</code></p>
+<p><code>100</code><code>    &lt;h2&gt;Dropbox Promotion&lt;/h2&gt;</code></p>
+<p><code>101</code><code>    &lt;p&gt;Limited time offer open to new Evernote users or existing Basic users who purchase Evernote Premium through dedicated promotion page. Within two business days of purchase, purchaser will receive an email from Evernote with a Dropbox access link to redeem a 3-month trial of Dropbox Pro. Dropbox access link is subject to Dropbox's terms and conditions, including: Dropbox trial requires credit card, must be redeemed before October 31, 2015 and is not available to current or former Dropbox Pro users, or to users who have previously started a trial.&lt;/p&gt;</code></p>
+<p><code>102</code><code>  &lt;/div&gt;</code></p>
+<p><code>103</code><code>&lt;/div&gt;</code></p>
+<p><code>104</code><code>          </code></p>
+<p><code>105</code><code>&lt;header class="promo"&gt;</code></p>
+<p><code>106</code><code>	&lt;div class="row"&gt;</code></p>
+<p><code>107</code><code>		            </code></p><br style='clear: both'> <div id='err-l107c15-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one H1 tag, which violates Bing webmaster guidelines. </div>   <div class='help'>Leave the title of the main content as H1 and change other H1 tags to a lower heading level. </div>   <div class='line'><span class='line'>Line 107</span>  <a href='http://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a' target='_top'>Bing</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleH1Tags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l107c15' title='Line 107 Column 15'>&lt;h1&gt;</span>&lt;a href="/" class="header-sprite"&gt;&lt;span&gt;Evernote&lt;/span&gt;</code></p>
+<p><code>108</code><code>                                    </code></p><br style='clear: both'> <div id='err-l108c37-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 108</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l108c37-1' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>Omitting IMG WIDTH or HEIGHT attributes means page text jumps about as images load.  </div>   <div class='help'>
+			This makes the page very hard to read while it's loading, and the user may click on the wrong link if it moves as it's being clicked.
+			Add width and height attributes to the img tag matching the image dimensions. Authoring tools
+			like Dreamweaver can automate this process.
+		 </div>   <div class='line'><span class='line'>Line 108</span>  <a href='http://guidelines.usability.gov/guidelines/152' target='_top'>Usability.gov 14:3</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "UseGov14.3" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l108c37' title='Line 108 Column 37'>&lt;img src="https://cdn1.evernote.com/media/img/en-logo.min.svg" class="svg" alt="Evernote Logo"&gt;</span></code></p>
+<p><code>109</code><code>                                </code></p>
+<p><code>110</code><code>             &lt;/a&gt;&lt;/h1&gt;</code></p>
+<p><code>111</code><code>		</code></p>
+<p><code>112</code><code>                    &lt;a class="header-business-cta" href="/business"&gt;Evernote Business&lt;/a&gt;</code></p>
+<p><code>113</code><code>                </code></p>
+<p><code>114</code><code>          </code></p>
+<p><code>115</code><code>        </code></p>
+<p><code>116</code><code>                    </code></p><br style='clear: both'> <div id='err-l116c21-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This link is broken. The target anchor does not exist or is commented out. </div>   <div class='help'>The anchor after the # symbol points to a non-existent NAME or ID on the target page. 
+		If the anchor link targets the same page nothing will happen when it's clicked. 
+		If the anchor link targets another page, then the top of the target page will be displayed instead of the intended location.
+		In most cases the destination anchor has been removed accidentally and should be reinstated. 
+		 </div>   <div class='line'><span class='line'>Line 116</span>  Broken Link </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "ErrMissingAnchor" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l116c21-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>&#10;&#9;&#9;&#9;This skip link is broken. The target anchor does not exist or is commented out.&#10;&#9;&#9; </div>   <div class='help'>
+			The anchor after the # symbol points to a non-existent NAME or ID on this page, so nothing happens when it's clicked. 
+			In most cases the destination ID has been removed accidentally and should be reinstated. 
+		 </div>   <div class='line'><span class='line'>Line 116</span>  <a href='http://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/guide-to-the-section-508-standards/web-based-intranet-and-internet-information-and-applications-1194-22' target='_top'>Section 508 1194.22 (o)</a> <a href='http://www.w3.org/TR/2008/NOTE-WCAG20-TECHS-20081211/G1' target='_top'>WCAG 2.0 A 2.4.1</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "Section508-o-2" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l116c21' title='Line 116 Column 21'>&lt;a href="#content" class="skip-link"&gt;</span>Skip to main content&lt;/a&gt;</code></p>
+<p><code>117</code><code>        </code></p>
+<p><code>118</code><code>		&lt;div class="right-panel"&gt;</code></p>
+<p><code>119</code><code>                            &lt;a href="/pricing/" class="cta view-pricing click_tracking" data-label="header" data-action="expanded_pricing"&gt;Pricing&lt;/a&gt;</code></p>
+<p><code>120</code><code>            </code></p>
+<p><code>121</code><code>                			                    &lt;a href="/download/" class="cta click_tracking js-download-cta" data-label="header" data-action="download"&gt;Download&lt;/a&gt;</code></p>
+<p><code>122</code><code>                                        </code></p>
+<p><code>123</code><code>            			 &lt;a href="#" id="header-menu" class="menu click_tracking" data-label="menu" data-action="open_menu"&gt;&lt;span class="text"&gt;Menu&lt;/span&gt;&lt;span class="header-sprite"&gt;&lt;/span&gt;&lt;/a&gt;</code></p>
+<p><code>124</code><code>            		&lt;/div&gt;</code></p>
+<p><code>125</code><code>        	&lt;/div&gt;</code></p>
+<p><code>126</code><code>&lt;/header&gt;</code></p>
+<p><code>127</code><code> </code></p>
+<p><code>128</code><code>&lt;nav class="drawer-nav"&gt;</code></p>
+<p><code>129</code><code>    &lt;div class="container"&gt;</code></p>
+<p><code>130</code><code>        &lt;ul&gt;</code></p>
+<p><code>131</code><code>            &lt;li&gt;&lt;a href="https://www.evernote.com/Home.action?offer=www_menu" class="js-sign-in-menu click_tracking" data-label="menu" data-action="sign-in"&gt;Sign In&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>132</code><code>            &lt;li&gt;&lt;a href="/register?offer=www_menu" class="js-sign-up-menu click_tracking" data-label="menu" data-action="sign-up"&gt;Create Account&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>133</code><code>        &lt;/ul&gt;</code></p>
+<p><code>134</code><code>        &lt;ul&gt;</code></p>
+<p><code>135</code><code>            &lt;li&gt;&lt;a href="/pricing?offer=www_menu" class="click_tracking" data-label="menu" data-action="pricing"&gt;Pricing&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>136</code><code>        &lt;/ul&gt;</code></p>
+<p><code>137</code><code>        &lt;ul&gt;</code></p>
+<p><code>138</code><code>            &lt;li&gt;&lt;a href="/upgrade/?tier=plus&amp;amp;offer=www_menu" class="click_tracking" data-label="menu" data-action="expanded_plus"&gt;Plus&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>139</code><code>            &lt;li&gt;&lt;a href="/upgrade/?tier=premium&amp;amp;offer=www_menu" class="click_tracking" data-label="menu" data-action="expanded_premium"&gt;Premium&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>140</code><code>            &lt;li&gt;&lt;a href="/business/" class="click_tracking" data-label="menu" data-action="expanded_business"&gt;Evernote Business&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>141</code><code>        &lt;/ul&gt;</code></p>
+<p><code>142</code><code>        &lt;ul&gt;</code></p>
+<p><code>143</code><code>                        &lt;li&gt;&lt;a href="https://www.evernote.com/market?offer=www_menu" class="click_tracking" data-label="menu" data-action="expanded_market"&gt;Market&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>144</code><code>                        </code></p>
+<p><code>145</code><code>            &lt;li&gt;&lt;a href="//blog.evernote.com/" class="click_tracking" data-label="menu" data-action="expanded_blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>146</code><code>        &lt;/ul&gt;</code></p>
+<p><code>147</code><code>        &lt;ul class="download-item"&gt;</code></p>
+<p><code>148</code><code>            &lt;li&gt;&lt;a href="/download/?offer=www_menu" class="download click_tracking" data-label="menu" data-action="download"&gt;Download Evernote&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>149</code><code>                    &lt;/ul&gt;</code></p>
+<p><code>150</code><code>        &lt;a href="#" class="close click_tracking" data-label="Close header menu"&gt;Close&lt;span class="header-sprite"&gt;&lt;/span&gt;&lt;/a&gt;</code></p>
+<p><code>151</code><code>    &lt;/div&gt;</code></p>
+<p><code>152</code><code>&lt;/nav&gt;</code></p>
+<p><code>153</code><code>          </code></p>
+<p><code>154</code><code>&lt;!-- Visitors redirected from Evernote to Yinxiang will see this --&gt;</code></p>
+<p><code>155</code><code>          </code></p>
+<p><code>156</code><code>&lt;section class="promo-hero dropbox"&gt;</code></p>
+<p><code>157</code><code>          </code></p>
+<p><code>158</code><code>  &lt;div class="row"&gt;</code></p>
+<p><code>159</code><code>          </code></p>
+<p><code>160</code><code>    &lt;div class="promo-hero-image"&gt;&lt;/div&gt;</code></p>
+<p><code>161</code><code>          </code></p>
+<p><code>162</code><code>    &lt;div class="content"&gt;</code></p>
+<p><code>163</code><code>      &lt;p class="subtitle"&gt;Special offer&lt;/p&gt;</code></p>
+<p><code>164</code><code>      </code></p><br style='clear: both'> <div id='err-l164c7-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one H1 tag, which violates Bing webmaster guidelines. </div>   <div class='help'>Leave the title of the main content as H1 and change other H1 tags to a lower heading level. </div>   <div class='line'><span class='line'>Line 164</span>  <a href='http://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a' target='_top'>Bing</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleH1Tags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l164c7-1' class='err' >  <div class='col1'><img src='../Report/p2.png' width='20' height='20' alt='Priority 2'> </div>  <div class='col2'>   <div class='desc'>Consider using the &#39;h1&#39; element as a top-level heading only. </div>   <div class='help'>'h1' elements are treated as top-level headings by many screen readers and other tools. </div>   <div class='line'><span class='line'>Line 164</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5MultipleH1Tags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l164c7' title='Line 164 Column 7'>&lt;h1&gt;</span>Get Evernote Premium, We’ll Give You More.&lt;/h1&gt;</code></p>
+<p><code>165</code><code>      &lt;p class="description"&gt;For a limited time, buy one year of Evernote Premium and get access to 3 free months of Dropbox Pro. Don’t miss out on this amazing productivity combo.&lt;/p&gt;</code></p>
+<p><code>166</code><code>          </code></p>
+<p><code>167</code><code>              &lt;a href="/register/?upgrade=premium&amp;amp;itemCode=premium-1year&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" class="button-pricing" lang="en"&gt;Get the offer&lt;/a&gt;</code></p>
+<p><code>168</code><code>      </code></p>
+<p><code>169</code><code>    &lt;/div&gt;</code></p>
+<p><code>170</code><code>          </code></p>
+<p><code>171</code><code>    &lt;aside class="promo-hero-violator"&gt;</code></p>
+<p><code>172</code><code>              &lt;div class="dropbox-violator-container"&gt;</code></p>
+<p><code>173</code><code>          &lt;a class="violator-link" href="/register/?upgrade=premium&amp;amp;itemCode=premium-1year&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite"&gt;</code></p>
+<p><code>174</code><code>            &lt;span class="dropbox-logo"&gt;&lt;/span&gt;</code></p>
+<p><code>175</code><code>            &lt;p class="details"&gt;</code></p>
+<p><code>176</code><code>              &lt;span class="offer-title"&gt;Special Offer!&lt;/span&gt;</code></p>
+<p><code>177</code><code>              &lt;span&gt;3 months&lt;/span&gt;</code></p>
+<p><code>178</code><code>              &lt;span&gt;Dropbox Pro*&lt;/span&gt;</code></p>
+<p><code>179</code><code>            &lt;/p&gt;</code></p>
+<p><code>180</code><code>          &lt;/a&gt;</code></p>
+<p><code>181</code><code>        &lt;/div&gt;</code></p>
+<p><code>182</code><code>          </code></p>
+<p><code>183</code><code>        &lt;div class="dropbox footnote"&gt;&lt;span lang="en"&gt;&lt;span class="asterick"&gt;*&lt;/span&gt;This offer is only available to new Evernote users, or to existing Basic users. It is not available to current or former Dropbox Pro users, or to users who have previously started a Dropbox trial. &lt;/span&gt; </code></p><br style='clear: both'> <div id='err-l183c291-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This link is broken. The target anchor does not exist or is commented out. </div>   <div class='help'>The anchor after the # symbol points to a non-existent NAME or ID on the target page. 
+		If the anchor link targets the same page nothing will happen when it's clicked. 
+		If the anchor link targets another page, then the top of the target page will be displayed instead of the intended location.
+		In most cases the destination anchor has been removed accidentally and should be reinstated. 
+		 </div>   <div class='line'><span class='line'>Line 183</span>  Broken Link </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "ErrMissingAnchor" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l183c291' title='Line 183 Column 291'>&lt;a href="#modal-terms" class="dropbox terms" lang="en"&gt;</span>Additional terms and conditions&lt;/a&gt;&lt;/div&gt;</code></p>
+<p><code>184</code><code>          &lt;/aside&gt;</code></p>
+<p><code>185</code><code>          </code></p>
+<p><code>186</code><code>    &lt;div class="content"&gt;</code></p>
+<p><code>187</code><code>      &lt;aside class="additional-terms"&gt;</code></p>
+<p><code>188</code><code>        &lt;div class="dropbox footnote"&gt;&lt;span lang="en"&gt;&lt;span class="asterick"&gt;*&lt;/span&gt;This offer is only available to new Evernote users, or to existing Basic users. It is not available to current or former Dropbox Pro users, or to users who have previously started a Dropbox trial. &lt;/span&gt; </code></p><br style='clear: both'> <div id='err-l188c291-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This link is broken. The target anchor does not exist or is commented out. </div>   <div class='help'>The anchor after the # symbol points to a non-existent NAME or ID on the target page. 
+		If the anchor link targets the same page nothing will happen when it's clicked. 
+		If the anchor link targets another page, then the top of the target page will be displayed instead of the intended location.
+		In most cases the destination anchor has been removed accidentally and should be reinstated. 
+		 </div>   <div class='line'><span class='line'>Line 188</span>  Broken Link </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "ErrMissingAnchor" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l188c291' title='Line 188 Column 291'>&lt;a href="#modal-terms" class="dropbox terms" lang="en"&gt;</span>Additional terms and conditions&lt;/a&gt;&lt;/div&gt;      &lt;/aside&gt;</code></p>
+<p><code>189</code><code>    &lt;/div&gt;</code></p>
+<p><code>190</code><code>  &lt;/div&gt;</code></p>
+<p><code>191</code><code>&lt;/section&gt;</code></p>
+<p><code>192</code><code>&lt;div class="promo-sign-up"&gt;</code></p>
+<p><code>193</code><code>    &lt;div class="row"&gt;</code></p>
+<p><code>194</code><code>        &lt;form action="https://www.evernote.com/Registration.action?register=" class="registration" id="registration" method="post" novalidate="novalidate"&gt;</code></p>
+<p><code>195</code><code>            </code></p>
+<p><code>196</code><code>            &lt;h2&gt;New to Evernote?&lt;/h2&gt;</code></p>
+<p><code>197</code><code>          </code></p>
+<p><code>198</code><code>            &lt;p class="signup-description"&gt;For everything you’ll do, Evernote is the workspace to get it done.&lt;/p&gt;</code></p>
+<p><code>199</code><code>          </code></p>
+<p><code>200</code><code>            &lt;div class="form-items"&gt;</code></p>
+<p><code>201</code><code>                &lt;fieldset&gt;</code></p>
+<p><code>202</code><code>                    &lt;legend lang="en"&gt;Sign Up&lt;/legend&gt;</code></p>
+<p><code>203</code><code>                    &lt;div class="input-container"&gt;</code></p>
+<p><code>204</code><code>                        &lt;div class="field-item left"&gt;</code></p>
+<p><code>205</code><code>                            &lt;label for="email" class="show-hide-label"&gt;Email&lt;/label&gt;</code></p>
+<p><code>206</code><code>                            &lt;input type="email" name="email" id="email" data-validate="required, email, email_in_use" value="" placeholder="Email" /&gt;</code></p>
+<p><code>207</code><code>                        &lt;/div&gt;</code></p>
+<p><code>208</code><code>                        &lt;div class="field-item right"&gt;</code></p>
+<p><code>209</code><code>                            &lt;label for="password-login" class="show-hide-label"&gt;Password&lt;/label&gt;</code></p>
+<p><code>210</code><code>                            </code></p><br style='clear: both'> <div id='err-l210c29-0' class='err' >  <div class='col1'><img src='../Report/p6.png' width='20' height='20' alt='Priority 6'> </div>  <div class='col2'>   <div class='desc'>Search engines cannot index areas of sites that require a log in. </div>   <div class='line'><span class='line'>Line 210</span>  <a href='https://www.mattcutts.com/blog/guest-post-vanessa-fox-on-organic-site-review-session/' target='_top'>Google Blogs</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoLogins" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l210c29' title='Line 210 Column 29'>&lt;input type="password" name="password" id="password-login" data-validate="required, password" placeholder="Password" /&gt;</span></code></p>
+<p><code>211</code><code>                        &lt;/div&gt;</code></p>
+<p><code>212</code><code>                    &lt;/div&gt;</code></p>
+<p><code>213</code><code>                &lt;/fieldset&gt;</code></p>
+<p><code>214</code><code>                &lt;div class="button-container"&gt;</code></p>
+<p><code>215</code><code>                    &lt;input type="hidden" name="targetUrl" value="" /&gt;</code></p>
+<p><code>216</code><code>                    &lt;input type="hidden" name="origin" class="origin" /&gt;</code></p>
+<p><code>217</code><code>                    &lt;input type="hidden" name="offer" class="offer" /&gt;</code></p>
+<p><code>218</code><code>                    &lt;button name="register" class="button-pricing" data-label="" data-action="" lang="en"&gt;Create Account&lt;/button&gt;</code></p>
+<p><code>219</code><code>                &lt;/div&gt;</code></p>
+<p><code>220</code><code>            &lt;/div&gt;</code></p>
+<p><code>221</code><code>          </code></p>
+<p><code>222</code><code>            &lt;p class="have-account"&gt;Already have an Evernote account? &lt;a href="https://www.evernote.com/Home.action"&gt;Sign in&lt;/a&gt;&lt;/p&gt;</code></p>
+<p><code>223</code><code>        &lt;/form&gt;</code></p>
+<p><code>224</code><code>    &lt;/div&gt;</code></p>
+<p><code>225</code><code>&lt;/div&gt;</code></p>
+<p><code>226</code><code>&lt;section class="evernote-features"&gt;</code></p>
+<p><code>227</code><code>  &lt;div class="row"&gt;</code></p>
+<p><code>228</code><code>    &lt;div class="content"&gt;</code></p>
+<p><code>229</code><code>      &lt;h2&gt;What can you do with Evernote?&lt;/h2&gt;</code></p>
+<p><code>230</code><code>      &lt;ul&gt;</code></p>
+<p><code>231</code><code>        &lt;li class="write feature"&gt;</code></p>
+<p><code>232</code><code>          &lt;div class="icon"&gt;</code></p><br style='clear: both'> <div id='err-l232c29-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 232</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l232c29' title='Line 232 Column 29'>&lt;svg&gt;</span></code></p><br style='clear: both'> <div id='err-l232c34-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;href&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 232</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-href" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l232c34-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;use&#39; is missing one or more required attributes. Missing attribute http://www.w3.org/1999/xlink^href&#39; </div>   <div class='line'><span class='line'>Line 232</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAmis-use" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l232c34' title='Line 232 Column 34'>&lt;use xlink:href="#svg-note"&gt;</span>&lt;/use&gt;&lt;/svg&gt;&lt;/div&gt;</code></p>
+<p><code>233</code><code>          &lt;div class="copy"&gt;</code></p>
+<p><code>234</code><code>            &lt;h2&gt;</code></p>
+<p><code>235</code><code>              &lt;span class="icon"&gt;</code></p><br style='clear: both'> <div id='err-l235c34-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 235</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l235c34' title='Line 235 Column 34'>&lt;svg&gt;</span></code></p><br style='clear: both'> <div id='err-l235c39-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;href&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 235</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-href" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l235c39-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;use&#39; is missing one or more required attributes. Missing attribute http://www.w3.org/1999/xlink^href&#39; </div>   <div class='line'><span class='line'>Line 235</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAmis-use" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l235c39' title='Line 235 Column 39'>&lt;use xlink:href="#svg-note"&gt;</span>&lt;/use&gt;&lt;/svg&gt;&lt;/span&gt;</code></p>
+<p><code>236</code><code>              &lt;span lang="en"&gt;Write&lt;/span&gt;</code></p>
+<p><code>237</code><code>            &lt;/h2&gt;</code></p>
+<p><code>238</code><code>            &lt;p&gt;From short lists to lengthy research, no matter what form your writing takes, Evernote keeps you focused on moving those ideas from inspiration to completion.&lt;/p&gt;</code></p>
+<p><code>239</code><code>          &lt;/div&gt;</code></p>
+<p><code>240</code><code>        &lt;/li&gt;</code></p>
+<p><code>241</code><code>        &lt;li class="collect feature"&gt;</code></p>
+<p><code>242</code><code>          &lt;div class="icon"&gt;</code></p><br style='clear: both'> <div id='err-l242c29-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 242</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l242c29' title='Line 242 Column 29'>&lt;svg&gt;</span></code></p><br style='clear: both'> <div id='err-l242c34-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;href&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 242</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-href" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l242c34-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;use&#39; is missing one or more required attributes. Missing attribute http://www.w3.org/1999/xlink^href&#39; </div>   <div class='line'><span class='line'>Line 242</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAmis-use" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l242c34' title='Line 242 Column 34'>&lt;use xlink:href="#svg-notebooks"&gt;</span>&lt;/use&gt;&lt;/svg&gt;&lt;/div&gt;</code></p>
+<p><code>243</code><code>          &lt;div class="copy"&gt;</code></p>
+<p><code>244</code><code>            &lt;h2&gt;</code></p>
+<p><code>245</code><code>              &lt;span class="icon"&gt;</code></p><br style='clear: both'> <div id='err-l245c34-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 245</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l245c34' title='Line 245 Column 34'>&lt;svg&gt;</span></code></p><br style='clear: both'> <div id='err-l245c39-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;href&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 245</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-href" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l245c39-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;use&#39; is missing one or more required attributes. Missing attribute http://www.w3.org/1999/xlink^href&#39; </div>   <div class='line'><span class='line'>Line 245</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAmis-use" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l245c39' title='Line 245 Column 39'>&lt;use xlink:href="#svg-notebooks"&gt;</span>&lt;/use&gt;&lt;/svg&gt;&lt;/span&gt;</code></p>
+<p><code>246</code><code>              &lt;span lang="en"&gt;Collect&lt;/span&gt;</code></p>
+<p><code>247</code><code>            &lt;/h2&gt;</code></p>
+<p><code>248</code><code>            &lt;p&gt;Easily gather everything that matters. Clip web articles, capture handwritten notes, and snap photos to keep the physical and digital details of your projects with you at all times.&lt;/p&gt;</code></p>
+<p><code>249</code><code>          &lt;/div&gt;</code></p>
+<p><code>250</code><code>        &lt;/li&gt;</code></p>
+<p><code>251</code><code>        &lt;li class="discuss feature"&gt;</code></p>
+<p><code>252</code><code>          &lt;div class="icon"&gt;</code></p><br style='clear: both'> <div id='err-l252c29-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 252</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l252c29' title='Line 252 Column 29'>&lt;svg&gt;</span></code></p><br style='clear: both'> <div id='err-l252c34-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;href&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 252</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-href" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l252c34-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;use&#39; is missing one or more required attributes. Missing attribute http://www.w3.org/1999/xlink^href&#39; </div>   <div class='line'><span class='line'>Line 252</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAmis-use" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l252c34' title='Line 252 Column 34'>&lt;use xlink:href="#svg-workchat"&gt;</span>&lt;/use&gt;&lt;/svg&gt;&lt;/div&gt;</code></p>
+<p><code>253</code><code>          &lt;div class="copy"&gt;</code></p>
+<p><code>254</code><code>            &lt;h2&gt;</code></p>
+<p><code>255</code><code>              &lt;span class="icon"&gt;</code></p><br style='clear: both'> <div id='err-l255c34-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 255</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l255c34' title='Line 255 Column 34'>&lt;svg&gt;</span></code></p><br style='clear: both'> <div id='err-l255c39-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;href&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 255</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-href" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l255c39-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;use&#39; is missing one or more required attributes. Missing attribute http://www.w3.org/1999/xlink^href&#39; </div>   <div class='line'><span class='line'>Line 255</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAmis-use" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l255c39' title='Line 255 Column 39'>&lt;use xlink:href="#svg-workchat"&gt;</span>&lt;/use&gt;&lt;/svg&gt;&lt;/span&gt;</code></p>
+<p><code>256</code><code>              &lt;span lang="en"&gt;Discuss&lt;/span&gt;</code></p>
+<p><code>257</code><code>            &lt;/h2&gt;</code></p>
+<p><code>258</code><code>            &lt;p&gt;Connect your work with the people who help you get it done. Communicate, collaborate, and share in real-time with anyone in the world without ever leaving Evernote.&lt;/p&gt;</code></p>
+<p><code>259</code><code>          &lt;/div&gt;</code></p>
+<p><code>260</code><code>        &lt;/li&gt;</code></p>
+<p><code>261</code><code>        &lt;li class="present feature"&gt;        </code></p>
+<p><code>262</code><code>          &lt;div class="icon"&gt;</code></p><br style='clear: both'> <div id='err-l262c29-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 262</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l262c29' title='Line 262 Column 29'>&lt;svg&gt;</span></code></p><br style='clear: both'> <div id='err-l262c34-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;href&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 262</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-href" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l262c34-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;use&#39; is missing one or more required attributes. Missing attribute http://www.w3.org/1999/xlink^href&#39; </div>   <div class='line'><span class='line'>Line 262</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAmis-use" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l262c34' title='Line 262 Column 34'>&lt;use xlink:href="#svg-presentation"&gt;</span>&lt;/use&gt;&lt;/svg&gt;&lt;/div&gt;</code></p>
+<p><code>263</code><code>          &lt;div class="copy"&gt;</code></p>
+<p><code>264</code><code>            &lt;h2&gt;</code></p>
+<p><code>265</code><code>              &lt;span class="icon"&gt;</code></p><br style='clear: both'> <div id='err-l265c34-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 265</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l265c34' title='Line 265 Column 34'>&lt;svg&gt;</span></code></p><br style='clear: both'> <div id='err-l265c39-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;href&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 265</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-href" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l265c39-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;use&#39; is missing one or more required attributes. Missing attribute http://www.w3.org/1999/xlink^href&#39; </div>   <div class='line'><span class='line'>Line 265</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAmis-use" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l265c39' title='Line 265 Column 39'>&lt;use xlink:href="#svg-presentation"&gt;</span>&lt;/use&gt;&lt;/svg&gt;&lt;/span&gt;</code></p>
+<p><code>266</code><code>              &lt;span lang="en"&gt;Present&lt;/span&gt;</code></p>
+<p><code>267</code><code>            &lt;/h2&gt;</code></p>
+<p><code>268</code><code>            &lt;p&gt;Have fast, effective meetings by presenting your work as it evolves. No need to build slides, just one click and your notes are transformed into a beautiful screen-friendly layout.&lt;/p&gt;</code></p>
+<p><code>269</code><code>          &lt;/div&gt;</code></p>
+<p><code>270</code><code>        &lt;/li&gt;</code></p>
+<p><code>271</code><code>      &lt;/ul&gt;</code></p>
+<p><code>272</code><code>    &lt;/div&gt;</code></p>
+<p><code>273</code><code>  &lt;/div&gt;</code></p>
+<p><code>274</code><code>&lt;/section&gt;</code></p>
+<p><code>275</code><code>&lt;section class="homepage-tiers"&gt;</code></p>
+<p><code>276</code><code>  &lt;div class="row"&gt;</code></p>
+<p><code>277</code><code>    &lt;ul&gt;</code></p>
+<p><code>278</code><code>          </code></p>
+<p><code>279</code><code>      &lt;li class="basic"&gt;</code></p>
+<p><code>280</code><code>        &lt;span class="circle"&gt;&lt;/span&gt;</code></p>
+<p><code>281</code><code>        &lt;h2&gt;Basic&lt;/h2&gt;</code></p>
+<p><code>282</code><code>        &lt;div class="tier-description"&gt;</code></p>
+<p><code>283</code><code>          &lt;p&gt;The tools you need to stay organized across all your devices.&lt;/p&gt;</code></p>
+<p><code>284</code><code>          &lt;p&gt;&lt;a href="/upgrade/?tier=basic&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" class="learn-more click_tracking" data-label="home_tier" data-action="expanded_basic" lang="en"&gt;Explore all Basic features &lt;span class="learn-more-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</code></p>
+<p><code>285</code><code>        &lt;/div&gt;</code></p>
+<p><code>286</code><code>        &lt;p class="tier-price"&gt;Free&lt;/p&gt;</code></p>
+<p><code>287</code><code>        &lt;a href="/register?offer=dropbox-3mon&amp;amp;origin=marketingsite" class="button-v2 light-v2 tier-cta click_tracking" data-action="selected_basic" data-label="home_tier_CTA" lang="en"&gt;Sign Up&lt;/a&gt;</code></p>
+<p><code>288</code><code>      &lt;/li&gt;</code></p>
+<p><code>289</code><code>          </code></p>
+<p><code>290</code><code>      &lt;li class="plus"&gt;</code></p>
+<p><code>291</code><code>        &lt;span class="circle"&gt;&lt;/span&gt;</code></p>
+<p><code>292</code><code>        &lt;h2&gt;Plus&lt;/h2&gt;</code></p>
+<p><code>293</code><code>        &lt;div class="tier-description"&gt;</code></p>
+<p><code>294</code><code>          &lt;p&gt;Higher monthly uploads, more access, more options.&lt;/p&gt;</code></p>
+<p><code>295</code><code>          &lt;p&gt;&lt;a href="/upgrade/?tier=plus&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" class="learn-more click_tracking" data-label="home_tier" data-action="expanded_plus" lang="en"&gt;Explore all Plus features &lt;span class="learn-more-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</code></p>
+<p><code>296</code><code>        &lt;/div&gt;</code></p>
+<p><code>297</code><code>        &lt;p class="tier-price"&gt;&lt;span data-sku="sku-symbol"&gt;&lt;/span&gt;&lt;span data-sku="plus-1year"&gt;&lt;/span&gt; &lt;span class="small"&gt; per year&lt;/span&gt;&lt;/p&gt;</code></p>
+<p><code>298</code><code>        &lt;a href="/register/?upgrade=plus&amp;amp;itemCode=plus-1year&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" class="button-v2 light-v2 tier-cta click_tracking" data-action="selected_plus" data-label="home_tier_CTA" lang="en"&gt;Get Plus&lt;/a&gt;</code></p>
+<p><code>299</code><code>      &lt;/li&gt;</code></p>
+<p><code>300</code><code>          </code></p>
+<p><code>301</code><code>      &lt;li class="premium"&gt;</code></p>
+<p><code>302</code><code>        &lt;span class="circle"&gt;&lt;/span&gt;</code></p>
+<p><code>303</code><code>        &lt;h2&gt;Premium&lt;/h2&gt;</code></p>
+<p><code>304</code><code>        &lt;div class="tier-description"&gt;</code></p>
+<p><code>305</code><code>          &lt;p&gt;The best of Evernote and the choice for productive professionals. &lt;/p&gt;</code></p>
+<p><code>306</code><code>          &lt;p&gt;&lt;a href="/upgrade/?tier=premium&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" class="learn-more click_tracking" data-label="home_tier" data-action="expanded_premium" lang="en"&gt;Explore all Premium features &lt;span class="learn-more-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</code></p>
+<p><code>307</code><code>        &lt;/div&gt;</code></p>
+<p><code>308</code><code>        &lt;p class="tier-price"&gt;&lt;span data-sku="sku-symbol"&gt;&lt;/span&gt;&lt;span data-sku="premium-1year"&gt;&lt;/span&gt; &lt;span class="small"&gt; per year&lt;/span&gt;&lt;/p&gt;</code></p>
+<p><code>309</code><code>        &lt;a href="/register/?upgrade=premium&amp;amp;itemCode=premium-1year&amp;amp;offer=dropbox-3mon&amp;amp;origin=marketingsite" class="button-v2 light-v2 tier-cta click_tracking" data-action="selected_premium" data-label="home_tier_CTA" lang="en"&gt;Go Premium&lt;/a&gt;</code></p>
+<p><code>310</code><code>        &lt;a href="/business?offer=dropbox-3mon&amp;amp;origin=marketingsite" class="button-v2 light-v2 business-cta click_tracking" data-action="expanded_business" data-label="home_tier_biz_CTA" lang="en"&gt;Premium for Business&lt;/a&gt;</code></p>
+<p><code>311</code><code>      &lt;/li&gt;</code></p>
+<p><code>312</code><code>          </code></p>
+<p><code>313</code><code>    &lt;/ul&gt;</code></p>
+<p><code>314</code><code>  &lt;/div&gt;</code></p>
+<p><code>315</code><code>&lt;/section&gt;&lt;div class="social-proof"&gt;</code></p>
+<p><code>316</code><code>    &lt;div class="row"&gt;</code></p>
+<p><code>317</code><code>        &lt;div class="social-proof-info"&gt;</code></p>
+<p><code>318</code><code>            &lt;h3&gt;Evernote for your team&lt;/h3&gt;</code></p>
+<p><code>319</code><code>            &lt;p&gt;If you love what Evernote does, imagine what it can do for your company’s productivity. Get Evernote Premium for your entire team or business.&lt;/p&gt;</code></p>
+<p><code>320</code><code>            &lt;p&gt;&lt;a class="button-secondary--light social-proof-cta-button click_tracking" data-action="expanded_business" data-label="biz_banner" href="/business/" lang="en"&gt;Learn More&lt;/a&gt;&lt;/p&gt;</code></p>
+<p><code>321</code><code>        &lt;/div&gt;</code></p>
+<p><code>322</code><code>        &lt;div class="social-proof-logos"&gt;</code></p>
+<p><code>323</code><code>            &lt;h4&gt;Join the &lt;span class="green"&gt;18,000&lt;/span&gt; companies already using Evernote&lt;/h4&gt;</code></p>
+<p><code>324</code><code>            &lt;ul class="social-proof-list"&gt;</code></p>
+<p><code>325</code><code>                &lt;li class="social-proof-logo mailchimp"&gt;&lt;/li&gt;</code></p>
+<p><code>326</code><code>                &lt;li class="social-proof-logo careerbuilder"&gt;&lt;/li&gt;</code></p>
+<p><code>327</code><code>                &lt;li class="social-proof-logo glynn-capital"&gt;&lt;/li&gt;</code></p>
+<p><code>328</code><code>                &lt;li class="social-proof-logo university-of-kentucky"&gt;&lt;/li&gt;</code></p>
+<p><code>329</code><code>            &lt;/ul&gt;</code></p>
+<p><code>330</code><code>        &lt;/div&gt;</code></p>
+<p><code>331</code><code>    &lt;/div&gt;</code></p>
+<p><code>332</code><code>&lt;/div&gt;</code></p><br style='clear: both'> <div id='err-l332c7-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 332</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l332c7' title='Line 332 Column 7'>&lt;svg style="display: none;</span>"&gt;</code></p><br style='clear: both'> <div id='err-l332c35-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;viewbox&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 332</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-viewbox" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l332c35' title='Line 332 Column 35'>&lt;symbol viewBox="32 -25.2 92.2 77.2" id="svg-amazon"&gt;</span></code></p><br style='clear: both'> <div id='err-l332c88-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one title tag, which can result in a search ranking penalty. </div>   <div class='line'><span class='line'>Line 332</span>  Best Practice </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleTitleTags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l332c88' title='Line 332 Column 88'>&lt;title&gt;</span>amazon&lt;/title&gt; &lt;g&gt; &lt;path d="M32.5,35.9c-0.3-0.3-0.5-0.5-0.5-0.7c0-0.2,0.1-0.3,0.2-0.4c0.2-0.2,0.4-0.3,0.7-0.3c0.2,0,0.5,0.1,0.7,0.2</code></p>
+<p><code>333</code><code>		c6.4,3.6,13.4,6.5,21.2,8.5c7.7,2,15.7,3.1,24,3.1c5.2,0,10.6-0.5,16.1-1.4c5.4-0.9,10.9-2.4,16.3-4.3c0.4-0.2,0.8-0.3,1.1-0.4</code></p>
+<p><code>334</code><code>		c0.4-0.1,0.8-0.3,1.2-0.5c0.4-0.2,0.8-0.2,1.2-0.1c0.4,0.1,0.6,0.3,0.8,0.5c0.1,0.2,0.2,0.4,0.2,0.6c0,0.5-0.2,0.8-0.7,1.1</code></p>
+<p><code>335</code><code>		c-0.6,0.4-1.3,0.9-1.9,1.2c-0.7,0.4-1.3,0.7-1.9,1.1c-4.9,2.7-10.3,4.7-16.2,6c-5.9,1.3-11.6,2-17.2,2c-8.8,0-17-1.4-24.7-4.3</code></p>
+<p><code>336</code><code>		C45.4,44.9,38.5,40.9,32.5,35.9L32.5,35.9z M86.1-6.7c0-1.1,0-2.3-0.1-3.5c0-1.2-0.4-2.3-1.1-3.2c-0.6-0.9-1.4-1.5-2.4-1.9</code></p>
+<p><code>337</code><code>		c-1-0.4-2-0.6-3-0.6h-0.7c-1.7,0.2-3.3,0.7-4.7,1.6c-1.4,0.9-2.3,2.3-2.7,4.1c-0.1,0.4-0.2,0.7-0.5,1.1c-0.3,0.3-0.6,0.6-1.1,0.7</code></p>
+<p><code>338</code><code>		l-9.4-1.2c-0.4-0.1-0.7-0.2-1.1-0.5c-0.4-0.3-0.5-0.7-0.3-1.3c0.5-2.5,1.5-4.6,2.8-6.3c1.3-1.7,2.9-3.1,4.7-4.2</code></p>
+<p><code>339</code><code>		c1.8-1.1,3.8-1.9,6-2.4c2.1-0.5,4.3-0.8,6.5-1h2c2.4,0,5,0.3,7.7,1c2.7,0.6,5.1,1.8,7.1,3.5c1.2,1,2.1,2.1,2.7,3.3</code></p>
+<p><code>340</code><code>		c0.6,1.2,1,2.4,1.2,3.7c0.2,1.3,0.3,2.7,0.3,4.1V9.4c0,2.2,0.4,3.9,1.1,5.1c0.8,1.2,1.6,2.3,2.5,3.4c0.3,0.4,0.4,0.8,0.4,1.2</code></p>
+<p><code>341</code><code>		c0,0.4-0.2,0.8-0.6,1.1c-0.9,0.8-2.2,1.8-3.7,2.9c-1.5,1.1-2.8,2.1-3.8,2.9c-0.7,0.4-1.5,0.5-2.5,0.1c-1.6-1.3-2.7-2.2-3.3-2.9</code></p>
+<p><code>342</code><code>		L88,20.4c-1.6,1.5-3.1,2.7-4.6,3.6c-1.5,0.9-3,1.6-4.6,2c-2.1,0.4-4.4,0.7-7,0.7c-4.1,0-7.5-1.1-10.2-3.4</code></p>
+<p><code>343</code><code>		c-2.8-2.3-4.1-5.7-4.1-10.3c0-3.8,0.9-6.9,2.8-9.5c1.9-2.5,4.4-4.4,7.6-5.7c1.6-0.7,3.4-1.2,5.2-1.6c1.8-0.4,3.8-0.7,5.8-0.9</code></p>
+<p><code>344</code><code>		c1.3-0.2,2.6-0.3,3.8-0.4c1.2-0.1,2.4-0.2,3.4-0.3L86.1-6.7L86.1-6.7z M86.1,2c-1.3,0-2.5,0-3.8,0.1c-1.2,0.1-2.4,0.2-3.5,0.5</code></p>
+<p><code>345</code><code>		c-2,0.6-3.8,1.6-5.2,2.9c-1.5,1.3-2.2,3.2-2.2,5.8c0,2,0.5,3.7,1.6,4.9c1.1,1.2,2.5,1.8,4.4,1.8c0.3,0,0.6,0,0.8-0.1</code></p>
+<p><code>346</code><code>		c0.2,0,0.4-0.1,0.6-0.1c2.4-0.5,4.2-1.9,5.4-4.1C85.4,12.1,86,10.5,86,9c0.1-1.5,0.1-3.2,0.1-5L86.1,2L86.1,2z M117.7,48.1</code></p>
+<p><code>347</code><code>		c-0.4,0.4-0.8,0.5-1.1,0.4c-0.3-0.2-0.4-0.5-0.3-0.9l1.1-2.6c0.4-1.1,0.8-2.1,1.2-3.2c0.4-1,0.6-2,0.7-2.9c0.1-0.9,0-1.5-0.3-1.9</code></p>
+<p><code>348</code><code>		c-0.5-0.6-1.5-0.9-3.1-1h-1c-1.3,0-2.6,0.1-3.9,0.2c-0.7,0.2-1.4,0.2-2,0.2c-0.6,0-1.2,0.1-1.8,0.2c-0.5,0-0.7-0.1-0.8-0.4</code></p>
+<p><code>349</code><code>		c-0.1-0.3,0.1-0.6,0.6-0.9c1.2-0.8,2.5-1.4,4-1.9c1.3-0.3,2.7-0.5,4-0.6c0.8-0.1,1.6-0.1,2.4-0.1c0.5,0,1.1,0,1.6,0.1</code></p>
+<p><code>350</code><code>		c1.3,0.1,2.3,0.2,3.1,0.4c0.8,0.2,1.4,0.4,1.7,0.6c0.1,0.2,0.2,0.4,0.3,0.6c0.1,0.2,0.1,0.6,0.1,0.9v0.5c0,0.7-0.2,1.7-0.5,2.8</code></p>
+<p><code>351</code><code>		c-0.3,1.1-0.7,2.2-1.2,3.3c-0.5,1.1-1.1,2.3-2,3.3C119.8,46.4,118.8,47.4,117.7,48.1L117.7,48.1z"/&gt; &lt;/g&gt; &lt;/symbol&gt;</code></p><br style='clear: both'> <div id='err-l351c114-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;viewbox&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 351</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-viewbox" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l351c114' title='Line 351 Column 114'>&lt;symbol viewBox="23 -30.2 73.8 87.2" id="svg-android"&gt;</span></code></p><br style='clear: both'> <div id='err-l351c168-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one title tag, which can result in a search ranking penalty. </div>   <div class='line'><span class='line'>Line 351</span>  Best Practice </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleTitleTags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l351c168' title='Line 351 Column 168'>&lt;title&gt;</span>android&lt;/title&gt; &lt;path d="M28.4-2c-3,0-5.4,2.4-5.4,5.4l0,22.5c0,3,2.4,5.4,5.4,5.4c3,0,5.4-2.4,5.4-5.4V3.4C33.8,0.4,31.4-2,28.4-2 M71.8-22.3</code></p>
+<p><code>352</code><code>	l3.8-6.9c0.2-0.4,0.1-0.8-0.3-1c-0.4-0.2-0.8-0.1-1,0.3l-3.8,6.9c-3.2-1.4-6.8-2.2-10.5-2.2c-3.8,0-7.3,0.8-10.5,2.2l-3.8-6.9</code></p>
+<p><code>353</code><code>	c-0.2-0.4-0.7-0.5-1-0.3c-0.4,0.2-0.5,0.7-0.3,1l3.8,6.9c-7.4,3.8-12.4,11.1-12.4,19.4l48.5,0C84.2-11.2,79.2-18.4,71.8-22.3</code></p>
+<p><code>354</code><code>	 M48.9-11.7c-1.1,0-2-0.9-2-2c0-1.1,0.9-2,2-2c1.1,0,2,0.9,2,2C50.9-12.6,50-11.7,48.9-11.7 M71-11.7c-1.1,0-2-0.9-2-2</code></p>
+<p><code>355</code><code>	c0-1.1,0.9-2,2-2c1.1,0,2,0.9,2,2C73-12.6,72.1-11.7,71-11.7 M35.9-1l0,34.9c0,3.2,2.6,5.7,5.7,5.7l3.9,0l0,11.9</code></p>
+<p><code>356</code><code>	c0,3,2.4,5.4,5.4,5.4c3,0,5.4-2.4,5.4-5.4l0-11.9l7.3,0l0,11.9c0,3,2.4,5.4,5.4,5.4c3,0,5.4-2.4,5.4-5.4l0-11.9l3.9,0</code></p>
+<p><code>357</code><code>	c3.2,0,5.7-2.6,5.7-5.7L84-1L35.9-1z M96.8,3.4c0-3-2.4-5.4-5.4-5.4c-3,0-5.4,2.4-5.4,5.4l0,22.5c0,3,2.4,5.4,5.4,5.4</code></p>
+<p><code>358</code><code>	c3,0,5.4-2.4,5.4-5.4L96.8,3.4z"/&gt; &lt;/symbol&gt;</code></p><br style='clear: both'> <div id='err-l358c45-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;viewbox&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 358</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-viewbox" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l358c45' title='Line 358 Column 45'>&lt;symbol viewBox="23 -29.7 73.7 85.7" id="svg-apple"&gt;</span></code></p><br style='clear: both'> <div id='err-l358c97-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one title tag, which can result in a search ranking penalty. </div>   <div class='line'><span class='line'>Line 358</span>  Best Practice </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleTitleTags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l358c97' title='Line 358 Column 97'>&lt;title&gt;</span>apple&lt;/title&gt; &lt;path d="M94.2-1c-4.4-5.5-10.6-8.7-16.5-8.7C70-9.6,66.7-6,61.3-6c-5.5,0-9.7-3.7-16.4-3.7c-6.6,0-13.6,4-18,10.8</code></p>
+<p><code>359</code><code>	c-6.2,9.6-5.2,27.7,4.9,43.1c3.6,5.5,8.5,11.7,14.8,11.8c5.6,0.1,7.2-3.6,14.8-3.6S70.5,56,76.1,56c6.3-0.1,11.4-6.9,15-12.4</code></p>
+<p><code>360</code><code>	c2.6-3.9,3.6-5.9,5.6-10.4C82.1,27.6,79.7,7,94.2-1z M71.8-15.8c2.8-3.6,4.9-8.7,4.2-13.9c-4.6,0.3-10,3.2-13.1,7</code></p>
+<p><code>361</code><code>	c-2.8,3.5-5.2,8.6-4.3,13.6C63.6-8.9,68.8-11.9,71.8-15.8z"/&gt; &lt;/symbol&gt;</code></p><br style='clear: both'> <div id='err-l361c71-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;viewbox&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 361</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-viewbox" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l361c71' title='Line 361 Column 71'>&lt;symbol viewBox="32 -19.2 91.2 64.2" id="svg-blackberry"&gt;</span></code></p><br style='clear: both'> <div id='err-l361c128-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one title tag, which can result in a search ranking penalty. </div>   <div class='line'><span class='line'>Line 361</span>  Best Practice </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleTitleTags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l361c128' title='Line 361 Column 128'>&lt;title&gt;</span>blackberry&lt;/title&gt; &lt;g&gt; &lt;path d="M61.4-12.4c0-3-1.9-6.9-9.7-6.9c-3.2,0-12,0-12,0L36.3-3.5c0,0,6.5,0,12.5,0C58.6-3.5,61.4-8.1,61.4-12.4L61.4-12.4z"/&gt; &lt;path d="M93.7-12.4c0-3-1.9-6.9-9.6-6.9c-3.2,0-12,0-12,0L68.7-3.5c0,0,6.5,0,12.5,0C90.9-3.5,93.7-8.1,93.7-12.4L93.7-12.4z"/&gt; &lt;path d="M57.1,11.4c0-3-1.9-6.9-9.7-6.9c-3.2,0-12,0-12,0L32,20.3c0,0,6.5,0,12.5,0C54.3,20.3,57.1,15.6,57.1,11.4L57.1,11.4z"/&gt; &lt;path d="M89.4,11.4c0-3-1.9-6.9-9.6-6.9c-3.2,0-12,0-12,0l-3.4,15.8c0,0,6.5,0,12.5,0C86.6,20.3,89.4,15.6,89.4,11.4L89.4,11.4z"/&gt; &lt;path d="M123.2,1.7c0-3-1.8-6.9-9.6-6.9c-3.2,0-12,0-12,0l-3.4,15.8c0,0,6.5,0,12.5,0C120.4,10.6,123.2,6,123.2,1.7L123.2,1.7z"/&gt; &lt;path d="M118.5,26.5c0-3-1.9-6.9-9.7-6.9c-3.2,0-12,0-12,0l-3.4,15.8c0,0,6.5,0,12.5,0C115.8,35.4,118.5,30.8,118.5,26.5</code></p>
+<p><code>362</code><code>		L118.5,26.5z"/&gt; &lt;path d="M84.7,36.1c0-3-1.8-6.9-9.6-6.9c-3.2,0-12,0-12,0L59.7,45c0,0,6.5,0,12.5,0C82,45,84.7,40.4,84.7,36.1L84.7,36.1z"/&gt; &lt;/g&gt; &lt;/symbol&gt;</code></p><br style='clear: both'> <div id='err-l362c155-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;viewbox&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 362</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-viewbox" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l362c155' title='Line 362 Column 155'>&lt;symbol viewBox="30 -30.5 87.6 87.5" id="svg-windows"&gt;</span></code></p><br style='clear: both'> <div id='err-l362c209-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has more than one title tag, which can result in a search ranking penalty. </div>   <div class='line'><span class='line'>Line 362</span>  Best Practice </div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "SeoMultipleTitleTags" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l362c209' title='Line 362 Column 209'>&lt;title&gt;</span>windows&lt;/title&gt; &lt;path d="M30-18.4l35.9-4.9v34.6H30L30-18.4z M65.9,15.7v34.2L30,45l0-29.3L65.9,15.7C65.9,15.7,65.9,15.7,65.9,15.7z M69.8-23.9</code></p>
+<p><code>363</code><code>	l47.7-6.6v41.7H69.8V-23.9z M117.6,15.7V57l-47.7-6.6V15.7H117.6z"/&gt; &lt;/symbol&gt;&lt;/svg&gt;&lt;div class="sync-everywhere home pricing-module content-on-left"&gt;</code></p>
+<p><code>364</code><code>  &lt;div class="row"&gt;</code></p>
+<p><code>365</code><code>    &lt;span class="image"&gt;&lt;/span&gt;</code></p>
+<p><code>366</code><code>    &lt;div class="content"&gt;</code></p>
+<p><code>367</code><code>      &lt;h2&gt;Available on everything you use every day.&lt;/h2&gt;</code></p>
+<p><code>368</code><code>      &lt;div class="third-party-buttons"&gt;</code></p>
+<p><code>369</code><code>        </code></p><br style='clear: both'> <div id='err-l369c9-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 369</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l369c9' title='Line 369 Column 9'>&lt;svg class="svg-icon"&gt;</span></code></p><br style='clear: both'> <div id='err-l369c31-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;href&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 369</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-href" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l369c31-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;use&#39; is missing one or more required attributes. Missing attribute http://www.w3.org/1999/xlink^href&#39; </div>   <div class='line'><span class='line'>Line 369</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAmis-use" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l369c31' title='Line 369 Column 31'>&lt;use xlink:href="#svg-apple"&gt;</span>&lt;/use&gt;&lt;/svg&gt;</code></p>
+<p><code>370</code><code>        </code></p><br style='clear: both'> <div id='err-l370c9-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 370</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l370c9' title='Line 370 Column 9'>&lt;svg class="svg-icon"&gt;</span></code></p><br style='clear: both'> <div id='err-l370c31-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;href&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 370</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-href" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l370c31-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;use&#39; is missing one or more required attributes. Missing attribute http://www.w3.org/1999/xlink^href&#39; </div>   <div class='line'><span class='line'>Line 370</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAmis-use" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l370c31' title='Line 370 Column 31'>&lt;use xlink:href="#svg-android"&gt;</span>&lt;/use&gt;&lt;/svg&gt;</code></p>
+<p><code>371</code><code>        </code></p><br style='clear: both'> <div id='err-l371c9-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 371</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l371c9' title='Line 371 Column 9'>&lt;svg class="svg-icon"&gt;</span></code></p><br style='clear: both'> <div id='err-l371c31-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;href&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 371</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-href" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l371c31-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;use&#39; is missing one or more required attributes. Missing attribute http://www.w3.org/1999/xlink^href&#39; </div>   <div class='line'><span class='line'>Line 371</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAmis-use" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l371c31' title='Line 371 Column 31'>&lt;use xlink:href="#svg-windows"&gt;</span>&lt;/use&gt;&lt;/svg&gt;</code></p>
+<p><code>372</code><code>        </code></p><br style='clear: both'> <div id='err-l372c9-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 372</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l372c9' title='Line 372 Column 9'>&lt;svg class="svg-icon"&gt;</span></code></p><br style='clear: both'> <div id='err-l372c31-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;href&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 372</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-href" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l372c31-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;use&#39; is missing one or more required attributes. Missing attribute http://www.w3.org/1999/xlink^href&#39; </div>   <div class='line'><span class='line'>Line 372</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAmis-use" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l372c31' title='Line 372 Column 31'>&lt;use xlink:href="#svg-blackberry"&gt;</span>&lt;/use&gt;&lt;/svg&gt;</code></p>
+<p><code>373</code><code>        </code></p><br style='clear: both'> <div id='err-l373c9-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>SVG images are not supported in Internet Explorer 8 and earlier. </div>   <div class='line'><span class='line'>Line 373</span>  <a href='http://msdn.microsoft.com/en-us/ie/hh410107#_Scaling_Vector_Graphics' target='_top'>Internet Explorer &#8804; 8.0</a> <a href='http://en.wikipedia.org/wiki/Scalable_Vector_Graphics' target='_top'>Android &#8804; 2.0</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "BugHtmlSvg" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l373c9' title='Line 373 Column 9'>&lt;svg class="svg-icon"&gt;</span></code></p><br style='clear: both'> <div id='err-l373c31-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Attribute &#39;href&#39; not allowed on element. </div>   <div class='line'><span class='line'>Line 373</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAkey-href" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l373c31-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Element &#39;use&#39; is missing one or more required attributes. Missing attribute http://www.w3.org/1999/xlink^href&#39; </div>   <div class='line'><span class='line'>Line 373</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-RnvErAmis-use" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l373c31' title='Line 373 Column 31'>&lt;use xlink:href="#svg-amazon"&gt;</span>&lt;/use&gt;&lt;/svg&gt;</code></p>
+<p><code>374</code><code>      &lt;/div&gt;</code></p>
+<p><code>375</code><code>    &lt;/div&gt;</code></p>
+<p><code>376</code><code>  &lt;/div&gt;</code></p>
+<p><code>377</code><code>&lt;/div&gt;&lt;/div&gt;</code></p>
+<p><code>378</code><code>          </code></p>
+<p><code>379</code><code>          </code></p>
+<p><code>380</code><code>&lt;script type="application/ld+json"&gt;</code></p>
+<p><code>381</code><code>{</code></p>
+<p><code>382</code><code>    "@context": "http://schema.org",</code></p>
+<p><code>383</code><code>    "@type": "Corporation",</code></p>
+<p><code>384</code><code>    "name": "Evernote",</code></p>
+<p><code>385</code><code>    "url": "https://evernote.com/",</code></p>
+<p><code>386</code><code>    "sameAs": [</code></p>
+<p><code>387</code><code>        "https://www.facebook.com/evernote",</code></p>
+<p><code>388</code><code>        "https://twitter.com/evernote",</code></p>
+<p><code>389</code><code>        "https://plus.google.com/+evernote/"</code></p>
+<p><code>390</code><code>    ],</code></p>
+<p><code>391</code><code>    "logo": "https://cdn1.evernote.com/media/img/en-logo.min.svg",</code></p>
+<p><code>392</code><code>    "location": {</code></p>
+<p><code>393</code><code>        "@type": "PostalAddress",</code></p>
+<p><code>394</code><code>        "addressLocality": "Redwood City",</code></p>
+<p><code>395</code><code>        "addressRegion": "CA",</code></p>
+<p><code>396</code><code>        "postalCode": "94063",</code></p>
+<p><code>397</code><code>        "streetAddress": "305 Walnut Street"</code></p>
+<p><code>398</code><code>    },</code></p>
+<p><code>399</code><code>    "owns": [</code></p>
+<p><code>400</code><code>        {</code></p>
+<p><code>401</code><code>            "@context": "http://schema.org",</code></p>
+<p><code>402</code><code>            "@type": "Product",</code></p>
+<p><code>403</code><code>            "name": "Evernote Premium",</code></p>
+<p><code>404</code><code>            "description": "Evernote Premium gives you all the great features of Evernote, plus better collaboration, higher monthly uploads, offline mobile notes, faster support, and more.",</code></p>
+<p><code>405</code><code>            "logo": "https://cdn1.evernote.com/media/img/en-logo.min.svg",</code></p>
+<p><code>406</code><code>            "url": "https://evernote.com/premium/",</code></p>
+<p><code>407</code><code>            "brand": {</code></p>
+<p><code>408</code><code>                "@type": "Brand",</code></p>
+<p><code>409</code><code>                "logo": "https://cdn1.evernote.com/media/img/en-logo.min.svg",</code></p>
+<p><code>410</code><code>                "description": "Evernote is a cloud-based note-taking and file-storage application that synchronizes data across multiple devices.",</code></p>
+<p><code>411</code><code>                "name": "Evernote",</code></p>
+<p><code>412</code><code>                "url": "https://evernote.com/"</code></p>
+<p><code>413</code><code>            },</code></p>
+<p><code>414</code><code>            "issimilarto": {</code></p>
+<p><code>415</code><code>                "name": [</code></p>
+<p><code>416</code><code>                    "Dropbox",</code></p>
+<p><code>417</code><code>                    "OneNote",</code></p>
+<p><code>418</code><code>                    "Box Notes"</code></p>
+<p><code>419</code><code>                ],</code></p>
+<p><code>420</code><code>                "url": [</code></p>
+<p><code>421</code><code>                    "https://www.dropbox.com/",</code></p>
+<p><code>422</code><code>                    "http://www.onenote.com",</code></p>
+<p><code>423</code><code>                    "https://www.box.com/notes/"</code></p>
+<p><code>424</code><code>                ]</code></p>
+<p><code>425</code><code>            },</code></p>
+<p><code>426</code><code>            "offers": {</code></p>
+<p><code>427</code><code>                "@type": "Offer",</code></p>
+<p><code>428</code><code>                "acceptedPaymentMethod": [</code></p>
+<p><code>429</code><code>                    "Credit Card",</code></p>
+<p><code>430</code><code>                    "Paypal"</code></p>
+<p><code>431</code><code>                ],</code></p>
+<p><code>432</code><code>                "category": "Productivity",</code></p>
+<p><code>433</code><code>                "price": "50.00",</code></p>
+<p><code>434</code><code>                "priceCurrency": "USD"</code></p>
+<p><code>435</code><code>            }</code></p>
+<p><code>436</code><code>        },</code></p>
+<p><code>437</code><code>        {</code></p>
+<p><code>438</code><code>            "@context": "http://schema.org",</code></p>
+<p><code>439</code><code>            "@type": "Product",</code></p>
+<p><code>440</code><code>            "name": "Evernote Plus",</code></p>
+<p><code>441</code><code>            "description": "Evernote Plus gives you great features of Evernote, plus better collaboration, email sends, offline mobile notes, faster support, and more.",</code></p>
+<p><code>442</code><code>            "logo": "https://cdn1.evernote.com/media/img/en-logo.min.svg",</code></p>
+<p><code>443</code><code>            "url": "https://evernote.com/plus/",</code></p>
+<p><code>444</code><code>            "brand": {</code></p>
+<p><code>445</code><code>                "@type": "Brand",</code></p>
+<p><code>446</code><code>                "logo": "https://cdn1.evernote.com/media/img/en-logo.min.svg",</code></p>
+<p><code>447</code><code>                "description": "Evernote is a cloud-based note-taking and file-storage application that synchronizes data across multiple devices.",</code></p>
+<p><code>448</code><code>                "name": "Evernote",</code></p>
+<p><code>449</code><code>                "url": "https://evernote.com/"</code></p>
+<p><code>450</code><code>            },</code></p>
+<p><code>451</code><code>            "issimilarto": {</code></p>
+<p><code>452</code><code>                "name": [</code></p>
+<p><code>453</code><code>                    "Dropbox",</code></p>
+<p><code>454</code><code>                    "OneNote",</code></p>
+<p><code>455</code><code>                    "Box Notes"</code></p>
+<p><code>456</code><code>                ],</code></p>
+<p><code>457</code><code>                "url": [</code></p>
+<p><code>458</code><code>                    "https://www.dropbox.com/",</code></p>
+<p><code>459</code><code>                    "http://www.onenote.com",</code></p>
+<p><code>460</code><code>                    "https://www.box.com/notes/"</code></p>
+<p><code>461</code><code>                ]</code></p>
+<p><code>462</code><code>            },</code></p>
+<p><code>463</code><code>            "offers": {</code></p>
+<p><code>464</code><code>                "@type": "Offer",</code></p>
+<p><code>465</code><code>                "acceptedPaymentMethod": [</code></p>
+<p><code>466</code><code>                    "Credit Card",</code></p>
+<p><code>467</code><code>                    "Paypal"</code></p>
+<p><code>468</code><code>                ],</code></p>
+<p><code>469</code><code>                "category": "Productivity",</code></p>
+<p><code>470</code><code>                "price": "25.00",</code></p>
+<p><code>471</code><code>                "priceCurrency": "USD"</code></p>
+<p><code>472</code><code>            }</code></p>
+<p><code>473</code><code>        },</code></p>
+<p><code>474</code><code>        {</code></p>
+<p><code>475</code><code>            "@context": "http://schema.org",</code></p>
+<p><code>476</code><code>            "@type": "Product",</code></p>
+<p><code>477</code><code>            "name": "Evernote Basic",</code></p>
+<p><code>478</code><code>            "description": "Evernote Basic gives you great features of Evernote, plus better collaboration, email sends, offline mobile notes, faster support, and more.",</code></p>
+<p><code>479</code><code>            "logo": "https://cdn1.evernote.com/media/img/en-logo.min.svg",</code></p>
+<p><code>480</code><code>            "url": "https://evernote.com/basic/",</code></p>
+<p><code>481</code><code>            "brand": {</code></p>
+<p><code>482</code><code>                "@type": "Brand",</code></p>
+<p><code>483</code><code>                "logo": "https://cdn1.evernote.com/media/img/en-logo.min.svg",</code></p>
+<p><code>484</code><code>                "description": "Evernote is a cloud-based note-taking and file-storage application that synchronizes data across multiple devices.",</code></p>
+<p><code>485</code><code>                "name": "Evernote",</code></p>
+<p><code>486</code><code>                "url": "https://evernote.com/"</code></p>
+<p><code>487</code><code>            },</code></p>
+<p><code>488</code><code>            "issimilarto": [</code></p>
+<p><code>489</code><code>        {"@type":"Product",</code></p>
+<p><code>490</code><code>        "name":"OneNote",</code></p>
+<p><code>491</code><code>        "description":"Microsoft OneNote is a computer program for free-form information gathering and multi-user collaboration. It gathers users' notes (handwritten or typed), drawings, screen clippings and audio commentaries. Notes can be shared with other OneNote users over the Internet or a network.",</code></p>
+<p><code>492</code><code>        "url":"http://www.onenote.com/",</code></p>
+<p><code>493</code><code>        "offers": {</code></p>
+<p><code>494</code><code>        "@type": "Offer",</code></p>
+<p><code>495</code><code>        "acceptedPaymentMethod": [</code></p>
+<p><code>496</code><code>            "Credit Card",</code></p>
+<p><code>497</code><code>            "Paypal"</code></p>
+<p><code>498</code><code>        ],</code></p>
+<p><code>499</code><code>        "category": "Productivity",</code></p>
+<p><code>500</code><code>        "price": "Free",</code></p>
+<p><code>501</code><code>        "priceCurrency": "USD"</code></p>
+<p><code>502</code><code>            }</code></p>
+<p><code>503</code><code>        },</code></p>
+<p><code>504</code><code>         {"@type":"Product",</code></p>
+<p><code>505</code><code>        "name":"Dropbox",</code></p>
+<p><code>506</code><code>        "description":"Dropbox is a file hosting service operated by Dropbox, Inc., headquartered in San Francisco, California, that offers cloud storage, file synchronization, personal cloud, and client software.",</code></p>
+<p><code>507</code><code>        "url":"https://www.dropbox.com",</code></p>
+<p><code>508</code><code>        "offers": {</code></p>
+<p><code>509</code><code>        "@type": "Offer",</code></p>
+<p><code>510</code><code>        "acceptedPaymentMethod": [</code></p>
+<p><code>511</code><code>            "Credit Card",</code></p>
+<p><code>512</code><code>            "Paypal"</code></p>
+<p><code>513</code><code>        ],</code></p>
+<p><code>514</code><code>        "category": "Productivity",</code></p>
+<p><code>515</code><code>        "price": "99.00",</code></p>
+<p><code>516</code><code>        "priceCurrency": "USD"</code></p>
+<p><code>517</code><code>            }</code></p>
+<p><code>518</code><code>        },</code></p>
+<p><code>519</code><code>        {"@type":"Product",</code></p>
+<p><code>520</code><code>        "name":"Box Notes",</code></p>
+<p><code>521</code><code>        "description":"Box Notes is a file hosting service operated by Box, headquartered in Los Altos, California, that offers cloud storage, file synchronization, personal cloud, and client software.",</code></p>
+<p><code>522</code><code>        "url":"https://www.box.com/notes/",</code></p>
+<p><code>523</code><code>        "offers": {</code></p>
+<p><code>524</code><code>        "@type": "Offer",</code></p>
+<p><code>525</code><code>        "acceptedPaymentMethod": [</code></p>
+<p><code>526</code><code>            "Credit Card",</code></p>
+<p><code>527</code><code>            "Paypal"</code></p>
+<p><code>528</code><code>        ],</code></p>
+<p><code>529</code><code>        "category": "Productivity",</code></p>
+<p><code>530</code><code>        "price": "15.00",</code></p>
+<p><code>531</code><code>        "priceCurrency": "USD"</code></p>
+<p><code>532</code><code>            }</code></p>
+<p><code>533</code><code>        }</code></p>
+<p><code>534</code><code>    ],</code></p>
+<p><code>535</code><code>          </code></p>
+<p><code>536</code><code>            "offers": {</code></p>
+<p><code>537</code><code>                "@type": "Offer",</code></p>
+<p><code>538</code><code>                "category": "Productivity",</code></p>
+<p><code>539</code><code>                "price": "0",</code></p>
+<p><code>540</code><code>                "priceCurrency": "USD"</code></p>
+<p><code>541</code><code>            }</code></p>
+<p><code>542</code><code>        }</code></p>
+<p><code>543</code><code>    ]</code></p>
+<p><code>544</code><code>}</code></p>
+<p><code>545</code><code>&lt;/script&gt;</code></p>
+<br style='clear: both'> <div id='err-l546c1-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>Stray end tag &#39;script&#39;. </div>   <div class='line'><span class='line'>Line 546</span>  <a href='http://www.w3.org/TR/html5/' target='_top'>HTML5</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "W3cHtml5Error-errStrayEndTag-script" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><br style='clear: both'> <div id='err-l546c1-1' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>This page has markup errors, causing screen readers to miss content. </div>   <div class='help'>Fix the errors listed on the Standards tab of this report. Markup errors like missing end tags mean screen readers may skip important content. </div>   <div class='line'><span class='line'>Line 546</span>  <a href='http://www.w3.org/TR/WCAG20-TECHS/F70.html' target='_top'>WCAG 2.0 A F70</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag2-F70-1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code>546</code><code><span class='err' id='htm-l546c1' title='Line 546 Column 1'>&lt;/script&gt;</span></code></p>
+<p><code>547</code><code> </code></p>
+<p><code>548</code><code>&lt;footer&gt;</code></p>
+<p><code>549</code><code>	&lt;nav class="footer-nav"&gt;</code></p>
+<p><code>550</code><code>		&lt;ul class="row top-nav"&gt;</code></p>
+<p><code>551</code><code>			&lt;li&gt;&lt;a href="/products/" class="click_tracking" data-label="footer" data-action="expanded_products"&gt;Products&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>552</code><code>			&lt;li&gt;&lt;a href="/pricing/" class="click_tracking" data-label="footer" data-action="expanded_pricing"&gt;Pricing&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>553</code><code>						&lt;li&gt;&lt;a href="https://www.evernote.com/market/" class="click_tracking" data-label="footer" data-action="expanded_market" lang=""&gt;Market&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>554</code><code>						&lt;li&gt;&lt;a href="https://appcenter.evernote.com" class="click_tracking" data-label="footer" data-action="expanded_appcenter"&gt;App Center&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>555</code><code>			&lt;li&gt;&lt;a href="/contact/support/" class="click_tracking" data-label="footer" data-action="expanded_support"&gt;Support&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>556</code><code>			&lt;li&gt;&lt;a href="//blog.evernote.com/" class="click_tracking" data-label="footer" data-action="expanded_blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>557</code><code>		&lt;/ul&gt;</code></p>
+<p><code>558</code><code>		&lt;div class="row"&gt;</code></p>
+<p><code>559</code><code>			&lt;ul class="second-nav"&gt;</code></p>
+<p><code>560</code><code>				&lt;li&gt;&lt;a href="/corp/"&gt;About&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>561</code><code>				&lt;li&gt;&lt;a href="/careers/"&gt;Careers&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>562</code><code>				&lt;li&gt;&lt;a href="/legal/"&gt;Legal&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>563</code><code>				&lt;li&gt;&lt;a href="/legal/tos.php"&gt;Terms&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>564</code><code>				&lt;li&gt;&lt;a href="/legal/privacy.php"&gt;Privacy&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>565</code><code>				&lt;li&gt;&lt;a href="/security/"&gt;Security&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>566</code><code>				&lt;li&gt;&lt;a href="https://dev.evernote.com/" class="exit_tracking" data-label="API Footer"&gt;API&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>567</code><code>				&lt;li&gt;&lt;a href="/contact/"&gt;Contact&lt;/a&gt;&lt;/li&gt;</code></p>
+<p><code>568</code><code>			&lt;/ul&gt;</code></p>
+<p><code>569</code><code>			</code></p>
+<p><code>570</code><code>			</code></p>
+<p><code>571</code><code>		&lt;/div&gt;</code></p>
+<p><code>572</code><code>		&lt;div class="row bottom-section"&gt;</code></p>
+<p><code>573</code><code>			&lt;div class="copyright"&gt;</code></p>
+<p><code>574</code><code>				Copyright 2015 Evernote Corporation. &lt;span class="all-rights"&gt;All rights reserved.&lt;/span&gt;</code></p>
+<p><code>575</code><code>			&lt;/div&gt;</code></p>
+<p><code>576</code><code>						&lt;div class="languages"&gt;</code></p>
+<p><code>577</code><code>				&lt;!--&lt;a href="prefered-language"&gt;English (US) &lt;span class="arrow"&gt;&lt;/span&gt;&lt;/a&gt;--&gt;</code></p>
+<p><code>578</code><code>				&lt;div id="language_picker2" class="language-picker desktop"&gt;</code></p>
+<p><code>579</code><code>          </code></p>
+<p><code>580</code><code>    </code></p>
+<p><code>581</code><code>    &lt;a class="preferred-language"&gt;</code></p>
+<p><code>582</code><code>        English (US)&amp;#8206;        &lt;span class="language-arrow"&gt;&lt;/span&gt;</code></p>
+<p><code>583</code><code>    &lt;/a&gt;</code></p>
+<p><code>584</code><code>    &lt;div class="language-dropdown"&gt;</code></p>
+<p><code>585</code><code>                    &lt;ul&gt;                &lt;li class="left-list"&gt;</code></p>
+<p><code>586</code><code>                    &lt;a data-value="/intl/id/" class="language-item"&gt;Bahasa Indonesia&lt;/a&gt;</code></p>
+<p><code>587</code><code>                &lt;/li&gt;</code></p>
+<p><code>588</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>589</code><code>                    &lt;a data-value="/intl/ms/" class="language-item"&gt;Bahasa Melayu&lt;/a&gt;</code></p>
+<p><code>590</code><code>                &lt;/li&gt;</code></p>
+<p><code>591</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>592</code><code>                    &lt;a data-value="/intl/da/" class="language-item"&gt;Dansk&lt;/a&gt;</code></p>
+<p><code>593</code><code>                &lt;/li&gt;</code></p>
+<p><code>594</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>595</code><code>                    &lt;a data-value="/intl/de/" class="language-item"&gt;Deutsch&lt;/a&gt;</code></p>
+<p><code>596</code><code>                &lt;/li&gt;</code></p>
+<p><code>597</code><code>                                                &lt;li class="preferred-setting left-list"&gt;</code></p>
+<p><code>598</code><code>                    &lt;a data-value="/" class="language-item"&gt;English (US)&amp;#8206;&lt;/a&gt;</code></p>
+<p><code>599</code><code>                &lt;/li&gt;</code></p>
+<p><code>600</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>601</code><code>                    &lt;a data-value="/intl/es/" class="language-item"&gt;Español&lt;/a&gt;</code></p>
+<p><code>602</code><code>                &lt;/li&gt;</code></p>
+<p><code>603</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>604</code><code>                    &lt;a data-value="/intl/es-latam/" class="language-item"&gt;Español (América Latina)&lt;/a&gt;</code></p>
+<p><code>605</code><code>                &lt;/li&gt;</code></p>
+<p><code>606</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>607</code><code>                    &lt;a data-value="/intl/fr/" class="language-item"&gt;Français&lt;/a&gt;</code></p>
+<p><code>608</code><code>                &lt;/li&gt;</code></p>
+<p><code>609</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>610</code><code>                    &lt;a data-value="/intl/it/" class="language-item"&gt;Italiano&lt;/a&gt;</code></p>
+<p><code>611</code><code>                &lt;/li&gt;</code></p>
+<p><code>612</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>613</code><code>                    &lt;a data-value="/intl/nl/" class="language-item"&gt;Nederlands&lt;/a&gt;</code></p>
+<p><code>614</code><code>                &lt;/li&gt;</code></p>
+<p><code>615</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>616</code><code>                    &lt;a data-value="/intl/pl/" class="language-item"&gt;Polski&lt;/a&gt;</code></p>
+<p><code>617</code><code>                &lt;/li&gt;</code></p>
+<p><code>618</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>619</code><code>                    &lt;a data-value="/intl/pt-br/" class="language-item"&gt;Português (Brasil)&amp;#8206;&lt;/a&gt;</code></p>
+<p><code>620</code><code>                &lt;/li&gt;</code></p>
+<p><code>621</code><code>                                                &lt;li class="left-list"&gt;</code></p>
+<p><code>622</code><code>                    &lt;a data-value="/intl/pt/" class="language-item"&gt;Português (Portugal)&lt;/a&gt;</code></p>
+<p><code>623</code><code>                &lt;/li&gt;</code></p>
+<p><code>624</code><code>            &lt;/ul&gt;                    &lt;ul&gt;                &lt;li class=""&gt;</code></p>
+<p><code>625</code><code>                    &lt;a data-value="/intl/fi/" class="language-item"&gt;Suomi&lt;/a&gt;</code></p>
+<p><code>626</code><code>                &lt;/li&gt;</code></p>
+<p><code>627</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>628</code><code>                    &lt;a data-value="/intl/sv/" class="language-item"&gt;Svenska&lt;/a&gt;</code></p>
+<p><code>629</code><code>                &lt;/li&gt;</code></p>
+<p><code>630</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>631</code><code>                    &lt;a data-value="/intl/vi/" class="language-item"&gt;Tiếng Việt&lt;/a&gt;</code></p>
+<p><code>632</code><code>                &lt;/li&gt;</code></p>
+<p><code>633</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>634</code><code>                    &lt;a data-value="/intl/tr/" class="language-item"&gt;Türkçe&lt;/a&gt;</code></p>
+<p><code>635</code><code>                &lt;/li&gt;</code></p>
+<p><code>636</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>637</code><code>                    &lt;a data-value="/intl/ru/" class="language-item"&gt;Русский&lt;/a&gt;</code></p>
+<p><code>638</code><code>                &lt;/li&gt;</code></p>
+<p><code>639</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>640</code><code>                    &lt;a data-value="/intl/ar/" class="language-item"&gt;العربية&lt;/a&gt;</code></p>
+<p><code>641</code><code>                &lt;/li&gt;</code></p>
+<p><code>642</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>643</code><code>                    &lt;a data-value="/intl/th/" class="language-item"&gt;ภาษาไทย&lt;/a&gt;</code></p>
+<p><code>644</code><code>                &lt;/li&gt;</code></p>
+<p><code>645</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>646</code><code>                    &lt;a data-value="/intl/ko/" class="language-item"&gt;한국어&lt;/a&gt;</code></p>
+<p><code>647</code><code>                &lt;/li&gt;</code></p>
+<p><code>648</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>649</code><code>                    &lt;a data-value="/intl/zh-cn/" class="language-item"&gt;中文（简体）&amp;#8206;&lt;/a&gt;</code></p>
+<p><code>650</code><code>                &lt;/li&gt;</code></p>
+<p><code>651</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>652</code><code>                    &lt;a data-value="/intl/zh-tw/" class="language-item"&gt;中文 (繁體)&lt;/a&gt;</code></p>
+<p><code>653</code><code>                &lt;/li&gt;</code></p>
+<p><code>654</code><code>                                                &lt;li class=""&gt;</code></p>
+<p><code>655</code><code>                    &lt;a data-value="/intl/jp/" class="language-item"&gt;日本語&lt;/a&gt;</code></p>
+<p><code>656</code><code>                &lt;/li&gt;</code></p>
+<p><code>657</code><code>                            &lt;/ul&gt;</code></p>
+<p><code>658</code><code>        &lt;span class="tick-mark"&gt;&lt;/span&gt;</code></p>
+<p><code>659</code><code>    &lt;/div&gt;</code></p>
+<p><code>660</code><code>          </code></p>
+<p><code>661</code><code>&lt;/div&gt;</code></p>
+<p><code>662</code><code>          </code></p>
+<p><code>663</code><code>&lt;div class="language-picker mobile"&gt;</code></p>
+<p><code>664</code><code>    &lt;label for="language-choice-mobile"&gt;Choose language&lt;/label&gt;</code></p>
+<p><code>665</code><code>    &lt;select onchange="if (this.value) { switchLanguage(this.value); } return true;" id="language-choice-mobile"&gt;</code></p>
+<p><code>666</code><code>        &lt;option value="" style="color:#999"&gt;Language&lt;/option&gt;</code></p>
+<p><code>667</code><code>        &lt;option value="" style="color:#999" disabled&gt;------------&lt;/option&gt;</code></p>
+<p><code>668</code><code>                    &lt;option value="/intl/id/"&gt;Bahasa Indonesia&lt;/option&gt;</code></p>
+<p><code>669</code><code>                    &lt;option value="/intl/ms/"&gt;Bahasa Melayu&lt;/option&gt;</code></p>
+<p><code>670</code><code>                    &lt;option value="/intl/da/"&gt;Dansk&lt;/option&gt;</code></p>
+<p><code>671</code><code>                    &lt;option value="/intl/de/"&gt;Deutsch&lt;/option&gt;</code></p>
+<p><code>672</code><code>                    &lt;option value="/" style="background-color:#e1efd6"&gt;English (US)&amp;#8206;&lt;/option&gt;</code></p>
+<p><code>673</code><code>                    &lt;option value="/intl/es/"&gt;Español&lt;/option&gt;</code></p>
+<p><code>674</code><code>                    &lt;option value="/intl/es-latam/"&gt;Español (América Latina)&lt;/option&gt;</code></p>
+<p><code>675</code><code>                    &lt;option value="/intl/fr/"&gt;Français&lt;/option&gt;</code></p>
+<p><code>676</code><code>                    &lt;option value="/intl/it/"&gt;Italiano&lt;/option&gt;</code></p>
+<p><code>677</code><code>                    &lt;option value="/intl/nl/"&gt;Nederlands&lt;/option&gt;</code></p>
+<p><code>678</code><code>                    &lt;option value="/intl/pl/"&gt;Polski&lt;/option&gt;</code></p>
+<p><code>679</code><code>                    &lt;option value="/intl/pt-br/"&gt;Português (Brasil)&amp;#8206;&lt;/option&gt;</code></p>
+<p><code>680</code><code>                    &lt;option value="/intl/pt/"&gt;Português (Portugal)&lt;/option&gt;</code></p>
+<p><code>681</code><code>                    &lt;option value="/intl/fi/"&gt;Suomi&lt;/option&gt;</code></p>
+<p><code>682</code><code>                    &lt;option value="/intl/sv/"&gt;Svenska&lt;/option&gt;</code></p>
+<p><code>683</code><code>                    &lt;option value="/intl/vi/"&gt;Tiếng Việt&lt;/option&gt;</code></p>
+<p><code>684</code><code>                    &lt;option value="/intl/tr/"&gt;Türkçe&lt;/option&gt;</code></p>
+<p><code>685</code><code>                    &lt;option value="/intl/ru/"&gt;Русский&lt;/option&gt;</code></p>
+<p><code>686</code><code>                    &lt;option value="/intl/ar/"&gt;العربية&lt;/option&gt;</code></p>
+<p><code>687</code><code>                    &lt;option value="/intl/th/"&gt;ภาษาไทย&lt;/option&gt;</code></p>
+<p><code>688</code><code>                    &lt;option value="/intl/ko/"&gt;한국어&lt;/option&gt;</code></p>
+<p><code>689</code><code>                    &lt;option value="/intl/zh-cn/"&gt;中文（简体）&amp;#8206;&lt;/option&gt;</code></p>
+<p><code>690</code><code>                    &lt;option value="/intl/zh-tw/"&gt;中文 (繁體)&lt;/option&gt;</code></p>
+<p><code>691</code><code>                    &lt;option value="/intl/jp/"&gt;日本語&lt;/option&gt;</code></p>
+<p><code>692</code><code>            &lt;/select&gt;</code></p>
+<p><code>693</code><code>&lt;/div&gt;			&lt;/div&gt;</code></p>
+<p><code>694</code><code>		&lt;/div&gt;</code></p>
+<p><code>695</code><code>	&lt;/nav&gt;</code></p>
+<p><code>696</code><code>&lt;/footer&gt;</code></p>
+<p><code>697</code><code>          </code></p>
+<p><code>698</code><code>          </code></p>
+<p><code>699</code><code>          </code></p>
+<p><code>700</code><code>          </code></p>
+<p><code>701</code><code>&lt;script src="https://cdn1.evernote.com/media/js/lib/jquery-1.9.1.min.js" type="text/javascript"&gt;&lt;/script&gt;</code></p>
+<p><code>702</code><code>          </code></p>
+<p><code>703</code><code>          </code></p>
+<p><code>704</code><code>&lt;script src="/media/js/build/homepage-promos-min.js" type="text/javascript"&gt;&lt;/script&gt;</code></p>
+<p><code>705</code><code>          </code></p>
+<p><code>706</code><code>&lt;script src="/media/js/build/global-min.js" type="text/javascript"&gt;&lt;/script&gt;</code></p>
+<p><code>707</code><code>    &lt;noscript&gt;</code></p><br style='clear: both'> <div id='err-l707c15-0' class='err' >  <div class='col1'><img src='../Report/p1.png' width='20' height='20' alt='Priority 1'> </div>  <div class='col2'>   <div class='desc'>No TITLE attributes found for the frames on these pages. </div>   <div class='help'>Add a TITLE attribute to each FRAME and IFRAME element (e.g. TITLE="Main Content"). Screen readers read out the TITLE letting the user decide which frame to visit. The JAWS Frames List command reads out the URL of any FRAMEs or IFRAMEs without titles.  
+					<p>IFRAMEs with no title cause problems in:</p>
+					<ul>
+						<li>JAWS 14 with Firefox 29 (the frame SRC filename is read instead)</li>
+						<li>VoiceOver on OSX 10.9 (a meaningless title like "Frame twelve" is read out)</li>
+					</ul>
+				</div>   <div class='line'><span class='line'>Line 707</span>  <a href='http://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/guide-to-the-section-508-standards/web-based-intranet-and-internet-information-and-applications-1194-22' target='_top'>Section 508 1194.22 (i)</a> <a href='http://www.w3.org/TR/WCAG20/#navigation-mechanisms-skip' target='_top'>WCAG 2.0 A 2.4.1</a></div>   <div class='menu-title'><a href='#' class='menu-title' onclick='window.external.RuleOptions( this, "AccWcag1-12.1.1" ); return false;'>Options <img src='../Report/dropbox.png' width='8' height='8' alt=''></a></div>  </div> </div> <br><br style='clear: both'><p><code><span class='err' id='htm-l707c15' title='Line 707 Column 15'>&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-WZJ64J"</span></code></p>
+<p><code>708</code><code>    height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;</code></p>
+<p><code>709</code><code>    &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':</code></p>
+<p><code>710</code><code>    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],</code></p>
+<p><code>711</code><code>    j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=</code></p>
+<p><code>712</code><code>    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);</code></p>
+<p><code>713</code><code>    })(window,document,'script','dataLayer','GTM-WZJ64J');&lt;/script&gt;</code></p>
+<p><code>714</code><code>&lt;/body&gt;</code></p>
+<p><code>715</code><code>&lt;/html&gt;</code></p>
+</div><iframe src="about:blank" style="width:0px;height:0px;border:0px solid white;" id="iframeSpelling" title="Ignore - used for spell checking">
+					Ignore - used for spell checking
+				</iframe></body></html>
