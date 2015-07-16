@@ -1,7 +1,10 @@
 # blocbox
 #This is my research and prework before designing a new website design for a startup called Bloc Box. It is a notetaking/task management/pin links site. My work flow is as follows:
-
-## Methodology:
+[User Personas](https://github.com/erikasf/blocbox/blob/gh-pages/userPersona2.pdf).
+[User Personas 2](https://github.com/erikasf/blocbox/blob/gh-pages/personasBloc.pdf)
+[User Survey Report](https://github.com/erikasf/blocbox/blob/gh-pages/erikaSurveyReport.pdf)
+[Competetive Analysis](https://github.com/erikasf/blocbox/blob/gh-pages/BlocBoxComp.pdf)
+#Methodology:
   1. Design a survey for potential users to describe what type of devices they use, own and browse with.  Also  
      extract how often they use note taking apps, what devices do they do this with, what their pain points are, what     they like about their existing service, their occupation and other demographics.
   2. Disseminate information obtained from survey takers who were all annonymous. I used social media with links to       google forms to find participants. I don't believe it skewed the pool of potential applicants because our target      market are people that are using social media and technology.
