@@ -1,4 +1,4 @@
-![pageforrepo](http://codepen.io/erikasf/full/rVrMVG/?raw=true "")
+![pageforrepo](http://codepen.io/erikasf/full/rVrMVG)
 # blocbox
 #This is my research and prework before designing a new website design for a startup called Bloc Box. It is a notetaking/task management/pin links site. My work flow is as follows:
 [User Personas](https://github.com/erikasf/blocbox/blob/gh-pages/userPersona2.pdf).  |
