@@ -6,6 +6,7 @@
 [User Survey Report](https://github.com/erikasf/blocbox/blob/gh-pages/erikaSurveyReport.pdf)  |
 [Competetive Analysis](https://github.com/erikasf/blocbox/blob/gh-pages/BlocBoxComp.pdf)  |
 [Sitemap/Flowsheet for Collaborators](https://github.com/erikasf/blocbox/blob/gh-pages/blocboxCollabFlow.jpg) |
+[mockup for website](https://github.com/erikasf/blocbox/blob/gh-pages/blocbox4.pdf)
 [3 rough mockups for website](https://github.com/erikasf/blocbox/blob/gh-pages/blocbox3.pdf) |
 #Methodology:
   1. Design a survey for potential users to describe what type of devices they use, own and browse with.  Also  
