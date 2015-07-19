@@ -5,6 +5,7 @@
 [User Personas 2](https://github.com/erikasf/blocbox/blob/gh-pages/personasBloc.pdf)  |
 [User Survey Report](https://github.com/erikasf/blocbox/blob/gh-pages/erikaSurveyReport.pdf)  |
 [Competetive Analysis](https://github.com/erikasf/blocbox/blob/gh-pages/BlocBoxComp.pdf)  |
+[Sitemap/Flowsheet for Collaborators(https://github.com/erikasf/blocbox/blob/gh-pages/blocboxCollabFlow.jpg)   |
 #Methodology:
   1. Design a survey for potential users to describe what type of devices they use, own and browse with.  Also  
      extract how often they use note taking apps, what devices do they do this with, what their pain points are, what     they like about their existing service, their occupation and other demographics.
