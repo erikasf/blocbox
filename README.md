@@ -10,6 +10,7 @@
 [Competetive Analysis](https://github.com/erikasf/blocbox/blob/gh-pages/BlocBoxComp.pdf)  |
 <<<<<<< HEAD
 [Sitemap/Flowsheet for Collaborators](https://github.com/erikasf/blocbox/blob/gh-pages/blocboxCollabFlow.jpg) |
+[mockup for website](https://github.com/erikasf/blocbox/blob/gh-pages/blocbox4.pdf) |
 [3 rough mockups for website](https://github.com/erikasf/blocbox/blob/gh-pages/blocbox3.pdf) |
 =======
 >>>>>>> 899d967a6c775689ca2b0b924e569831b21dd9d5
